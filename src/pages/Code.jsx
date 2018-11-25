@@ -11,22 +11,26 @@ export default class Code extends Component {
             <Fragment>
                 <Header title='Code'/>
                 <div className="wrapper cards">
-                    {data.map((item, index) => {
-                        return (
-                            <div className="card" key={index}>
-                                <div className="info">
-                                    <div className="title">
-                                        <span style={{backgroundColor: `${bgColors[Math.floor(Math.random()*bgColors.length)]}`}}>{item.title}</span>
-                                    </div>
-                                    <div className="links">
-                                        {item.demo && <a href={item.demo}>CODE</a>}
-                                        {item.video && <a href={item.video}>YOUTUBE</a>}
+                    {
+                        data.map((item, index) => {
+                            return (
+                                <div className="card" key={index}>
+                                    <div className="info">
+                                        <div className="title">
+                                            <span
+                                                style={{
+                                                backgroundColor: `${bgColors[Math.floor(Math.random() * bgColors.length)]}`
+                                            }}>{item.title}</span>
+                                        </div>
+                                        <div className="links">
+                                            {item.demo && <a href={item.demo}>CODE</a>}
+                                            {item.video && <a href={item.video}>YOUTUBE</a>}
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        )
-                    })
-}
+                            )
+                        })
+                    }
                 </div>
             </Fragment>
         );

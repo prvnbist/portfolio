@@ -269,10 +269,18 @@ footer {
 	.cards {
 		grid-template-columns: repeat(2, 1fr);
 	}
+	.tag-line {
+		line-height: 64px;
+		font-size: 48px;
+	}
 }
 
 @media screen and (max-width: 567px) {
 	.cards {
 		grid-template-columns: 1fr;
+	}
+	.tag-line {
+		line-height: 48px;
+		font-size: 32px;
 	}
 }
