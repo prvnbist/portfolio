@@ -1,0 +1,102 @@
+@import "../utils/_variables";
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+a,
+span {
+	font-family: $font;
+}
+
+// h1 { font-size: $font-base * 8; font-weight: $black; }
+// h2 { font-size: $font-base * 6; font-weight: $bold; }
+// h3 { font-size: $font-base * 4; font-weight: $bold; }
+// h4 { font-size: $font-base * 3; font-weight: $medium; }
+// h5 { font-size: $font-base * 2.25; font-weight: $regular; }
+// p { font-size: $font-base * 2; font-weight: $regular; }
+
+
+$url : "../fonts/";
+
+@font-face {
+	font-family: 'CircularStd';
+	src: url('#{$url}CircularStd-Black.eot');
+	src: url('#{$url}CircularStd-Black.eot?#iefix') format('embedded-opentype'),
+	url('#{$url}CircularStd-Black.woff') format('woff'),
+	url('#{$url}CircularStd-Black.svg#bcc26993292869431e54c666aafa8fcd') format('svg');
+	font-weight: 800;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'CircularStd';
+	src: url('#{$url}CircularStd-BlackItalic.eot');
+	src: url('#{$url}CircularStd-BlackItalic.eot?#iefix') format('embedded-opentype'),
+	url('#{$url}CircularStd-BlackItalic.woff') format('woff'),
+	url('#{$url}CircularStd-BlackItalic.svg#bcc26993292869431e54c666aafa8fcd') format('svg');
+	font-weight: 800;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'CircularStd';
+	src: url('#{$url}CircularStd-Bold.eot');
+	src: url('#{$url}CircularStd-Bold.eot?#iefix') format('embedded-opentype'),
+	url('#{$url}CircularStd-Bold.woff') format('woff'),
+	url('#{$url}CircularStd-Bold.svg#bcc26993292869431e54c666aafa8fcd') format('svg');
+	font-weight: 600;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'CircularStd';
+	src: url('#{$url}CircularStd-BoldItalic.eot');
+	src: url('#{$url}CircularStd-BoldItalic.eot?#iefix') format('embedded-opentype'),
+	url('#{$url}CircularStd-BoldItalic.woff') format('woff'),
+	url('#{$url}CircularStd-BoldItalic.svg#bcc26993292869431e54c666aafa8fcd') format('svg');
+	font-weight: 600;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'CircularStd';
+	src: url('#{$url}CircularStd-Medium.eot');
+	src: url('#{$url}CircularStd-Medium.eot?#iefix') format('embedded-opentype'),
+	url('#{$url}CircularStd-Medium.woff') format('woff'),
+	url('#{$url}CircularStd-Medium.svg#bcc26993292869431e54c666aafa8fcd') format('svg');
+	font-weight: 500;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'CircularStd';
+	src: url('#{$url}CircularStd-MediumItalic.eot');
+	src: url('#{$url}CircularStd-MediumItalic.eot?#iefix') format('embedded-opentype'),
+	url('#{$url}CircularStd-MediumItalic.woff') format('woff'),
+	url('#{$url}CircularStd-MediumItalic.svg#bcc26993292869431e54c666aafa8fcd') format('svg');
+	font-weight: 500;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'CircularStd';
+	src: url('#{$url}CircularStd-Book.eot');
+	src: url('#{$url}CircularStd-Book.eot?#iefix') format('embedded-opentype'),
+	url('#{$url}CircularStd-Book.woff') format('woff'),
+	url('#{$url}CircularStd-Book.svg#bcc26993292869431e54c666aafa8fcd') format('svg');
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'CircularStd';
+	src: url('#{$url}CircularStd-BookItalic.eot');
+	src: url('#{$url}CircularStd-BookItalic.eot?#iefix') format('embedded-opentype'),
+	url('#{$url}CircularStd-BookItalic.woff') format('woff'),
+	url('#{$url}CircularStd-BookItalic.svg#bcc26993292869431e54c666aafa8fcd') format('svg');
+	font-weight: 400;
+	font-style: italic;
+}
