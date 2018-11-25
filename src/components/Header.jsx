@@ -10,8 +10,8 @@ export default class Header extends Component {
                     <Menu />
                     <h1>{this.props.title}</h1>
                     <div className="tabs">
-                        <button className='activeTab'>Codepen</button>
-                        <button>Github</button>
+                        <button className='activeTab'></button>
+                        <button></button>
                     </div>
                 </div>
             </div>
