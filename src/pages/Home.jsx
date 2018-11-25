@@ -7,22 +7,22 @@ import TypeIt from 'typeit';
 
 let socialLinks = [
     {
-        name: 'Dribbble',
+        name: 'fa-dribbble-square',
         link: 'https://www.dribbble.com/prvnbist'
     }, {
-        name: 'Codepen',
+        name: 'fa-codepen',
         link: 'https://www.codepen.io/prvnbist'
     }, {
-        name: 'Twitter',
+        name: 'fa-twitter-square',
         link: 'https://www.twitter.com/prvnbist'
     }, {
-        name: 'Github',
+        name: 'fa-github-square',
         link: 'https://www.github.com/prvnbist'
     }, {
-        name: 'LinkedIn',
+        name: 'fa-linkedin',
         link: 'https://www.linkedin.com/in/prvnbist/'
     }, {
-        name: 'Youtube',
+        name: 'fa-youtube',
         link: 'https://www.youtube.com/prvnbist/videos'
     }
 ];
@@ -55,7 +55,7 @@ export default class Home extends Component {
                 </div>
                 <footer>
                     {
-                        socialLinks.map((key,index) => <a href={key.link} key={index}>{key.name}</a>)
+                        socialLinks.map((key,index) => <a href={key.link} key={index}><i className={"fab " + key.name}></i></a>)
                     }
                 </footer>
             </div>
