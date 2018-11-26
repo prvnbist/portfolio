@@ -101,7 +101,7 @@ const data = [
     {
         "title":"CSS Loader - Part 3",
         "demo":"https://codepen.io/prvnbist/pen/wpzRBY",
-        "tags":"code,video,animation,loading"
+        "tags":"code,animation,loading"
     },
     {
         "title":"Tumblr FAB Animation",
@@ -152,7 +152,7 @@ const data = [
     {
         "title":"FAB Options | Animation",
         "demo":"https://codepen.io/prvnbist/pen/PKbRYq",
-        "tags":"code,video,menu,button,animation"
+        "tags":"code,menu,button,animation"
     },
     {
         "title":"#5. Spongebob | CSS Made",
