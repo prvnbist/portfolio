@@ -1,19 +1,10 @@
 import React from 'react'
 
-import Header from './header'
-import Footer from './footer'
-import '../styles/index.scss'
+import Navbar from './Navbar'
 
-const Layout = (props) => {
-    return (
-        <div>
-            <div>
-                <Header />
+const Layout = props => <div>
+                <Navbar />
                 {props.children}
             </div>
-            <Footer />
-        </div>
-    )
-}
 
-export default Layout
+export default Layout;

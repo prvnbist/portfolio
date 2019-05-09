@@ -1,7 +1,7 @@
 {
-  "name": "gatsby-starter-hello-world",
+  "name": "portfolio-site",
   "private": true,
-  "description": "A simplified bare-bones starter for Gatsby",
+  "description": "",
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
@@ -13,26 +13,28 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
   },
   "dependencies": {
-    "gatsby": "^2.3.3",
+    "gatsby": "^2.4.2",
+    "gatsby-image": "^2.0.41",
     "gatsby-plugin-sass": "^2.0.11",
     "gatsby-plugin-sharp": "^2.0.32",
     "gatsby-remark-images": "^3.0.10",
     "gatsby-remark-relative-images": "^0.2.2",
     "gatsby-source-filesystem": "^2.0.28",
     "gatsby-transformer-remark": "^2.3.8",
-    "node-sass": "^4.11.0",
+    "gatsby-transformer-sharp": "^2.1.19",
+    "node-sass": "^4.12.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   },
   "devDependencies": {
-    "env-cmd": "^8.0.2",
+    "env-cmd": "^9.0.1",
     "prettier": "^1.16.4"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-hello-world"
+    "url": "https://github.com/prvnbist/portfolio"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/prvnbist/portfolio/issues"
   }
 }

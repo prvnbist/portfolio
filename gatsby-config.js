@@ -1,7 +1,7 @@
 module.exports = {
     siteMetadata: {
-        title: 'Full-Stack Bootcamp',
-        author: 'Andrew Mead'
+        title: 'Praveen Bisht',
+        author: 'Praveen Bisht'
     },
     plugins: [
         'gatsby-plugin-sass',
@@ -13,6 +13,7 @@ module.exports = {
             }
         },
         'gatsby-plugin-sharp',
+        `gatsby-transformer-sharp`,
         {
             resolve: 'gatsby-transformer-remark',
             options: {
