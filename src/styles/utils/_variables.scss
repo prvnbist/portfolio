@@ -1,0 +1,24 @@
+:root {
+    --container-width: 980px;
+    --blog-container-width: 720px;
+
+    --font: 'HK Grotesk';
+    --base-font-size: 8;
+
+    --color-primary: #2158E8;
+    --color-secondary: #282C35;
+    --color-danger: #FF3E1D;
+    --color-success: #9BCA34;
+    --color-info: #03C3EC;
+    --color-warning: #DFBF14;
+    --color-disabled: #AF9A9A;
+
+    --shadow-primary: 0px 16px 30px rgba(33, 88, 232, 0.18);
+    --shadow-secondary: 0px 16px 30px rgba(40, 44, 53, 0.18);
+    --shadow-danger: 0px 16px 30px rgba(255, 62, 29, 0.18);
+    --shadow-success: 0px 16px 30px rgba(155, 202, 52, 0.18);
+    --shadow-info: 0px 16px 30px rgba(3, 195, 236, 0.18);
+    --shadow-warning: 0px 16px 30px rgba(223, 191, 20, 0.18);
+
+    --border-radius: 6px;
+}
