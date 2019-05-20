@@ -1,0 +1,65 @@
+.btn {
+    padding: 0 16px;
+    height: 40px;
+    border-radius: var(--border-radius);
+    line-height: 42px;
+    display: inline-block;
+
+    font-weight: normal;
+    font-size: 16px;
+    letter-spacing: 0.3px;
+    margin-right: 16px;
+    margin-top: 16px;
+    transition: 0.3s linear;
+    &:hover {
+        transform: translateY(-2px);
+    }
+}
+
+$colors: var(--color-primary), var(--color-secondary), var(--color-danger), var(--color-success), var(--color-info), var(--color-warning);
+$shadows: var(--shadow-primary), var(--shadow-secondary), var(--shadow-danger), var(--shadow-success), var(--shadow-info), var(--shadow-warning);
+$classes:  primary, secondary, danger, success, info, warning;
+
+@each $class in $classes  {
+    .btn-#{$class} {
+        $i: index($classes, $class);
+        color: #fff;
+        background: nth($colors, $i);
+        &:hover {
+            box-shadow: nth($shadows, $i);
+        }
+    }
+}
+
+@each $class in $classes  {
+    .btn-outline-#{$class} {
+        $i: index($classes, $class);        
+        color: var(--color-secondary);
+        border: 1px solid nth($colors, $i);
+        &:hover {
+            color: #fff;
+            background: nth($colors, $i);
+            box-shadow: nth($shadows, $i);
+        }
+    }
+} 
+
+
+
+
+
+.btn-disabled {
+    color: #fff;
+    cursor: not-allowed;
+    background: var(--color-disabled);
+}
+
+.btn-outline-disabled {
+    cursor: not-allowed;
+    color: var(--color-secondary);
+    border: 1px solid var(--color-disabled);
+    &:hover {
+        color: #fff;
+        background: var(--color-disabled);
+    }
+}
