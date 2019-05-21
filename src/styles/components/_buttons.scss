@@ -1,15 +1,13 @@
 .btn {
     padding: 0 16px;
-    height: 40px;
+    height: 48px;
     border-radius: var(--border-radius);
-    line-height: 42px;
+    line-height: 50px;
     display: inline-block;
 
     font-weight: normal;
     font-size: 16px;
     letter-spacing: 0.3px;
-    margin-right: 16px;
-    margin-top: 16px;
     transition: 0.3s linear;
     &:hover {
         transform: translateY(-2px);
