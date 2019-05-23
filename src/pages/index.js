@@ -1,27 +1,27 @@
 import React from 'react'
 
 import Layout from '../components/Layout';
-import Tab from '../components/Tabs';
+// import Tab from '../components/Tabs';
 import '../styles/index.scss';
 
-const Codepen = () => <div>Codepen</div>;
-const Github = () => <div>Github</div>;
-const Facebook = () => <div>Facebook</div>;
+// const Codepen = () => <div>Codepen</div>;
+// const Github = () => <div>Github</div>;
+// const Facebook = () => <div>Facebook</div>;
 
 const IndexPage = () => {
 
     return <Layout>
         <div className="container">
             <header>
-                <h1 id="tagline">I design🎨 & code👨🏼‍💻</h1>
-                <p>Hello👋🏼, I’m Praveen, a front-end developer with a strong understanding in
+                <h1 id="tagline">I design<span role="img" aria-label="design">🎨</span> & code<span role="img" aria-label="code">👨🏼‍💻</span></h1>
+                <p>Hello<span role="img" aria-label="hello">👋🏼</span>, I’m Praveen, a front-end developer with a strong understanding in
                     UI/UX design based in New Delhi. I focus on delivering optimal solutions to
                     design and code problems that enhances the user’s experience.</p>
-                <a href="prvnbist@gmail.com" className="btn btn-primary">Discuss a project🤝</a>
+                <a href="prvnbist@gmail.com" className="btn btn-primary">Discuss a project<span role="img" aria-label="deal">🤝</span></a>
             </header>
             <div id="stack">
                 <div className="stack-card">
-                    <h5>Design🎨</h5>
+                    <h5>Design<span role="img" aria-label="design">🎨</span></h5>
                     <p>My design stack includes Axure RP for wireframing and prototyping, Figma for
                         UI design, Invision for feedback and collaboration and Zeplin for developer
                         hand-off.</p>
@@ -53,7 +53,7 @@ const IndexPage = () => {
                     </div>
                 </div>
                 <div className="stack-card">
-                    <h5>Code👨🏼‍💻</h5>
+                    <h5>Code<span role="img" aria-label="code">👨🏼‍💻</span></h5>
                     <p>My development stack includes MERN Stack and GraphQL. I use VS Code as a
                         preferred choice of text editor and Github for version control.</p>
                     <div className="social">
