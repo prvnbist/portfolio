@@ -4,6 +4,23 @@
     padding: 0;
 }
 
+li {
+    list-style: none;
+}
+
 a {
     text-decoration: none;
+}
+
+.container {
+    max-width: var(--container-width);
+    width: calc(100% - 40px);
+    margin: 0 auto 24px auto;
+}
+
+.page-heading {
+    font-style: normal;
+    font-weight: 500;
+    color: var(--color-secondary);
+    margin: var(--margin-3) 0;
 }

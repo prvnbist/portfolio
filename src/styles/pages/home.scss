@@ -1,0 +1,87 @@
+header {
+    margin-top: 160px;
+    h1 {
+        font-style: normal;
+        font-weight: bold;
+        font-size: 72px;
+        line-height: 98px;
+        color: var(--color-secondary);
+        position: relative;
+        &:before {
+            content: '';
+            position: absolute;
+            height:2px;
+            width:100%;
+            top:calc(50% - 2px);
+            left:calc(-100% - 24px);
+            background: #E9E1E1;
+        }
+    }
+    p {
+        width: 80%;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 20px;
+        line-height: 32px;
+        color: #908D8D;
+        margin: var(--margin-2) 0 var(--margin-3) 0;
+    }
+}
+
+#stack {
+    height: calc(100vh - 490px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 24px;
+    align-items: center;
+}
+
+.stack-card {
+    display: flex;
+    flex-direction: column;
+    padding: var(--padding-3);
+    height: 300px;
+    border: 1px solid #E9E1E1;
+    border-radius: var(--border-radius);
+    transition: 0.3s ease;
+    &:hover {
+        border: 1px solid var(--color-primary);
+    }
+    h5 {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 24px;
+        margin-bottom: var(--margin-3);
+        color: var(--color-secondary);
+    }
+    p {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 32px;
+        color: #908D8D;
+    }
+    .social {
+        display: flex;
+        margin-top: auto;
+        a {
+            margin-right: var(--margin-3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border: 1px solid #E9E1E1;
+            box-sizing: border-box;
+            border-radius: 6px;
+            transition: 0.3s ease;
+            &:hover {
+                background: var(--color-primary);
+                path{
+                    fill: #fff;
+                }
+            }
+        }
+    }
+}
