@@ -1,10 +1,8 @@
 import React, {useState} from 'react'
 
 const Options = ({options, selected}) => {
-    const [isDropDownVisible,
-        setIsDropDownVisible] = useState(false);
-    const [selectedOption,
-        setSelectedOption] = useState('All');
+    const [isDropDownVisible, setIsDropDownVisible] = useState(false);
+    const [selectedOption, setSelectedOption] = useState('All');
     return <div className="dropdown">
         <div className="select" onClick={e => setIsDropDownVisible(!isDropDownVisible)}>
             <span>{selectedOption}</span>
@@ -16,9 +14,9 @@ const Options = ({options, selected}) => {
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="#000000"
-                    stroke-width="1"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+                    strokeWidth="1"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"><path d="M6 9l6 6 6-6"/></svg>
             </i>
         </div>
         {isDropDownVisible && <ul className="options">
@@ -28,7 +26,7 @@ const Options = ({options, selected}) => {
                     onClick={() => {
                         setSelectedOption(option);
                         setIsDropDownVisible(!isDropDownVisible);
-                        selected(selectedOption);
+                        selected(option);
                 }}>{option}</li>
             ))
 }
