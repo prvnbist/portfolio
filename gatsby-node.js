@@ -1,21 +1,24 @@
 const path = require('path')
+const fetch = require('node-fetch');
 
-module.exports.onCreateNode = ({ node, actions }) => {
-    const { createNodeField } = actions
+require("dotenv").config({
+    path: `.env.development`,
+  })
+
+const getData = async (url) => await fetch(url).then(res => res.json()).then(data => data);
+
+module.exports.onCreateNode = ({node, actions}) => {
+    const {createNodeField} = actions
 
     if (node.internal.type === 'MarkdownRemark') {
         const slug = path.basename(node.fileAbsolutePath, '.md')
-        
-        createNodeField({
-            node,
-            name: 'slug',
-            value: slug
-        })
+
+        createNodeField({node, name: 'slug', value: slug})
     }
 }
 
-module.exports.createPages = async ({ graphql, actions }) => {
-    const { createPage } = actions
+module.exports.createPages = async({graphql, actions}) => {
+    const {createPage} = actions
     const blogTemplate = path.resolve('./src/templates/blog.js')
     const res = await graphql(`
         query {
@@ -31,13 +34,28 @@ module.exports.createPages = async ({ graphql, actions }) => {
         }
     `)
 
-    res.data.allMarkdownRemark.edges.forEach((edge) => {
-        createPage({
-            component: blogTemplate,
-            path: `/blog/${edge.node.fields.slug}`,
-            context: {
-                slug: edge.node.fields.slug
-            }
+    res
+        .data
+        .allMarkdownRemark
+        .edges
+        .forEach((edge) => {
+            createPage({
+                component: blogTemplate,
+                path: `/blog/${edge.node.fields.slug}`,
+                context: {
+                    slug: edge.node.fields.slug
+                }
+            })
         })
+
+    const shotTemplate = path.resolve('./src/templates/shot.js');
+    const URL = `https://api.dribbble.com/v2/user/shots?access_token=${process.env.TOKEN}`;
+
+    const shots = await getData(URL);
+    
+    shots.forEach(shot => {
+        createPage({component: shotTemplate, path: `/design/${shot.id}`, context: {
+                shot
+            }})
     })
 }
