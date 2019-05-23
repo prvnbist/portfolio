@@ -4,12 +4,20 @@
 @import './components/_buttons';
 @import './components/_navbar';
 @import './components/_tabs';
+@import './components/_dropdown';
 
 
 .container {
     max-width: var(--container-width);
     width: calc(100% - 40px);
     margin: auto;
+}
+
+.page-heading {
+    font-style: normal;
+    font-weight: 500;
+    color: var(--color-secondary);
+    margin: var(--margin-3) 0;
 }
 
 header {
