@@ -1,0 +1,67 @@
+#repos-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 24px;
+}
+
+.repo-card {
+    display: flex;
+    flex-direction: column;
+    height: 170px;
+    border: 1px solid var(--color-light);
+    border-radius: var(--border-radius);
+    padding: var(--padding-2);
+}
+.repo-name {
+    font-style: normal;
+    font-weight: 500;
+    font-size: calc(var(--base-font-size) * 2.25px);
+    line-height: 28px;
+    margin-bottom: var(--margin-1);
+    a {
+        color: var(--color-primary);
+    }
+}
+.repo-description {
+    font-style: normal;
+    font-weight: 400;
+    font-size: calc(var(--base-font-size) * 2px);
+    line-height: calc(var(--base-font-size) * 3px);
+    color: #626262;
+}
+
+.repo-card-footer {
+    display: flex;
+    margin-top: auto; 
+    justify-content: space-between;
+}
+
+.repo-language {
+    display: flex;
+    align-items: center;
+    & > span {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: var(--margin-2);
+    }
+}
+
+.repo-language,
+.repo-likes,
+.repo-forks {
+    font-style: normal;
+    font-weight: 500;
+    font-size: calc(var(--base-font-size) * 2px);
+    line-height: 17px;
+    color: rgba(50, 70, 74, 0.78);
+    svg {
+        margin-right: var(--margin-1);
+    }
+}
+.repo-likes {
+}
+.repo-forks {
+    margin-left: var(--margin-2);
+}
