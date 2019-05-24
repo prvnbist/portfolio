@@ -9,8 +9,17 @@ import '../styles/index.scss';
 // const Facebook = () => <div>Facebook</div>;
 
 const IndexPage = () => {
-
-    return <Layout>
+    const meta = {
+        title: 'Home | Praveen Bisht',
+        description: 'Welcome to my portfolio website.',
+        keywords: 'designer, developer, front-end, back-end',
+        imgUrl: {
+            google: '',
+            facebook:'',
+            twitter: ''
+        },
+    }
+    return <Layout meta={meta}>
         <div className="container">
             <header>
                 <h1 id="tagline">I design<span role="img" aria-label="design">🎨</span> & code<span role="img" aria-label="code">👨🏼‍💻</span></h1>

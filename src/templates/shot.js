@@ -5,9 +5,18 @@ import Layout from '../components/Layout';
 
 const Shot = (props) => {
     const {title, html_url, images, description, tags} = props.pageContext.shot;
-    console.table(props.pageContext.shot);
+    const meta = {
+        title: `${title} | Praveen Bisht`,
+        description: description,
+        keywords: tags,
+        imgUrl: {
+            google: images.hidpi,
+            facebook:images.hidpi,
+            twitter: images.hidpi
+        },
+    }
     return (
-        <Layout>
+        <Layout meta={meta}>
             <div className="container" id="dribbble-shot">
                 <Link to='/design' className="btn btn-outline-light" id="back">Back</Link>
                 <div id="shot-heading">

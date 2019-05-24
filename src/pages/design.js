@@ -24,11 +24,21 @@ export default() => {
         }
         getData(URL);
     }, []);
+    const meta = {
+        title: 'Design | Praveen Bisht',
+        description: 'A gallery of all my design work.',
+        keywords: 'design, ui, ux, user interface, user experience, figma, photoshop, zeplin, dribbble, uplabs, invision',
+        imgUrl: {
+            google: '',
+            facebook:'',
+            twitter: ''
+        },
+    }
     return (
-        <Layout>
+        <Layout meta={meta}>
             <div className="container">
                 <h4 className="page-heading">Explore Designs</h4>
-                <Options options={optionsList} selected={selected}/>
+                {/* <Options options={optionsList} selected={selected}/> */}
                 <div id="shots">
                     {isLoading
                         ? <div>Loading</div>

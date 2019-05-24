@@ -21,9 +21,18 @@ const BlogPage = () => {
             }
         }
     `)
-
+    const meta = {
+        title: 'Blog | Praveen Bisht',
+        description: 'A list of all of my articles I\'ve written so far.',
+        keywords: 'code,design,html,css,animation,user interface, ui to code',
+        imgUrl: {
+            google: '',
+            facebook:'',
+            twitter: ''
+        },
+    }
     return (
-        <Layout>
+        <Layout meta={meta}>
             <h1>Blog</h1>
             <ol>
                 {data.allMarkdownRemark.edges.map((edge) => {
