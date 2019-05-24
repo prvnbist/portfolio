@@ -1,17 +1,5 @@
 import React, {useState} from 'react';
 
-// const tabs = ["Codepen", "Github", "Facebook"];
-//     const tabsContent = [{
-//         component: <Codepen />
-//     }, 
-//     {
-//         component: <Github />
-//     },
-//     {
-//         component: <Facebook />
-//     }
-//     ];
-
 const Tab = ({tabs, content}) => {
     const [activeTab,setActiveTab] = useState(1);
     return (

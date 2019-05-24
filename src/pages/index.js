@@ -1,12 +1,7 @@
 import React from 'react'
 
 import Layout from '../components/Layout';
-// import Tab from '../components/Tabs';
 import '../styles/index.scss';
-
-// const Codepen = () => <div>Codepen</div>;
-// const Github = () => <div>Github</div>;
-// const Facebook = () => <div>Facebook</div>;
 
 const IndexPage = () => {
     const meta = {
