@@ -15,7 +15,7 @@ export default() => {
 
     const selected = (value) => setDesignType(value);
     useEffect(() => {
-        const URL = `https://api.dribbble.com/v2/user/shots?access_token=${process.env.TOKEN}`;
+        const URL = `https://api.dribbble.com/v2/user/shots?access_token=${process.env.DRIBBBLE_TOKEN}`;
         const getData = async(url) => {
             const fetchData = await fetch(url);
             const convertData = await fetchData.json();
