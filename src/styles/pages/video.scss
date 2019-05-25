@@ -1,0 +1,18 @@
+#videos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap:24px;
+    grid-auto-rows: 268px;
+}
+
+.video {
+    height: 268px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    border-radius: var(--border-radius); 
+    box-shadow: 0px 16px 30px rgba(33, 88, 232, 0.12);
+    img {
+        display: block;
+    }
+}
