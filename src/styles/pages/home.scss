@@ -1,10 +1,7 @@
 header {
     margin-top: 160px;
     h1 {
-        font-style: normal;
-        font-weight: bold;
-        font-size: 72px;
-        line-height: 98px;
+        @include font(null, normal, 72px, bold, 98px);
         color: var(--color-secondary);
         position: relative;
         &:before {
@@ -18,11 +15,8 @@ header {
         }
     }
     p {
+        @include font(null, normal, 20px, normal, 32px);
         width: 80%;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 20px;
-        line-height: 32px;
         color: #908D8D;
         margin: var(--margin-2) 0 var(--margin-3) 0;
     }
@@ -48,18 +42,12 @@ header {
         border: 1px solid var(--color-primary);
     }
     h5 {
-        font-style: normal;
-        font-weight: 500;
-        font-size: 20px;
-        line-height: 24px;
+        @include font(null, normal, 20px, 500, 24px);
         margin-bottom: var(--margin-3);
         color: var(--color-secondary);
     }
     p {
-        font-style: normal;
-        font-weight: normal;
-        font-size: 18px;
-        line-height: 32px;
+        @include font(null, normal, 18px, normal, 32px);
         color: #908D8D;
     }
     .social {
@@ -67,13 +55,10 @@ header {
         margin-top: auto;
         a {
             margin-right: var(--margin-3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            @include flex(center, center);
             width: 48px;
             height: 48px;
             border: 1px solid #E9E1E1;
-            box-sizing: border-box;
             border-radius: 6px;
             transition: 0.3s ease;
             &:hover {

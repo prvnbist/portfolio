@@ -13,32 +13,24 @@
     padding: var(--padding-2);
 }
 .repo-name {
-    font-style: normal;
-    font-weight: 500;
-    font-size: calc(var(--base-font-size) * 2.25px);
-    line-height: 28px;
+    @include font(null, normal, calc(var(--base-font-size) * 2.25px), 500, 28px);
     margin-bottom: var(--margin-1);
     a {
         color: var(--color-primary);
     }
 }
 .repo-description {
-    font-style: normal;
-    font-weight: 400;
-    font-size: calc(var(--base-font-size) * 2px);
-    line-height: calc(var(--base-font-size) * 3px);
+    @include font(null, normal, calc(var(--base-font-size) * 2px), 400, calc(var(--base-font-size) * 3px));
     color: #626262;
 }
 
 .repo-card-footer {
-    display: flex;
     margin-top: auto; 
-    justify-content: space-between;
+    @include flex(null, space-between);
 }
 
 .repo-language {
-    display: flex;
-    align-items: center;
+    @include flex(center, null);
     & > span {
         width: 16px;
         height: 16px;
@@ -51,17 +43,13 @@
 .repo-language,
 .repo-likes,
 .repo-forks {
-    font-style: normal;
-    font-weight: 500;
-    font-size: calc(var(--base-font-size) * 2px);
-    line-height: 17px;
+    @include font(null, normal, calc(var(--base-font-size) * 2px), 500, 17px);
     color: rgba(50, 70, 74, 0.78);
     svg {
         margin-right: var(--margin-1);
     }
 }
-.repo-likes {
-}
+
 .repo-forks {
     margin-left: var(--margin-2);
 }
