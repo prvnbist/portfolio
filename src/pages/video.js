@@ -18,7 +18,6 @@ export default() => {
 
         fetchVideos(URL);
     }, []);
-    console.log(videos)
     const meta = {
         title: 'Videos | Praveen Bisht',
         description: `I've been posting a lot o videos some tutorials some timelapse for quite a while now. So here's all the videos I've made so far`,
@@ -34,14 +33,16 @@ export default() => {
             <h4 className="page-heading">Explore Videos</h4>
             <div id="videos">
                 {videos.map(video => <div className="video" key={video.id.videoId}>
-                    <a href={`https://www.youtube.com/watch?v=${video.id.videoId}`} target="_blank" rel="noopener noreferrer">
-                        <img src={video.snippet.thumbnails.high.url} alt={video.snippet.title}/>
-                    </a>
-                </div>)
-}
+                        <a
+                            href={`https://www.youtube.com/watch?v=${video.id.videoId}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{
+                            backgroundImage: `url(${video.snippet.thumbnails.high.url})`
+                        }}>a</a>
+                    </div>)
+                }
             </div>
         </div>
-
     </Layout>
-
 }

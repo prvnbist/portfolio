@@ -16,7 +16,7 @@ const IndexPage = () => {
     }
     return <Layout meta={meta}>
         <div className="container">
-            <header>
+            <header id="homepage__header">
                 <h1 id="tagline">I design<span role="img" aria-label="design">🎨</span> & code<span role="img" aria-label="code">👨🏼‍💻</span></h1>
                 <p>Hello<span role="img" aria-label="hello">👋🏼</span>, I’m Praveen, a front-end developer with a strong understanding in
                     UI/UX design based in New Delhi. I focus on delivering optimal solutions to

@@ -65,8 +65,6 @@ const Github = () => {
     </div>;
 };
 
-const Codepen = () => <div>Codepen</div>;
-
 export default() => {
     const meta = {
         title: 'Code | Praveen Bisht',
@@ -78,12 +76,10 @@ export default() => {
             twitter: ''
         }
     }
-    const tabs = ["Github", "Codepen"];
+    const tabs = ["Github"];
     const tabsContent = [
         {
             component: <Github/>
-        }, {
-            component: <Codepen/>
         }
     ];
     return <Layout meta={meta}>
