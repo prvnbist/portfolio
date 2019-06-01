@@ -70,3 +70,34 @@ header {
         }
     }
 }
+
+@media screen and (max-width: 1024px) {
+    #stack {
+        margin-top: var(--margin-3);
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 568px) {
+    #tagline {
+        font-size: 48px;
+        line-height: 60px;
+    }
+    #homepage__header {
+        p {
+            width: 100%;
+        }
+    }
+    #stack {
+        grid-template-columns: 1fr;
+        .stack-card {
+            height: auto;
+            .social {
+                margin-top: var(--margin-3);
+            }
+        }
+        .stack-card:first-child {
+            margin-bottom: var(--margin-3);
+        }
+    }
+}

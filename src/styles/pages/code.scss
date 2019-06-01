@@ -53,3 +53,15 @@
 .repo-forks {
     margin-left: var(--margin-2);
 }
+
+@media screen and (max-width: 568px) { 
+    #repos-list {
+        grid-template-columns: 1fr;
+    }
+    .repo-card {
+        height: auto;
+        .repo-card-footer {
+            margin-top: var(--margin-3);
+        }
+    }
+}

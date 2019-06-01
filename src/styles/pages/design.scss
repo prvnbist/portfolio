@@ -1,4 +1,4 @@
-div#shots {
+#shots {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 24px;
@@ -56,4 +56,23 @@ img.shot {
     padding: 0 var(--padding-1);
     border: 1px solid var(--color-light);
     border-radius: var(--border-radius);
+}
+
+@media screen and (max-width: 568px) {
+    #shots {
+        grid-template-columns: 1fr;
+    }
+    #shot-heading {
+        display: unset;
+        a {
+            margin-bottom: var(--margin-3);
+        }
+    }
+    #tags ul {
+        width: 100%;
+        flex-wrap: wrap;
+        .tag {
+            margin-bottom: var(--margin-2);
+        }
+    }
 }

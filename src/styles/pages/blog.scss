@@ -109,6 +109,7 @@
     li {
         height: 24px;
         color: #FFFFFF;
+        margin-bottom: 16px;
         display: inline-block;
         padding: 0 var(--padding-1);
         margin-right: var(--margin-2);
@@ -251,3 +252,19 @@
     border-right: none;
 }
 
+@media screen and (max-width: 768px) { 
+    #articles {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 260px;
+    }
+    .blog-container {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 568px) { 
+    #article__title {
+        font-size: calc(var(--base-font-size) * 5px);
+        line-height: calc(var(--base-font-size) * 7px);
+    }
+}
