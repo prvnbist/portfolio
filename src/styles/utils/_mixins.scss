@@ -6,7 +6,7 @@
     line-height: $lh;
 }
 
-@mixin objext($w, $maxw, $minw,$h, $maxh, $minh, $bg) {
+@mixin object($w, $maxw, $minw,$h, $maxh, $minh, $bg) {
     width: $w;
     max-width: $maxw;
     min-width: $minw;

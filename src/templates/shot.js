@@ -25,11 +25,11 @@ const Shot = (props) => {
                 </div>
                 <img src={images.hidpi} alt={title} id="shot-image"/>
                 <div id="description">
-                    <h5>Description</h5>
+                    <h5 className="caps__heading">Description</h5>
                     <p dangerouslySetInnerHTML={{ __html: description }}></p>
                 </div>
                 <div id="tags">
-                    <h5>Tags</h5>
+                    <h5 className="caps__heading">Tags</h5>
                     <ul>
                         {
                             tags.map((tag, index) => <li key={index} className='tag'>{tag}</li>)

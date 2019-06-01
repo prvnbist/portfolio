@@ -24,12 +24,11 @@ img.shot {
     border-radius: var(--border-radius);
 }
 
-#description h5,
-#tags h5  {
+.caps__heading  {
     @include font(null, normal, 14px, 600, 17px);
     text-transform: uppercase;
     color: #AF9A9A;
-    margin: var(--margin-3) 0 var(--margin-1) 0;
+    margin: var(--margin-3) 0 var(--margin-2) 0;
 }
 
 #description > p {

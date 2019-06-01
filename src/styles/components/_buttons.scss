@@ -62,6 +62,15 @@ $classes:  primary, secondary, danger, success, info, warning;
     }
 }
 
+.btn-outline-white {
+    color: #fff;
+    border: 1px solid rgba(#fff, 0.5);
+    &:hover {
+        color: var(--color-secondary);
+        background: #fff;
+    }
+}
+
 .btn-outline-light {
     color: var(--color-secondary);
     border: 1px solid var(--color-light);
