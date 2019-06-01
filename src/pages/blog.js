@@ -36,9 +36,9 @@ const BlogPage = () => {
             <div className="container">
                 <h4 className="page-heading">Explore Articles</h4>
                 <ul id="articles">
-                    {data.allMarkdownRemark.edges.map((edge) => {
+                    {data.allMarkdownRemark.edges.map((edge, index) => {
                         return (
-                            <li className="article">
+                            <li className="article" key={index}>
                                 <h5>{edge.node.frontmatter.title}</h5>
                                 <div className="article-meta">
                                     <Link to={`/blog/${edge.node.fields.slug}`}>Read More</Link>

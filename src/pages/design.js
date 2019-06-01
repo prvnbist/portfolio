@@ -2,18 +2,11 @@ import React, {useState, useEffect} from 'react'
 import {Link} from 'gatsby';
 
 import Layout from '../components/Layout';
-import Options from '../components/Options';
 
 export default() => {
-    const optionsList = ['All', 'Web', 'App', 'Animation', 'Icons'];
-    const [isLoading,
-        setIsLoading] = useState(true);
-    const [designType,
-        setDesignType] = useState('All');
-    const [shots,
-        setShots] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const [shots, setShots] = useState([]);
 
-    const selected = (value) => setDesignType(value);
     useEffect(() => {
         const URL = `https://api.dribbble.com/v2/user/shots?access_token=${process.env.DRIBBBLE_TOKEN}`;
         const getData = async(url) => {
@@ -38,7 +31,6 @@ export default() => {
         <Layout meta={meta}>
             <div className="container">
                 <h4 className="page-heading">Explore Designs</h4>
-                {/* <Options options={optionsList} selected={selected}/> */}
                 <div id="shots">
                     {isLoading
                         ? <div>Loading</div>

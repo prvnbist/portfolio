@@ -34,7 +34,7 @@ export default() => {
             <h4 className="page-heading">Explore Videos</h4>
             <div id="videos">
                 {videos.map(video => <div className="video" key={video.id.videoId}>
-                    <a href={`https://www.youtube.com/watch?v=${video.id.videoId}`} target="_blank">
+                    <a href={`https://www.youtube.com/watch?v=${video.id.videoId}`} target="_blank" rel="noopener noreferrer">
                         <img src={video.snippet.thumbnails.high.url} alt={video.snippet.title}/>
                     </a>
                 </div>)

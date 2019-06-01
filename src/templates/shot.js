@@ -21,7 +21,7 @@ const Shot = (props) => {
                 <Link to='/design' className="btn btn-outline-light" id="back">Back</Link>
                 <div id="shot-heading">
                     <h4 className="page-heading">{title}</h4>
-                    <a href={html_url} className="btn btn-primary">View on Dribbble</a>
+                    <a href={html_url} target="_blank" rel="noopener noreferrer" className="btn btn-primary">View on Dribbble</a>
                 </div>
                 <img src={images.hidpi} alt={title} id="shot-image"/>
                 <div id="description">
