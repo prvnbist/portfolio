@@ -21,7 +21,7 @@ const IndexPage = () => {
                 <p>Hello<span role="img" aria-label="hello">👋🏼</span>, I’m Praveen, a front-end developer with a strong understanding in
                     UI/UX design based in New Delhi. I focus on delivering optimal solutions to
                     design and code problems that enhances the user’s experience.</p>
-                <a href="prvnbist@gmail.com" className="btn btn-primary">Discuss a project<span role="img" aria-label="deal">🤝</span></a>
+                <a href="mailto:prvnbist@gmail.com" className="btn btn-primary">Discuss a project<span role="img" aria-label="deal">🤝</span></a>
             </header>
             <div id="stack">
                 <div className="stack-card">
