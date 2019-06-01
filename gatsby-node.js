@@ -49,8 +49,7 @@ module.exports.createPages = async({graphql, actions}) => {
         })
 
     const shotTemplate = path.resolve('./src/templates/shot.js');
-    const URL = `https://api.dribbble.com/v2/user/shots?access_token=${process.env.DRIBBBLE_TOKEN}`;
-
+    const URL = `https://api.dribbble.com/v2/user/shots?access_token=${process.env.GATSBY_DRIBBBLE_TOKEN}`;
     const shots = await getData(URL);
     shots.forEach(shot => {
         createPage({component: shotTemplate, path: `/design/${shot.id}`, context: {
