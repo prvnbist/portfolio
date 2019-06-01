@@ -20,7 +20,7 @@
     }
 }
 .repo-description {
-    @include font(null, normal, calc(var(--base-font-size) * 2px), 400, calc(var(--base-font-size) * 3px));
+    @include font(null, normal, calc(var(--base-font-size) * 2px), 300, calc(var(--base-font-size) * 3px));
     color: #626262;
 }
 

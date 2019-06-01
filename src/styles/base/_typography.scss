@@ -1,12 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Fira+Sans:300,400,500&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Overpass:300,400,600,700&display=swap');
 
 h1, h2, h3, h4, h5, p, button, a {
     font-family: var(--font);
 }
 
 h1 {
-    @include font(null, normal ,calc(var(--base-font-size) * 9px), bold, calc(var(--base-font-size) * 11px));
+    @include font(null, null ,calc(var(--base-font-size) * 9px), bold, calc(var(--base-font-size) * 11px));
 }
 
 h2 {
@@ -27,76 +28,4 @@ h5 {
 
 p {
     @include font(null, null, calc(var(--base-font-size) * 2.25px), 500, calc(var(--base-font-size) * 3.5px));
-}
-
-@font-face {
-    font-family: var(--font);
-    src: url('../fonts/HKGrotesk-Light.woff2') format('woff2'),
-        url('../fonts/HKGrotesk-Light.woff') format('woff');
-    font-weight: 300;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: var(--font);
-    src: url('../fonts/HKGrotesk-LightItalic.woff2') format('woff2'),
-        url('../fonts/HKGrotesk-LightItalic.woff') format('woff');
-    font-weight: 300;
-    font-style: italic;
-}
-
-@font-face {
-    font-family: var(--font);
-    src: url('../fonts/HKGrotesk-Regular.woff2') format('woff2'),
-        url('../fonts/HKGrotesk-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: var(--font);
-    src: url('../fonts/HKGrotesk-Medium.woff2') format('woff2'),
-        url('../fonts/HKGrotesk-Medium.woff') format('woff');
-    font-weight: 500;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: var(--font);
-    src: url('../fonts/HKGrotesk-MediumItalic.woff2') format('woff2'),
-        url('../fonts/HKGrotesk-MediumItalic.woff') format('woff');
-    font-weight: 500;
-    font-style: italic;
-}
-
-@font-face {
-    font-family: var(--font);
-    src: url('../fonts/HKGrotesk-SemiBold.woff2') format('woff2'),
-        url('../fonts/HKGrotesk-SemiBold.woff') format('woff');
-    font-weight: 600;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: var(--font);
-    src: url('../fonts/HKGrotesk-SemiBoldItalic.woff2') format('woff2'),
-        url('../fonts/HKGrotesk-SemiBoldItalic.woff') format('woff');
-    font-weight: 600;
-    font-style: italic;
-}
-
-@font-face {
-    font-family: var(--font);
-    src: url('../fonts/HKGrotesk-Bold.woff2') format('woff2'),
-        url('../fonts/HKGrotesk-Bold.woff') format('woff');
-    font-weight: bold;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: var(--font);
-    src: url('../fonts/HKGrotesk-BoldItalic.woff2') format('woff2'),
-        url('../fonts/HKGrotesk-BoldItalic.woff') format('woff');
-    font-weight: bold;
-    font-style: italic;
 }

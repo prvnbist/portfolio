@@ -1,4 +1,4 @@
-header {
+#homepage__header {
     margin-top: 160px;
     h1 {
         @include font(null, normal, 72px, bold, 98px);
@@ -15,7 +15,7 @@ header {
         }
     }
     p {
-        @include font(null, normal, 20px, normal, 32px);
+        @include font(null, normal, 20px, 300, 32px);
         width: 80%;
         color: #908D8D;
         margin: var(--margin-2) 0 var(--margin-3) 0;
@@ -47,7 +47,7 @@ header {
         color: var(--color-secondary);
     }
     p {
-        @include font(null, normal, 18px, normal, 32px);
+        @include font(null, normal, 16px, 300, 32px);
         color: #908D8D;
     }
     .social {
