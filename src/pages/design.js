@@ -8,7 +8,7 @@ export default() => {
     const [shots, setShots] = useState([]);
 
     useEffect(() => {
-        const URL = `https://api.dribbble.com/v2/user/shots?access_token=${process.env.DRIBBBLE_TOKEN}`;
+        const URL = `https://api.dribbble.com/v2/user/shots?access_token=${process.env.GATSBY_DRIBBBLE_TOKEN}`;
         const getData = async(url) => {
             const fetchData = await fetch(url);
             const convertData = await fetchData.json();

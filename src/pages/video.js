@@ -6,7 +6,7 @@ export default() => {
     const [videos,
         setVideos] = React.useState([]);
     React.useEffect(() => {
-        const URL = `https://www.googleapis.com/youtube/v3/search?key=${process.env.YOUTUBE_TOKEN}&channelId=${process.env.CHANNEL_ID}&part=snippet,id&order=date&maxResults=50`;
+        const URL = `https://www.googleapis.com/youtube/v3/search?key=${process.env.GATSBY_YOUTUBE_TOKEN}&channelId=${process.env.GATSBY_CHANNEL_ID}&part=snippet,id&order=date&maxResults=50`;
 
         const fetchVideos = async(url) => {
             const res = await fetch(url);
