@@ -6,12 +6,12 @@ import Layout from '../components/Layout';
 const BlogPage = () => {
     const data = useStaticQuery(graphql`
         query {
-            allMarkdownRemark {
+            allMarkdownRemark(sort: {order:DESC, fields: [frontmatter___published] }) {
                 edges {
                     node {
                         frontmatter {
                             title
-                            date
+                            published
                         }
                         fields {
                             slug
@@ -33,19 +33,22 @@ const BlogPage = () => {
     }
     return (
         <Layout meta={meta}>
-            <h1>Blog</h1>
-            <ol>
-                {data.allMarkdownRemark.edges.map((edge) => {
-                    return (
-                        <li>
-                            <Link to={`/blog/${edge.node.fields.slug}`}>
-                                <h2>{edge.node.frontmatter.title}</h2>
-                                <p>{edge.node.frontmatter.date}</p>
-                            </Link>
-                        </li>
-                    )
-                })}
-            </ol>
+            <div className="container">
+                <h4 className="page-heading">Explore Articles</h4>
+                <ul id="articles">
+                    {data.allMarkdownRemark.edges.map((edge) => {
+                        return (
+                            <li className="article">
+                                <h5>{edge.node.frontmatter.title}</h5>
+                                <div className="article-meta">
+                                    <Link to={`/blog/${edge.node.fields.slug}`}>Read More</Link>
+                                    <span>{edge.node.frontmatter.published}</span>
+                                </div>
+                            </li>
+                        )
+                    })}
+                </ul>
+            </div>
         </Layout>
     )
 }

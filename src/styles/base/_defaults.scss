@@ -18,6 +18,12 @@ a {
     margin: 0 auto 24px auto;
 }
 
+.blog-container {
+    max-width: var(--blog-container-width);
+    width: calc(100% - 40px);
+    margin: var(--margin-4) 0;
+}
+
 .page-heading {
     font-style: normal;
     font-weight: 500;
