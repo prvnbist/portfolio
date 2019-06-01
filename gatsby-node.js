@@ -2,7 +2,7 @@ const path = require('path')
 const fetch = require('node-fetch');
 
 require("dotenv").config({
-    path: `.env.development`,
+    path: `.env.${process.env.NODE_ENV}`,
   })
 
 const getData = async (url) => await fetch(url).then(res => res.json()).then(data => data);
@@ -52,7 +52,6 @@ module.exports.createPages = async({graphql, actions}) => {
     const URL = `https://api.dribbble.com/v2/user/shots?access_token=${process.env.DRIBBBLE_TOKEN}`;
 
     const shots = await getData(URL);
-    
     shots.forEach(shot => {
         createPage({component: shotTemplate, path: `/design/${shot.id}`, context: {
                 shot
