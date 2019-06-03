@@ -5,7 +5,7 @@ const Navbar = () => <nav>
     <div className="center">
         <div id="brand">
             <Link to="/"><img
-                src="https://res.cloudinary.com/prvnbist/image/upload/v1557417795/portfolio/brand-light.png"
+                src="https://res.cloudinary.com/prvnbist/image/upload/v1559588280/portfolio/logo.png"
                 alt="Praveen Bisht"/></Link>
         </div>
         <ul>
