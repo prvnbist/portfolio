@@ -1,8 +1,11 @@
 import React from 'react'
 
 import Layout from '../components/Layout';
+import Loading from '../components/Loading';
 
 export default() => {
+    const [isLoading,
+        setIsLoading] = React.useState(true);
     const [videos,
         setVideos] = React.useState([]);
     React.useEffect(() => {
@@ -14,6 +17,7 @@ export default() => {
             const videoList = parse.items;
             videoList.pop();
             setVideos(videoList.filter(video => video.id.kind.includes('video')));
+            setIsLoading(false);
         };
 
         fetchVideos(URL);
@@ -31,18 +35,25 @@ export default() => {
     return <Layout meta={meta}>
         <div className="container">
             <h4 className="page-heading">Explore Videos</h4>
-            <div id="videos">
-                {videos.map(video => <div className="video" key={video.id.videoId}>
-                        <a
-                            href={`https://www.youtube.com/watch?v=${video.id.videoId}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            style={{
-                            backgroundImage: `url(${video.snippet.thumbnails.high.url})`
-                        }}>a</a>
-                    </div>)
-                }
-            </div>
+            {isLoading
+                ? <Loading width={100} height={'450px'}/>
+                : <div id="videos">
+                    {
+                        videos.map(video => (
+                                <div className="video" key={video.id.videoId}>
+                                    <a
+                                        href={`https://www.youtube.com/watch?v=${video.id.videoId}`}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        style={{
+                                        backgroundImage: `url(${video.snippet.thumbnails.high.url})`
+                                    }}>a</a>
+                                </div>
+                            )
+                        )
+                    }
+                </div>
+            }
         </div>
     </Layout>
 }

@@ -1,10 +1,11 @@
-import React from 'react'
-import { Link, graphql, useStaticQuery } from 'gatsby'
+import React, {useState} from 'react'
+import {Link, graphql, useStaticQuery} from 'gatsby'
 
 import Layout from '../components/Layout';
+import Loading from '../components/Loading';
 
 const BlogPage = () => {
-    const data = useStaticQuery(graphql`
+    const data = useStaticQuery(graphql `
         query {
             allMarkdownRemark(sort: {order:DESC, fields: [frontmatter___published] }) {
                 edges {
@@ -27,27 +28,32 @@ const BlogPage = () => {
         keywords: 'code,design,html,css,animation,user interface, ui to code',
         imgUrl: {
             google: '',
-            facebook:'',
+            facebook: '',
             twitter: ''
-        },
+        }
     }
     return (
         <Layout meta={meta}>
             <div className="container">
                 <h4 className="page-heading">Explore Articles</h4>
-                <ul id="articles">
-                    {data.allMarkdownRemark.edges.map((edge, index) => {
-                        return (
-                            <li className="article" key={index}>
-                                <h5>{edge.node.frontmatter.title}</h5>
-                                <div className="article-meta">
-                                    <Link to={`/blog/${edge.node.fields.slug}`}>Read More</Link>
-                                    <span>{edge.node.frontmatter.published}</span>
-                                </div>
-                            </li>
-                        )
-                    })}
-                </ul>
+
+                {!data
+                    ? <Loading width={100} height={'450px'}/>
+                    : <ul id="articles">
+                        {data.allMarkdownRemark.edges.map((edge, index) => {
+                                return (
+                                    <li className="article" key={index}>
+                                        <h5>{edge.node.frontmatter.title}</h5>
+                                        <div className="article-meta">
+                                            <Link to={`/blog/${edge.node.fields.slug}`}>Read More</Link>
+                                            <span>{edge.node.frontmatter.published}</span>
+                                        </div>
+                                    </li>
+                                )
+                            }
+                        )}
+                    </ul>
+                }
             </div>
         </Layout>
     )
