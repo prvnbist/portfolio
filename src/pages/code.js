@@ -22,7 +22,7 @@ const Github = () => {
     return isLoading
         ? <Loading width={100} height={'450px'}/>
         : <div id="repos-list">
-            {repos.map(repo => <div className="repo-card">
+            {repos.map(repo => <div className="repo-card" key={repo.id}>
                 <span className="repo-name">
                     <a href={repo.html_url}>{repo.name}</a>
                 </span>
