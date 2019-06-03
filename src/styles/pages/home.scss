@@ -79,11 +79,11 @@
 }
 
 @media screen and (max-width: 568px) {
-    #tagline {
-        font-size: 48px;
-        line-height: 60px;
-    }
     #homepage__header {
+        h1 {
+            font-size: 48px;
+            line-height: 80px;
+        }
         p {
             width: 100%;
         }
