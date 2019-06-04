@@ -1,14 +1,34 @@
-@mixin object($width, $height, $background) {
-    width: $width;
-    height: $height;
-    background: $background;
+@mixin font($ff, $fSt ,$fs, $fw, $lh){
+    font-family: $ff;
+    font-style: $fSt;
+    font-weight: $fw;
+    font-size: $fs;
+    line-height: $lh;
 }
 
-@mixin position($top, $right, $bottom, $left, $transX, $transY) {
+@mixin object($w, $maxw, $minw,$h, $maxh, $minh, $bg) {
+    width: $w;
+    max-width: $maxw;
+    min-width: $minw;
+
+    height: $h;
+    max-height: $maxh;
+    min-height: $minh;
+
+    background: $bg;
+}
+
+@mixin flex($ai, $jc) {
+    display: flex;
+    align-items: $ai;
+    justify-content: $jc;
+}
+
+@mixin position($t, $r, $b, $l, $zi) {
     position: absolute;
-    top: $top;
-    right: $right;
-    bottom: $bottom;
-    left: $left;
-    transform: translate($transX, $transY);
+    top: $t;
+    right: $r;
+    bottom: $b;
+    left: $l;
+    z-index: $zi;
 }
