@@ -30,7 +30,7 @@ const IndexPage = () => {
                         UI design, Invision for feedback and collaboration and Zeplin for developer
                         hand-off.</p>
                     <div className="social">
-                        <a href="https://www.dribbble.com/prvnbist">
+                        <a href="https://www.dribbble.com/prvnbist" alt="Dribbble">
                             <svg
                                 width="18"
                                 height="18"
@@ -42,7 +42,7 @@ const IndexPage = () => {
                                     fill="#373D49"/>
                             </svg>
                         </a>
-                        <a href="https://www.youtube.com/prvnbist">
+                        <a href="https://www.youtube.com/prvnbist" alt="Youtube">
                             <svg
                                 width="20"
                                 height="14"
@@ -61,7 +61,7 @@ const IndexPage = () => {
                     <p>My development stack includes MERN Stack and GraphQL. I use VS Code as a
                         preferred choice of text editor and Github for version control.</p>
                     <div className="social">
-                        <a href="https://www.codepen.com/prvnbist">
+                        <a href="https://www.codepen.com/prvnbist" alt="Codepen">
 
                             <svg
                                 width="18"
@@ -75,7 +75,7 @@ const IndexPage = () => {
                             </svg>
 
                         </a>
-                        <a href="https://www.github.com/prvnbist">
+                        <a href="https://www.github.com/prvnbist" alt="Github">
 
                             <svg
                                 width="17"

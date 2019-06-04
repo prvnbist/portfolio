@@ -1,12 +1,12 @@
 ---
 title: "A comprehensive guide to the Codechef"
-published: "May 8, 2019"
+published: "Nov 6, 2016"
 updated: ""
 tags: "code, competitive, programming, cpp"
 ---
 
-![A laptop displaying a website](https://res.cloudinary.com/prvnbist/image/upload/v1558894148/portfolio/le-buzz-568591-unsplash.png "A laptop displaying a website")
-<span class="image__title">A laptop displaying a website</span>
+![Pair Programming](https://res.cloudinary.com/prvnbist/image/upload/v1559636489/portfolio/Blog/alvaro-reyes-500044-unsplash.jpg "Pair Programming")
+<span class="image__title">Photo by <a href="https://unsplash.com/@alvaroreyes?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Alvaro Reyes</a> on <a href="/search/photos/code?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
 
 > This is a quote that puts emphasis on something said by a person or community that may be a single line or may span multiple lines.
 
@@ -83,18 +83,8 @@ int main() {
     scanf("%d",&amt);
     scanf("%f",&bal);
     if(amt%5==0 && ((float)amt+0.5)<bal)
-        printf("%.2f",bal-0.50-(float)amt); //highlight-line
+        printf("%.2f",bal-0.50-(float)amt);
     else
-        printf("%.2f",bal);
-        printf("%.2f",bal);
-        printf("%.2f",bal);
-        printf("%.2f",bal);
-        printf("%.2f",bal);
-        printf("%.2f",bal);
-        printf("%.2f",bal);
-        printf("%.2f",bal);
-        printf("%.2f",bal);
-        printf("%.2f",bal);
         printf("%.2f",bal);
     return 0;
 }
@@ -134,9 +124,5 @@ The programming community around the world has created and maintained several in
 • [Top Coder](https://www.topcoder.com/)   
 • [Hacker Earth](https://www.hackerearth.com/)   
 • [SPOJ](http://www.spoj.com/)
-
-Here is the link to the original Article on my blog — [https://goo.gl/w29L9E](https://goo.gl/w29L9E)
-
-For more articles like this check out my blog — [www.rephse.com](http://www.rephse.com)
 
 Thanks for reading!!

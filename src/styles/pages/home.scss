@@ -77,8 +77,10 @@
         height: auto;
     }
 }
-
 @media screen and (max-width: 568px) {
+    .container {
+        margin: 0 auto 88px auto;
+    }
     #homepage__header {
         h1 {
             font-size: 48px;
