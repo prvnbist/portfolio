@@ -10,17 +10,18 @@ export default() => {
         setVideos] = React.useState([]);
     React.useEffect(() => {
         const URL = `https://www.googleapis.com/youtube/v3/search?key=${process.env.GATSBY_YOUTUBE_TOKEN}&channelId=${process.env.GATSBY_CHANNEL_ID}&part=snippet,id&order=date&maxResults=50`;
-
         const fetchVideos = async(url) => {
             const res = await fetch(url);
-            const parse = await res.json();
-            const videoList = parse.items;
-            videoList.pop();
-            setVideos(videoList.filter(video => video.id.kind.includes('video')));
-            setIsLoading(false);
-        };
-
+            if(res.status === 200) {
+                const parse = await res.json();
+                const videoList = parse.items;
+                videoList.pop();
+                setVideos(videoList.filter(video => video.id.kind.includes('video')));
+                setIsLoading(false);
+            }
+        }
         fetchVideos(URL);
+
     }, []);
     const meta = {
         title: 'Videos | Praveen Bisht',
@@ -38,22 +39,20 @@ export default() => {
             {isLoading
                 ? <Loading width={100} height={'450px'}/>
                 : <div id="videos">
-                    {
-                        videos.map(video => (
-                                <div className="video" key={video.id.videoId}>
-                                    <a
-                                        href={`https://www.youtube.com/watch?v=${video.id.videoId}`}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        style={{
-                                        backgroundImage: `url(${video.snippet.thumbnails.high.url})`
-                                    }}>a</a>
-                                </div>
-                            )
-                        )
-                    }
+                    {videos.map(video => (
+                        <div className="video" key={video.id.videoId}>
+                            <a
+                                href={`https://www.youtube.com/watch?v=${video.id.videoId}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                style={{
+                                backgroundImage: `url(${video.snippet.thumbnails.high.url})`
+                            }}>a</a>
+                        </div>
+                    ))
+}
                 </div>
-            }
+}
         </div>
     </Layout>
 }

@@ -13,10 +13,12 @@ export default() => {
     useEffect(() => {
         const URL = `https://api.dribbble.com/v2/user/shots?access_token=${process.env.GATSBY_DRIBBBLE_TOKEN}`;
         const getData = async(url) => {
-            const fetchData = await fetch(url);
-            const convertData = await fetchData.json();
-            setShots(convertData);
-            setIsLoading(false);
+            const res = await fetch(url);
+            if(res.status === 200) {
+                const parsed = await res.json();
+                setShots(parsed);
+                setIsLoading(false);
+            }
         }
         getData(URL);
     }, []);

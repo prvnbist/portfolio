@@ -13,9 +13,11 @@ const Github = () => {
         const URL = `https://api.github.com/users/prvnbist/repos`;
         const fetchRepos = async(url) => {
             const res = await fetch(url);
-            const parse = await res.json();
-            setRepos(parse);
-            setIsLoading(false);
+            if(res.status === 200) {
+                const parse = await res.json();
+                setRepos(parse);
+                setIsLoading(false);
+            }
         };
         fetchRepos(URL);
     }, []);
