@@ -1,23 +1,20 @@
 import React, {useState, useEffect} from 'react'
 import {Link} from 'gatsby';
+import Img from 'react-image';
 
 import Layout from '../components/Layout';
 import Loading from '../components/Loading';
 
 export default() => {
-    const [isLoading,
-        setIsLoading] = useState(true);
-    const [shots,
-        setShots] = useState([]);
+    const [shots, setShots] = useState([]);
 
     useEffect(() => {
         const URL = `https://api.dribbble.com/v2/user/shots?access_token=${process.env.GATSBY_DRIBBBLE_TOKEN}`;
         const getData = async(url) => {
             const res = await fetch(url);
-            if(res.status === 200) {
+            if (res.status === 200) {
                 const parsed = await res.json();
                 setShots(parsed);
-                setIsLoading(false);
             }
         }
         getData(URL);
@@ -37,16 +34,11 @@ export default() => {
         <Layout meta={meta}>
             <div className="container">
                 <h4 className="page-heading">Explore Designs</h4>
-
-                {isLoading
-                    ? <Loading width={100} height={'450px'}/>
-                    : (
-                        <div id="shots">
-                            {shots.map(shot => <Link to={`/design/${shot.id}`} key={shot.id}>
-                                <img src={shot.images.hidpi} alt={shot.title} className="shot"/>
-                            </Link>)}
-                        </div>
-                    )}
+                <div id="shots">
+                    {shots.map(shot => <Link to={`/design/${shot.id}`} key={shot.id}>
+                        <Img src={shot.images.hidpi} alt={shot.title} loader={<Loading height={'100%'}/>} className="shot"/>
+                    </Link>)}
+                </div>
             </div>
         </Layout>
     )

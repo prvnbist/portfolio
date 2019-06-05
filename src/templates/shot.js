@@ -1,12 +1,11 @@
 import React from 'react'
 import {Link} from 'gatsby';
+import Img from 'react-image';
 
 import Layout from '../components/Layout';
 import Loading from '../components/Loading';
 
 const Shot = (props) => {
-    const [imgLoaded,
-        setImgLoaded] = React.useState(false);
     const {title, html_url, images, description, tags} = props.pageContext.shot;
     const meta = {
         title: `${title} | Praveen Bisht`,
@@ -31,25 +30,12 @@ const Shot = (props) => {
                         rel="noopener noreferrer"
                         className="btn btn-primary">View on Dribbble</a>
                 </div>
-                <div
-                    style={{
-                    display: imgLoaded
-                        ? 'none'
-                        : 'block'
-                }}>
-                    <Loading width={100} heigh={'260px'}/>
-                </div>
-                <img
+                <Img
                     src={images.hidpi}
-                    onLoad={() => setImgLoaded(!imgLoaded)}
-                    style={{
-                    display: imgLoaded
-                        ? 'block'
-                        : 'none'
-                }}
                     alt={title}
-                    id="shot-image"/>
-
+                    id="shot-image"
+                    loader={<Loading width={100} heigh={'260px'}/>}
+                    />
                 <div id="description">
                     <h5 className="caps__heading">Description</h5>
                     <p
@@ -60,8 +46,9 @@ const Shot = (props) => {
                 <div id="tags">
                     <h5 className="caps__heading">Tags</h5>
                     <ul>
-                        {tags.map((tag, index) => <li key={index} className='tag'>{tag}</li>)
-}
+                        {
+                            tags.map((tag, index) => <li key={index} className='tag'>{tag}</li>)
+                        }
                     </ul>
                 </div>
 
