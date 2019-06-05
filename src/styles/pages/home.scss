@@ -2,7 +2,7 @@
     margin-top: 160px;
     h1 {
         @include font(null, normal, 72px, bold, 98px);
-        color: var(--color-secondary);
+        color: var(--text-color-dark);
         position: relative;
         &:before {
             content: '';
@@ -11,13 +11,13 @@
             width:100%;
             top:calc(50% - 2px);
             left:calc(-100% - 24px);
-            background: #E9E1E1;
+            background: var(--border-color);
         }
     }
     p {
         @include font(null, normal, 20px, 300, 32px);
         width: 80%;
-        color: #908D8D;
+        color: var(--text-color-light);
         margin: var(--margin-2) 0 var(--margin-3) 0;
     }
 }
@@ -34,8 +34,9 @@
     display: flex;
     flex-direction: column;
     padding: var(--padding-3);
+    background: var(--color-bg-level-1);
     height: 300px;
-    border: 1px solid #E9E1E1;
+    border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
     transition: 0.3s ease;
     &:hover {
@@ -44,23 +45,27 @@
     h5 {
         @include font(null, normal, 20px, 500, 24px);
         margin-bottom: var(--margin-3);
-        color: var(--color-secondary);
+        color: var(--text-color-dark);
     }
     p {
         @include font(null, normal, 16px, 300, 32px);
-        color: #908D8D;
+        color: var(--text-color-light);
     }
     .social {
         display: flex;
         margin-top: auto;
         a {
+            background: var(--color-bg-level-2);
             margin-right: var(--margin-3);
             @include flex(center, center);
             width: 48px;
             height: 48px;
-            border: 1px solid #E9E1E1;
+            border: 1px solid var(--border-color);
             border-radius: 6px;
             transition: 0.3s ease;
+            path {
+                fill: var(--text-color-dark);
+            }
             &:hover {
                 background: var(--color-primary);
                 path{

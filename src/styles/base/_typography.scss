@@ -7,25 +7,25 @@ h1, h2, h3, h4, h5, p, button, a {
 }
 
 h1 {
-    @include font(null, null ,calc(var(--base-font-size) * 9px), bold, calc(var(--base-font-size) * 11px));
+    @include font(null, null ,calc(var(--vertical-grid-size) * 9px), bold, calc(var(--vertical-grid-size) * 11px));
 }
 
 h2 {
-    @include font(null, null, calc(var(--base-font-size) * 8px), bold, calc(var(--base-font-size) * 10px));
+    @include font(null, null, calc(var(--vertical-grid-size) * 8px), bold, calc(var(--vertical-grid-size) * 10px));
 }
 
 h3 {
-    @include font(null, null, calc(var(--base-font-size) * 6px), 600, calc(var(--base-font-size) * 8px));
+    @include font(null, null, calc(var(--vertical-grid-size) * 6px), 600, calc(var(--vertical-grid-size) * 8px));
 }
 
 h4 {
-    @include font(null, null, calc(var(--base-font-size) * 4px), 500, calc(var(--base-font-size) * 6px));
+    @include font(null, null, calc(var(--vertical-grid-size) * 4px), 500, calc(var(--vertical-grid-size) * 6px));
 }
 
 h5 {
-    @include font(null, null, calc(var(--base-font-size) * 3px), 600, calc(var(--base-font-size) * 4.5px));
+    @include font(null, null, calc(var(--vertical-grid-size) * 3px), 600, calc(var(--vertical-grid-size) * 4.5px));
 }
 
 p {
-    @include font(null, null, calc(var(--base-font-size) * 2.25px), 500, calc(var(--base-font-size) * 3.5px));
+    @include font(null, null, calc(var(--vertical-grid-size) * 2.25px), 500, calc(var(--vertical-grid-size) * 3.5px));
 }

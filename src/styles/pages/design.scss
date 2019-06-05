@@ -20,7 +20,7 @@ img.shot {
 
 #shot-image {
     width: 100%;
-    border: 1px solid var(--color-light);
+    border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
 }
 
@@ -34,6 +34,7 @@ img.shot {
 #description > p {
     width: 80%;
     p {
+        color: var(--text-color-dark);
         font-weight: normal;
         margin-bottom: var(--margin-2);
         a {
@@ -48,13 +49,15 @@ img.shot {
 }
 
 .tag {
-    @include font(var(--font), normal, 16px, 500, 34px);
+    @include font(var(--font), normal, 14px, 500, 34px);
     color: rgba(50, 70, 74, 0.78);
     width: auto;
     height: 32px;
     margin-right: var(--margin-2);
     padding: 0 var(--padding-1);
-    border: 1px solid var(--color-light);
+    color: var(--text-color-light);
+    background: var(--color-bg-level-1);
+    border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
 }
 

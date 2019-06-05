@@ -40,11 +40,11 @@
         list-style: none;
         height: 40px;
         line-height: 42px;
-        color: #908D8D;
+        color: var(--text-color-light);
         padding: 0 var(--padding-2);
         cursor: pointer;
         &:hover {
-            color: var(--color-secondary);
+            color: var(--text-color-dark);
             background: #2158e812;
         }
     }
