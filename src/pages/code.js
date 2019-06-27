@@ -13,7 +13,7 @@ const Github = () => {
         const URL = `https://api.github.com/users/prvnbist/repos`;
         const fetchRepos = async(url) => {
             const res = await fetch(url);
-            if(res.status === 200) {
+            if (res.status === 200) {
                 const parse = await res.json();
                 setRepos(parse);
                 setIsLoading(false);
@@ -72,6 +72,71 @@ const Github = () => {
         </div>
 }
 
+const Projects = () => {
+    const projects = [
+        {
+            image: "https://res.cloudinary.com/prvnbist/image/upload/v1561653240/portfolio/Code%20-%20Projects/expenseapp.jpg",
+            name: "Expense App",
+            description: "A full stack app to let the user keep record of their expenses and analyse their spending behaviour.",
+            tags: ["MongoDB","ExpressJs","ReactJs","GraphQL","JWT","Formik & Yup","Heroku","Netlify"],
+            demo: "https://expense-app.netlify.com/",
+            code:"https://github.com/prvnbist/expense-app-frontend"
+        },
+        {
+            image: "https://res.cloudinary.com/prvnbist/image/upload/v1561658278/portfolio/Code%20-%20Projects/recipeapp.png",
+            name: "Recipe App",
+            description: "An app to manage all of your recipes in one place.",
+            tags: ["ReactJs", "Redux", "SCSS"],
+            demo: "https://z7ngi.codesandbox.io/",
+            code:"https://codesandbox.io/s/recipe-app-reactredux-z7ngi"
+        },
+        {
+            image: "https://res.cloudinary.com/prvnbist/image/upload/v1561657883/portfolio/Code%20-%20Projects/todoapp.png",
+            name: "Todo App",
+            description: "An app to list all of your todos.",
+            tags: ["ReactJs", "Redux", "SCSS"],
+            demo: "https://pqlwh.codesandbox.io/",
+            code:"https://codesandbox.io/s/todo-redux-pqlwh"
+        },
+        {
+            image: "https://res.cloudinary.com/prvnbist/image/upload/v1561653240/portfolio/Code%20-%20Projects/patterncss.jpg",
+            name: "PatternCSS",
+            description: "A Pattern Library consisting of UI Components to build a consistent website.",
+            tags: ["SCSS", "Pug", "Webpack"],
+            demo: "https://patterncss.netlify.com/",
+            code:"https://github.com/prvnbist/PatternCSS"
+        }
+    ];
+    return (
+        <div id="projects">
+            {
+                projects.map((project, index) => (
+                    <div className="project__card" key={index}>
+                        <div
+                            className="project__card__left"
+                            style={{
+                            backgroundImage: `url(${project.image})`
+                        }}></div>
+                        <div className="project__card__right">
+                            <div>
+                                <h3>{project.name}</h3>
+                                <p>{project.description}</p>
+                                <ul>
+                                    {project.tags.map((tag, i) => <li className='tag' key={i}>{tag}</li>)}
+                                </ul>
+                            </div>
+                            <div>
+                                <a href={project.demo} className="btn btn-primary">Demo</a>
+                                <a href={project.code} className="btn btn-outline-light">Code</a>
+                            </div>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    );
+}
+
 export default() => {
     const meta = {
         title: 'Code | Praveen Bisht',
@@ -83,9 +148,11 @@ export default() => {
             twitter: ''
         }
     }
-    const tabs = ["Github"];
+    const tabs = ["Projects", "Github"];
     const tabsContent = [
         {
+            component: <Projects/>
+        }, {
             component: <Github/>
         }
     ];

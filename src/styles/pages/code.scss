@@ -26,7 +26,7 @@
 }
 
 .repo-card-footer {
-    margin-top: auto; 
+    margin-top: auto;
     @include flex(null, space-between);
 }
 
@@ -41,9 +41,9 @@
     }
 }
 
+.repo-forks,
 .repo-language,
-.repo-likes,
-.repo-forks {
+.repo-likes {
     @include font(null, normal, calc(var(--vertical-grid-size) * 2px), 500, 17px);
     color: var(--text-color-dark);
     svg {
@@ -58,7 +58,60 @@
     margin-left: var(--margin-2);
 }
 
-@media screen and (max-width: 568px) { 
+.project__card {
+    width: 100%;
+    min-height: 280px;
+    margin-bottom: var(--margin-3);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+}
+
+.project__card__left {
+    border-right: 1px solid var(--border-color);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+}
+
+.project__card__right {
+    padding: var(--padding-2);
+    display: flex;
+    flex-direction: column;
+    h3 {
+        font-weight: 600;
+        font-size: calc(var(--vertical-grid-size) * 3px);
+        line-height: 40px;
+        color: var(--text-color-dark);
+    }
+    p {
+        font-style: normal;
+        font-weight: 300;
+        font-size: calc(var(--vertical-grid-size) * 2px);
+        line-height: calc(var(--vertical-grid-size) * 3px);
+        color: var(--text-color-light);
+    }
+    ul {
+        margin-top: var(--margin-2);
+        display: flex;
+        flex-wrap: wrap;
+        li {
+            margin-bottom: var(--margin-2);
+        }
+    }
+    a {
+        margin-right: var(--margin-2);
+        height: 40px;
+        line-height: 42px;
+    }
+    div:nth-child(2) {
+        margin-top: auto;
+    }
+}
+
+@media screen and (max-width: 568px) {
     #repos-list {
         grid-template-columns: 1fr;
     }
@@ -67,5 +120,17 @@
         .repo-card-footer {
             margin-top: var(--margin-3);
         }
+    }
+}
+
+@media screen and(max-width: 768px) {
+    .project__card {
+        grid-template-columns: 1fr;
+        min-height: auto;
+    }
+
+    .project__card__left {
+        height: 280px;
+        border-right: none;
     }
 }
