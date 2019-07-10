@@ -7,7 +7,7 @@ import Loading from '../components/Loading';
 const BlogPage = () => {
     const data = useStaticQuery(graphql `
         query {
-            allMarkdownRemark(sort: {order:DESC, fields: [frontmatter___published] }) {
+            allMarkdownRemark(sort: {order:ASC, fields: [frontmatter___published] }) {
                 edges {
                     node {
                         frontmatter {
