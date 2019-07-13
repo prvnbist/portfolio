@@ -87,7 +87,7 @@ const Projects = () => {
     {
       image:
         "https://res.cloudinary.com/prvnbist/image/upload/v1563035171/portfolio/Code%20-%20Projects/property-app.png",
-      name: "Expense App",
+      name: "Property App",
       description:
         "Went on a 3 day sprint to build it. It's a property listing app, where you can create you're own property ad.",
       tags: [
