@@ -157,7 +157,7 @@
         }
     }
     p {
-        @include font(var(--font-article), normal, 20px, normal, 36px);
+        @include font(var(--font-article), normal, 18px, normal, 32px);
         color: var(--text-color-dark);
         margin: var(--margin-2) 0;
         a {
@@ -179,7 +179,8 @@
             border-radius: 4px;
             padding: 3px 7px;
             color: var(--text-color-dark);
-            font-size: 18px;
+            font-size: 14px;
+            text-shadow: none;
         }
     }
     blockquote {
@@ -192,6 +193,7 @@
     }
     code {
         font-family: var(--font-code) !important;
+        font-size: 14px;
     }
     img {
         width: 100%;
@@ -252,7 +254,7 @@
 }
 
 .line-numbers-rows > span {
-    line-height: 25px;
+    line-height: 24px;
 }
 
 .line-numbers .line-numbers-rows {
