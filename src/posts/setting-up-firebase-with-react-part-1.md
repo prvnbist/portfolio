@@ -105,3 +105,5 @@ export { firebase, firestore }
 ```
 
 That's all we need to add the Firebase SDK to our React app. 
+
+Code - [Github](https://github.com/prvnbist/firebase-react-authentication-tutorial/tree/setup-firebase-sdk-with-react-part1 "Github")
