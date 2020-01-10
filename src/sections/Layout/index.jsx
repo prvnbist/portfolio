@@ -3,7 +3,7 @@ import { ThemeProvider } from 'styled-components'
 
 import Navbar from '../Navbar'
 
-import { GlobalStyle } from './styles'
+import { GlobalStyle, StyledWrapper } from './styles'
 
 const theme = {
    fonts: {
@@ -22,7 +22,7 @@ const theme = {
          100: '#719DF0'
       }
    },
-   spacers: {
+   size: {
       xs: '8px',
       sm: '16px',
       md: '24px',
@@ -37,7 +37,7 @@ const Layout = ({ children }) => {
       <ThemeProvider theme={theme}>
          <GlobalStyle />
          <Navbar />
-         {children}
+         <StyledWrapper>{children}</StyledWrapper>
       </ThemeProvider>
    )
 }

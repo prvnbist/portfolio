@@ -1,4 +1,4 @@
-import { css, createGlobalStyle } from 'styled-components'
+import styled, { css, createGlobalStyle } from 'styled-components'
 
 export const GlobalStyle = createGlobalStyle(
    ({ theme: { colors, fonts } }) => css`
@@ -18,3 +18,14 @@ export const GlobalStyle = createGlobalStyle(
       }
    `
 )
+
+export const StyledWrapper = styled.div`
+   width: 980px;
+   margin: 0 auto;
+   @media (max-width: 767px) {
+      width: 720px;
+   }
+   @media (max-width: 567px) {
+      width: calc(100% - 40px);
+   }
+`
