@@ -9,4 +9,4 @@ My website that contains all of my work and also where I post my articles. It co
 |:---:|:---:|:---:|
 | ReactJs | GatsbyJs | GraphQL |
 
-*Happy Coding🎉*
+*Happy Coding!🎉*
