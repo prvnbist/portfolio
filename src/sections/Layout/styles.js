@@ -1,4 +1,8 @@
 import styled, { css, createGlobalStyle } from 'styled-components'
+import RoobertLight from '../../../static/fonts/RoobertLight.woff'
+import RoobertRegular from '../../../static/fonts/RoobertRegular.woff'
+import RoobertMedium from '../../../static/fonts/RoobertMedium.woff'
+import RoobertSemiBold from '../../../static/fonts/RoobertSemiBold.woff'
 
 export const GlobalStyle = createGlobalStyle(
    ({ theme: { colors, fonts } }) => css`
@@ -22,28 +26,28 @@ export const GlobalStyle = createGlobalStyle(
          font-family: 'Roobert';
          font-style: normal;
          font-weight: 300;
-         src: url('/static/fonts/RoobertLight.woff') format('woff');
+         src: url(${RoobertLight}) format('woff');
       }
 
       @font-face {
          font-family: 'Roobert';
          font-style: normal;
          font-weight: 400;
-         src: url('/static/fonts/RoobertRegular.woff') format('woff');
+         src: url(${RoobertRegular}) format('woff');
       }
 
       @font-face {
          font-family: 'Roobert';
          font-style: normal;
          font-weight: 500;
-         src: url('/static/fonts/RoobertMedium.woff') format('woff');
+         src: url(${RoobertMedium}) format('woff');
       }
 
       @font-face {
          font-family: 'Roobert';
          font-style: normal;
          font-weight: 600;
-         src: url('/static/fonts/RoobertSemiBold.woff') format('woff');
+         src: url(${RoobertSemiBold}) format('woff');
       }
    `
 )
