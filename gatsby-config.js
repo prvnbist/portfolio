@@ -1,9 +1,13 @@
 module.exports = {
    siteMetadata: {
       title: 'Praveen Bisht',
-      author: 'Praveen Bisht'
+      author: 'Praveen Bisht',
+      description:
+         'Hey👋🏼, I’m Praveen, a software engineer based in New Delhi who enjoys building apps from idea to implementation.',
+      siteUrl: 'https://www.prvnbist.com'
    },
    plugins: [
+      `gatsby-plugin-styled-components`,
       {
          resolve: 'gatsby-source-filesystem',
          options: {
