@@ -11,10 +11,39 @@ export const GlobalStyle = createGlobalStyle(
       }
       body {
          color: #fff;
+         overflow-x: hidden;
          background: ${colors.dark['400']};
       }
       a {
          color: ${colors.blue['100']};
+      }
+
+      @font-face {
+         font-family: 'Roobert';
+         font-style: normal;
+         font-weight: 300;
+         src: url('/static/fonts/RoobertLight.woff') format('woff');
+      }
+
+      @font-face {
+         font-family: 'Roobert';
+         font-style: normal;
+         font-weight: 400;
+         src: url('/static/fonts/RoobertRegular.woff') format('woff');
+      }
+
+      @font-face {
+         font-family: 'Roobert';
+         font-style: normal;
+         font-weight: 500;
+         src: url('/static/fonts/RoobertMedium.woff') format('woff');
+      }
+
+      @font-face {
+         font-family: 'Roobert';
+         font-style: normal;
+         font-weight: 600;
+         src: url('/static/fonts/RoobertSemiBold.woff') format('woff');
       }
    `
 )
@@ -22,6 +51,7 @@ export const GlobalStyle = createGlobalStyle(
 export const StyledWrapper = styled.div`
    width: 980px;
    margin: 0 auto;
+   height: calc(100vh - 65px);
    @media (max-width: 767px) {
       width: 720px;
    }

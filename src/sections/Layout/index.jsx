@@ -7,7 +7,7 @@ import { GlobalStyle, StyledWrapper } from './styles'
 
 const theme = {
    fonts: {
-      sansSerif: "'IBM Plex Sans', sans-serif",
+      sansSerif: "'Roobert', sans-serif",
       monoSpace: "'IBM Plex Mono', monospace"
    },
    colors: {
