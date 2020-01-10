@@ -9,7 +9,7 @@ import {
    StyledSkills,
    StyledSkill,
    StyledImage
-} from './styles'
+} from '../styles/index'
 
 const IndexPage = () => {
    const [socials] = React.useState([
