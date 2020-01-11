@@ -1,77 +1,74 @@
 ---
-title: "Create a tags input component in ReactJs"
-published: "July 10, 2019"
-updated: ""
+title: 'Create a tags input component in ReactJs'
+published: 'July 10, 2019'
 tags: ['react', 'component', 'input', 'tags']
 ---
 
-![Tags Input Demo](https://res.cloudinary.com/prvnbist/image/upload/v1562756503/portfolio/Blog/tags-input-demo.gif "Tags Input Demo")
-<span class="image__title">Tags Input Interaction</span>
-
 ## Project Setup
-We are going to be building the component using ReactJs. Let's start by installing the essentials. First we're going to create a react app using React's [CRA](https://github.com/facebook/create-react-app "Create React App") or you can use any starter kit to begin with. Let's setup our `React` app.
+
+We are going to be building the component using ReactJs. Let's start by installing the essentials. First we're going to create a react app using React's [CRA](https://github.com/facebook/create-react-app 'Create React App') or you can use any starter kit to begin with. Let's setup our `React` app.
 
 ```bash
 npx create-react-app tags-input
 cd tags-input
 ```
+
 ## Let's get started!
+
 In the `index.js` file we're going to write the code for our base component `App`, you can name it anything you'd like.
 
-```jsx
+```js
 // index.js
-import React from "react";
-import ReactDOM from "react-dom";
-import "./styles.scss";
+import React from 'react'
+import ReactDOM from 'react-dom'
+import './styles.scss'
 
 const App = () => {
-	return (
-		<div className="App">
-			<span>Hello World!</span>
-		</div>
-	);
-};
+   return (
+      <div className="App">
+         <span>Hello World!</span>
+      </div>
+   )
+}
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById('root'))
 ```
 
 ## Tags Input Component
 
 We're going to be using functional components and React's `useState` hook to make it stateful.
 
-```jsx
+```js
 // TagsInput.jsx
-import React from "react";
+import React from 'react'
 const TagsInput = () => {
-	const [tags, setTags] = React.useState([]);
-	return (
-		<div className="tags-input">
-			<ul>
-				{tags.map((tag, index) => (
-					<li key={index}>
-						<span>{tag}</span>
-						<i className="material-icons">close</i>
-					</li>
-				))}
-			</ul>
-			<input
-				type="text"
-				placeholder="Press enter to add tags"
-			/>
-		</div>
-	);
-};
-export default TagsInput;
+   const [tags, setTags] = React.useState([])
+   return (
+      <div className="tags-input">
+         <ul>
+            {tags.map((tag, index) => (
+               <li key={index}>
+                  <span>{tag}</span>
+                  <i className="material-icons">close</i>
+               </li>
+            ))}
+         </ul>
+         <input type="text" placeholder="Press enter to add tags" />
+      </div>
+   )
+}
+export default TagsInput
 ```
 
 Since we are going to be storing an array of tags in the state, so we can initialize it as empty array. `useState` hook return two values i.e the current state( and a function that can used to update the state. We're using array destructuring to get both the values from the `useState`. The current state in our case is called `tags` and the function to update it is called `setTags`.
 
-Then within the return function we're mapping the `tags` array and displaying all the tags that will be added by the user in the state. 
+Then within the return function we're mapping the `tags` array and displaying all the tags that will be added by the user in the state.
 
 ## Add tags functionality
+
 Let's create the functionality to add tags. We're going add an event handler `onKeyUp` to our `input` tag and return a function called `addTags()` and pass in the `event` as an argument.
 
-```jsx{numberLines: 14}
+```js
 ...
 <input
     type="text"
@@ -84,7 +81,7 @@ Let's create the functionality to add tags. We're going add an event handler `on
 
 Next we'll define the `addTags()` function above `return` in our component.
 
-```jsx
+```js
 import React from "react";
 const TagsInput = () => {
 	const [tags, setTags] = React.useState([]);
@@ -108,26 +105,26 @@ Then withing our `if` condition, if it's true we can add the tag entered by the 
 
 To remove a tag, the user can click on the close icon that all the tags have. I'm passing a `onClick` event handler to handle the remove tag functionality.
 
-```jsx{numberLines: 14}
+```js
 ...
 {tags.map((tag, index) => (
-    <li key={index}>
-        <span>{tag}</span>
-        <i
-            className="material-icons"
-            // highlight-next-line
-            onClick={() => removeTags(index)} 
-        >
-            close
-        </i>
-    </li>
+   <li key={index}>
+      <span>{tag}</span>
+      <i
+         className="material-icons"
+         // highlight-next-line
+         onClick={() => removeTags(index)}
+      >
+         close
+      </i>
+   </li>
 ))}
 ...
 ```
 
 We're returning a `removeTags()` when the user click on close icon and passing the `index` of the tag that's been clicked to remove. Now right below our `addTags()`, we'll add `removeTags()`.
 
-```jsx{numberLines: 3}
+```js
 ...
 const addTags = event => {
     ...
@@ -142,29 +139,29 @@ Since we're passing the `index` of the tag that the user wants to remove, we can
 
 ## Let's Import TagsInput component into our base component
 
-```jsx
+```js
 // index.js
-import React from "react";
-import ReactDOM from "react-dom";
-import "./styles.scss";
+import React from 'react'
+import ReactDOM from 'react-dom'
+import './styles.scss'
 // highlight-next-line
-import TagsInput from './TagsInput';
+import TagsInput from './TagsInput'
 
 const App = () => {
-	return (
-		<div className="App">
-            // highlight-next-line
-			<TagsInput />
-		</div>
-	);
-};
+   return (
+      <div className="App">
+         // highlight-next-line
+         <TagsInput />
+      </div>
+   )
+}
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById('root'))
 ```
 
 Now how do we get the tags that the user added into our base component. We'll declare a function called `selectedTags` in our base component that we'll pass as props to our `TagsInput` component.
 
-```jsx{numberLines: 6}
+```js
 ...
 const App = () => {
     // highlight-next-line
@@ -181,7 +178,7 @@ const App = () => {
 
 From our `TagsInput` component, we can now call the `selectedTags` method and pass the tags array to our base component.
 
-```jsx{numberLines:2}
+```js
 // TagsInput.jsx
 ...
 // highlight-next-line
@@ -189,9 +186,9 @@ const TagsInput = props => {
 	const [tags, setTags] = React.useState([]);
 	const addTags = event => {
 		if (event.key === "Enter" && event.target.value !== "") {
-            setTags([...tags, event.target.value]);
-            // highlight-next-line
-            props.selectedTags([...tags, event.target.value]);
+			setTags([...tags, event.target.value]);
+			// highlight-next-line
+			props.selectedTags([...tags, event.target.value]);
 			event.target.value = "";
 		}
     };
@@ -205,9 +202,19 @@ Now whenever the user add a new tag, the base component will have the access to 
 
 ## Codepen Demo
 
-<iframe height="420" style="width: 100%;" scrolling="no" title="Add Tags - React Hooks" src="//codepen.io/prvnbist/embed/jJzROe/?height=265&theme-id=dark&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-  See the Pen <a href='https://codepen.io/prvnbist/pen/jJzROe/'>Add Tags - React Hooks</a> by Praveen Bisht
-  (<a href='https://codepen.io/prvnbist'>@prvnbist</a>) on <a href='https://codepen.io'>CodePen</a>.
+<iframe
+   height="420"
+   style="width: 100%;"
+   scrolling="no"
+   title="Add Tags - React Hooks"
+   src="//codepen.io/prvnbist/embed/jJzROe/?height=265&theme-id=dark&default-tab=result"
+   frameBorder="no"
+   allowtransparency='true'
+   allowFullScreen={true}>
+   See the Pen{' '}
+   <a href="https://codepen.io/prvnbist/pen/jJzROe/">Add Tags - React Hooks</a>{' '}
+   by Praveen Bisht (<a href="https://codepen.io/prvnbist">@prvnbist</a>) on{' '}
+   <a href="https://codepen.io">CodePen</a>.
 </iframe>
 
 Thanks for reading!
