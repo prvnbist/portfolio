@@ -1,11 +1,10 @@
 import React from 'react'
-import { Link } from 'gatsby'
 
 import Layout from '../../sections/Layout'
 
 import { TextButton } from '../../components'
 
-import { PageHeading, Projects, Project } from './styles'
+import { PageHeading, Projects, Project } from '../../styles/design'
 
 export default () => {
    const [projects] = React.useState([

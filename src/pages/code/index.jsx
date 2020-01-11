@@ -4,7 +4,7 @@ import Layout from '../../sections/Layout'
 
 import { TextButton } from '../../components'
 
-import { PageHeading, Projects, Project } from './styles'
+import { PageHeading, Projects, Project } from '../../styles/code'
 
 export default () => {
    const [projects] = React.useState([
