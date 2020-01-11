@@ -77,5 +77,14 @@ export const Body = styled.main(
             background-color: ${colors.dark['200']};
          }
       }
+      ul {
+         padding-left: ${size.lg};
+         margin-bottom: ${size.md};
+         li {
+            color: #8e939c;
+            font-size: 18px;
+            line-height: ${size.lg};
+         }
+      }
    `
 )
