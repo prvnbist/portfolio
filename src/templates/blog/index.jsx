@@ -1,8 +1,13 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
+import { MDXProvider } from '@mdx-js/react'
 
 import Layout from '../../sections/Layout'
+
+import { TextButton, CodeBlock } from '../../components'
+
+import { Header, Body } from './styles'
 
 export const query = graphql`
    query($slug: String!) {
@@ -12,6 +17,7 @@ export const query = graphql`
             tags
             published
          }
+         timeToRead
          body
       }
    }
@@ -21,37 +27,32 @@ const Blog = props => {
    const post = props.data.mdx
    return (
       <Layout>
-         <div>
+         <Link to="/blog">
+            <TextButton
+               type="outline"
+               typeColor="dark.200"
+               style={{ marginTop: '24px' }}>
+               Back
+            </TextButton>
+         </Link>
+         <Header>
+            <h1>{post.frontmatter.title}</h1>
             <div>
-               <Link to="/blog">Back</Link>
-               <h3>{post.frontmatter.title}</h3>
-               <ul>
-                  {post.frontmatter.tags.map(tag => (
-                     <li key={tag}>{tag}</li>
-                  ))}
-               </ul>
-               <div>
-                  <span>{post.frontmatter.published}</span>
-                  <span>
-                     {post.timeToRead}
-                     mins read
-                  </span>
-               </div>
+               <span>{post.frontmatter.published}</span>
+               <span>
+                  {post.timeToRead}
+                  mins read
+               </span>
             </div>
-         </div>
-         <div>
-            <MDXRenderer>{post.body}</MDXRenderer>
-            <div>
-               <div>
-                  <h5>Tags</h5>
-                  <ul>
-                     {post.frontmatter.tags.map((tag, index) => (
-                        <li key={index}>{tag}</li>
-                     ))}
-                  </ul>
-               </div>
-            </div>
-         </div>
+         </Header>
+         <Body>
+            <MDXProvider
+               components={{
+                  pre: props => <CodeBlock {...props.children.props} />
+               }}>
+               <MDXRenderer>{post.body}</MDXRenderer>
+            </MDXProvider>
+         </Body>
       </Layout>
    )
 }
