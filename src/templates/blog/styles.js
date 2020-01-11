@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components'
 
 export const Header = styled.header(
    ({ theme: { colors, size } }) => css`
-      min-height: 240px;
+      height: auto;
       padding: ${size.md};
       margin: ${size.md} 0;
       border-radius: ${size.sm};
@@ -15,6 +15,10 @@ export const Header = styled.header(
          font-size: ${size.xl};
          margin-bottom: ${size.md};
          height: 100%;
+         @media (max-width: 567px) {
+            line-height: 32px;
+            font-size: ${size.md};
+         }
       }
       > div {
          margin-top: auto;
@@ -84,6 +88,38 @@ export const Body = styled.main(
             color: #8e939c;
             font-size: 18px;
             line-height: ${size.lg};
+         }
+      }
+   `
+)
+
+export const Pagination = styled.div(
+   ({ theme: { size, colors } }) => css`
+      height: auto;
+      display: grid;
+      grid-gap: ${size.md};
+      margin-top: ${size.md};
+      grid-template-columns: 1fr 1fr;
+      > a {
+         padding: ${size.md};
+         text-decoration: none;
+         border-radius: ${size.xs};
+         background: ${colors.dark['300']};
+         &:nth-child(2) {
+            text-align: right;
+         }
+         span {
+            color: #4e4e55;
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+         }
+         h3 {
+            color: #fff;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 27px;
+            margin-top: ${size.xs};
          }
       }
    `

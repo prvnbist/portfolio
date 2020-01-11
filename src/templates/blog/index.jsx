@@ -7,7 +7,7 @@ import Layout from '../../sections/Layout'
 
 import { TextButton, CodeBlock } from '../../components'
 
-import { Header, Body } from './styles'
+import { Header, Body, Pagination } from './styles'
 
 export const query = graphql`
    query($slug: String!) {
@@ -27,8 +27,20 @@ export const query = graphql`
    }
 `
 
-const Blog = props => {
-   const post = props.data.mdx
+const Blog = ({ data, pageContext }) => {
+   const post = data.mdx
+   const next = pageContext.next
+      ? {
+           url: `/blog/${pageContext.next.fields.slug}`,
+           title: pageContext.next.frontmatter.title
+        }
+      : null
+   const prev = pageContext.prev
+      ? {
+           url: `/blog/${pageContext.prev.fields.slug}`,
+           title: pageContext.prev.frontmatter.title
+        }
+      : null
    return (
       <Layout
          meta={{
@@ -63,6 +75,20 @@ const Blog = props => {
                <MDXRenderer>{post.body}</MDXRenderer>
             </MDXProvider>
          </Body>
+         <Pagination>
+            {prev && (
+               <Link to={prev.url}>
+                  <span>Previous</span>
+                  <h3>{prev.title}</h3>
+               </Link>
+            )}
+            {next && (
+               <Link to={next.url}>
+                  <span>Next</span>
+                  <h3>{next.title}</h3>
+               </Link>
+            )}
+         </Pagination>
       </Layout>
    )
 }
