@@ -37,7 +37,9 @@ const Layout = ({ children }) => {
       <ThemeProvider theme={theme}>
          <GlobalStyle />
          <Navbar />
-         <StyledWrapper>{children}</StyledWrapper>
+         <StyledWrapper>
+            <div>{children}</div>
+         </StyledWrapper>
       </ThemeProvider>
    )
 }
