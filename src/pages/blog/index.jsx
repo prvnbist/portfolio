@@ -3,6 +3,8 @@ import { Link, graphql, useStaticQuery } from 'gatsby'
 
 import Layout from '../../sections/Layout'
 
+import { PageHeading, Articles, Article } from './styles'
+
 const BlogPage = () => {
    const data = useStaticQuery(graphql`
       query {
@@ -25,28 +27,23 @@ const BlogPage = () => {
    `)
    return (
       <Layout>
-         <div>
-            <h4>Explore Articles</h4>
-            {!data ? (
-               <div>Loading...</div>
-            ) : (
-               <ul>
-                  {data.allMarkdownRemark.edges.map((edge, index) => {
-                     return (
-                        <li key={index}>
-                           <h5>{edge.node.frontmatter.title}</h5>
-                           <div>
-                              <Link to={`/blog/${edge.node.fields.slug}`}>
-                                 Read More
-                              </Link>
-                              <span>{edge.node.frontmatter.published}</span>
-                           </div>
-                        </li>
-                     )
-                  })}
-               </ul>
-            )}
-         </div>
+         <PageHeading>Articles</PageHeading>
+         {!data ? (
+            <div>Loading...</div>
+         ) : (
+            <Articles>
+               {data.allMarkdownRemark.edges.map((edge, index) => {
+                  return (
+                     <Article key={index}>
+                        <Link to={`/blog/${edge.node.fields.slug}`}>
+                           <h4>{edge.node.frontmatter.title}</h4>
+                           <span>{edge.node.frontmatter.published}</span>
+                        </Link>
+                     </Article>
+                  )
+               })}
+            </Articles>
+         )}
       </Layout>
    )
 }
