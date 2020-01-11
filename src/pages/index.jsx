@@ -24,7 +24,14 @@ const IndexPage = () => {
       { title: 'Codepen👨‍💻', url: 'https://www.codepen.com/prvnbist' }
    ])
    return (
-      <Layout>
+      <Layout
+         meta={{
+            title: 'Praveen Bisht | Software Engineer',
+            description:
+               "Hey👋🏼, I’m Praveen, a software engineer based in New Delhi who enjoys building apps from idea to implementation. I've experience with both design & development(front-end & back-end).",
+            keywords:
+               'front end, back end, design, html, pug, css, scss, javascript, nodejs, reactjs, graphql, expressjs, mongoose, mongodb, gatsby, figma, design, user interface, user experience'
+         }}>
          <StyledWrapper>
             <div>
                <StyledHeading>

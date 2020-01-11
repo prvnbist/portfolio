@@ -27,6 +27,7 @@ module.exports = {
             trackingId: process.env.TRACK_ID,
             head: true
          }
-      }
+      },
+      `gatsby-plugin-react-helmet`
    ]
 }

@@ -24,7 +24,15 @@ export default () => {
       }
    ])
    return (
-      <Layout>
+      <Layout
+         meta={{
+            title: 'Design | Praveen Bisht | Software Engineer',
+            description:
+               "Hey👋🏼, I’m Praveen, a software engineer based in New Delhi who enjoys building apps from idea to implementation. I've experience with both design & development(front-end & back-end).",
+            keywords:
+               'accessibility, photoshop, typography, web, ux, ui, illustrator, after effects, aesthetics, animation, figma, design, user interface, user experience',
+            url: '/design'
+         }}>
          <PageHeading>Designs</PageHeading>
          <Projects>
             {projects.map(project => (

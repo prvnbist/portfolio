@@ -19,6 +19,10 @@ export const query = graphql`
          }
          timeToRead
          body
+         excerpt
+         fields {
+            slug
+         }
       }
    }
 `
@@ -26,7 +30,13 @@ export const query = graphql`
 const Blog = props => {
    const post = props.data.mdx
    return (
-      <Layout>
+      <Layout
+         meta={{
+            title: post.frontmatter.title,
+            description: post.excerpt,
+            keywords: post.frontmatter.tags,
+            url: `/blog/${post.fields.slug}`
+         }}>
          <Link to="/blog">
             <TextButton
                type="outline"
