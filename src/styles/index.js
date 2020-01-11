@@ -4,6 +4,7 @@ export const StyledWrapper = styled.div`
    display: flex;
    height: inherit;
    align-items: center;
+   height: calc(100vh - 89px);
    > div {
       &:first-child {
          flex: 1.5;
