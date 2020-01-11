@@ -5,7 +5,7 @@ export const PageHeading = styled.h1(
       color: #ffffff;
       font-weight: 400;
       font-size: ${size.lg};
-      margin: ${size.xl} 0 ${size.lg} 0;
+      margin: ${size.lg} 0;
    `
 )
 
@@ -15,6 +15,9 @@ export const Projects = styled.ul(
       grid-template-columns: 1fr 1fr;
       grid-auto-rows: minmax(260px, 1fr);
       grid-gap: ${size.md};
+      @media (max-width: 980px) {
+         grid-template-columns: 1fr;
+      }
    `
 )
 

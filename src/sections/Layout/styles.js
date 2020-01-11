@@ -67,12 +67,10 @@ export const StyledWrapper = styled.div(
       > div {
          width: 980px;
          margin: 0 auto;
-      }
-      @media (max-width: 767px) {
-         width: 720px;
-      }
-      @media (max-width: 567px) {
-         width: calc(100% - 40px);
+         padding-bottom: ${size.md};
+         @media (max-width: 980px) {
+            width: calc(100vw - 40px);
+         }
       }
    `
 )
