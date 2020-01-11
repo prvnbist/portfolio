@@ -19,9 +19,8 @@
     "gatsby-plugin-google-analytics": "^2.1.32",
     "gatsby-plugin-mdx": "^1.0.67",
     "gatsby-plugin-styled-components": "^3.1.17",
-    "gatsby-remark-prismjs": "^3.3.30",
     "gatsby-source-filesystem": "^2.1.46",
-    "prismjs": "^1.18.0",
+    "prism-react-renderer": "^1.0.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "styled-components": "^4.4.1"
