@@ -11,35 +11,15 @@ module.exports = {
       {
          resolve: 'gatsby-source-filesystem',
          options: {
-            name: 'src',
-            path: `${__dirname}/src/`
+            name: 'posts',
+            path: `${__dirname}/src/posts`
          }
       },
-      'gatsby-plugin-sharp',
-      `gatsby-transformer-sharp`,
       {
-         resolve: 'gatsby-transformer-remark',
+         resolve: `gatsby-plugin-mdx`,
          options: {
-            plugins: [
-               'gatsby-remark-relative-images',
-               {
-                  resolve: 'gatsby-remark-images',
-                  options: {
-                     maxWidth: 750,
-                     linkImagesToOriginal: false
-                  }
-               },
-               {
-                  resolve: `gatsby-remark-prismjs`,
-                  options: {
-                     classPrefix: 'language-',
-                     inlineCodeMarker: null,
-                     aliases: {},
-                     showLineNumbers: true,
-                     noInlineHighlight: false
-                  }
-               }
-            ]
+            extensions: [`.mdx`, `.md`],
+            gatsbyRemarkPlugins: [`gatsby-remark-prismjs`]
          }
       },
       {

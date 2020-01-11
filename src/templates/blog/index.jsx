@@ -1,63 +1,53 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
+import { MDXRenderer } from 'gatsby-plugin-mdx'
 
 import Layout from '../../sections/Layout'
 
 export const query = graphql`
    query($slug: String!) {
-      markdownRemark(fields: { slug: { eq: $slug } }) {
+      mdx(fields: { slug: { eq: $slug } }) {
          frontmatter {
             title
-            published
-            updated
             tags
+            published
          }
-         fields {
-            slug
-         }
-         timeToRead
-         html
+         body
       }
    }
 `
 
 const Blog = props => {
+   const post = props.data.mdx
    return (
       <Layout>
          <div>
             <div>
                <Link to="/blog">Back</Link>
-               <h3>{props.data.markdownRemark.frontmatter.title}</h3>
+               <h3>{post.frontmatter.title}</h3>
                <ul>
-                  {props.data.markdownRemark.frontmatter.tags
-                     .split(',')
-                     .map(tag => (
-                        <li key={tag}>{tag}</li>
-                     ))}
+                  {post.frontmatter.tags.map(tag => (
+                     <li key={tag}>{tag}</li>
+                  ))}
                </ul>
                <div>
-                  <span>{props.data.markdownRemark.frontmatter.published}</span>
+                  <span>{post.frontmatter.published}</span>
                   <span>
-                     {props.data.markdownRemark.timeToRead}
+                     {post.timeToRead}
                      mins read
                   </span>
                </div>
             </div>
          </div>
          <div>
-            <div
-               dangerouslySetInnerHTML={{
-                  __html: props.data.markdownRemark.html
-               }}></div>
+            <MDXRenderer>{post.body}</MDXRenderer>
             <div>
                <div>
                   <h5>Tags</h5>
                   <ul>
-                     {props.data.markdownRemark.frontmatter.tags
-                        .split(',')
-                        .map((tag, index) => (
-                           <li key={index}>{tag}</li>
-                        ))}
+                     {post.frontmatter.tags.map((tag, index) => (
+                        <li key={index}>{tag}</li>
+                     ))}
                   </ul>
                </div>
             </div>

@@ -6,19 +6,19 @@ import Layout from '../../sections/Layout'
 import { PageHeading, Articles, Article } from './styles'
 
 const BlogPage = () => {
-   const data = useStaticQuery(graphql`
+   const {
+      allMdx: { edges: articles }
+   } = useStaticQuery(graphql`
       query {
-         allMarkdownRemark(
-            sort: { order: ASC, fields: [frontmatter___published] }
-         ) {
+         allMdx(sort: { order: ASC, fields: frontmatter___published }) {
             edges {
                node {
+                  fields {
+                     slug
+                  }
                   frontmatter {
                      title
                      published
-                  }
-                  fields {
-                     slug
                   }
                }
             }
@@ -28,22 +28,18 @@ const BlogPage = () => {
    return (
       <Layout>
          <PageHeading>Articles</PageHeading>
-         {!data ? (
-            <div>Loading...</div>
-         ) : (
-            <Articles>
-               {data.allMarkdownRemark.edges.map((edge, index) => {
-                  return (
-                     <Article key={index}>
-                        <Link to={`/blog/${edge.node.fields.slug}`}>
-                           <h4>{edge.node.frontmatter.title}</h4>
-                           <span>{edge.node.frontmatter.published}</span>
-                        </Link>
-                     </Article>
-                  )
-               })}
-            </Articles>
-         )}
+         <Articles>
+            {articles.map(({ node }, index) => {
+               return (
+                  <Article key={index}>
+                     <Link to={`/blog/${node.fields.slug}`}>
+                        <h4>{node.frontmatter.title}</h4>
+                        <span>{node.frontmatter.published}</span>
+                     </Link>
+                  </Article>
+               )
+            })}
+         </Articles>
       </Layout>
    )
 }
