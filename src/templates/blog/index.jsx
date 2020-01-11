@@ -15,7 +15,7 @@ export const query = graphql`
          frontmatter {
             title
             tags
-            published
+            date(formatString: "MMM DD, YYYY")
          }
          timeToRead
          body
@@ -38,7 +38,7 @@ const Blog = props => {
          <Header>
             <h1>{post.frontmatter.title}</h1>
             <div>
-               <span>{post.frontmatter.published}</span>
+               <span>{post.frontmatter.date}</span>
                <span>
                   {post.timeToRead}
                   mins read

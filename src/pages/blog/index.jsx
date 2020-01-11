@@ -10,7 +10,7 @@ const BlogPage = () => {
       allMdx: { edges: articles }
    } = useStaticQuery(graphql`
       query {
-         allMdx(sort: { order: ASC, fields: frontmatter___published }) {
+         allMdx(sort: { order: DESC, fields: frontmatter___date }) {
             edges {
                node {
                   fields {
@@ -18,7 +18,7 @@ const BlogPage = () => {
                   }
                   frontmatter {
                      title
-                     published
+                     date(formatString: "MMM DD, YYYY")
                   }
                }
             }
@@ -34,7 +34,7 @@ const BlogPage = () => {
                   <Article key={index}>
                      <Link to={`/blog/${node.fields.slug}`}>
                         <h4>{node.frontmatter.title}</h4>
-                        <span>{node.frontmatter.published}</span>
+                        <span>{node.frontmatter.date}</span>
                      </Link>
                   </Article>
                )
