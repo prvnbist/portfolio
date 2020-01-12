@@ -5,6 +5,12 @@ export const StyledWrapper = styled.div`
    height: inherit;
    align-items: center;
    height: calc(100vh - 89px);
+   @media (max-width: 567px) {
+      display: unset;
+      div {
+         margin-top: 120px;
+      }
+   }
 `
 
 export const StyledName = styled.h2(

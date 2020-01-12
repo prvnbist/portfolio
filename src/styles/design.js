@@ -17,6 +17,7 @@ export const Projects = styled.ul(
       grid-gap: ${size.md};
       @media (max-width: 980px) {
          grid-template-columns: 1fr;
+         grid-auto-rows: auto;
       }
    `
 )
@@ -31,7 +32,6 @@ export const Project = styled.li(
       background: ${colors.dark['300']};
       header {
          div {
-            height: 270px;
             position: relative;
             padding-top: 56.25%;
             img {
@@ -45,19 +45,31 @@ export const Project = styled.li(
             font-size: ${size.md};
             padding: 0 ${size.md};
             margin: ${size.sm} 0;
+            @media (max-width: 567px) {
+               padding: 0 ${size.sm};
+            }
          }
       }
       main {
          padding: 0 ${size.md};
          height: 100%;
+         @media (max-width: 567px) {
+            padding: 0 ${size.sm};
+         }
          p {
             font-size: 18px;
             line-height: 27px;
+            @media (max-width: 567px) {
+               font-weight: 300;
+            }
          }
       }
       footer {
          padding: ${size.md};
          margin-top: auto;
+         @media (max-width: 567px) {
+            padding: ${size.sm};
+         }
       }
    `
 )

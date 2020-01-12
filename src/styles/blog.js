@@ -40,6 +40,10 @@ export const Article = styled.li(
             font-size: 18px;
             font-weight: 400;
             letter-spacing: 0.4px;
+            @media (max-width: 567px) {
+               font-size: 16px;
+               line-height: 24px;
+            }
          }
          span {
             color: #4e4e55;
