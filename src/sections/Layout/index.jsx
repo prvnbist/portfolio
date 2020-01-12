@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet'
 
 import Navbar from '../Navbar'
 
-import { GlobalStyle, StyledWrapper } from './styles'
+import { StyledWrapper } from './styles'
 
 const theme = {
    fonts: {
@@ -36,7 +36,6 @@ const theme = {
 const Layout = ({ children, meta }) => {
    return (
       <ThemeProvider theme={theme}>
-         <GlobalStyle />
          <Helmet>
             <title>{meta.title}</title>
             <meta name="robots" content="index, follow" />
