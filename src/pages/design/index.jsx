@@ -8,6 +8,9 @@ import { PageHeading, Projects, Project } from '../../styles/design'
 
 import expensesImg from '../../images/design/expenses.jpg'
 import quickPollsImg from '../../images/design/quick-polls.png'
+import propertyImg from '../../images/design/property.png'
+import octaneImg from '../../images/design/octane.png'
+import samaylaImg from '../../images/design/samayla.png'
 
 export default () => {
    const [projects] = React.useState([
@@ -26,6 +29,29 @@ export default () => {
          url:
             'https://www.figma.com/file/MXXyWDlL6IGqzXQvZphEipoB/Expense-App?node-id=0%3A1',
          thumb: expensesImg
+      },
+      {
+         title: 'Property App',
+         description:
+            'A platform of people looking for renting, buying or selling a place. Curates all available homes in a public feed for people to swift through.',
+         url:
+            'https://www.figma.com/file/V9kIPeesyo8PvF8vmWhkogAX/Property-app?node-id=0%3A1',
+         thumb: propertyImg
+      },
+      {
+         title: 'Octane HRMS',
+         description:
+            'Octane is a comprehensive HR solution based on SAP B1 and powered by Embee. Octane is an HR tool that will enable you to manage your workforce with much more ease and flexibility.',
+         url: 'https://www.figma.com/file/NQA1eGIPdhSztZ9kzQLKZifd/Octane',
+         thumb: octaneImg
+      },
+      {
+         title: 'Samayla',
+         description:
+            'SamayLa is a web-based work management and communication system that helps users be more organized and productive. It enables teams and individuals to manage their tasks in a logical structure.',
+         url:
+            'https://www.figma.com/file/CLwADoW5YMHU184wrLIWWXbI/App-Design?node-id=0%3A1',
+         thumb: samaylaImg
       }
    ])
    return (
