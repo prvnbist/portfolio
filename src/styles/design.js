@@ -24,19 +24,21 @@ export const Projects = styled.ul(
 export const Project = styled.li(
    ({ theme: { size, colors } }) => css`
       display: flex;
-      flex-direction: column;
+      overflow: hidden;
       list-style: none;
-      padding: ${size.md};
+      flex-direction: column;
       border-radius: ${size.xs};
       background: ${colors.dark['300']};
       header {
          h3 {
             font-weight: 500;
             font-size: ${size.md};
-            margin-bottom: ${size.sm};
+            padding: 0 ${size.md};
+            margin: ${size.sm} 0;
          }
       }
       main {
+         padding: 0 ${size.md};
          height: 100%;
          p {
             font-size: 18px;
@@ -44,6 +46,7 @@ export const Project = styled.li(
          }
       }
       footer {
+         padding: ${size.md};
          margin-top: auto;
       }
    `

@@ -6,6 +6,9 @@ import { TextButton } from '../../components'
 
 import { PageHeading, Projects, Project } from '../../styles/design'
 
+import expensesImg from '../../images/design/expenses.jpg'
+import quickPollsImg from '../../images/design/quick-polls.png'
+
 export default () => {
    const [projects] = React.useState([
       {
@@ -13,14 +16,16 @@ export default () => {
          description:
             'A voting application where people can create polls that other people can vote on and share their opinions.',
          url:
-            'https://www.figma.com/file/LnRJhWb4uot90YYgVWqQxYCz/Quick-Polls?node-id=0%3A1'
+            'https://www.figma.com/file/LnRJhWb4uot90YYgVWqQxYCz/Quick-Polls?node-id=0%3A1',
+         thumb: quickPollsImg
       },
       {
          title: 'Expense App',
          description:
             'Create and manage your expenses with statistics and visualizations to help you in savings.',
          url:
-            'https://www.figma.com/file/MXXyWDlL6IGqzXQvZphEipoB/Expense-App?node-id=0%3A1'
+            'https://www.figma.com/file/MXXyWDlL6IGqzXQvZphEipoB/Expense-App?node-id=0%3A1',
+         thumb: expensesImg
       }
    ])
    return (
@@ -38,6 +43,9 @@ export default () => {
             {projects.map(project => (
                <Project key={project.url}>
                   <header>
+                     <div>
+                        <img src={project.thumb} alt={project.title} />
+                     </div>
                      <h3>{project.title}</h3>
                   </header>
                   <main>
