@@ -5,8 +5,8 @@ My website that contains all of my work and also where I post my articles. It co
 
 #### Technologies used
 
-| ![ReactJs](https://res.cloudinary.com/prvnbist/image/upload/c_scale,h_80/v1564054850/React.js_logo-512_bvpygm.png "ReactJs")        | ![Gatsby Js](https://res.cloudinary.com/prvnbist/image/upload/c_scale,h_80/v1564911436/501d6cf2-14a1-460e-a7c2-4b63c2a98e61_vmzk5k.png "Gatsby Js")           | ![GraphQL](https://res.cloudinary.com/prvnbist/image/upload/c_scale,h_80/v1564911534/logo_jlv26i.png "GraphQL")  | ![SCSS](https://res.cloudinary.com/prvnbist/image/upload/c_scale,h_80/v1564911710/seal-color-aef0354c_gm0rwy.png "SCSS")
-|:---:|:---:|:---:|:---:|
-| ReactJs | GatsbyJs | GraphQL | SCSS |
+| ![ReactJs](https://res.cloudinary.com/prvnbist/image/upload/c_scale,h_80/v1564054850/React.js_logo-512_bvpygm.png "ReactJs")        | ![Gatsby Js](https://res.cloudinary.com/prvnbist/image/upload/c_scale,h_80/v1564911436/501d6cf2-14a1-460e-a7c2-4b63c2a98e61_vmzk5k.png "Gatsby Js")           | ![GraphQL](https://res.cloudinary.com/prvnbist/image/upload/c_scale,h_80/v1564911534/logo_jlv26i.png "GraphQL") 
+|:---:|:---:|:---:|
+| ReactJs | GatsbyJs | GraphQL |
 
-*Happy Coding🎉*
+*Happy Coding!🎉*
