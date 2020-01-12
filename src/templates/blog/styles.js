@@ -90,6 +90,22 @@ export const Body = styled.main(
             line-height: ${size.lg};
          }
       }
+      blockquote {
+         padding: ${size.md};
+         margin-bottom: ${size.md};
+         background: ${colors.dark['300']};
+         border-left: 2px solid ${colors.dark['100']};
+         p {
+            margin-bottom: 0;
+            font-style: italic;
+            font-size: ${size.sm};
+            line-height: ${size.md};
+            font-family: ${fonts.monoSpace};
+         }
+      }
+      .gatsby-resp-image-background-image {
+         border-radius: ${size.xs};
+      }
    `
 )
 
@@ -100,6 +116,9 @@ export const Pagination = styled.div(
       grid-gap: ${size.md};
       margin-top: ${size.md};
       grid-template-columns: 1fr 1fr;
+      @media (max-width: 567px) {
+         grid-template-columns: 1fr;
+      }
       > a {
          padding: ${size.md};
          text-decoration: none;
