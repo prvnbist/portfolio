@@ -12,7 +12,7 @@ export const StyledNavbar = styled.nav(
          height: inherit;
          align-items: center;
          justify-content: space-between;
-         @media (max-width: 567px) {
+         @media (max-width: 980px) {
             width: calc(100% - 32px);
          }
       }
