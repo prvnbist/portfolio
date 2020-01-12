@@ -54,7 +54,12 @@ const Layout = ({ children, meta }) => {
                      : 'https://www.prvnbist.com'
                }
             />
-            <meta property="og:image" content={meta.image || ''} />
+            <meta
+               property="og:image"
+               content={
+                  meta.image ? `https://www.prvnbist.com${meta.image}` : ''
+               }
+            />
             {/* Twitter tags */}
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:site" content="@prvnbist" />

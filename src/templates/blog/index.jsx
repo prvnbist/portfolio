@@ -16,6 +16,9 @@ export const query = graphql`
             title
             tags
             date(formatString: "MMM DD, YYYY")
+            headerImage {
+               publicURL
+            }
          }
          timeToRead
          body
@@ -47,7 +50,8 @@ const Blog = ({ data, pageContext }) => {
             title: post.frontmatter.title,
             description: post.excerpt,
             keywords: post.frontmatter.tags,
-            url: `/blog/${post.fields.slug}`
+            url: `/blog/${post.fields.slug}`,
+            image: post?.frontmatter?.headerImage?.publicURL
          }}>
          <Link to="/blog">
             <TextButton
