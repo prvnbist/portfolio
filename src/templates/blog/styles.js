@@ -40,9 +40,11 @@ export const Body = styled.main(
       }
       h2 {
          font-size: 28px;
+         padding-bottom: ${size.sm};
+         border-bottom: 1px solid ${colors.dark['200']};
       }
       h3 {
-         font-size: 24px;
+         font-size: 20px;
       }
       p {
          color: #8e939c;
