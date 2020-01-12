@@ -8,7 +8,7 @@ import {
    StyledPara,
    StyledSkills,
    StyledSkill,
-   StyledImage
+   StyledName
 } from '../styles/index'
 
 const IndexPage = () => {
@@ -34,6 +34,7 @@ const IndexPage = () => {
          }}>
          <StyledWrapper>
             <div>
+               <StyledName>Praveen Bisht.</StyledName>
                <StyledHeading>
                   I design
                   <span role="img" aria-label="paint board">
@@ -49,8 +50,8 @@ const IndexPage = () => {
                   <span role="img" aria-label="waving hand">
                      👋🏼
                   </span>
-                  , I’m Praveen, a <span>software engineer</span> based in New
-                  Delhi who enjoys building apps from{' '}
+                  , I’m a <span>software engineer</span> based in New Delhi who
+                  enjoys building products from{' '}
                   <span>idea to implementation</span>. Currently{' '}
                   <span>engineering solutions</span> for mealkit industry by
                   building a ecosystem of interconnected applications.
@@ -63,13 +64,6 @@ const IndexPage = () => {
                   ))}
                </StyledSkills>
             </div>
-            <StyledImage>
-               <img
-                  alt="Praveen Bisht"
-                  src="https://res.cloudinary.com/prvnbist/image/upload/v1578682225/portfolio/dp.png"
-                  title="Not really religious, just really like this picture😂"
-               />
-            </StyledImage>
          </StyledWrapper>
       </Layout>
    )

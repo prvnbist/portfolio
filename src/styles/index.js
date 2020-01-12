@@ -5,27 +5,29 @@ export const StyledWrapper = styled.div`
    height: inherit;
    align-items: center;
    height: calc(100vh - 89px);
-   > div {
-      &:first-child {
-         flex: 1.5;
-         padding-right: 20px;
-      }
-      &:last-child {
-         flex: 1;
-         @media (max-width: 567px) {
-            display: none;
-         }
-      }
-   }
 `
+
+export const StyledName = styled.h2(
+   ({ theme: { size } }) => css`
+      font-weight: 400;
+      font-size: ${size.xl};
+      @media (max-width: 567px) {
+         font-size: ${size.md};
+      }
+   `
+)
 
 export const StyledHeading = styled.h1(
    ({ theme: { size } }) => css`
-      font-size: 56px;
+      color: #636e84;
+      font-size: 96px;
       font-weight: 500;
       margin-bottom: ${size.md};
+      @media (max-width: 980px) {
+         font-size: 64px;
+      }
       @media (max-width: 567px) {
-         font-size: ${size.xl};
+         font-size: ${size.xxl};
       }
    `
 )
@@ -77,25 +79,6 @@ export const StyledSkill = styled.li(
          left: -16px;
          top: 0;
          position: relative;
-      }
-   `
-)
-
-export const StyledImage = styled.div(
-   ({ theme: { colors } }) => css`
-      position: relative;
-      &:before {
-         z-index: -1;
-         content: '';
-         width: 100%;
-         height: 100%;
-         left: 6px;
-         top: 4px;
-         position: absolute;
-         border: 3px solid ${colors.blue['400']};
-      }
-      img {
-         width: 100%;
       }
    `
 )
