@@ -30,6 +30,16 @@ export const Project = styled.li(
       border-radius: ${size.xs};
       background: ${colors.dark['300']};
       header {
+         div {
+            height: 270px;
+            position: relative;
+            padding-top: 56.25%;
+            img {
+               top: 0;
+               width: 100%;
+               position: absolute;
+            }
+         }
          h3 {
             font-weight: 500;
             font-size: ${size.md};
