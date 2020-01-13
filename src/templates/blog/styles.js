@@ -90,6 +90,14 @@ export const Body = styled.main(
             color: #8e939c;
             font-size: 18px;
             line-height: ${size.lg};
+            code {
+               font-size: 18px;
+               padding: 3px 6px;
+               border-radius: 4px;
+               font-family: ${fonts.sansSerif};
+               background: ${colors.dark['200']} !important;
+               border-bottom: 2px solid ${colors.dark['100']};
+            }
          }
       }
       blockquote {
