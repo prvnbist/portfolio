@@ -44,7 +44,7 @@ export const Body = styled.main(
          border-bottom: 1px solid ${colors.dark['200']};
       }
       h3 {
-         font-size: 20px;
+         font-size: 22px;
       }
       p {
          color: #8e939c;
