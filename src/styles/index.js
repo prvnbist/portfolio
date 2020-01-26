@@ -57,7 +57,10 @@ export const StyledSkills = styled.ul(
       grid-gap: 4px;
       grid-auto-rows: 32px;
       margin-top: ${size.sm};
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+      @media (max-width: 567px) {
+         grid-template-columns: 1fr 1fr;
+      }
    `
 )
 
@@ -69,22 +72,8 @@ export const StyledSkill = styled.li(
       list-style: none;
       font-weight: 400;
       align-items: center;
-      padding-left: ${size.sm};
       a {
          text-decoration: none;
-      }
-      &:before {
-         content: '';
-         border-color: transparent #636e84;
-         border-style: solid;
-         border-width: 6px 0 6px 8px;
-         border-radius: 0.2px;
-         display: block;
-         height: 0;
-         width: 0;
-         left: -16px;
-         top: 0;
-         position: relative;
       }
    `
 )
