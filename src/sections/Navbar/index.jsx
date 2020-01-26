@@ -3,8 +3,6 @@ import { Link } from 'gatsby'
 
 import { StyledNavbar, StyledNavItems, StyledNavItem } from './styles'
 
-import Logo from '../../images/sign.png'
-
 const Navbar = () => {
    let [current, setCurrent] = React.useState('')
    const [links] = React.useState([
@@ -17,7 +15,7 @@ const Navbar = () => {
          <div>
             <div>
                <Link to="/">
-                  <img width="64" src={Logo} alt="Praveen Bisht" />
+                  <HomeIcon size={24} />
                </Link>
             </div>
             <StyledNavItems>
@@ -39,3 +37,19 @@ const Navbar = () => {
 }
 
 export default Navbar
+
+const HomeIcon = ({ size = 16, color = '#fff' }) => (
+   <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke={color}
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round">
+      <path d="M20 9v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9" />
+      <path d="M9 22V12h6v10M2 10.6L12 2l10 8.6" />
+   </svg>
+)
