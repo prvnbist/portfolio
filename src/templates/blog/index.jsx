@@ -74,6 +74,16 @@ const Blog = ({ data, pageContext }) => {
          <Body>
             <MDXProvider
                components={{
+                  a: props => (
+                     <a
+                        href={props.href}
+                        title={props.title}
+                        target="_blank"
+                        rel="noopener"
+                        rel="noreferrer">
+                        {props.children}
+                     </a>
+                  ),
                   pre: props => <CodeBlock {...props.children.props} />
                }}>
                <MDXRenderer>{post.body}</MDXRenderer>

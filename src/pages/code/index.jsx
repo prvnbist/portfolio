@@ -77,14 +77,24 @@ export default () => {
                   </main>
                   <footer>
                      {project.code && (
-                        <a href={project.code}>
+                        <a
+                           href={project.code}
+                           target="_blank"
+                           rel="noopener"
+                           rel="noreferrer"
+                           title={project.title}>
                            <TextButton type="solid" typeColor="blue.400">
                               Code
                            </TextButton>
                         </a>
                      )}
                      {project.demo && (
-                        <a href={project.demo}>
+                        <a
+                           href={project.demo}
+                           target="_blank"
+                           rel="noopener"
+                           rel="noreferrer"
+                           title={project.title}>
                            <TextButton type="outline" typeColor="dark.200">
                               Demo
                            </TextButton>

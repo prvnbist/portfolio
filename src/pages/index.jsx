@@ -14,14 +14,14 @@ import {
 const IndexPage = () => {
    const [socials] = React.useState([
       {
-         title: 'Instagram🖼️',
+         title: '🖼️ Instagram',
          url: 'https://www.instagram.com/prvnbist'
       },
-      { title: 'Twitter🐤', url: 'https://www.twitter.com/prvnbist' },
-      { title: 'Github👨‍💻', url: 'https://www.github.com/prvnbist' },
-      { title: 'LinkedIn🤝🏼', url: 'https://www.linkedin.com/in/prvnbist' },
-      { title: 'Dribbble🎨', url: 'https://www.dribbble.com/prvnbist' },
-      { title: 'Codepen👨‍💻', url: 'https://www.codepen.com/prvnbist' }
+      { title: '🐤 Twitter', url: 'https://www.twitter.com/prvnbist' },
+      { title: '🤝🏼 LinkedIn', url: 'https://www.linkedin.com/in/prvnbist' },
+      { title: '👨‍💻 Github', url: 'https://www.github.com/prvnbist' },
+      { title: '🎨 Dribbble', url: 'https://www.dribbble.com/prvnbist' },
+      { title: '👨‍💻 Codepen', url: 'https://www.codepen.io/prvnbist' }
    ])
    return (
       <Layout
@@ -34,7 +34,7 @@ const IndexPage = () => {
          }}>
          <StyledWrapper>
             <div>
-               <StyledName>Praveen Bisht.</StyledName>
+               <StyledName>Praveen Bisht</StyledName>
                <StyledHeading>
                   I design
                   <span role="img" aria-label="paint board">
@@ -59,7 +59,14 @@ const IndexPage = () => {
                <StyledSkills>
                   {socials.map(social => (
                      <StyledSkill key={social.url}>
-                        <a href={social.url}>{social.title}</a>
+                        <a
+                           href={social.url}
+                           target="_blank"
+                           rel="noopener"
+                           rel="noreferrer"
+                           title={social.title}>
+                           {social.title}
+                        </a>
                      </StyledSkill>
                   ))}
                </StyledSkills>

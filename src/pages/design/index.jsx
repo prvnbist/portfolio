@@ -78,7 +78,12 @@ export default () => {
                      <p>{project.description}</p>
                   </main>
                   <footer>
-                     <a href={project.url}>
+                     <a
+                        href={project.url}
+                        target="_blank"
+                        rel="noopener"
+                        rel="noreferrer"
+                        title={project.title}>
                         <TextButton type="outline" typeColor="blue.400">
                            View Project
                         </TextButton>
