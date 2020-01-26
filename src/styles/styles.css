@@ -9,10 +9,20 @@
 body {
    color: #fff;
    overflow: hidden;
-   background: #19191C;
+   background: #19191c;
+}
+
+::-moz-selection {
+   color: #19191c;
+   background: #fff;
+}
+
+::selection {
+   color: #19191c;
+   background: #fff;
 }
 a {
-   color: #719DF0;
+   color: #719df0;
 }
 
 @font-face {
