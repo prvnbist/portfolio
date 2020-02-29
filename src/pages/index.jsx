@@ -62,8 +62,7 @@ const IndexPage = () => {
                         <a
                            href={social.url}
                            target="_blank"
-                           rel="noopener"
-                           rel="noreferrer"
+                           rel="noopener noreferrer"
                            title={social.title}>
                            {social.title}
                         </a>

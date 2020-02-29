@@ -79,8 +79,7 @@ const Blog = ({ data, pageContext }) => {
                         href={props.href}
                         title={props.title}
                         target="_blank"
-                        rel="noopener"
-                        rel="noreferrer">
+                        rel="noopener noreferrer">
                         {props.children}
                      </a>
                   ),

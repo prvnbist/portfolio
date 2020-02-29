@@ -81,8 +81,7 @@ export default () => {
                      <a
                         href={project.url}
                         target="_blank"
-                        rel="noopener"
-                        rel="noreferrer"
+                        rel="noopener noreferrer"
                         title={project.title}>
                         <TextButton type="outline" typeColor="blue.400">
                            View Project

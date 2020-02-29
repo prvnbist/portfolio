@@ -80,8 +80,7 @@ export default () => {
                         <a
                            href={project.code}
                            target="_blank"
-                           rel="noopener"
-                           rel="noreferrer"
+                           rel="noopener noreferrer"
                            title={project.title}>
                            <TextButton type="solid" typeColor="blue.400">
                               Code
@@ -92,8 +91,7 @@ export default () => {
                         <a
                            href={project.demo}
                            target="_blank"
-                           rel="noopener"
-                           rel="noreferrer"
+                           rel="noopener noreferrer"
                            title={project.title}>
                            <TextButton type="outline" typeColor="dark.200">
                               Demo
