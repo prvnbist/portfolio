@@ -4,9 +4,6 @@
    "description": "",
    "version": "0.1.0",
    "license": "MIT",
-   "engines": {
-      "node": ">=10.13.0"
-   },
    "scripts": {
       "build": "gatsby build",
       "start": "env-cmd -f .env.development gatsby develop",
