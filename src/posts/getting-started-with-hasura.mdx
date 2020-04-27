@@ -1,8 +1,8 @@
 ---
 title: 'Getting started with Hasura'
-date: 2020-04-26
+date: 2020-04-27
 headerImage: ../images/blog/hasura-headless-cms.webp
-tags: ['hasura', 'getting started', 'postgres', 'sql', 'graphql']
+tags: ['hasura', 'getting started', 'postgres', 'sql', 'graphql', 'api']
 ---
 
 ## Introduction
@@ -31,14 +31,14 @@ To deploy Hasura with Heroku, head over to the this [documentation](https://hasu
 
 ![Create Hasura App](../images/blog/create-hasura-app.png 'Create Hasura App')
 
-Give your app a name and select the you want to deploy to and then click on `Deploy App` button and wait for Heroku to deploy your app.
+Give your app a name and select the region you want to deploy to and then click on `Deploy App` button and wait for Heroku to deploy your app.
 
 After it's deployed, you can click on `View App` button and you'll be taken to Hasura console. Hasura console has 4 tabs and if you're using the latest beta version then you'll have one more tab called `Actions`
 
 -  **GraphiQL:** This tab gives you access to graphiql playground to explore queries, mutations and subscriptions.
 -  **Data:** From this tab you can manage your SQL tables and create different schemas to host your related tables.
 -  **Remote Schema:** So this is where `microservices` comes in. Using remote schemas you add services to your app. Now these services has to written in GraphQL as well. This functionality is similar to Schema Stiching or [Schema Federation](https://www.apollographql.com/docs/apollo-server/federation/introduction/ 'Schema Federation') introduced by Apollo that let's you divide your backend into multiple services.
--  **Events:** Events comes in when you want execute custom logic based on event triggers such on creating, updating or deleting a row in a table.
+-  **Events:** Events comes in when you want to execute custom logic based on event triggers such on creating, updating or deleting a row in a table.
 -  **Actions:** Currently in beta, actions can be added to existing Hasura's schema to extend it to add business logic into your queries and doing things like data validation and even authentication/authorization.
 
 ## Adding Schema
@@ -64,30 +64,32 @@ Your form should look like this now.
 
 ![Filled table form](../images/blog/filled-table-form.png 'Filled table form')
 
-Now hit `Add Table` button to add the table. Now if you go to the `GraphiQL` tab you'll see that Hasura has generated queries for you which you start exploring.
+Now hit `Add Table` button in the bottom of the form to add the table. Now if you go to the `GraphiQL` tab you'll see that Hasura has generated queries for you which you can start exploring.
 
 ![Playground](../images/blog/graphiql-query-example.png 'Playground')
 
 Hasura generates following queries, mutations and subscriptions for you.
 
 -  Queries
-   -  expense
    -  expenses
-   -  total_expenses
+   -  expenses_by_pk
+   -  expenses_aggregate
 -  Mutations
-   -  create_expenses
+   -  insert_expenses
    -  delete_expenses
    -  update_expenses
 -  Subscriptions
-   -  expense
    -  expenses
-   -  total_expenses
+   -  expenses_by_pk
+   -  expenses_aggregate
 
-The name of the queries are also generated based on table name, which can be changed from:
+Here `expenses_by_pk` is for fetching expense by the primary key. The name of the queries are also generated based on table name, which can be changed from:
 
 > Data > Select Table > Modify > Custom GraphQL Root Fields.
 
-After modifying, just save your table and Hasura will update the query names for you.
+![Custom Root Fields](../images/blog/custom-root-fields.png 'Custom Root Fields')
+
+After modifying, just save the changes and Hasura will update the query names for you.
 
 ### Writing Queries
 
@@ -112,7 +114,7 @@ You can add fields to your query as you would do with GraphQL. What Hasura gives
 -  `limit`: Used to limit the number of rows/objects you get in response.
 -  `offset`: Best used with limit to do pagination.
 -  `order_by`: Use to order query response in a sequence. Multiple fields can be used along with `asc` or `desc` sequence.
--  `where`: Use when needed to find an rows/objects based on a comparison done of different fields. Hasura is smart enough to show the type of filters according to the type of field.
+-  `where`: Use when needed to find an rows/objects based on a comparison done of different fields. Hasura is smart enough to show the appropriate filters according to the type of the field.
 
 ### Writing Mutations
 
@@ -183,7 +185,7 @@ mutation MyMutation {
 
 ### Writing Subscriptions
 
-Subscriptions are identical to queries in that way they're written, except for the keyword `query`, use `subscription`.
+Subscriptions are identical to queries in a way they're written, except for the keyword `query`, use `subscription`.
 
 ```graphql
 subscription MyQuery {
@@ -202,4 +204,4 @@ subscription MyQuery {
 
 I've been using Hasura at work for couple of weeks now. Hasura helped us to build a feature rich apps with little to no backend codebase. Hence decided to share what I've learned in past weeks. I also built an expenses app during last week which can be found on my [Github](https://github.com/prvnbist/expenses 'Expenses App').
 
-I will be writing more articles on integrating Hasura with our front-end, so stay tuned. You can follow me on my [Twitter](https://twitter.com/prvnbist 'Twitter') or my [instagram](https://instagram.com/prvnbist 'Instagram') to stay updated with the progress.
+I will be writing more articles on integrating Hasura with our front-end, so stay tuned. You can follow me on my [Twitter](https://twitter.com/prvnbist 'Twitter') or my [Instagram](https://instagram.com/prvnbist 'Instagram') to stay updated with the progress.
