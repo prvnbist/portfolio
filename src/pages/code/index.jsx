@@ -11,9 +11,16 @@ import transcodeImg from '../../images/code/transcode.png'
 import snippifyImg from '../../images/code/snippify.png'
 import karyaImg from '../../images/code/karya.png'
 import recipeImg from '../../images/code/recipe.png'
+import expensesAppImg from '../../images/code/expenses.png'
 
 export default () => {
    const [projects] = React.useState([
+      {
+         title: 'Expenses App',
+         description: 'A self-hosted app to manage your expenses/earnings.',
+         code: 'https://github.com/prvnbist/expenses',
+         thumb: expensesAppImg
+      },
       {
          title: 'Transcode',
          description:
