@@ -1,11 +1,13 @@
 ---
-title: "Setting up Firebase in React"
+type: article
+title: 'Setting up Firebase in React'
 date: 2019-08-02
 tags: ['react', 'firebase', 'setup', 'firestore']
 ---
 
 ## Project Setup
-We'll start by creating a react app using [CRA](https://github.com/facebook/create-react-app "Create React App"). To do that open up your terminal and start by executing this command to install the react app.
+
+We'll start by creating a react app using [CRA](https://github.com/facebook/create-react-app 'Create React App'). To do that open up your terminal and start by executing this command to install the react app.
 
 ```bash
 npx create-react-app react-firebase
@@ -22,24 +24,25 @@ This is all we need for now to get started with setting up firebase with react.
 
 ## Creating a project in firebase
 
-Head over to firebase [console](https://console.firebase.google.com/ "console"). Click on the add project card.
+Head over to firebase [console](https://console.firebase.google.com/ 'console'). Click on the add project card.
 
-![Firebase Console](https://res.cloudinary.com/prvnbist/image/upload/v1564761515/portfolio/Blog/2019-08-02_212603.png "Firebase Console")
+![Firebase Console](https://res.cloudinary.com/prvnbist/image/upload/v1564761515/portfolio/Blog/2019-08-02_212603.png 'Firebase Console')
 
 It's a three step procedure. First step would be to give your project a name, second step is to choose if you want to install Google Analytics or not but we won't be doing that so we can skip that for now. After skipping to install Google Analytics it'll create a new project for you and redirect you to the dashboard.
 
-![Firebase Console Dashboard](https://res.cloudinary.com/prvnbist/image/upload/v1564762241/portfolio/Blog/2019-08-02_214026.png "Firebase Console Dashboard")
+![Firebase Console Dashboard](https://res.cloudinary.com/prvnbist/image/upload/v1564762241/portfolio/Blog/2019-08-02_214026.png 'Firebase Console Dashboard')
 
 ## Add an app to your project
+
 Now we'll add an app to our firebase project and to do that head over to the project settings by clicking on the gear icon on the top left.
 
-![Firebase Project Settings](https://res.cloudinary.com/prvnbist/image/upload/v1564762616/portfolio/Blog/2019-08-02_214638.png "Firebase Project Settings")
+![Firebase Project Settings](https://res.cloudinary.com/prvnbist/image/upload/v1564762616/portfolio/Blog/2019-08-02_214638.png 'Firebase Project Settings')
 
-Now from the 'Your apps' section select the web option, that's the one with angle brackets. On clicking it'll open up modal from where you can register your app. Start by giving your app a name and if you want you can also setup the Firebase hosting from here or later on at any time from the dashboard. For this tutorial we're not going to be using firebase hosting. 
+Now from the 'Your apps' section select the web option, that's the one with angle brackets. On clicking it'll open up modal from where you can register your app. Start by giving your app a name and if you want you can also setup the Firebase hosting from here or later on at any time from the dashboard. For this tutorial we're not going to be using firebase hosting.
 
-The next step in adding an app to your project is to copy the credentials that is needed to setup firebase SDK. 
+The next step in adding an app to your project is to copy the credentials that is needed to setup firebase SDK.
 
-![Add an app to your project](https://res.cloudinary.com/prvnbist/image/upload/v1564763083/portfolio/Blog/2019-08-02_215430.png "Add an app to your project")
+![Add an app to your project](https://res.cloudinary.com/prvnbist/image/upload/v1564763083/portfolio/Blog/2019-08-02_215430.png 'Add an app to your project')
 
 ## Adding Firebase SDK to React
 
@@ -58,13 +61,13 @@ Let's add the credentials we copied for the Firebase SDK.
 ```js
 // firebase-config.js
 let config = {
-    apiKey: process.env.REACT_APP_API_KEY,
-    authDomain: process.env.REACT_APP_AUTH_DOMAIN,
-    databaseURL: process.env.REACT_APP_DB_URL,
-    projectId: process.env.REACT_APP_PROJECT_ID,
-    storageBucket: process.env.REACT_APP_STORAGE_ID,
-    messagingSenderId: process.env.REACT_APP_SENDER_ID,
-    appId: process.env.REACT_APP_APP_ID,
+   apiKey: process.env.REACT_APP_API_KEY,
+   authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+   databaseURL: process.env.REACT_APP_DB_URL,
+   projectId: process.env.REACT_APP_PROJECT_ID,
+   storageBucket: process.env.REACT_APP_STORAGE_ID,
+   messagingSenderId: process.env.REACT_APP_SENDER_ID,
+   appId: process.env.REACT_APP_APP_ID
 }
 
 firebase.initializeApp(config)
@@ -72,7 +75,7 @@ firebase.initializeApp(config)
 const firestore = firebase.firestore()
 ```
 
-You'll notice I used the environment variables, this is to avoid exposing the crucial data. So we'll create `.env` file in the root folder. CRA automatically handles the env files and serves the environment variables that'll be accessible from anywhere in our codebase. 
+You'll notice I used the environment variables, this is to avoid exposing the crucial data. So we'll create `.env` file in the root folder. CRA automatically handles the env files and serves the environment variables that'll be accessible from anywhere in our codebase.
 
 ```js
 // .env
@@ -86,6 +89,7 @@ REACT_APP_APP_ID=<YOUR APP ID>
 ```
 
 We've initialized our app using firebase and passed our config object as an argument to it. We've also initialized firestore and we'll be using it to access methods that firebase provides.
+
 ```js
 // firebase-config.js
 firebase.initializeApp(config)
@@ -99,6 +103,6 @@ Let's export the `firebase` and `firestore` so that we can used them anywhere in
 export { firebase, firestore }
 ```
 
-That's all we need to add the Firebase SDK to our React app. 
+That's all we need to add the Firebase SDK to our React app.
 
-Code - [Github](https://github.com/prvnbist/firebase-react-authentication-tutorial/tree/setup-firebase-sdk-with-react-part1 "Github")
+Code - [Github](https://github.com/prvnbist/firebase-react-authentication-tutorial/tree/setup-firebase-sdk-with-react-part1 'Github')

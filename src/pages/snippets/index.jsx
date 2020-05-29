@@ -5,14 +5,14 @@ import Layout from '../../sections/Layout'
 
 import { PageHeading, Articles, Article } from '../../styles/blog'
 
-const BlogPage = () => {
+const SnippetsPage = () => {
    const {
       allMdx: { edges: articles }
    } = useStaticQuery(graphql`
       query {
          allMdx(
             sort: { order: DESC, fields: frontmatter___date }
-            filter: { frontmatter: { type: { eq: "article" } } }
+            filter: { frontmatter: { type: { eq: "snippet" } } }
          ) {
             edges {
                node {
@@ -38,12 +38,12 @@ const BlogPage = () => {
                'front end, back end, design, html, pug, css, scss, javascript, nodejs, reactjs, graphql, expressjs, mongoose, mongodb, gatsby, figma, design, user interface, user experience',
             url: '/blog'
          }}>
-         <PageHeading>Articles</PageHeading>
+         <PageHeading>Snippets</PageHeading>
          <Articles>
             {articles.map(({ node }, index) => {
                return (
                   <Article key={index}>
-                     <Link to={`/blog/${node.fields.slug}`}>
+                     <Link to={`/snippets/${node.fields.slug}`}>
                         <h4>{node.frontmatter.title}</h4>
                         <span>{node.frontmatter.date}</span>
                      </Link>
@@ -55,4 +55,4 @@ const BlogPage = () => {
    )
 }
 
-export default BlogPage
+export default SnippetsPage

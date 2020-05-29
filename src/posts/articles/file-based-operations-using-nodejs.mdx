@@ -1,27 +1,29 @@
 ---
+type: article
 title: 'File based operations using NodeJS'
 date: 2020-01-15
-tags: ['nodejs','filesystem','crud', 'fs']
-headerImage: ../images/blog/file-cabinet.jpg
+tags: ['nodejs', 'filesystem', 'crud', 'fs']
+headerImage: ../../images/blog/file-cabinet.jpg
 ---
 
 Ever since NodeJS' inception, we've been able to execute JavaScript code outside of the browser. But NodeJS did a lot more than just that, it opened up a way to write server side code with JavaScript itself and along with it came the ability to manipulate host system's file system.
 
-![File Cabinet](../images/blog/file-cabinet.jpg "File Cabinet")
+![File Cabinet](../../images/blog/file-cabinet.jpg 'File Cabinet')
 
-Photo by Maksym Kaharlytskyi on [Unsplash](https://unsplash.com/photos/vYdSo_GhHCg "https://unsplash.com/photos/vYdSo_GhHCg")
+Photo by Maksym Kaharlytskyi on [Unsplash](https://unsplash.com/photos/vYdSo_GhHCg 'https://unsplash.com/photos/vYdSo_GhHCg')
 
 NodeJs introduced the `fs` module that allows you to do synchronous or asynchronous I/O operations and it's available out of the box.
 
 ## Getting Started
 
-Make sure you've the node installed in your system, if not you can head over to Node's [official site](https://nodejs.org/ "https://nodejs.org/") and download it from there. Now with that installed we're up and ready to do some file based operations.
+Make sure you've the node installed in your system, if not you can head over to Node's [official site](https://nodejs.org/ 'https://nodejs.org/') and download it from there. Now with that installed we're up and ready to do some file based operations.
 
 To use the `fs`, we can use the code below. If you're using commonjs use this line of code.
 
 ```js
 const fs = require('fs')
 ```
+
 If you're using ES, you can import it like this.
 
 ```js
@@ -33,11 +35,12 @@ Now each of the operations we'll be learning have both `synchronous` and `asynch
 ## CRUD operations
 
 Using the `fs` module, we can implement following operations -
-- Create
-- Read
-- Update
-- Rename
-- Delete
+
+-  Create
+-  Read
+-  Update
+-  Rename
+-  Delete
 
 ### Create File
 
@@ -46,9 +49,10 @@ In order to create a new file, we can use `fs.writeFile` or `fs.writeFileSync`.
 **Synchronous Method**
 
 This method takes three arguments:
-- file - path of the file, where it would be stored
-- data - content to store inside the file, can be `string` or `buffer`.
-- options - an object containing key-values for configuration for ex. `encoding`
+
+-  file - path of the file, where it would be stored
+-  data - content to store inside the file, can be `string` or `buffer`.
+-  options - an object containing key-values for configuration for ex. `encoding`
 
 The return value for this method is `undefined`.
 
@@ -63,8 +67,8 @@ By default the encoding for data of string type would be `utf8` and if different
 This method takes all the arguments same as the synchronous method except it let's you pass a callback.
 
 ```js
-fs.writeFile('./example.txt', 'exampel content', (error) => {
-   if(error) console.log(error);
+fs.writeFile('./example.txt', 'exampel content', error => {
+   if (error) console.log(error)
    console.log('The file has been saved!')
 })
 ```
@@ -83,9 +87,10 @@ const data = fs.readFileSync('./example.txt')
 ```
 
 **Asynchronous Method**
+
 ```js
 fs.readFile('./example.txt', (error, data) => {
-   if(error) console.log(error);
+   if (error) console.log(error)
    console.log(data)
 })
 // data - "exampel content"
@@ -106,8 +111,8 @@ fs.writeFileSync('./example.txt', 'example content')
 **Asynchronous Method**
 
 ```js
-fs.writeFile('./example.txt', 'example content', (error) => {
-   if(error) console.log(error);
+fs.writeFile('./example.txt', 'example content', error => {
+   if (error) console.log(error)
    console.log('The file has been updated!')
 })
 ```
@@ -129,8 +134,8 @@ fs.renameSync('./example.txt', './example1.txt')
 This method has similar signature as the synchronous one with an extra callback, giving us an `error` object that can be logged.
 
 ```js
-fs.rename('./example.txt', './example1.txt', (error) => {
-   if(error) console.log(error);
+fs.rename('./example.txt', './example1.txt', error => {
+   if (error) console.log(error)
    console.log('The file has been renamed!')
 })
 ```
@@ -152,8 +157,8 @@ fs.unlinkSync('./example1.txt')
 This version takes a path and callback as arguments. Callback gets just the `error` argument that can be used to log the error.
 
 ```js
-fs.unlink('./example1.txt', (error) => {
-   if(error) console.log(error);
+fs.unlink('./example1.txt', error => {
+   if (error) console.log(error)
    console.log('The file has been deleted!')
 })
 ```
@@ -178,26 +183,26 @@ Let's start by creating a function named `create` and we'll pass both the `fileP
 ```js
 const create = (filePath, content) => {
    try {
-      const fileExists = fs.existsSync(filePath);
+      const fileExists = fs.existsSync(filePath)
 
       if (fileExists) {
-         throw { 
-            success: false, 
-            message: "The file already exist!" 
-         };
+         throw {
+            success: false,
+            message: 'The file already exist!'
+         }
       } else {
-         fs.writeFileSync(filePath, content);
-         return { 
-            success: true, 
-            message: "The file has been created!"
-         };
+         fs.writeFileSync(filePath, content)
+         return {
+            success: true,
+            message: 'The file has been created!'
+         }
       }
    } catch (error) {
-      return error;
+      return error
    }
-};
+}
 
-create("./example.txt", "Example Content")
+create('./example.txt', 'Example Content')
 ```
 
 ### Read File
@@ -207,27 +212,27 @@ Similarly for reading a file, we can write function called `read` and pass our `
 ```js
 const read = filePath => {
    try {
-      const fileExists = fs.existsSync(filePath);
+      const fileExists = fs.existsSync(filePath)
 
       if (fileExists) {
-         const content = fs.readFileSync(filePath, 'utf8');
+         const content = fs.readFileSync(filePath, 'utf8')
 
-         return { 
-            success: true, 
+         return {
+            success: true,
             data: content
-         };
+         }
       } else {
-         throw { 
-            success: false, 
+         throw {
+            success: false,
             message: "The file doesn't exist!"
-         };
+         }
       }
    } catch (error) {
-      return error;
+      return error
    }
-};
+}
 
-const content = read("./example.txt")
+const content = read('./example.txt')
 ```
 
 ### Update File
@@ -237,27 +242,27 @@ Before updating a file, we'll check if it exists or not and throw an error if it
 ```js
 const update = (filePath, content) => {
    try {
-      const fileExists = fs.existsSync(filePath);
+      const fileExists = fs.existsSync(filePath)
 
       if (fileExists) {
-         fs.writeFileSync(filePath, content);
+         fs.writeFileSync(filePath, content)
 
-         return { 
-            success: true, 
-            message: "The file has been updated!"
-         };
+         return {
+            success: true,
+            message: 'The file has been updated!'
+         }
       } else {
-         throw { 
-            success: false, 
-            message: "The file doesn't exist!" 
-         };
+         throw {
+            success: false,
+            message: "The file doesn't exist!"
+         }
       }
    } catch (error) {
-      return error;
+      return error
    }
-};
+}
 
-update('./example.txt', "New Example Content")
+update('./example.txt', 'New Example Content')
 ```
 
 ### Rename File
@@ -267,34 +272,34 @@ With renaming a file, we'll have to make sure that both the path's i.e `oldPath`
 ```js
 const rename = (oldPath, newPath) => {
    try {
-      const oldFileExists = fs.existsSync(oldPath);
-      const newFileExists = fs.existsSync(newPath);
+      const oldFileExists = fs.existsSync(oldPath)
+      const newFileExists = fs.existsSync(newPath)
 
       if (newFileExists) {
          throw {
             success: false,
             message: "The file you're trying to rename to already exist!"
-         };
+         }
       }
       if (oldFileExists) {
-         fs.renameSync(oldPath, newPath);
+         fs.renameSync(oldPath, newPath)
 
-         return { 
-            success: true, 
-            message: "The file has been renamed!"
-         };
+         return {
+            success: true,
+            message: 'The file has been renamed!'
+         }
       } else {
-         throw { 
-            success: false, 
+         throw {
+            success: false,
             message: "The file you're trying to rename doesn't exist!"
-         };
+         }
       }
    } catch (error) {
-      return error;
+      return error
    }
-};
+}
 
-rename("./example.txt", "./example1.txt")
+rename('./example.txt', './example1.txt')
 ```
 
 ### Delete File
@@ -304,34 +309,34 @@ Similarly for deleting a file, check if it exists and if it does then delete it 
 ```js
 const unlink = filePath => {
    try {
-      const fileExists = fs.existsSync(filePath);
+      const fileExists = fs.existsSync(filePath)
 
       if (fileExists) {
-         fs.unlinkSync(filePath);
+         fs.unlinkSync(filePath)
 
          return {
             success: true,
-            message: "The file has been deleted!"
-         };
+            message: 'The file has been deleted!'
+         }
       } else {
          throw {
             success: false,
             message: "The file doesn't exist!"
-         };
+         }
       }
    } catch (error) {
-      return error;
+      return error
    }
-};
+}
 
-unlink("./example1.txt")
+unlink('./example1.txt')
 ```
 
 ## Conclusion
 
 These are basic operations you might need when you want manipulate file system. The `fs` module contains a plethora of functions like these that you can make use of.
 
-Here's the [link](https://nodejs.org/api/fs.html "https://nodejs.org/api/fs.html") for the documentation for `fs` module on NodeJs website for reference.
+Here's the [link](https://nodejs.org/api/fs.html 'https://nodejs.org/api/fs.html') for the documentation for `fs` module on NodeJs website for reference.
 
 Need to ask a quick question?
-Ask away on my twitter [@prvnbist](https://twitter.com/prvnbist "https://twitter.com/prvnbist")
+Ask away on my twitter [@prvnbist](https://twitter.com/prvnbist 'https://twitter.com/prvnbist')

@@ -1,11 +1,22 @@
 ---
-title: "A comprehensive guide to the Codechef"
+type: article
+title: 'A comprehensive guide to the Codechef'
 date: 2016-11-06
 tags: ['code', 'competitive', 'programming', 'cpp']
 ---
 
-![Pair Programming](https://res.cloudinary.com/prvnbist/image/upload/v1559636489/portfolio/Blog/alvaro-reyes-500044-unsplash.jpg "Pair Programming")
-<span>Photo by <a href="https://unsplash.com/@alvaroreyes?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Alvaro Reyes</a> on <a href="/search/photos/code?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
+![Pair Programming](https://res.cloudinary.com/prvnbist/image/upload/v1559636489/portfolio/Blog/alvaro-reyes-500044-unsplash.jpg 'Pair Programming')
+
+<span>
+   Photo by{' '}
+   <a href="https://unsplash.com/@alvaroreyes?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">
+      Alvaro Reyes
+   </a>{' '}
+   on{' '}
+   <a href="/search/photos/code?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">
+      Unsplash
+   </a>
+</span>
 
 [CodeChef](https://www.codechef.com/) is a non-profit educational initiative of [Directi](http://www.directi.com/). It is a global [competitive programming](https://en.wikipedia.org/wiki/Competitive_programming) platform which supports over 50 programming languages and has a large community of programmers that helps students and professionals test and improve their coding skills. Its objective is to provide a platform for practice, competition and improvement for both students and professional software developers. Apart from this, it aims to reach out to students while they are young and inculcate a culture of programming in India.
 
@@ -23,11 +34,11 @@ Then after understanding the question you have to click on the submit button at 
 
 Here are the following possible errors -
 
--   Accepted
--   Time Limit Exceeded
--   Wrong Answer
--   Runtime Error
--   Compilation Error
+-  Accepted
+-  Time Limit Exceeded
+-  Wrong Answer
+-  Runtime Error
+-  Compilation Error
 
 Accepted — Your program ran `successfully` and gave a correct answer. If there is a score for the problem, this will be displayed in parenthesis next to the checkmark.
 
@@ -43,32 +54,40 @@ Compilation Error — Your code was unable to compile. When you see this ico
 
 For an example we’ll be solving a question in beginner section with second most successful submissions i.e the [ATM problem — Code : HS08TEST](https://www.codechef.com/problems/HS08TEST)
 
-### Problem 
+### Problem
+
 Pooja would like to withdraw X $US from an ATM. The cash machine will only accept the transaction if X is a multiple of 5, and Pooja’s account balance has enough cash to perform the withdrawal transaction (including bank charges). For each successful withdrawal the bank charges 0.50 $US. Calculate Pooja’s account balance after an attempted transaction.
 
-### Input  
+### Input
+
 Positive integer 0 < X < =2000 — the amount of cash which Pooja wishes to withdraw.   
 Non-negative number 0 <= Y <= 2000 with two digits of precision — Pooja’s initial account balance.
 
-### Output  
+### Output
+
 Output the account balance after the attempted transaction, given as a number with two digits of precision. If there is not enough money in the account to complete the transaction, output the current bank balance.
 
 ### Example — Successful Transaction
+
 _Input :_ 30 120.00   
 _Output :_ 89.50
 
 ### Example — Incorrect Withdrawal Amount (not multiple of 5)
+
 _Input :_ 42 120.00   
 _Output :_ 120.00
 
-### Example — Insufficient Funds   
+### Example — Insufficient Funds 
+
 _Input :_ 300 120.00   
 _Output :_ 120.00
 
 ### Explanation of the Question
+
 In the question we’re taking example of a women named Pooja who wants to withdraw X amount of money from the ATM. Now for transaction the withdrawing amount must be a multiple of 5 and for every transaction the bank is charging 0.50 that means the remaining balance would — Remaining Balance = Initial Amount — (Withdrawn Amount + 0.50 Bank Charges).
 
 ### How to input values from the question?
+
 Well you don’t!! You just have to assume that the user at the other end is entering the inputs you just have to read the values and Similarly, while displaying the results, you need to display it in the exact format as is specified in the problem statement.   
 I have given below the solution of the [ATM problem — Code : HS08TEST](https://www.codechef.com/problems/HS08TEST)
 
@@ -89,17 +108,20 @@ int main() {
 
 This problem is solved in [C language](https://en.wikipedia.org/wiki/C_%28programming_language%29). If you analyse the code you’ll see that there is no printf function in the beginning, that’s what I explained before. Then I used scanf function to read the input provided by the question. Thereafter, follows the logic for the solution and at the end is the printf function that outputs the result in a format written in the questions example output.
 
-### Minor drawback of CodeChef’s Code Editing Process  
+### Minor drawback of CodeChef’s Code Editing Process
+
 After the submission of the your code, there will be 5 possible outcome as told before. Code is considered legit if and only if the answer is Accepted i.e with the green tick and if other errors are displayed you’ve to write the code again and then submit it. The wrong output would be considered as an attempt and will be listed in the Submissions section. _Isn’t it a bad feature??_, NO, absolutely not, it teaches you the very basic concept of [competitive programming](https://en.wikipedia.org/wiki/Competitive_programming) i.e you only get one chance, you’re either correct or wrong, there’s no midway. That is why competitive programming is encouraged to do.
 
-### But I’m not a pro coder, I’m still learning!! 
+### But I’m not a pro coder, I’m still learning!!
+
 Well, that’s how I started, a friend of mine who’s already deep into competitive programming adviced me to use Online IDE(Integrated Development Environment) like [Ideone](http://ideone.com/) or IDE S/W like Codeblocks to test my code before submitting in CodeChef.
 
 ## Compete in online coding contests
 
 There are two types of competition formats: _short-term_ and _long-term_. Each round of short-term competition lasts from 1 to 3 hours. Long-term competitions can last from a few days to a few months.
 
-### Short Term Contests  
+### Short Term Contests
+
 • [ACM-ICPC](https://en.wikipedia.org/wiki/ACM_International_Collegiate_Programming_Contest) — One of the oldest competitions, for students of universities in groups of 3 persons each, sponsored by IBM.   
 • [ACSL](https://en.wikipedia.org/wiki/American_Computer_Science_League) — Computer Science competition with written and programming portions, for middle/high school students.  
 • [CodeChef Cook-Off](https://www.codechef.com/COOK76) — An ACM-ICPC style programming contest held on second last Sunday of every month.   

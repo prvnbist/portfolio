@@ -1,13 +1,14 @@
 ---
+type: article
 title: 'Getting started with Hasura'
 date: 2020-04-27
-headerImage: ../images/blog/hasura-headless-cms.webp
+headerImage: ../../images/blog/hasura-headless-cms.webp
 tags: ['hasura', 'getting started', 'postgres', 'sql', 'graphql', 'api']
 ---
 
 ## Introduction
 
-![Hasura Architecture](../images/blog/hasura-headless-cms.webp 'Hasura Architecture')
+![Hasura Architecture](../../images/blog/hasura-headless-cms.webp 'Hasura Architecture')
 
 [Image Source](https://hasura.io/blog/exploring-hasura-as-a-headless-cms/ 'Exploring Hasura as a Headless CMS')
 
@@ -29,7 +30,7 @@ With Docker, you can pretty much deploy the engine on any services that allows y
 
 To deploy Hasura with Heroku, head over to the this [documentation](https://hasura.io/docs/1.0/graphql/manual/getting-started/heroku-simple.html#deploy-to-heroku 'documentation'). Tap that `Deploy to Heroku` button and you'll be redirected to Heroku to deploy your app.
 
-![Create Hasura App](../images/blog/create-hasura-app.png 'Create Hasura App')
+![Create Hasura App](../../images/blog/create-hasura-app.png 'Create Hasura App')
 
 Give your app a name and select the region you want to deploy to and then click on `Deploy App` button and wait for Heroku to deploy your app.
 
@@ -49,7 +50,7 @@ A bit of knowledge of SQL tables might come handy but there's also a GUI way of 
 
 In `Data` tab, click on the `Create Table` button and you'll be taken to table creation form. We'll be taking an example of expenses management app for our demo.
 
-![Table Creation Form](../images/blog/create-sql-table.png 'Table Creation Form')
+![Table Creation Form](../../images/blog/create-sql-table.png 'Table Creation Form')
 
 Let's add `expenses` as our table name and we'll be creating following fields.
 
@@ -62,11 +63,11 @@ Let's add `expenses` as our table name and we'll be creating following fields.
 
 Your form should look like this now.
 
-![Filled table form](../images/blog/filled-table-form.png 'Filled table form')
+![Filled table form](../../images/blog/filled-table-form.png 'Filled table form')
 
 Now hit `Add Table` button in the bottom of the form to add the table. Now if you go to the `GraphiQL` tab you'll see that Hasura has generated queries for you which you can start exploring.
 
-![Playground](../images/blog/graphiql-query-example.png 'Playground')
+![Playground](../../images/blog/graphiql-query-example.png 'Playground')
 
 Hasura generates following queries, mutations and subscriptions for you.
 
@@ -87,7 +88,7 @@ Here `expenses_by_pk` is for fetching expense by the primary key. The name of th
 
 > Data > Select Table > Modify > Custom GraphQL Root Fields.
 
-![Custom Root Fields](../images/blog/custom-root-fields.png 'Custom Root Fields')
+![Custom Root Fields](../../images/blog/custom-root-fields.png 'Custom Root Fields')
 
 After modifying, just save the changes and Hasura will update the query names for you.
 

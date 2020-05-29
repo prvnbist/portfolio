@@ -13,8 +13,9 @@ export const query = graphql`
    query($slug: String!) {
       mdx(fields: { slug: { eq: $slug } }) {
          frontmatter {
-            title
+            type
             tags
+            title
             date(formatString: "MMM DD, YYYY")
             headerImage {
                publicURL
@@ -32,28 +33,39 @@ export const query = graphql`
 
 const Blog = ({ data, pageContext }) => {
    const post = data.mdx
-   const next = pageContext.next
-      ? {
-           url: `/blog/${pageContext.next.fields.slug}`,
-           title: pageContext.next.frontmatter.title
-        }
-      : null
-   const prev = pageContext.prev
-      ? {
-           url: `/blog/${pageContext.prev.fields.slug}`,
-           title: pageContext.prev.frontmatter.title
-        }
-      : null
+   const base = post.frontmatter.type === 'article' ? 'blog' : 'snippets'
+   const next = () => {
+      if (pageContext.next.frontmatter.type === 'article') {
+         return pageContext.next
+            ? {
+                 url: `/blog/${pageContext.next.fields.slug}`,
+                 title: pageContext.next.frontmatter.title
+              }
+            : null
+      }
+      return null
+   }
+   const prev = () => {
+      if (pageContext.prev.frontmatter.type === 'article') {
+         return pageContext.prev
+            ? {
+                 url: `/blog/${pageContext.prev.fields.slug}`,
+                 title: pageContext.prev.frontmatter.title
+              }
+            : null
+      }
+      return null
+   }
    return (
       <Layout
          meta={{
             title: post.frontmatter.title,
             description: post.excerpt,
             keywords: post.frontmatter.tags,
-            url: `/blog/${post.fields.slug}`,
+            url: `/${base}/${post.fields.slug}`,
             image: post?.frontmatter?.headerImage?.publicURL
          }}>
-         <Link to="/blog">
+         <Link to={`/${base}`}>
             <TextButton
                type="outline"
                typeColor="dark.200"
@@ -88,20 +100,22 @@ const Blog = ({ data, pageContext }) => {
                <MDXRenderer>{post.body}</MDXRenderer>
             </MDXProvider>
          </Body>
-         <Pagination>
-            {prev && (
-               <Link to={prev.url}>
-                  <span>Previous</span>
-                  <h3>{prev.title}</h3>
-               </Link>
-            )}
-            {next && (
-               <Link to={next.url}>
-                  <span>Next</span>
-                  <h3>{next.title}</h3>
-               </Link>
-            )}
-         </Pagination>
+         {post.frontmatter.type === 'article' && (
+            <Pagination>
+               {prev() && (
+                  <Link to={prev().url}>
+                     <span>Previous</span>
+                     <h3>{prev().title}</h3>
+                  </Link>
+               )}
+               {next() && (
+                  <Link to={next().url}>
+                     <span>Next</span>
+                     <h3>{next().title}</h3>
+                  </Link>
+               )}
+            </Pagination>
+         )}
       </Layout>
    )
 }

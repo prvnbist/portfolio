@@ -1,4 +1,5 @@
 ---
+type: article
 title: 'Link prev/next articles dynamically on your gatsby blog'
 date: 2020-01-13
 tags: ['gatsbyjs', 'pagination', 'blog', 'articles']
@@ -9,9 +10,10 @@ tags: ['gatsbyjs', 'pagination', 'blog', 'articles']
 Linking your next and previous article doesn't require any packages to be installed, infact it's quite simple to implement.
 
 If you have an up and running blog with articles then you must have used Gatsby's `createPages` api. This api provides a `createPage` function that takes an object as it's first argument, gatsby refers to this object as `page` object. This page object takes following key's.
-- `path` : a path url where your articles will be available to read from.
-- `component` : a path to the react component that'll render the content of the article usually referred to as article template.
-- `context` : an object using which you can pass any key-value that you would want to read from the article template.
+
+-  `path` : a path url where your articles will be available to read from.
+-  `component` : a path to the react component that'll render the content of the article usually referred to as article template.
+-  `context` : an object using which you can pass any key-value that you would want to read from the article template.
 
 We'll be using the `context` key to implement this functionality.
 
@@ -93,22 +95,24 @@ const Article = ({ pageContext }) => {}
 Let's extract details of prev/next and save them into variables.
 
 ### For previous article
+
 ```js
 const prev = pageContext.prev
    ? {
-         url: `/blog/${pageContext.prev.fields.slug}`,
-         title: pageContext.prev.frontmatter.title
-      }
+        url: `/blog/${pageContext.prev.fields.slug}`,
+        title: pageContext.prev.frontmatter.title
+     }
    : null
 ```
 
 ### For next article
+
 ```js
 const next = pageContext.next
    ? {
-         url: `/blog/${pageContext.next.fields.slug}`,
-         title: pageContext.next.frontmatter.title
-      }
+        url: `/blog/${pageContext.next.fields.slug}`,
+        title: pageContext.next.frontmatter.title
+     }
    : null
 ```
 
@@ -135,4 +139,4 @@ That's pretty much it, with a little `CSS` flair you can make it look nice😉
 
 ### For Reference
 
-I've used this same logic on my gatsby blog as well. For reference, take a look at my [article template](https://github.com/prvnbist/portfolio/blob/466ab103bc76664896dcbb02ba4bac02099cbfc3/src/templates/blog/index.jsx#L33 "article template") and my [gatsby-node.js](https://github.com/prvnbist/portfolio/blob/466ab103bc76664896dcbb02ba4bac02099cbfc3/gatsby-node.js#L17 "gatsby-node.js") file and to see it in action, just scroll a little😅
+I've used this same logic on my gatsby blog as well. For reference, take a look at my [article template](https://github.com/prvnbist/portfolio/blob/466ab103bc76664896dcbb02ba4bac02099cbfc3/src/templates/blog/index.jsx#L33 'article template') and my [gatsby-node.js](https://github.com/prvnbist/portfolio/blob/466ab103bc76664896dcbb02ba4bac02099cbfc3/gatsby-node.js#L17 'gatsby-node.js') file and to see it in action, just scroll a little😅

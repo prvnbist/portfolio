@@ -26,6 +26,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
                      slug
                   }
                   frontmatter {
+                     type
                      title
                   }
                }
@@ -35,9 +36,13 @@ module.exports.createPages = async ({ graphql, actions }) => {
    `)
    const posts = res.data.allMdx.edges
    posts.forEach(({ node }, index) => {
+      const { type } = node.frontmatter
+      const path = `/${type === 'article' ? 'blog' : 'snippets'}/${
+         node.fields.slug
+      }`
       createPage({
+         path,
          component: blogTemplate,
-         path: `/blog/${node.fields.slug}`,
          context: {
             slug: node.fields.slug,
             prev: index === 0 ? null : posts[index - 1].node,
