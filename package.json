@@ -6,7 +6,7 @@
    "license": "MIT",
    "scripts": {
       "build": "gatsby build",
-      "start": "env-cmd -f .env.development gatsby develop",
+      "dev": "gatsby develop",
       "serve": "gatsby serve"
    },
    "dependencies": {
