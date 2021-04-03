@@ -37,13 +37,6 @@ module.exports = {
             ]
          }
       },
-      {
-         resolve: `gatsby-plugin-google-analytics`,
-         options: {
-            trackingId: process.env.GATBSY_TRACK_ID,
-            head: true
-         }
-      },
       `gatsby-plugin-react-helmet`,
       {
          resolve: `gatsby-plugin-feed`,
