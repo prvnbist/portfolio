@@ -2,8 +2,12 @@ import styled, { css } from 'styled-components'
 
 export const StyledNavbar = styled.nav(
    () => css`
+      top: 0;
       height: 64px;
       width: 100vw;
+      z-index: 1000;
+      position: sticky;
+      background: #19191c;
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
       > div {
          width: 980px;
@@ -32,19 +36,19 @@ export const StyledNavItem = styled.li(
       margin-left: ${size.sm};
       position: relative;
       ${isActive &&
-         css`
-            &:after {
-               bottom: 0;
-               content: '';
-               width: ${size.sm};
-               height: ${size.xs};
-               position: absolute;
-               left: calc(50% - ${size.xs});
-               background: ${colors.dark['100']};
-               border-top-left-radius: ${size.xs};
-               border-top-right-radius: ${size.xs};
-            }
-         `}
+      css`
+         &:after {
+            bottom: 0;
+            content: '';
+            width: ${size.sm};
+            height: ${size.xs};
+            position: absolute;
+            left: calc(50% - ${size.xs});
+            background: ${colors.dark['100']};
+            border-top-left-radius: ${size.xs};
+            border-top-right-radius: ${size.xs};
+         }
+      `}
       a {
          color: #fff;
          height: inherit;

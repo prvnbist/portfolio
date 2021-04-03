@@ -8,7 +8,7 @@
 }
 body {
    color: #fff;
-   overflow: hidden;
+   overflow-x: hidden;
    background: #19191c;
 }
 
@@ -20,6 +20,14 @@ body {
 ::selection {
    color: #19191c;
    background: #fff;
+}
+
+::-webkit-scrollbar {
+   width: 10px;
+}
+::-webkit-scrollbar-thumb {
+   border-radius: 10px;
+   background-color: #303035;
 }
 a {
    color: #719df0;
