@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components'
 import Layout from '../sections/Layout'
 import { TextButton } from '../components'
 
-export default () => {
+const Code = () => {
    const [projects] = React.useState([
       {
          title: 'Expenses App',
@@ -98,6 +98,8 @@ export default () => {
       </Layout>
    )
 }
+
+export default Code
 
 export const PageHeading = styled.h1(
    ({ theme: { size } }) => css`

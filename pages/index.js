@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 
 import Layout from '../sections/Layout'
 
-const IndexPage = () => {
+const Home = () => {
    const [socials] = React.useState([
       {
          title: '🖼️ Instagram',
@@ -69,7 +69,7 @@ const IndexPage = () => {
    )
 }
 
-export default IndexPage
+export default Home
 
 export const StyledWrapper = styled.div`
    display: flex;

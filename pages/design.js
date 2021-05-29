@@ -5,7 +5,7 @@ import Layout from '../sections/Layout'
 
 import { TextButton } from '../components'
 
-export default () => {
+const Design = () => {
    const [projects] = React.useState([
       {
          title: 'Quick Polls',
@@ -85,6 +85,8 @@ export default () => {
       </Layout>
    )
 }
+
+export default Design
 
 export const PageHeading = styled.h1(
    ({ theme: { size } }) => css`
