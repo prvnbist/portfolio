@@ -1,9 +1,12 @@
 import React from 'react'
+import tw from 'twin.macro'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
-import { StyledNavbar, StyledNavItems, StyledNavItem } from './styles'
+import { StyledNavbar, StyledNavItem } from './styles'
 
 const Navbar = () => {
+   const router = useRouter()
    const [links] = React.useState([
       { title: 'Design', url: '/design' },
       { title: 'Code', url: '/code' },
@@ -18,15 +21,18 @@ const Navbar = () => {
                   </a>
                </Link>
             </div>
-            <StyledNavItems>
+            <ul tw="flex">
                {links.map(link => (
-                  <StyledNavItem key={link.url}>
+                  <StyledNavItem
+                     key={link.url}
+                     isActive={router.pathname.includes(link.url)}
+                  >
                      <Link href={link.url}>
                         <a>{link.title}</a>
                      </Link>
                   </StyledNavItem>
                ))}
-            </StyledNavItems>
+            </ul>
          </div>
       </StyledNavbar>
    )
