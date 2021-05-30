@@ -1,4 +1,5 @@
 import React from 'react'
+import tw from 'twin.macro'
 import styled, { css } from 'styled-components'
 
 import Layout from '../sections/Layout'
@@ -54,7 +55,7 @@ const Design = () => {
             url: '/design',
          }}
       >
-         <PageHeading>Designs</PageHeading>
+         <h1 tw="text-3xl my-6 px-2">Designs</h1>
          <Projects>
             {projects.map(project => (
                <Project key={project.url}>

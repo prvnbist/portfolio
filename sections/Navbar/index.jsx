@@ -10,6 +10,7 @@ const Navbar = () => {
    const [links] = React.useState([
       { title: 'Design', url: '/design' },
       { title: 'Code', url: '/code' },
+      { title: 'Blog', url: '/blog' },
    ])
    return (
       <StyledNavbar>

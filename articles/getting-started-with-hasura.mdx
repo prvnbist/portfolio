@@ -1,0 +1,207 @@
+---
+title: 'Getting started with Hasura'
+date: 2020-04-27
+headerImage: /images/blog/hasura-headless-cms.webp
+tags: ['hasura', 'getting started', 'postgres', 'sql', 'graphql', 'api']
+---
+
+## Introduction
+
+![Hasura Architecture](../images/blog/hasura-headless-cms.webp 'Hasura Architecture')
+
+[Image Source](https://hasura.io/blog/exploring-hasura-as-a-headless-cms/ 'Exploring Hasura as a Headless CMS')
+
+[Hasura](https://hasura.io/ 'Hasura') is an open source engine that connects to your databases & microservices and auto-generates a production-ready GraphQL backend.
+
+Hasura maps your Postgres schema in to GraphQL and generates queries, mutations and subscriptions for you. Along with that they also provide different types of query filters like `where`, `order_by`, `limit`, `offset` and more to help you build complex features on your front end like filtering, sorting, pagination and more.
+
+### Deployment
+
+Hasura provides multiple ways to deploy Hasura Engine:
+
+-  [Heroku](https://heroku.com/ 'Heroku')
+-  [Docker](https://www.docker.com/ 'Docker')
+-  [Kubernetes](https://kubernetes.io/ 'Kubernetes')
+
+With Docker, you can pretty much deploy the engine on any services that allows you to use docker.
+
+### Deploying wih Heroku
+
+To deploy Hasura with Heroku, head over to the this [documentation](https://hasura.io/docs/1.0/graphql/manual/getting-started/heroku-simple.html#deploy-to-heroku 'documentation'). Tap that `Deploy to Heroku` button and you'll be redirected to Heroku to deploy your app.
+
+![Create Hasura App](../images/blog/create-hasura-app.png 'Create Hasura App')
+
+Give your app a name and select the region you want to deploy to and then click on `Deploy App` button and wait for Heroku to deploy your app.
+
+After it's deployed, you can click on `View App` button and you'll be taken to Hasura console. Hasura console has 4 tabs and if you're using the latest beta version then you'll have one more tab called `Actions`
+
+-  **GraphiQL:** This tab gives you access to graphiql playground to explore queries, mutations and subscriptions.
+-  **Data:** From this tab you can manage your SQL tables and create different schemas to host your related tables.
+-  **Remote Schema:** So this is where `microservices` comes in. Using remote schemas you add services to your app. Now these services has to written in GraphQL as well. This functionality is similar to Schema Stiching or [Schema Federation](https://www.apollographql.com/docs/apollo-server/federation/introduction/ 'Schema Federation') introduced by Apollo that let's you divide your backend into multiple services.
+-  **Events:** Events comes in when you want to execute custom logic based on event triggers such on creating, updating or deleting a row in a table.
+-  **Actions:** Currently in beta, actions can be added to existing Hasura's schema to extend it to add business logic into your queries and doing things like data validation and even authentication/authorization.
+
+## Adding Schema
+
+A bit of knowledge of SQL tables might come handy but there's also a GUI way of managing tables which can also be used instead of writing SQL code in their SQL Editor. Let's start with creating a table.
+
+### Creating Tables
+
+In `Data` tab, click on the `Create Table` button and you'll be taken to table creation form. We'll be taking an example of expenses management app for our demo.
+
+![Table Creation Form](../images/blog/create-sql-table.png 'Table Creation Form')
+
+Let's add `expenses` as our table name and we'll be creating following fields.
+
+-  id: Of type `UUID` and set to `unique` with default value set to `gen_random_uuid()`.
+-  title: Of type `Text`.
+-  category: Of type `Text` as well.
+-  date: Of type `timestamp without time zone`
+-  amount: Of type `double precision`
+-  payment_method: Of type `Text` and set to nullable.
+
+Your form should look like this now.
+
+![Filled table form](../images/blog/filled-table-form.png 'Filled table form')
+
+Now hit `Add Table` button in the bottom of the form to add the table. Now if you go to the `GraphiQL` tab you'll see that Hasura has generated queries for you which you can start exploring.
+
+![Playground](../images/blog/graphiql-query-example.png 'Playground')
+
+Hasura generates following queries, mutations and subscriptions for you.
+
+-  Queries
+   -  expenses
+   -  expenses_by_pk
+   -  expenses_aggregate
+-  Mutations
+   -  insert_expenses
+   -  delete_expenses
+   -  update_expenses
+-  Subscriptions
+   -  expenses
+   -  expenses_by_pk
+   -  expenses_aggregate
+
+Here `expenses_by_pk` is for fetching expense by the primary key. The name of the queries are also generated based on table name, which can be changed from:
+
+> Data > Select Table > Modify > Custom GraphQL Root Fields.
+
+![Custom Root Fields](../images/blog/custom-root-fields.png 'Custom Root Fields')
+
+After modifying, just save the changes and Hasura will update the query names for you.
+
+### Writing Queries
+
+Hasura GraphQL engine auto-generates queries as part of the GraphQL schema from your Postgres schema model. It generates a range of possible queries and operators that also work with relationships defined in your SQL schema.
+
+```graphql
+query MyQuery {
+   expenses {
+      id
+      date
+      title
+      amount
+      category
+      payment_method
+   }
+}
+```
+
+You can add fields to your query as you would do with GraphQL. What Hasura gives you extra is different types of clauses to make your life easier and get built in filtering, sorting, searching functionality right away.
+
+-  `distinct_on`: Use when you need to fetch an object with unique value that no other object shares.
+-  `limit`: Used to limit the number of rows/objects you get in response.
+-  `offset`: Best used with limit to do pagination.
+-  `order_by`: Use to order query response in a sequence. Multiple fields can be used along with `asc` or `desc` sequence.
+-  `where`: Use when needed to find an rows/objects based on a comparison done of different fields. Hasura is smart enough to show the appropriate filters according to the type of the field.
+
+### Writing Mutations
+
+For each table you get three mutations:
+
+-  create
+-  update
+-  delete
+
+Each mutations gives you access to batch operations. So to add a single row/object, you can use following mutation.
+
+```graphql
+mutation MyMutation {
+   create_expenses(
+      objects: {
+         date: ""
+         title: ""
+         amount: ""
+         category: ""
+         payment_method: ""
+      }
+   ) {
+      returning {
+         id
+         date
+         title
+         amount
+         category
+         payment_method
+      }
+   }
+}
+```
+
+To add multiple rows/objects at once, just pass an array of objects instead of just one object.
+
+```graphql
+mutation MyMutation {
+   create_expenses(
+      objects: [
+         {
+            amount: "487"
+            title: "Groceries"
+            payment_method: "Card"
+            category: "Food & Drinks"
+            date: "2017-11-17T18:30:00"
+         }
+         {
+            amount: "5400"
+            title: "Table"
+            payment_method: "Card"
+            category: "Furniture"
+            date: "2017-11-16T18:30:00"
+         }
+      ]
+   ) {
+      returning {
+         id
+         date
+         title
+         amount
+         category
+         payment_method
+      }
+   }
+}
+```
+
+### Writing Subscriptions
+
+Subscriptions are identical to queries in a way they're written, except for the keyword `query`, use `subscription`.
+
+```graphql
+subscription MyQuery {
+   expenses {
+      id
+      date
+      title
+      amount
+      category
+      payment_method
+   }
+}
+```
+
+## Conclusion
+
+I've been using Hasura at work for couple of weeks now. Hasura helped us to build a feature rich apps with little to no backend codebase. Hence decided to share what I've learned in past weeks. I also built an expenses app during last week which can be found on my [Github](https://github.com/prvnbist/expenses 'Expenses App').
+
+I will be writing more articles on integrating Hasura with our front-end, so stay tuned. You can follow me on my [Twitter](https://twitter.com/prvnbist 'Twitter') or my [Instagram](https://instagram.com/prvnbist 'Instagram') to stay updated with the progress.
