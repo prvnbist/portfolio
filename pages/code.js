@@ -11,7 +11,7 @@ const Code = () => {
          title: 'Expenses App',
          description: 'A self-hosted app to manage your expenses/earnings.',
          code: 'https://github.com/prvnbist/expenses',
-         thumb: '/images/design/expenses.jpg',
+         thumb: '/images/code/expenses.png',
       },
       {
          title: 'Transcode',
@@ -134,6 +134,7 @@ export const Project = styled.li(
       background: ${colors.dark['300']};
       header {
          div {
+            overflow: hidden;
             position: relative;
             padding-top: 56.25%;
             img {

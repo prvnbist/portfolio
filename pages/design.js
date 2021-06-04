@@ -16,20 +16,6 @@ const Design = () => {
          thumb: '/images/design/quick-polls.png',
       },
       {
-         title: 'Expense App',
-         description:
-            'Create and manage your expenses with statistics and visualizations to help you in savings.',
-         url: 'https://www.figma.com/file/MXXyWDlL6IGqzXQvZphEipoB/Expense-App?node-id=0%3A1',
-         thumb: '/images/design/expenses.jpg',
-      },
-      {
-         title: 'Property App',
-         description:
-            'A platform of people looking for renting, buying or selling a place. Curates all available homes in a public feed for people to swift through.',
-         url: 'https://www.figma.com/file/V9kIPeesyo8PvF8vmWhkogAX/Property-app?node-id=0%3A1',
-         thumb: '/images/design/property.png',
-      },
-      {
          title: 'Octane HRMS',
          description:
             'Octane is a comprehensive HR solution based on SAP B1 and powered by Embee. Octane is an HR tool that will enable you to manage your workforce with much more ease and flexibility.',
@@ -42,6 +28,13 @@ const Design = () => {
             'SamayLa is a web-based work management and communication system that helps users be more organized and productive. It enables teams and individuals to manage their tasks in a logical structure.',
          url: 'https://www.figma.com/file/CLwADoW5YMHU184wrLIWWXbI/App-Design?node-id=0%3A1',
          thumb: '/images/design/samayla.png',
+      },
+      {
+         title: 'Property App',
+         description:
+            'A platform of people looking for renting, buying or selling a place. Curates all available homes in a public feed for people to swift through.',
+         url: 'https://www.figma.com/file/V9kIPeesyo8PvF8vmWhkogAX/Property-app?node-id=0%3A1',
+         thumb: '/images/design/property.png',
       },
    ])
    return (
