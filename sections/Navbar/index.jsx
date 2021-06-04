@@ -10,7 +10,6 @@ const Navbar = () => {
    const [links] = React.useState([
       { title: 'Design', url: '/design' },
       { title: 'Code', url: '/code' },
-      { title: 'Blog', url: '/blog' },
    ])
    return (
       <StyledNavbar>
@@ -33,6 +32,15 @@ const Navbar = () => {
                      </Link>
                   </StyledNavItem>
                ))}
+               <StyledNavItem>
+                  <a
+                     target="_blank"
+                     rel="noreferrer noopener"
+                     href="https://dev.to/prvnbist"
+                  >
+                     Blog
+                  </a>
+               </StyledNavItem>
             </ul>
          </div>
       </StyledNavbar>
