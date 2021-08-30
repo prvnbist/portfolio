@@ -2,41 +2,12 @@ import React from 'react'
 import tw from 'twin.macro'
 import styled, { css } from 'styled-components'
 
+import client from '../libs/graphql'
 import Layout from '../sections/Layout'
 
 import { TextButton } from '../components'
 
-const Design = () => {
-   const [projects] = React.useState([
-      {
-         title: 'Quick Polls',
-         description:
-            'A voting application where people can create polls that other people can vote on and share their opinions.',
-         url: 'https://www.figma.com/file/LnRJhWb4uot90YYgVWqQxYCz/Quick-Polls?node-id=0%3A1',
-         thumb: '/images/design/quick-polls.png',
-      },
-      {
-         title: 'Octane HRMS',
-         description:
-            'Octane is a comprehensive HR solution based on SAP B1 and powered by Embee. Octane is an HR tool that will enable you to manage your workforce with much more ease and flexibility.',
-         url: 'https://www.figma.com/file/NQA1eGIPdhSztZ9kzQLKZifd/Octane',
-         thumb: '/images/design/octane.png',
-      },
-      {
-         title: 'Samayla',
-         description:
-            'SamayLa is a web-based work management and communication system that helps users be more organized and productive. It enables teams and individuals to manage their tasks in a logical structure.',
-         url: 'https://www.figma.com/file/CLwADoW5YMHU184wrLIWWXbI/App-Design?node-id=0%3A1',
-         thumb: '/images/design/samayla.png',
-      },
-      {
-         title: 'Property App',
-         description:
-            'A platform of people looking for renting, buying or selling a place. Curates all available homes in a public feed for people to swift through.',
-         url: 'https://www.figma.com/file/V9kIPeesyo8PvF8vmWhkogAX/Property-app?node-id=0%3A1',
-         thumb: '/images/design/property.png',
-      },
-   ])
+const Design = ({designs = []}) => {
    return (
       <Layout
          meta={{
@@ -50,23 +21,23 @@ const Design = () => {
       >
          <h1 tw="text-3xl my-6 px-2">Designs</h1>
          <Projects>
-            {projects.map(project => (
-               <Project key={project.url}>
+            {designs.map(design => (
+               <Project key={design.url}>
                   <header>
                      <div>
-                        <img src={project.thumb} alt={project.title} />
+                        <img src={design.thumbnail.url} alt={design.title} />
                      </div>
-                     <h3>{project.title}</h3>
+                     <h3>{design.title}</h3>
                   </header>
                   <main>
-                     <p>{project.description}</p>
+                     <p>{design.description}</p>
                   </main>
                   <footer>
                      <a
-                        href={project.url}
+                        href={design.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        title={project.title}
+                        title={design.title}
                      >
                         <TextButton type="outline" typeColor="blue.400">
                            View Project
@@ -81,6 +52,28 @@ const Design = () => {
 }
 
 export default Design
+
+export const getStaticProps = async () => {
+   const {designs = []} = await client.request(DESIGNS)
+   return {
+      props: {designs},
+   }
+}
+
+const DESIGNS = `
+   query designs {
+      designs(orderBy: priority_ASC) {
+         id
+         url
+         title
+         thumbnail {
+            id
+            url
+         }
+         description
+      }
+   }
+ `
 
 export const PageHeading = styled.h1(
    ({ theme: { size } }) => css`

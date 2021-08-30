@@ -2,47 +2,12 @@ import React from 'react'
 import tw from 'twin.macro'
 import styled, { css } from 'styled-components'
 
+import client from '../libs/graphql'
 import Layout from '../sections/Layout'
 import { TextButton } from '../components'
 
-const Code = () => {
-   const [projects] = React.useState([
-      {
-         title: 'Expenses App',
-         description: 'A self-hosted app to manage your expenses/earnings.',
-         code: 'https://github.com/prvnbist/expenses',
-         thumb: '/images/code/expenses.png',
-      },
-      {
-         title: 'Transcode',
-         description:
-            'A platform hosting collection of tools for textual transformation.',
-         demo: 'https://transcode.prvnbist.com/',
-         code: 'https://github.com/prvnbist/transcode',
-         thumb: '/images/code/transcode.png',
-      },
-      {
-         title: 'Snippify',
-         description:
-            'A snippet management app built with monaco text editor and supports over 30 languages with syntax highlighting.',
-         code: 'https://github.com/prvnbist/snippify',
-         thumb: '/images/code/snippify.png',
-      },
-      {
-         title: 'Karya',
-         description:
-            'A simple todo application to manage your tasks and categorize them by using labels.',
-         code: 'https://github.com/prvnbist/karya',
-         thumb: '/images/code/karya.png',
-      },
-      {
-         title: 'Recipe',
-         description: 'A simple recipe for recipe management in one place',
-         code: 'https://codesandbox.io/s/recipe-app-reactredux-z7ngi',
-         demo: 'https://z7ngi.codesandbox.io/',
-         thumb: '/images/code/recipe.png',
-      },
-   ])
+const Code = ({codes = []}) => {
+  
    return (
       <Layout
          meta={{
@@ -56,36 +21,36 @@ const Code = () => {
       >
          <h1 tw="text-3xl my-6 px-2">Code</h1>
          <Projects>
-            {projects.map(project => (
-               <Project key={project.url}>
+            {codes.map(code => (
+               <Project key={code.url}>
                   <header>
-                     <div>
-                        <img src={project.thumb} alt={project.title} />
-                     </div>
-                     <h3>{project.title}</h3>
+                     {code.thumbnail?.url && <div>
+                        <img src={code.thumbnail.url} alt={code.title} />
+                     </div>}
+                     <h3>{code.title}</h3>
                   </header>
                   <main>
-                     <p>{project.description}</p>
+                     <p>{code.description}</p>
                   </main>
                   <footer>
-                     {project.code && (
+                     {code.code_url && (
                         <a
-                           href={project.code}
+                           href={code.code_url}
                            target="_blank"
                            rel="noopener noreferrer"
-                           title={project.title}
+                           title={code.title}
                         >
                            <TextButton type="solid" typeColor="blue.400">
                               Code
                            </TextButton>
                         </a>
                      )}
-                     {project.demo && (
+                     {code.demo_url && (
                         <a
-                           href={project.demo}
+                           href={code.demo_url}
                            target="_blank"
                            rel="noopener noreferrer"
-                           title={project.title}
+                           title={code.title}
                         >
                            <TextButton type="outline" typeColor="dark.200">
                               Demo
@@ -101,6 +66,29 @@ const Code = () => {
 }
 
 export default Code
+
+export const getStaticProps = async () => {
+   const {codes = []} = await client.request(CODES)
+   return {
+      props: {codes},
+   }
+}
+
+const CODES = `
+   query codes {
+      codes(orderBy: priority_ASC) {
+         id
+         title
+         code_url
+         demo_url
+         thumbnail {
+            id
+            url
+         }
+         description
+      }
+   } 
+ `
 
 export const PageHeading = styled.h1(
    ({ theme: { size } }) => css`
