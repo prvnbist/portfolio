@@ -1,12 +1,11 @@
 import React from 'react'
-import tw from 'twin.macro'
-import styled, { css } from 'styled-components'
+import tw, { styled, css } from 'twin.macro'
 
 import client from '../libs/graphql'
 import Layout from '../sections/Layout'
 import { ComboButton } from '../components'
 
-const Home = ({ timelines = [] }) => {
+const Home = ({ skills = {}, timelines = [] }) => {
    const [socials] = React.useState([
       {
          title: '🖼️ Instagram',
@@ -18,6 +17,7 @@ const Home = ({ timelines = [] }) => {
       { title: '🎨 Dribbble', url: 'https://www.dribbble.com/prvnbist' },
       { title: '👨‍💻 Codepen', url: 'https://www.codepen.io/prvnbist' },
    ])
+
    return (
       <Layout
          meta={{
@@ -60,9 +60,9 @@ const Home = ({ timelines = [] }) => {
                      <FileIcon tw="stroke-current" /> Download Resume
                   </ComboButton>
                </a>
-               <StyledSkills>
+               <StyledSocials>
                   {socials.map(social => (
-                     <StyledSkill key={social.url}>
+                     <StyledSocial key={social.url}>
                         <a
                            href={social.url}
                            target="_blank"
@@ -72,11 +72,44 @@ const Home = ({ timelines = [] }) => {
                         >
                            {social.title}
                         </a>
-                     </StyledSkill>
+                     </StyledSocial>
                   ))}
-               </StyledSkills>
+               </StyledSocials>
             </div>
          </Header>
+         <section tw="w-full px-4 mx-auto lg:w-[980px]">
+            <section tw="mt-16">
+               <h2 tw="text-3xl mb-4">Skills</h2>
+               <ul tw="grid md:grid-cols-2">
+                  {Object.keys(skills).map((key, index) => (
+                     <section
+                        css={[
+                           index === 0 &&
+                              tw`md:(col-span-2 border-b border-gray-700)`,
+                           index !== 0 &&
+                              index % 2 !== 0 &&
+                              tw`md:(pt-3 border-r border-gray-700)`,
+                           index !== 0 && index % 2 === 0 && tw`md:p-3`,
+                        ]}
+                     >
+                        <h3 tw="mb-1 text-gray-500 uppercase font-medium tracking-wider">
+                           {key}
+                        </h3>
+                        {Object.keys(skills[key]).map(sub_key => (
+                           <>
+                              <h4 tw="mb-1 text-yellow-300">{sub_key}</h4>
+                              <ul tw="mb-4 flex flex-wrap gap-3">
+                                 {skills[key][sub_key].map(node => (
+                                    <Skill key={node.id} skill={node} />
+                                 ))}
+                              </ul>
+                           </>
+                        ))}
+                     </section>
+                  ))}
+               </ul>
+            </section>
+         </section>
          <section tw="w-full px-4 mx-auto lg:w-[980px]">
             <section tw="mt-16">
                <h2 tw="text-3xl mb-4">Timeline</h2>
@@ -95,10 +128,59 @@ export default Home
 
 export const getStaticProps = async () => {
    const { timelines = [] } = await client.request(TIMELINES)
+   const { skills: _skills = [] } = await client.request(SKILLS)
+
+   let skills = {}
+
+   _skills.forEach(node => {
+      let { id, title, category, sub_category } = node
+
+      category = category.match(/[A-Z][a-z]+/g).join(' ')
+      sub_category = sub_category
+         ? sub_category.match(/[A-Z][a-z]+/g).join(' ')
+         : 'Others'
+
+      if (!(category in skills)) {
+         skills = {
+            ...skills,
+            [category]: {},
+         }
+      }
+
+      if (!(sub_category in skills[category])) {
+         skills[category] = {
+            ...skills[category],
+            [sub_category]: [],
+         }
+      }
+
+      skills[category] = {
+         ...skills[category],
+         [sub_category]: [
+            ...skills[category][sub_category],
+            {
+               id,
+               title,
+            },
+         ],
+      }
+   })
+
    return {
-      props: { timelines },
+      props: { timelines, skills },
    }
 }
+
+const SKILLS = `
+   query skills {
+      skills {
+         id
+         title
+         category
+         sub_category
+      }
+   }
+`
 
 const TIMELINES = `
    query timelines {
@@ -187,7 +269,7 @@ const Header = styled.header`
    }
 `
 
-export const StyledName = styled.h2(
+const StyledName = styled.h2(
    ({ theme: { size } }) => css`
       font-weight: 400;
       font-size: ${size.xl};
@@ -198,7 +280,7 @@ export const StyledName = styled.h2(
    `
 )
 
-export const StyledHeading = styled.h1(
+const StyledHeading = styled.h1(
    ({ theme: { size } }) => css`
       color: #fff;
       font-size: 96px;
@@ -213,7 +295,7 @@ export const StyledHeading = styled.h1(
    `
 )
 
-export const StyledPara = styled.p`
+const StyledPara = styled.p`
    color: #fff;
    font-size: 20px;
    line-height: 30px;
@@ -226,7 +308,7 @@ export const StyledPara = styled.p`
    }
 `
 
-export const StyledSkills = styled.ul(
+const StyledSocials = styled.ul(
    ({ theme: { size } }) => css`
       width: 100%;
       display: grid;
@@ -240,7 +322,7 @@ export const StyledSkills = styled.ul(
    `
 )
 
-export const StyledSkill = styled.li(
+const StyledSocial = styled.li(
    ({ theme: { size } }) => css`
       display: flex;
       color: #636e84;
@@ -253,6 +335,14 @@ export const StyledSkill = styled.li(
       }
    `
 )
+
+const Skill = ({ skill }) => {
+   return (
+      <li tw="flex-shrink-0 items-start px-3 py-1 border border-gray-800 rounded">
+         {skill.title}
+      </li>
+   )
+}
 
 const LinkIcon = ({ size = 18, ...props }) => (
    <svg
