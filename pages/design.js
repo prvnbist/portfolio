@@ -19,34 +19,36 @@ const Design = ({ designs = [] }) => {
             url: '/design',
          }}
       >
-         <h1 tw="text-3xl my-6 px-2">Designs</h1>
-         <Projects>
-            {designs.map(design => (
-               <Project key={design.url}>
-                  <header>
-                     <div>
-                        <img src={design.thumbnail.url} alt={design.title} />
-                     </div>
-                     <h3>{design.title}</h3>
-                  </header>
-                  <main>
-                     <p>{design.description}</p>
-                  </main>
-                  <footer>
-                     <a
-                        href={design.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        title={design.title}
-                     >
-                        <TextButton type="outline" typeColor="blue.400">
-                           View Project
-                        </TextButton>
-                     </a>
-                  </footer>
-               </Project>
-            ))}
-         </Projects>
+         <section tw="w-full px-4 mx-auto lg:w-[980px]">
+            <h1 tw="text-3xl my-6 px-2">Designs</h1>
+            <Projects>
+               {designs.map(design => (
+                  <Project key={design.url}>
+                     <header>
+                        <div>
+                           <img src={design.thumbnail.url} alt={design.title} />
+                        </div>
+                        <h3>{design.title}</h3>
+                     </header>
+                     <main>
+                        <p>{design.description}</p>
+                     </main>
+                     <footer>
+                        <a
+                           href={design.url}
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           title={design.title}
+                        >
+                           <TextButton type="outline" typeColor="blue.400">
+                              View Project
+                           </TextButton>
+                        </a>
+                     </footer>
+                  </Project>
+               ))}
+            </Projects>
+         </section>
       </Layout>
    )
 }

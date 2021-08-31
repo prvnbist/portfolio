@@ -3,7 +3,6 @@ import Head from 'next/head'
 import { ThemeProvider } from 'styled-components'
 
 import Navbar from '../Navbar'
-import { StyledWrapper } from './styles'
 
 const theme = {
    fonts: {
@@ -64,9 +63,7 @@ const Layout = ({ children, meta }) => {
             <meta name="twitter:creator" content="@prvnbist" />
          </Head>
          <Navbar />
-         <StyledWrapper>
-            <div>{children}</div>
-         </StyledWrapper>
+         <div>{children}</div>
       </ThemeProvider>
    )
 }

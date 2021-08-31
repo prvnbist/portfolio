@@ -27,43 +27,49 @@ const Home = ({ timelines = [] }) => {
                'front end, back end, design, html, pug, css, scss, javascript, nodejs, reactjs, graphql, expressjs, mongoose, mongodb, gatsby, figma, design, user interface, user experience',
          }}
       >
-         <StyledWrapper>
-            <StyledName>Praveen Bisht</StyledName>
-            <StyledHeading>
-               I design
-               <span role="img" aria-label="paint board">
-                  🎨
-               </span>
-               & code
-               <span role="img" aria-label="computer">
-                  👨‍💻
-               </span>
-            </StyledHeading>
-            <StyledPara>
-               Hey
-               <span role="img" aria-label="waving hand">
-                  👋🏼
-               </span>
-               , I’m a <span>software engineer</span> based in New Delhi who
-               enjoys building products from <span>idea to implementation</span>
-               . Currently looking for a <span>front end engineer</span> role to
-               build intuitive interfaces.
-            </StyledPara>
-            <StyledSkills>
-               {socials.map(social => (
-                  <StyledSkill key={social.url}>
-                     <a
-                        href={social.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        title={social.title}
-                     >
-                        {social.title}
-                     </a>
-                  </StyledSkill>
-               ))}
-            </StyledSkills>
-            <section tw="mt-32">
+         <Header>
+            <div>
+               <StyledName>Praveen Bisht</StyledName>
+               <StyledHeading>
+                  I design
+                  <span role="img" aria-label="paint board">
+                     🎨
+                  </span>
+                  & code
+                  <span role="img" aria-label="computer">
+                     👨‍💻
+                  </span>
+               </StyledHeading>
+               <StyledPara>
+                  Hey
+                  <span role="img" aria-label="waving hand">
+                     👋🏼
+                  </span>
+                  , I’m a <span>software engineer</span> based in New Delhi who
+                  enjoys building products from{' '}
+                  <span>idea to implementation</span>. Currently looking for a{' '}
+                  <span>front end engineer</span> role to build intuitive
+                  interfaces.
+               </StyledPara>
+               <StyledSkills>
+                  {socials.map(social => (
+                     <StyledSkill key={social.url}>
+                        <a
+                           href={social.url}
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           title={social.title}
+                           tw="text-indigo-400"
+                        >
+                           {social.title}
+                        </a>
+                     </StyledSkill>
+                  ))}
+               </StyledSkills>
+            </div>
+         </Header>
+         <section tw="w-full px-4 mx-auto lg:w-[980px]">
+            <section tw="mt-16">
                <h2 tw="text-3xl mb-4">Timeline</h2>
                <ul tw="space-y-10">
                   {timelines.map(timeline => (
@@ -71,7 +77,7 @@ const Home = ({ timelines = [] }) => {
                   ))}
                </ul>
             </section>
-         </StyledWrapper>
+         </section>
       </Layout>
    )
 }
@@ -148,14 +154,35 @@ const TimelineItem = ({ timeline }) => {
    )
 }
 
-export const StyledWrapper = styled.div`
-   padding-top: 120px;
+const Header = styled.header`
+   height: 600px;
+   background-image: url('/images/me.png');
+   ${tw`relative flex items-center bg-center bg-no-repeat bg-cover`}
+   &:after {
+      z-index: 1;
+      content: '';
+      background: rgba(25, 25, 28, 0.9);
+      background: linear-gradient(
+         to bottom,
+         rgba(25, 25, 28, 0.8) 0%,
+         rgba(25, 25, 28, 1) 100%
+      );
+      ${tw`w-full h-full absolute top-0 left-0`}
+   }
+   > div {
+      z-index: 2;
+      margin: 0 auto;
+      max-width: 980px;
+      position: relative;
+      width: calc(100vw - 32px);
+   }
 `
 
 export const StyledName = styled.h2(
    ({ theme: { size } }) => css`
       font-weight: 400;
       font-size: ${size.xl};
+      ${tw`text-yellow-300`}
       @media (max-width: 567px) {
          font-size: ${size.md};
       }
@@ -164,7 +191,7 @@ export const StyledName = styled.h2(
 
 export const StyledHeading = styled.h1(
    ({ theme: { size } }) => css`
-      color: #636e84;
+      color: #fff;
       font-size: 96px;
       font-weight: 500;
       margin-bottom: ${size.md};
@@ -178,11 +205,11 @@ export const StyledHeading = styled.h1(
 )
 
 export const StyledPara = styled.p`
-   color: #636e84;
+   color: #fff;
    font-size: 20px;
    line-height: 30px;
    span {
-      color: #fff;
+      ${tw`text-yellow-300`}
    }
    @media (max-width: 567px) {
       font-size: 18px;

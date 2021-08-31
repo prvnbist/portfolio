@@ -18,50 +18,52 @@ const Code = ({ codes = [] }) => {
             url: '/code',
          }}
       >
-         <h1 tw="text-3xl my-6 px-2">Code</h1>
-         <Projects>
-            {codes.map(code => (
-               <Project key={code.url}>
-                  <header>
-                     {code.thumbnail?.url && (
-                        <div>
-                           <img src={code.thumbnail.url} alt={code.title} />
-                        </div>
-                     )}
-                     <h3>{code.title}</h3>
-                  </header>
-                  <main>
-                     <p>{code.description}</p>
-                  </main>
-                  <footer>
-                     {code.code_url && (
-                        <a
-                           href={code.code_url}
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           title={code.title}
-                        >
-                           <TextButton type="solid" typeColor="blue.400">
-                              Code
-                           </TextButton>
-                        </a>
-                     )}
-                     {code.demo_url && (
-                        <a
-                           href={code.demo_url}
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           title={code.title}
-                        >
-                           <TextButton type="outline" typeColor="dark.200">
-                              Demo
-                           </TextButton>
-                        </a>
-                     )}
-                  </footer>
-               </Project>
-            ))}
-         </Projects>
+         <section tw="w-full px-4 mx-auto lg:w-[980px]">
+            <h1 tw="text-3xl my-6 px-2">Code</h1>
+            <Projects>
+               {codes.map(code => (
+                  <Project key={code.url}>
+                     <header>
+                        {code.thumbnail?.url && (
+                           <div>
+                              <img src={code.thumbnail.url} alt={code.title} />
+                           </div>
+                        )}
+                        <h3>{code.title}</h3>
+                     </header>
+                     <main>
+                        <p>{code.description}</p>
+                     </main>
+                     <footer>
+                        {code.code_url && (
+                           <a
+                              href={code.code_url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              title={code.title}
+                           >
+                              <TextButton type="solid" typeColor="blue.400">
+                                 Code
+                              </TextButton>
+                           </a>
+                        )}
+                        {code.demo_url && (
+                           <a
+                              href={code.demo_url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              title={code.title}
+                           >
+                              <TextButton type="outline" typeColor="dark.200">
+                                 Demo
+                              </TextButton>
+                           </a>
+                        )}
+                     </footer>
+                  </Project>
+               ))}
+            </Projects>
+         </section>
       </Layout>
    )
 }
