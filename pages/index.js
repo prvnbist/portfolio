@@ -4,6 +4,7 @@ import styled, { css } from 'styled-components'
 
 import client from '../libs/graphql'
 import Layout from '../sections/Layout'
+import { ComboButton } from '../components'
 
 const Home = ({ timelines = [] }) => {
    const [socials] = React.useState([
@@ -51,6 +52,14 @@ const Home = ({ timelines = [] }) => {
                   for a <span>front end engineer</span> role to build intuitive
                   interfaces.
                </StyledPara>
+               <a
+                  href="/docs/Praveen Bisht - Resume.pdf"
+                  download="Praveen Bisht - Resume.pdf"
+               >
+                  <ComboButton type="outline" typeColor="blue.400">
+                     <FileIcon tw="stroke-current" /> Download Resume
+                  </ComboButton>
+               </a>
                <StyledSkills>
                   {socials.map(social => (
                      <StyledSkill key={social.url}>
@@ -208,6 +217,7 @@ export const StyledPara = styled.p`
    color: #fff;
    font-size: 20px;
    line-height: 30px;
+   margin-bottom: 14px;
    span {
       ${tw`text-yellow-300`}
    }
@@ -222,7 +232,7 @@ export const StyledSkills = styled.ul(
       display: grid;
       grid-gap: 4px;
       grid-auto-rows: 32px;
-      margin-top: ${size.sm};
+      margin-top: ${size.lg};
       grid-template-columns: 1fr 1fr 1fr;
       @media (max-width: 567px) {
          grid-template-columns: 1fr 1fr;
@@ -258,5 +268,22 @@ const LinkIcon = ({ size = 18, ...props }) => (
    >
       <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
       <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+   </svg>
+)
+
+const FileIcon = ({ size = 18, ...props }) => (
+   <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...props}
+   >
+      <path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
+      <path d="M14 3v5h5M16 13H8M16 17H8M10 9H8" />
    </svg>
 )
