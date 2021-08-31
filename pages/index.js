@@ -63,7 +63,7 @@ const Home = ({ timelines = [] }) => {
                   </StyledSkill>
                ))}
             </StyledSkills>
-            <section tw="mt-32 mb-16">
+            <section tw="mt-32">
                <h2 tw="text-3xl mb-4">Timeline</h2>
                <ul tw="space-y-10">
                   {timelines.map(timeline => (
