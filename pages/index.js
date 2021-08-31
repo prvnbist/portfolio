@@ -45,10 +45,10 @@ const Home = ({ timelines = [] }) => {
                   <span role="img" aria-label="waving hand">
                      👋🏼
                   </span>
-                  , I’m a <span>software engineer</span> based in New Delhi who
-                  enjoys building products from{' '}
-                  <span>idea to implementation</span>. Currently looking for a{' '}
-                  <span>front end engineer</span> role to build intuitive
+                  , I’m a <span>front end engineer</span> with the background in
+                  full stack based in New Delhi who enjoys building products
+                  from <span>idea to implementation</span>. Currently looking
+                  for a <span>front end engineer</span> role to build intuitive
                   interfaces.
                </StyledPara>
                <StyledSkills>
