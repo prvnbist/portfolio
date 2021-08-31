@@ -7,7 +7,7 @@ import Layout from '../sections/Layout'
 
 import { TextButton } from '../components'
 
-const Design = ({designs = []}) => {
+const Design = ({ designs = [] }) => {
    return (
       <Layout
          meta={{
@@ -54,9 +54,9 @@ const Design = ({designs = []}) => {
 export default Design
 
 export const getStaticProps = async () => {
-   const {designs = []} = await client.request(DESIGNS)
+   const { designs = [] } = await client.request(DESIGNS)
    return {
-      props: {designs},
+      props: { designs },
    }
 }
 
@@ -73,7 +73,7 @@ const DESIGNS = `
          description
       }
    }
- `
+`
 
 export const PageHeading = styled.h1(
    ({ theme: { size } }) => css`

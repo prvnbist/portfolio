@@ -5,7 +5,7 @@ import styled, { css } from 'styled-components'
 import client from '../libs/graphql'
 import Layout from '../sections/Layout'
 
-const Home = ({timelines=[]}) => {
+const Home = ({ timelines = [] }) => {
    const [socials] = React.useState([
       {
          title: '🖼️ Instagram',
@@ -45,8 +45,9 @@ const Home = ({timelines=[]}) => {
                   👋🏼
                </span>
                , I’m a <span>software engineer</span> based in New Delhi who
-               enjoys building products from{' '}
-               <span>idea to implementation</span>. Currently looking for a <span>front end engineer</span> role to build intuitive interfaces.
+               enjoys building products from <span>idea to implementation</span>
+               . Currently looking for a <span>front end engineer</span> role to
+               build intuitive interfaces.
             </StyledPara>
             <StyledSkills>
                {socials.map(social => (
@@ -65,7 +66,9 @@ const Home = ({timelines=[]}) => {
             <section tw="mt-32 mb-16">
                <h2 tw="text-3xl mb-4">Timeline</h2>
                <ul tw="space-y-10">
-                  {timelines.map(timeline => <TimelineItem key={timeline.id} timeline={timeline}/>)}
+                  {timelines.map(timeline => (
+                     <TimelineItem key={timeline.id} timeline={timeline} />
+                  ))}
                </ul>
             </section>
          </StyledWrapper>
@@ -76,9 +79,9 @@ const Home = ({timelines=[]}) => {
 export default Home
 
 export const getStaticProps = async () => {
-   const {timelines = []} = await client.request(TIMELINES)
+   const { timelines = [] } = await client.request(TIMELINES)
    return {
-      props: {timelines},
+      props: { timelines },
    }
 }
 
@@ -95,27 +98,54 @@ const TIMELINES = `
          description
       }
    }
- `
+`
 
-const TimelineItem = ({timeline}) => {
-   return <li>
-      {timeline.location && <span tw="text-gray-500 font-medium text-sm uppercase">{timeline.location}</span>}
-      <header tw="mb-2 md:flex md:justify-between">
-         <h3 tw="text-lg flex">{timeline.title}
-            {timeline.url && <a href={timeline.url} rel="noreferrer noopener" target="_blank" tw="ml-1 h-8 w-8 flex items-center justify-center rounded hover:bg-gray-800">
-               <LinkIcon size="16" tw="stroke-current"/>
-            </a>}
-         </h3>
-         {timeline.from && <section tw="mt-1 md:mt-0 text-yellow-400">
-               <span>{new Intl.DateTimeFormat('en-US', {year: 'numeric', month: "short"}).format(new Date(timeline.from))}</span>
-               {timeline.to && ` - `}
-               {timeline.to && <span>{new Intl.DateTimeFormat('en-US', {year: 'numeric', month: "short"}).format(new Date(timeline.to))}</span>}
-               {timeline.is_current && <span> - Present</span>}
-            </section>
-         }
-      </header>
-      <p tw="mb-4 text-[18px] text-gray-500">{timeline.description}</p>
-   </li>
+const TimelineItem = ({ timeline }) => {
+   return (
+      <li>
+         {timeline.location && (
+            <span tw="text-gray-500 font-medium text-sm uppercase">
+               {timeline.location}
+            </span>
+         )}
+         <header tw="mb-2 md:flex md:justify-between">
+            <h3 tw="text-lg flex">
+               {timeline.title}
+               {timeline.url && (
+                  <a
+                     href={timeline.url}
+                     rel="noreferrer noopener"
+                     target="_blank"
+                     tw="ml-1 h-8 w-8 flex items-center justify-center rounded hover:bg-gray-800"
+                  >
+                     <LinkIcon size="16" tw="stroke-current" />
+                  </a>
+               )}
+            </h3>
+            {timeline.from && (
+               <section tw="mt-1 md:mt-0 text-yellow-400">
+                  <span>
+                     {new Intl.DateTimeFormat('en-US', {
+                        year: 'numeric',
+                        month: 'short',
+                     }).format(new Date(timeline.from))}
+                  </span>
+                  {timeline.to && ` - `}
+                  {timeline.to && (
+                     <span>
+                        {new Intl.DateTimeFormat('en-US', {
+                           year: 'numeric',
+                           month: 'short',
+                        }).format(new Date(timeline.to))}
+                     </span>
+                  )}
+                  {timeline.is_current && <span> - Present</span>}
+               </section>
+            )}
+         </header>
+         <p tw="mb-4 text-[18px] text-gray-500">{timeline.description}</p>
+      </li>
+   )
 }
 
 export const StyledWrapper = styled.div`
@@ -187,4 +217,19 @@ export const StyledSkill = styled.li(
    `
 )
 
-const LinkIcon = ({size=18, ...props}) => (<svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>)
+const LinkIcon = ({ size = 18, ...props }) => (
+   <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...props}
+   >
+      <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+      <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+   </svg>
+)

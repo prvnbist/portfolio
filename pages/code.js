@@ -6,8 +6,7 @@ import client from '../libs/graphql'
 import Layout from '../sections/Layout'
 import { TextButton } from '../components'
 
-const Code = ({codes = []}) => {
-  
+const Code = ({ codes = [] }) => {
    return (
       <Layout
          meta={{
@@ -24,9 +23,11 @@ const Code = ({codes = []}) => {
             {codes.map(code => (
                <Project key={code.url}>
                   <header>
-                     {code.thumbnail?.url && <div>
-                        <img src={code.thumbnail.url} alt={code.title} />
-                     </div>}
+                     {code.thumbnail?.url && (
+                        <div>
+                           <img src={code.thumbnail.url} alt={code.title} />
+                        </div>
+                     )}
                      <h3>{code.title}</h3>
                   </header>
                   <main>
@@ -68,9 +69,9 @@ const Code = ({codes = []}) => {
 export default Code
 
 export const getStaticProps = async () => {
-   const {codes = []} = await client.request(CODES)
+   const { codes = [] } = await client.request(CODES)
    return {
-      props: {codes},
+      props: { codes },
    }
 }
 
@@ -87,8 +88,8 @@ const CODES = `
          }
          description
       }
-   } 
- `
+   }
+`
 
 export const PageHeading = styled.h1(
    ({ theme: { size } }) => css`
