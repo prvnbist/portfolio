@@ -1,11 +1,9 @@
 require('dotenv').config()
 
 module.exports = {
-   webpack5: false,
-   webpack: (config, { isServer }) => {
-      if (!isServer) {
-         config.node = { fs: 'empty', module: 'empty' }
-      }
+   webpack5: true,
+   webpack: config => {
+      config.resolve.fallback = { fs: false, module: false }
 
       return config
    },
