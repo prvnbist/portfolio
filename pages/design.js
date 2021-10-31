@@ -1,5 +1,6 @@
 import React from 'react'
 import tw from 'twin.macro'
+import Head from 'next/head'
 import styled, { css } from 'styled-components'
 
 import client from '../libs/graphql'
@@ -7,23 +8,42 @@ import Layout from '../sections/Layout'
 
 import { TextButton } from '../components'
 
+const seo = {
+   thumb: '/images/thumbs/design.jpg',
+   url: 'https://www.prvnbist.com/design',
+   title: 'Design | Praveen Bisht | Frontend Engineer',
+   description:
+      "Here's a list of all the projects I've designed over the years ranging from huge platforms to various tools.",
+   keywords:
+      'front end, back end, design, html, pug, css, scss, javascript, nodejs, reactjs, graphql, expressjs, mongoose, mongodb, gatsby, figma, design, user interface, user experience',
+}
+
 const Design = ({ designs = [] }) => {
    return (
-      <Layout
-         meta={{
-            title: 'Design | Praveen Bisht | Software Engineer',
-            description:
-               "Hey👋🏼, I’m Praveen, a software engineer based in New Delhi who enjoys building apps from idea to implementation. I've experience with both design & development(front-end & back-end).",
-            keywords:
-               'accessibility, photoshop, typography, web, ux, ui, illustrator, after effects, aesthetics, animation, figma, design, user interface, user experience',
-            url: '/design',
-         }}
-      >
+      <Layout>
+         <Head>
+            <title>{seo.title}</title>
+            <meta name="title" content={seo.title} />
+            <meta name="keywords" content={seo.keywords} />
+            <meta name="description" content={seo.description} />
+
+            <meta property="og:type" content="website" />
+            <meta property="og:url" content={seo.url} />
+            <meta property="og:title" content={seo.title} />
+            <meta property="og:description" content={seo.description} />
+            <meta property="og:image" content={seo.thumb} />
+
+            <meta property="twitter:card" content="summary_large_image" />
+            <meta property="twitter:url" content={seo.url} />
+            <meta property="twitter:title" content={seo.title} />
+            <meta property="twitter:description" content={seo.description} />
+            <meta property="twitter:image" content={seo.thumb} />
+         </Head>
          <section tw="w-full px-4 mx-auto lg:w-[980px]">
             <h1 tw="text-3xl my-6 px-2">Designs</h1>
             <Projects>
                {designs.map(design => (
-                  <Project key={design.url}>
+                  <Project key={design.id}>
                      <header>
                         <div>
                            <img src={design.thumbnail.url} alt={design.title} />

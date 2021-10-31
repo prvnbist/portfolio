@@ -36,7 +36,7 @@ const Navbar = () => {
                   <a
                      target="_blank"
                      rel="noreferrer noopener"
-                     href="https://blog.prvnbist.com"
+                     href="https://dev.to/prvnbist"
                   >
                      Blog
                   </a>

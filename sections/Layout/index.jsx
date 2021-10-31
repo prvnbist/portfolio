@@ -1,5 +1,4 @@
 import React from 'react'
-import Head from 'next/head'
 import { ThemeProvider } from 'styled-components'
 
 import Navbar from '../Navbar'
@@ -34,34 +33,6 @@ const theme = {
 const Layout = ({ children, meta }) => {
    return (
       <ThemeProvider theme={theme}>
-         <Head>
-            <title>{meta.title}</title>
-            <meta name="robots" content="index, follow" />
-            <meta name="description" content={meta.description} />
-            <meta name="keywords" content={meta.keywords} />
-            <meta name="author" content={meta.author} />
-            {/* Open Graph */}
-            <meta property="og:title" content={meta.title} />
-            <meta property="og:description" content={meta.description} />
-            <meta
-               property="og:url"
-               content={
-                  meta.url
-                     ? `https://www.prvnbist.com${meta.url}`
-                     : 'https://www.prvnbist.com'
-               }
-            />
-            <meta
-               property="og:image"
-               content={
-                  meta.image ? `https://www.prvnbist.com${meta.image}` : ''
-               }
-            />
-            {/* Twitter tags */}
-            <meta name="twitter:card" content="summary_large_image" />
-            <meta name="twitter:site" content="@prvnbist" />
-            <meta name="twitter:creator" content="@prvnbist" />
-         </Head>
          <Navbar />
          <div>{children}</div>
       </ThemeProvider>

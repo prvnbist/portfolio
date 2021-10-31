@@ -1,9 +1,20 @@
 import React from 'react'
+import Head from 'next/head'
 import tw, { styled, css } from 'twin.macro'
 
 import client from '../libs/graphql'
 import Layout from '../sections/Layout'
 import { ComboButton } from '../components'
+
+const seo = {
+   url: 'https://www.prvnbist.com',
+   thumb: '/images/thumbs/home.jpg',
+   title: 'Praveen Bisht | Frontend Engineer',
+   description:
+      'Hey👋🏼, I’m a front end engineer with the background in full stack based in New Delhi, India who enjoys building products from idea to implementation.',
+   keywords:
+      'front end, back end, design, html, pug, css, scss, javascript, nodejs, reactjs, graphql, expressjs, mongoose, mongodb, gatsby, figma, design, user interface, user experience',
+}
 
 const Home = ({ skills = {}, timelines = [] }) => {
    const [socials] = React.useState([
@@ -19,15 +30,25 @@ const Home = ({ skills = {}, timelines = [] }) => {
    ])
 
    return (
-      <Layout
-         meta={{
-            title: 'Praveen Bisht | Software Engineer',
-            description:
-               "Hey👋🏼, I’m Praveen, a software engineer based in New Delhi who enjoys building apps from idea to implementation. I've experience with both design & development(front-end & back-end).",
-            keywords:
-               'front end, back end, design, html, pug, css, scss, javascript, nodejs, reactjs, graphql, expressjs, mongoose, mongodb, gatsby, figma, design, user interface, user experience',
-         }}
-      >
+      <Layout>
+         <Head>
+            <title>{seo.title}</title>
+            <meta name="title" content={seo.title} />
+            <meta name="keywords" content={seo.keywords} />
+            <meta name="description" content={seo.description} />
+
+            <meta property="og:type" content="website" />
+            <meta property="og:url" content={seo.url} />
+            <meta property="og:title" content={seo.title} />
+            <meta property="og:description" content={seo.description} />
+            <meta property="og:image" content={seo.thumb} />
+
+            <meta property="twitter:card" content="summary_large_image" />
+            <meta property="twitter:url" content={seo.url} />
+            <meta property="twitter:title" content={seo.title} />
+            <meta property="twitter:description" content={seo.description} />
+            <meta property="twitter:image" content={seo.thumb} />
+         </Head>
          <Header>
             <div>
                <StyledName>Praveen Bisht</StyledName>
@@ -48,9 +69,7 @@ const Home = ({ skills = {}, timelines = [] }) => {
                   </span>
                   , I’m a <span>front end engineer</span> with the background in
                   full stack based in New Delhi, India who enjoys building
-                  products from <span>idea to implementation</span>. Currently
-                  looking for a <span>front end engineer</span> role to build
-                  intuitive interfaces.
+                  products from <span>idea to implementation</span>.
                </StyledPara>
                <a
                   href="/docs/Praveen Bisht - Resume.pdf"
@@ -83,6 +102,7 @@ const Home = ({ skills = {}, timelines = [] }) => {
                <ul tw="grid md:grid-cols-2">
                   {Object.keys(skills).map((key, index) => (
                      <section
+                        key={key}
                         css={[
                            index === 0 &&
                               tw`md:(col-span-2 border-b border-gray-700)`,
@@ -96,14 +116,14 @@ const Home = ({ skills = {}, timelines = [] }) => {
                            {key}
                         </h3>
                         {Object.keys(skills[key]).map(sub_key => (
-                           <>
+                           <React.Fragment key={sub_key}>
                               <h4 tw="mb-1 text-yellow-300">{sub_key}</h4>
                               <ul tw="mb-4 flex flex-wrap gap-3">
                                  {skills[key][sub_key].map(node => (
                                     <Skill key={node.id} skill={node} />
                                  ))}
                               </ul>
-                           </>
+                           </React.Fragment>
                         ))}
                      </section>
                   ))}
