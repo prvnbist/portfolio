@@ -1,3 +1,4 @@
+import tw from 'twin.macro'
 import styled, { css } from 'styled-components'
 
 export const StyledNavbar = styled.nav(
@@ -43,8 +44,8 @@ export const StyledNavItem = styled.li(
             width: ${size.sm};
             height: ${size.xs};
             position: absolute;
+            ${tw`bg-yellow-400`};
             left: calc(50% - ${size.xs});
-            background: ${colors.dark['100']};
             border-top-left-radius: ${size.xs};
             border-top-right-radius: ${size.xs};
          }
