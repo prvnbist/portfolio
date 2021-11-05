@@ -8,8 +8,8 @@ import router from 'next/router'
 import MDX from '@mdx-js/runtime'
 import { MDXProvider } from '@mdx-js/react'
 
-import Layout from '../../sections/Layout'
-import { CodeBlock } from '../../components/code'
+import Layout from 'sections/Layout'
+import { CodeBlock } from 'components/code'
 
 export default function Article({ article }) {
    const post = JSON.parse(article)
@@ -29,7 +29,7 @@ export default function Article({ article }) {
             <meta property="twitter:title" content={post.meta.title} />
          </Head>
          <div
-            tw="p-4 md:py-4 m-auto"
+            tw="p-4 md:(px-0 py-4) m-auto"
             style={{ maxWidth: '980px', width: '100%' }}
          >
             <header tw="p-8 bg-dark-300 rounded-lg">

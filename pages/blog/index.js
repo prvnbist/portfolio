@@ -7,7 +7,7 @@ import Head from 'next/head'
 import matter from 'gray-matter'
 import { useRouter } from 'next/router'
 
-import Layout from '../../sections/Layout'
+import Layout from 'sections/Layout'
 
 const seo = {
    thumb: '',

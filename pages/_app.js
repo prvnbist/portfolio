@@ -1,8 +1,8 @@
 import React from 'react'
 import tw from 'twin.macro'
 
-import '../styles/global.css'
-import GlobalStyles from '../styles/global'
+import 'styles/global.css'
+import GlobalStyles from 'styles/global'
 
 const App = ({ Component, pageProps }) => {
    return (

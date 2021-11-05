@@ -3,10 +3,9 @@ import tw from 'twin.macro'
 import Head from 'next/head'
 import styled, { css } from 'styled-components'
 
-import client from '../libs/graphql'
-import Layout from '../sections/Layout'
-
-import { TextButton } from '../components'
+import client from 'libs/graphql'
+import Layout from 'sections/Layout'
+import { TextButton } from 'components'
 
 const seo = {
    thumb: '/images/thumbs/design.jpg',

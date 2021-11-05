@@ -2,9 +2,9 @@ import React from 'react'
 import Head from 'next/head'
 import tw, { styled, css } from 'twin.macro'
 
-import client from '../libs/graphql'
-import Layout from '../sections/Layout'
-import { ComboButton } from '../components'
+import client from 'libs/graphql'
+import Layout from 'sections/Layout'
+import { ComboButton } from 'components'
 
 const seo = {
    url: 'https://www.prvnbist.com',
