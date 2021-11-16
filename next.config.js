@@ -1,15 +1,14 @@
 require('dotenv').config()
+const withMDX = require('@next/mdx')({
+   extension: /\.mdx?$/,
+})
 
-module.exports = {
+module.exports = withMDX({
    webpack5: true,
-   target: 'serverless',
-   webpack: config => {
-      config.resolve.fallback = {
-         ...config.resolve.fallback,
-         fs: false,
-         module: false,
+   webpack: (config, { isServer }) => {
+      if (!isServer) {
+         config.resolve.fallback.fs = false
       }
-
       return config
    },
-}
+})

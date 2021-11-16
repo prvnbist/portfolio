@@ -8,11 +8,14 @@
       "dev": "next dev",
       "build": "next build",
       "export": "next export",
-      "start": "next start"
+      "start": "next start",
+      "format": "prettier --write \"**/*.{js,jsx,json,md}\""
    },
    "dependencies": {
+      "@mdx-js/loader": "^1.6.22",
       "@mdx-js/react": "^1.6.22",
       "@mdx-js/runtime": "^1.6.22",
+      "@next/mdx": "^12.0.4",
       "dotenv": "^10.0.0",
       "graphql": "^15.5.2",
       "graphql-request": "^3.5.0",
@@ -24,6 +27,7 @@
       "styled-components": "5.3.1"
    },
    "devDependencies": {
+      "prettier": "^2.4.1",
       "tailwindcss": "^2.2.9",
       "twin.macro": "^2.7.0"
    },
