@@ -5,6 +5,7 @@ import tw from 'twin.macro'
 import Link from 'next/link'
 import Head from 'next/head'
 import matter from 'gray-matter'
+import client from '../../libs/graphql'
 import { useRouter } from 'next/router'
 
 import Layout from 'sections/Layout'
@@ -19,9 +20,8 @@ const seo = {
       'front end, back end, design, html, pug, css, scss, javascript, nodejs, reactjs, graphql, expressjs, mongoose, mongodb, gatsby, figma, design, user interface, user experience',
 }
 
-export default function BLog({ tags, articles = [] }) {
+export default function Blog({ tags = [], articles = [] }) {
    const router = useRouter()
-   const posts = JSON.parse(articles)
    const [search, setSearch] = React.useState('')
 
    const debouncedSearch = useDebounce(search, 500)
@@ -109,29 +109,29 @@ export default function BLog({ tags, articles = [] }) {
                   </ul>
                </>
             )}
-            {Array.isArray(posts) && posts.length > 0 ? (
+            {Array.isArray(articles) && articles.length > 0 ? (
                <ul tw="rounded-lg mt-4 border border-dark-200 divide-y divide-dark-200">
-                  {posts.map(article => (
-                     <li key={article.path} tw="h-auto p-4 list-none">
+                  {articles.map(article => (
+                     <li key={article.id} tw="h-auto p-4 list-none">
                         <header tw="flex items-center justify-between">
                            <Link href={`/blog/${article.path}`}>
                               <a tw="cursor-pointer text-white text-lg font-medium hover:text-indigo-400">
-                                 <h2>{article.meta.title}</h2>
+                                 <h2>{article.title}</h2>
                               </a>
                            </Link>
-                           {article.meta.date && (
+                           {article.date && (
                               <span tw="flex-shrink-0 text-gray-500 font-medium">
                                  {new Intl.DateTimeFormat('en-US', {
                                     year: 'numeric',
                                     month: 'short',
                                     day: 'numeric',
-                                 }).format(new Date(article.meta.date))}
+                                 }).format(new Date(article.date))}
                               </span>
                            )}
                         </header>
                         <ul tw="mt-3 flex flex-wrap gap-2">
-                           {article.meta.tags &&
-                              article.meta.tags.map(tag => (
+                           {article.tags &&
+                              article.tags.map(tag => (
                                  <li
                                     key={tag}
                                     onClick={() =>
@@ -157,54 +157,49 @@ export default function BLog({ tags, articles = [] }) {
    )
 }
 
-const directory = path.join(process.cwd(), 'articles')
-
 export async function getServerSideProps({ query }) {
-   const articles = []
    const tags = []
-   fs.readdirSync(directory).forEach(async file => {
-      if (file.endsWith('.mdx')) {
-         const mdx = fs.readFileSync(path.join(directory, file), 'utf8')
-         const { data, content } = matter(mdx)
-         tags.push(...data.tags)
-         if (!query.tags && !query.text) {
-            articles.push({
-               path: file.replace('.mdx', ''),
-               meta: data,
-               content,
-            })
-            return
-         }
 
-         if (
-            query.text &&
-            data.title.toLowerCase().includes(query.text.toLowerCase())
-         ) {
-            articles.push({
-               path: file.replace('.mdx', ''),
-               meta: data,
-               content,
-            })
-         } else if (
-            query.tags &&
-            query.tags.split(',').every(tag => data.tags.includes(tag))
-         ) {
-            articles.push({
-               path: file.replace('.mdx', ''),
-               meta: data,
-               content,
-            })
+   const { articles: article_tags = [] } = await client.request(`
+      query articles {
+         articles {
+            id
+            tags
          }
       }
+   `)
+   article_tags.forEach(article => {
+      article.tags.forEach(tag => {
+         if (!tags.includes(tag)) {
+            tags.push(tag)
+         }
+      })
    })
+
+   const { articles = [] } = await client.request(
+      `
+      query articles($keyword: String, $tags: [ArticleTags!]) {
+         articles(
+            where: { title_contains: $keyword, tags_contains_all: $tags }
+            orderBy: date_DESC
+         ) {
+            id
+            title
+            date
+            tags
+            path
+         }
+      }
+   `,
+      {
+         keyword: query.text || '',
+         ...(query.tags ? { tags: [query.tags] } : { tags: [] }),
+      }
+   )
    return {
       props: {
+         articles,
          tags: [...new Set(tags)].sort(),
-         articles: JSON.stringify(
-            articles.sort(
-               (a, b) => new Date(b.meta.date) - new Date(a.meta.date)
-            )
-         ),
       },
    }
 }
