@@ -28,7 +28,7 @@ const App = ({ Component, pageProps }) => {
          <footer tw="border-t border-gray-800 py-5">
             <p tw="text-center">
                ©{new Date().getFullYear()} Made with 💖 using 👩🏽‍💻NextJs, 💾Github
-               & 🌍Netlify.
+               & 🌍Vercel.
             </p>
          </footer>
       </>
