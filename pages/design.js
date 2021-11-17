@@ -74,7 +74,7 @@ const Design = ({ designs = [] }) => {
 
 export default Design
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
    const { designs = [] } = await client.request(DESIGNS)
    return {
       props: { designs },

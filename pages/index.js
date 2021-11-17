@@ -146,7 +146,7 @@ const Home = ({ skills = {}, timelines = [] }) => {
 
 export default Home
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
    const { timelines = [] } = await client.request(TIMELINES)
    const { skills: _skills = [] } = await client.request(SKILLS)
 

@@ -90,7 +90,7 @@ const Code = ({ codes = [] }) => {
 
 export default Code
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
    const { codes = [] } = await client.request(CODES)
    return {
       props: { codes },
