@@ -45,7 +45,7 @@ export const CodeBlock = ({ children, className = '', metastring }) => {
                tw="mb-4 rounded overflow-auto text-left"
                style={{
                   ...style,
-                  fontSize: '18px',
+                  fontSize: '14px',
                   maxHeight: '480px',
                   padding: '20px',
                }}
