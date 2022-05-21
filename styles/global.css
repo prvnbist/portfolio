@@ -4,6 +4,7 @@
    padding: 0;
    font-family: 'Roobert', sans-serif;
 }
+
 body {
    color: #fff;
    overflow-x: hidden;
@@ -25,6 +26,10 @@ body {
 
 .prism-code {
    background-color: #121214 !important;
+}
+
+.prism-code * {
+   font-family: 'IBM Plex Mono', monospace;
 }
 
 ::-moz-selection {

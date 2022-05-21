@@ -34,6 +34,16 @@ class MyDocument extends Document {
       return (
          <Html>
             <Head>
+               <link rel="preconnect" href="https://fonts.googleapis.com" />
+               <link
+                  rel="preconnect"
+                  href="https://fonts.gstatic.com"
+                  crossorigin
+               />
+               <link
+                  href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap"
+                  rel="stylesheet"
+               />
                <script
                   async
                   src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
@@ -50,12 +60,14 @@ class MyDocument extends Document {
                   `,
                   }}
                />
-               <script
-                  async
-                  defer
-                  src="https://x-umami.vercel.app/umami.js"
-                  data-website-id="7aced01b-fddd-4700-aa4b-d991b33beed5"
-               ></script>
+               {process.env.NODE_ENV === 'production' && (
+                  <script
+                     async
+                     defer
+                     src="https://x-umami.vercel.app/umami.js"
+                     data-website-id="7aced01b-fddd-4700-aa4b-d991b33beed5"
+                  ></script>
+               )}
             </Head>
             <body>
                <Main />
