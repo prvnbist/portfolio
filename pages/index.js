@@ -4,7 +4,6 @@ import tw, { styled, css } from 'twin.macro'
 
 import client from 'libs/graphql'
 import Layout from 'sections/Layout'
-import { ComboButton } from 'components'
 
 const seo = {
    url: 'https://www.prvnbist.com',
@@ -67,18 +66,10 @@ const Home = ({ skills = {}, timelines = [] }) => {
                   <span role="img" aria-label="waving hand">
                      👋🏼
                   </span>
-                  , I’m a <span>front end engineer</span> with the background in
+                  , I’m a <span>frontend engineer</span> with the background in
                   full stack based in New Delhi, India who enjoys building
                   products from <span>idea to implementation</span>.
                </StyledPara>
-               <a
-                  href="/docs/Praveen Bisht - Resume.pdf"
-                  download="Praveen Bisht - Resume.pdf"
-               >
-                  <ComboButton type="outline" typeColor="blue.400">
-                     <FileIcon tw="stroke-current" /> Download Resume
-                  </ComboButton>
-               </a>
                <StyledSocials>
                   {socials.map(social => (
                      <StyledSocial key={social.url}>
@@ -104,11 +95,8 @@ const Home = ({ skills = {}, timelines = [] }) => {
                      <section
                         key={key}
                         css={[
-                           index === 0 &&
-                              tw`md:(col-span-2 border-b border-gray-700)`,
-                           index !== 0 &&
-                              index % 2 !== 0 &&
-                              tw`md:(pt-3 border-r border-gray-700)`,
+                           index === 0 && tw`md:(col-span-2)`,
+                           index !== 0 && index % 2 !== 0 && tw`md:(pt-3)`,
                            index !== 0 && index % 2 === 0 && tw`md:p-3`,
                         ]}
                      >
