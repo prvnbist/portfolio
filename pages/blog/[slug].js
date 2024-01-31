@@ -153,13 +153,16 @@ const components = {
    tr: props => <tr {...props} tw="h-10 px-3 border-gray-700" />,
    td: props => <td {...props} tw="my-4 overflow-hidden rounded" />,
    img: props => (
-      <div>
-         <img {...props} alt={props.alt} tw="rounded-md w-full object-cover" />
-      </div>
+      <img {...props} alt={props.alt} tw="rounded-md w-full object-cover" />
    ),
    ul: props => <ul {...props} tw="list-disc pl-6" />,
    li: props => <li {...props} tw="text-gray-400 my-1 text-lg" />,
    ol: props => <ol {...props} tw="list-decimal pl-4" />,
+   Video: props => (
+      <video width="100%" controls tw="my-4 rounded-md overflow-hidden">
+         <source src={props.url} type="video/mp4" />
+      </video>
+   ),
 }
 
 const directory = path.join(process.cwd(), 'articles')
