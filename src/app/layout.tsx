@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 
 import './globals.css'
+import { Navbar } from '@/sections'
 
 export const metadata: Metadata = {
    title: 'Praveen Bisht',
@@ -33,7 +34,32 @@ export default function RootLayout({
                }}
             />
          </head>
-         <body>{children}</body>
+         <body>
+            <Navbar />
+            {children}
+            <section className="lg:w-[980px] bg-[#202024] rounded-lg mx-4 lg:mx-auto py-16 text-center mt-8 mb-16">
+               <h2 className="text-3xl mb-4">Get in touch</h2>
+               <p className="text-xl font-thin mx-auto md:w-7/12">
+                  Have a project for me, or just want to say Hi🙋🏽‍♂️? Feel free to
+                  email me at{' '}
+                  <a
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     href="mailto:prvnbist@gmail.com"
+                     className="text-yellow-300 underline"
+                  >
+                     prvnbist@gmail.com
+                  </a>
+                  .
+               </p>
+            </section>
+            <footer className="border-t border-gray-800 py-5">
+               <p className="text-center">
+                  ©{new Date().getFullYear()} Made with 💖 using 👩🏽‍💻NextJs,
+                  💾Github & 🌍Vercel.
+               </p>
+            </footer>
+         </body>
       </html>
    )
 }
