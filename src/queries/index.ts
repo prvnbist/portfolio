@@ -54,3 +54,27 @@ export const CODES = `
       }
    }
 `
+
+export const ARTICLE_TAGS = `
+   query articles {
+      articles {
+         id
+         tags
+      }
+   }
+`
+
+export const ARTICLES = `
+   query articles($keyword: String, $tags: [ArticleTags!]) {
+      articles(
+         where: { title_contains: $keyword, tags_contains_all: $tags }
+         orderBy: date_DESC
+      ) {
+         id
+         title
+         date
+         tags
+         path
+      }
+   }
+`
