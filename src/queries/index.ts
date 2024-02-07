@@ -38,3 +38,19 @@ export const DESIGNS = `
       }
    }
 `
+
+export const CODES = `
+   query codes {
+      codes(orderBy: priority_ASC) {
+         id
+         title
+         code_url
+         demo_url
+         thumbnail {
+            id
+            url
+         }
+         description
+      }
+   }
+`

@@ -49,14 +49,14 @@ type Design = {
    description: string
 }
 
-const getdesigns = async () => {
+const getProjects = async () => {
    const { designs = [] } =
       await client.request<Promise<{ designs: Design[] }>>(DESIGNS)
    return designs
 }
 
 export default async function Design() {
-   const designs = await getdesigns()
+   const designs = await getProjects()
    return (
       <section className="w-full px-4 mx-auto lg:w-[980px]">
          <h1 className="text-3xl my-6 px-2">Designs</h1>
