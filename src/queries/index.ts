@@ -23,3 +23,18 @@ export const TIMELINES = `
       }
    }
 `
+
+export const DESIGNS = `
+   query designs {
+      designs(orderBy: priority_ASC) {
+         id
+         url
+         title
+         thumbnail {
+            id
+            url
+         }
+         description
+      }
+   }
+`
