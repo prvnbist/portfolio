@@ -21,6 +21,7 @@
 .project header div {
    position: relative;
    padding-top: 56.25%;
+   overflow: hidden;
 }
 
 .project header div img {

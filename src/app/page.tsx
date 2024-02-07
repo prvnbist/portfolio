@@ -124,22 +124,14 @@ export default async function Home() {
                   </span>
                </h1>
                <p className={classes.about}>
-                  Hey
-                  <span
-                     role="img"
-                     aria-label="waving hand"
-                     className="text-yellow-300"
-                  >
-                     👋🏼
-                  </span>
-                  , I’m a{' '}
+                  Hello! 👋 As a{' '}
                   <span className="text-yellow-300">frontend engineer</span>{' '}
-                  with the background in full stack based in New Delhi, India
-                  who enjoys building products from{' '}
+                  based in New Delhi, India, I bring a full-stack background to
+                  the table. My passion lies in the entire product development
+                  lifecycle, from{' '}
                   <span className="text-yellow-300">
-                     idea to implementation
+                     conceptualization to implementation.
                   </span>
-                  .
                </p>
                <ul className={classes.socials}>
                   {SOCIALS.map(social => (
