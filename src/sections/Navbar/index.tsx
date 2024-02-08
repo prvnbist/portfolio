@@ -14,7 +14,7 @@ const Navbar = () => {
    return (
       <nav className="sticky top-0 h-16 w-screen bg-dark-400 border-b border-dark-300 z-[1000]">
          <div className="px-4 w-full lg:px-0 lg:w-[980px] h-16 flex mx-auto items-center justify-between">
-            <Link href="/">
+            <Link href="/" title="Home" aria-label="Home">
                <HomeIcon size={24} />
             </Link>
             <section className="flex gap-4">

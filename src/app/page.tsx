@@ -155,8 +155,8 @@ export default async function Home() {
                <h2 className="text-3xl mb-4">Skills</h2>
                <ul>
                   {Object.keys(skills).map((key, index) => (
-                     <section key={key}>
-                        <h3 className="mb-1 text-gray-500 uppercase font-medium tracking-wider">
+                     <li key={key}>
+                        <h3 className="mb-1 text-gray-400 uppercase font-medium tracking-wider">
                            {key}
                         </h3>
                         {Object.keys(skills[key]).map(sub_key => (
@@ -176,7 +176,7 @@ export default async function Home() {
                               </ul>
                            </Fragment>
                         ))}
-                     </section>
+                     </li>
                   ))}
                </ul>
             </section>
@@ -199,7 +199,7 @@ const TimelineItem = ({ timeline }: { timeline: Timeline }) => {
    return (
       <li>
          {timeline.location && (
-            <span className="text-gray-500 font-medium text-sm uppercase">
+            <span className="text-gray-400 font-medium text-sm uppercase">
                {timeline.location}
             </span>
          )}
@@ -211,6 +211,7 @@ const TimelineItem = ({ timeline }: { timeline: Timeline }) => {
                      href={timeline.url}
                      rel="noreferrer noopener"
                      target="_blank"
+                     title={`Link to ${timeline.title}`}
                      className="ml-1 h-8 w-8 flex items-center justify-center rounded hover:bg-gray-800"
                   >
                      <LinkIcon size={16} className="stroke-current" />
@@ -238,7 +239,7 @@ const TimelineItem = ({ timeline }: { timeline: Timeline }) => {
                </section>
             )}
          </header>
-         <p className="mb-4 text-[18px] text-gray-500">
+         <p className="mb-4 text-[18px] text-gray-400">
             {timeline.description}
          </p>
       </li>

@@ -1,12 +1,9 @@
 import { Metadata } from 'next'
 import { Suspense } from 'react'
 
-import Tags from './Tags'
-import Search from './Search'
-
 import { BlogProps } from './types'
 import { getArticles, getTags } from './utils'
-import { Articles, Loader } from './components'
+import { Articles, Loader, Search, Tags } from './components'
 
 const seo = {
    url: 'https://www.prvnbist.com/blog',
