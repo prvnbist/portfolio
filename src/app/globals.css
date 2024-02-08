@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+   font-family: 'Roobert', sans-serif;
+}
+
+body {
+   color: #fff;
+   overflow-x: hidden;
+   background: #19191c;
+}
+
+.highlight__line {
+   background-color: rgba(255, 255, 255, 0.08);
+   display: block;
+   margin: 0 -1.575rem;
+   padding: 0 1.575rem;
+}
+
+.photo__caption {
+   display: block;
+   text-align: center;
+   margin-bottom: 16px;
+}
+
+.prism-code {
+   background-color: #121214 !important;
+}
+
+.prism-code * {
+   font-family: 'IBM Plex Mono', monospace;
+}
+
+::-moz-selection {
+   color: #19191c;
+   background: #fff;
+}
+
+::selection {
+   color: #19191c;
+   background: #fff;
+}
+
+::-webkit-scrollbar {
+   width: 10px;
+   height: 10px;
+}
+::-webkit-scrollbar-thumb {
+   border-radius: 10px;
+   background-color: #303035;
+}
+a {
+   color: #719df0;
+}
+
+@font-face {
+   font-family: 'Roobert';
+   font-style: normal;
+   font-weight: 300;
+   src: url('/fonts/RoobertLight.woff') format('woff');
+}
+
+@font-face {
+   font-family: 'Roobert';
+   font-style: normal;
+   font-weight: 400;
+   src: url('/fonts/RoobertRegular.woff') format('woff');
+}
+
+@font-face {
+   font-family: 'Roobert';
+   font-style: normal;
+   font-weight: 500;
+   src: url('/fonts/RoobertMedium.woff') format('woff');
+}
+
+@font-face {
+   font-family: 'Roobert';
+   font-style: normal;
+   font-weight: 600;
+   src: url('/fonts/RoobertSemiBold.woff') format('woff');
+}
+
+#article p {
+   --tw-text-opacity: 1;
+   color: rgba(156, 163, 175, var(--tw-text-opacity));
+   margin-bottom: 0.75rem;
+   font-size: 1.125rem;
+   line-height: 1.75rem;
+}
