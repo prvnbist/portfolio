@@ -7,7 +7,7 @@ import { Button } from '@/components'
 import classes from './design.module.css'
 
 const seo = {
-   url: 'https://www.prvnbist.com',
+   url: 'https://www.prvnbist.com/design',
    thumb: '/images/thumbs/home.jpg',
    title: 'Design | Praveen Bisht | Frontend Engineer',
    description:
