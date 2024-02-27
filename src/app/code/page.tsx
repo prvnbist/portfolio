@@ -1,10 +1,6 @@
 import { Metadata } from 'next'
 
-import { CODES } from '@/queries'
-import client from '@/lib/graphql'
-import { Button } from '@/components'
-
-import classes from './code.module.css'
+import Link from 'next/link'
 
 const seo = {
    thumb: '/images/thumbs/code.jpg',
@@ -50,57 +46,95 @@ type Code = {
    description: string
 }
 
-const getProjects = async () => {
-   const { codes = [] } =
-      await client.request<Promise<{ codes: Code[] }>>(CODES)
-   return codes
-}
+const PROJECTS = [
+   {
+      img_url: '/images/code/jsonvi_1.png',
+      title: 'JSONVi',
+      description:
+         'A straightforward JSON Viewer with handy features to assist you with your everyday JSON tasks effortlessly.',
+      demo_url: 'https://json-viewer.prvnbist.com',
+   },
+   {
+      img_url: '/images/code/undata_1.png',
+      title: 'Undata',
+      description:
+         'Simplified Database query execution and visualization, enabling easy understanding, transformation, and exportation of your data to suit your needs.',
+      demo_url: 'https://github.com/prvnbist/undata',
+   },
+   {
+      img_url: '/images/code/ledger_1.png',
+      title: 'Ledger 🚧',
+      description:
+         'Our app offers intuitive tools for mastering personal finance, providing comprehensive metrics to track and analyze your spending habits with ease. Take control ofyour finances and achieve your financial goals effortlessly.',
+   },
+   {
+      img_url: '/images/code/transcode_1.png',
+      title: 'Transcode',
+      description:
+         'A collection of handy tools tailored to meet the everyday needs of developers, simplifying common tasks with ease.',
+      demo_url: 'https://transcode.vercel.app/json?translator=yaml',
+      code_url: 'https://github.com/prvnbist/transcode',
+   },
+]
 
 export default async function Code() {
-   const codes = await getProjects()
    return (
-      <section className="w-full px-4 mx-auto lg:w-[980px]">
-         <h1 className="text-3xl my-6 px-2">Code</h1>
-         <ul className={classes.projects}>
-            {codes.map(code => (
-               <li key={code.id} className={classes.project}>
-                  <header>
-                     {code.thumbnail?.url && (
-                        <div>
-                           {/* eslint-disable-next-line */}
-                           <img src={code.thumbnail.url} alt={code.title} />
-                        </div>
-                     )}
-                     <h3>{code.title}</h3>
-                  </header>
-                  <main>
-                     <p>{code.description}</p>
-                  </main>
-                  <footer>
-                     {code.code_url && (
-                        <a
-                           href={code.code_url}
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           title={code.title}
-                        >
-                           <Button.Text variant="outline">Code</Button.Text>
-                        </a>
-                     )}
-                     {code.demo_url && (
-                        <a
-                           href={code.demo_url}
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           title={code.title}
-                        >
-                           <Button.Text variant="outline">Demo</Button.Text>
-                        </a>
-                     )}
-                  </footer>
-               </li>
+      <section className="w-full px-4 lg:px-0 mx-auto lg:w-[980px]">
+         <h1 className="text-3xl my-6">Code</h1>
+         <ul className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {PROJECTS.map(project => (
+               <Project key={project.title} project={project} />
             ))}
          </ul>
       </section>
+   )
+}
+
+type ProjectProps = {
+   project: {
+      img_url: string
+      title: string
+      description: string
+      demo_url?: string
+      code_url?: string
+   }
+}
+
+const Project = ({ project }: ProjectProps) => {
+   return (
+      <li>
+         <header className="border border-dark-200 aspect-[4/3] rounded-md overflow-hidden">
+            {/* eslint-disable-next-line */}
+            <img alt={project.title} src={project.img_url} />
+         </header>
+         <main className="mt-3">
+            <h2 className="text-lg">{project.title}</h2>
+            <p className="mt-1 mb-3">{project.description}</p>
+            {(project.demo_url || project.code_url) && (
+               <div className="flex gap-3">
+                  {project.demo_url && (
+                     <Link
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        href={project.demo_url}
+                        className="text-sm px-5 h-10 inline-flex items-center rounded-md border border-blue-400 text-white hover:bg-blue-400 transition-colors ease-in"
+                     >
+                        Demo
+                     </Link>
+                  )}
+                  {project.code_url && (
+                     <Link
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        href={project.code_url}
+                        className="text-sm px-5 h-10 inline-flex items-center rounded-md border border-transparent hover:border-blue-400 text-white hover:bg-blue-400 transition-colors ease-in"
+                     >
+                        Code
+                     </Link>
+                  )}
+               </div>
+            )}
+         </main>
+      </li>
    )
 }

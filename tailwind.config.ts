@@ -4,6 +4,9 @@ const config: Config = {
    content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
    theme: {
       extend: {
+         aspectRatio: {
+            '4/3': '4 / 3',
+         },
          colors: {
             dark: {
                400: '#19191C',

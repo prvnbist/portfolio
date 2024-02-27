@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
 
+import { IBM_Plex_Mono } from 'next/font/google'
+
 import './globals.css'
 import { Navbar } from '@/sections'
 
@@ -9,13 +11,19 @@ export const metadata: Metadata = {
       'Hey👋🏼, I’m a front end engineer with the background in full stack based in New Delhi, India who enjoys building products from idea to implementation.',
 }
 
+const ibm_plex_mono = IBM_Plex_Mono({
+   weight: '400',
+   subsets: ['latin'],
+   variable: '--font-ibm-plex-mono',
+})
+
 export default function RootLayout({
    children,
 }: Readonly<{
    children: React.ReactNode
 }>) {
    return (
-      <html lang="en">
+      <html lang="en" className={`${ibm_plex_mono.variable}`}>
          <head>
             <script
                async
@@ -37,7 +45,7 @@ export default function RootLayout({
          <body>
             <Navbar />
             {children}
-            <section className="lg:w-[980px] bg-[#202024] rounded-lg mx-4 lg:mx-auto py-16 text-center mt-8 mb-16">
+            <section className="px-4 lg:w-[980px] bg-[#202024] rounded-lg mx-4 lg:mx-auto py-16 text-center mt-8 mb-16">
                <h2 className="text-3xl mb-4">Get in touch</h2>
                <p className="text-xl font-thin mx-auto md:w-7/12">
                   Have a project for me, or just want to say Hi🙋🏽‍♂️? Feel free to
