@@ -75,6 +75,14 @@ const PROJECTS = [
       demo_url: 'https://transcode.vercel.app/json?translator=yaml',
       code_url: 'https://github.com/prvnbist/transcode',
    },
+   {
+      img_url: '/images/code/json_viewer_1.png',
+      title: 'JSONVi',
+      description:
+         'A neat json tool to help you with your day to day json operations',
+      demo_url: 'https://json-viewer.prvnbist.com/',
+      code_url: 'https://github.com/prvnbist/json-viewer',
+   },
 ]
 
 export default async function Code() {
