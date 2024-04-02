@@ -55,6 +55,13 @@ const PROJECTS = [
       demo_url: 'https://json-viewer.prvnbist.com',
    },
    {
+      img_url: '/images/code/mysubs_1.png',
+      title: 'MySubs',
+      description:
+         'Manage subscriptions hassle-free. Track, organize, and save with ease.',
+      code_url: 'https://github.com/prvnbist/mysubs',
+   },
+   {
       img_url: '/images/code/undata_1.png',
       title: 'Undata',
       description:
@@ -74,14 +81,6 @@ const PROJECTS = [
          'A collection of handy tools tailored to meet the everyday needs of developers, simplifying common tasks with ease.',
       demo_url: 'https://transcode.vercel.app/json?translator=yaml',
       code_url: 'https://github.com/prvnbist/transcode',
-   },
-   {
-      img_url: '/images/code/json_viewer_1.png',
-      title: 'JSONVi',
-      description:
-         'A neat json tool to help you with your day to day json operations',
-      demo_url: 'https://json-viewer.prvnbist.com/',
-      code_url: 'https://github.com/prvnbist/json-viewer',
    },
 ]
 
@@ -135,7 +134,7 @@ const Project = ({ project }: ProjectProps) => {
                         target="_blank"
                         rel="noreferrer noopener"
                         href={project.code_url}
-                        className="text-sm px-5 h-10 inline-flex items-center rounded-md border border-transparent hover:border-blue-400 text-white hover:bg-blue-400 transition-colors ease-in"
+                        className={`text-sm px-5 h-10 inline-flex items-center rounded-md border hover:border-blue-400 text-white hover:bg-blue-400 transition-colors ease-in ${!project.demo_url ? 'border-blue-400' : 'border-transparent'}`}
                      >
                         Code
                      </Link>
