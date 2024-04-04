@@ -66,7 +66,7 @@ const PROJECTS = [
       title: 'Undata',
       description:
          'Simplified Database query execution and visualization, enabling easy understanding, transformation, and exportation of your data to suit your needs.',
-      demo_url: 'https://github.com/prvnbist/undata',
+      code_url: 'https://github.com/prvnbist/undata',
    },
    {
       img_url: '/images/code/ledger_1.png',
