@@ -1,9 +1,7 @@
 'use client'
 
-import { MDXRemote } from 'next-mdx-remote/rsc'
+import { MDXRemote, type MDXRemoteProps } from 'next-mdx-remote/rsc'
 import remarkMdxCodeMeta from 'remark-mdx-code-meta'
-
-import type { MDXComponents } from 'mdx/types.js'
 
 import { CodeBlock } from '@/components'
 
@@ -28,7 +26,7 @@ const Content = ({ content }: ContentProps) => {
    )
 }
 
-const components: MDXComponents = {
+const components: MDXRemoteProps['components'] = {
    // @ts-ignore
    pre: CodeBlock,
    h1: props => (
