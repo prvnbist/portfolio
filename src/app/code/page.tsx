@@ -48,18 +48,19 @@ type Code = {
 
 const PROJECTS = [
    {
+      img_url: '/images/code/tracksubs_1.jpg',
+      title: 'MySubs',
+      description:
+         'Manage subscriptions hassle-free. Track, organize, and save with ease.',
+      code_url: 'https://github.com/prvnbist/tracksubs',
+      demo_url: 'https://www.tracksubs.co',
+   },
+   {
       img_url: '/images/code/jsonvi_1.png',
       title: 'JSONVi',
       description:
          'A straightforward JSON Viewer with handy features to assist you with your everyday JSON tasks effortlessly.',
       demo_url: 'https://json-viewer.prvnbist.com',
-   },
-   {
-      img_url: '/images/code/mysubs_1.png',
-      title: 'MySubs',
-      description:
-         'Manage subscriptions hassle-free. Track, organize, and save with ease.',
-      code_url: 'https://github.com/prvnbist/mysubs',
    },
    {
       img_url: '/images/code/undata_1.png',

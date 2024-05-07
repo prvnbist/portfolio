@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { Metadata } from 'next'
 import { Fragment } from 'react'
 
@@ -148,6 +149,14 @@ export default async function Home() {
                      </li>
                   ))}
                </ul>
+               <Link
+                  target="__blank"
+                  className={classes.cta}
+                  rel="noreferrer noopener"
+                  href="https://www.tracksubs.co"
+               >
+                  Building tracksubs.co 🚧
+               </Link>
             </div>
          </header>
          <section className="w-full px-4 mx-auto lg:w-[980px]">

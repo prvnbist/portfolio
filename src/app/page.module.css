@@ -88,3 +88,14 @@
 .social a {
    text-decoration: none;
 }
+
+.cta {
+   height: 40px;
+   color: black;
+   padding: 0 32px;
+   margin-top: 24px;
+   border-radius: 4px;
+   align-items: center;
+   display: inline-flex;
+   background: #fcc156;
+}
