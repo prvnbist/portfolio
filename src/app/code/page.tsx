@@ -49,9 +49,9 @@ type Code = {
 const PROJECTS = [
    {
       img_url: '/images/code/tracksubs_1.jpg',
-      title: 'MySubs',
+      title: 'TrackSubs',
       description:
-         'Manage subscriptions hassle-free. Track, organize, and save with ease.',
+         'Streamline your finances and stay on top of recurring expenses effortlessly.',
       code_url: 'https://github.com/prvnbist/tracksubs',
       demo_url: 'https://www.tracksubs.co',
    },
