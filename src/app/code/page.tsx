@@ -123,7 +123,6 @@ const Project = ({ project }: ProjectProps) => {
                   {project.demo_url && (
                      <Link
                         target="_blank"
-                        rel="noreferrer noopener"
                         href={project.demo_url}
                         className="text-sm px-5 h-10 inline-flex items-center rounded-md border border-blue-400 text-white hover:bg-blue-400 transition-colors ease-in"
                      >
@@ -133,7 +132,6 @@ const Project = ({ project }: ProjectProps) => {
                   {project.code_url && (
                      <Link
                         target="_blank"
-                        rel="noreferrer noopener"
                         href={project.code_url}
                         className={`text-sm px-5 h-10 inline-flex items-center rounded-md border hover:border-blue-400 text-white hover:bg-blue-400 transition-colors ease-in ${!project.demo_url ? 'border-blue-400' : 'border-transparent'}`}
                      >

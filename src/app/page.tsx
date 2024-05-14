@@ -125,7 +125,7 @@ export default async function Home() {
                   </span>
                </h1>
                <p className={classes.about}>
-                  Hello! 👋 I'm a{' '}
+                  Hello! 👋 I&apos;m a{' '}
                   <span className="text-yellow-300">frontend engineer</span>,
                   who specializes in bringing ideas to life with{' '}
                   <span className="text-yellow-300">
@@ -152,7 +152,6 @@ export default async function Home() {
                <Link
                   target="__blank"
                   className={classes.cta}
-                  rel="noreferrer noopener"
                   href="https://www.tracksubs.co"
                >
                   Building tracksubs.co 🚧
@@ -218,7 +217,6 @@ const TimelineItem = ({ timeline }: { timeline: Timeline }) => {
                {timeline.url && (
                   <a
                      href={timeline.url}
-                     rel="noreferrer noopener"
                      target="_blank"
                      title={`Link to ${timeline.title}`}
                      className="ml-1 h-8 w-8 flex items-center justify-center rounded hover:bg-gray-800"

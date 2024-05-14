@@ -13,7 +13,7 @@
       "lint": "next lint",
       "prettier:check": "prettier --check \"**/*.{ts,tsx}\"",
       "prettier:write": "prettier --write \"**/*.{ts,tsx}\"",
-      "precommit": "yarn prettier:write && yarn lint && yarn tsc"
+      "precommit": "pnpm prettier:write && pnpm lint && pnpm tsc"
    },
    "dependencies": {
       "graphql": "^16.8.1",
