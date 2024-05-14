@@ -40,15 +40,15 @@ export const metadata: Metadata = {
 }
 
 const SOCIALS = [
+   { title: '👨‍💻 Github', url: 'https://www.github.com/prvnbist' },
+   { title: '🤝🏼 LinkedIn', url: 'https://www.linkedin.com/in/prvnbist' },
+   { title: '👨‍💻 Codepen', url: 'https://www.codepen.io/prvnbist' },
    {
       title: '🖼️ Instagram',
       url: 'https://www.instagram.com/prvnbist',
    },
    { title: '🐤 Twitter', url: 'https://www.twitter.com/prvnbist' },
-   { title: '🤝🏼 LinkedIn', url: 'https://www.linkedin.com/in/prvnbist' },
-   { title: '👨‍💻 Github', url: 'https://www.github.com/prvnbist' },
    { title: '🎨 Dribbble', url: 'https://www.dribbble.com/prvnbist' },
-   { title: '👨‍💻 Codepen', url: 'https://www.codepen.io/prvnbist' },
 ]
 
 type Timeline = {
@@ -115,24 +115,24 @@ export default async function Home() {
                   Praveen Bisht
                </h2>
                <h1 className={classes.tagline}>
-                  I design
+                  I design{` `}
                   <span role="img" aria-label="paint board">
                      🎨
                   </span>
-                  & code
+                  {` `}& code{` `}
                   <span role="img" aria-label="computer">
                      👨‍💻
                   </span>
                </h1>
                <p className={classes.about}>
-                  Hello! 👋 As a{' '}
-                  <span className="text-yellow-300">frontend engineer</span>{' '}
-                  based in New Delhi, India, I bring a full-stack background to
-                  the table. My passion lies in the entire product development
-                  lifecycle, from{' '}
+                  Hello! 👋 I'm a{' '}
+                  <span className="text-yellow-300">frontend engineer</span>,
+                  who specializes in bringing ideas to life with{' '}
                   <span className="text-yellow-300">
-                     conceptualization to implementation.
-                  </span>
+                     pixel perfect precision.
+                  </span>{' '}
+                  My background in design allows me to seamlessly bridge the gap
+                  between design and development team.
                </p>
                <ul className={classes.socials}>
                   {SOCIALS.map(social => (

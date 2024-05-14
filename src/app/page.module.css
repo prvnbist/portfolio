@@ -1,5 +1,5 @@
 .header {
-   height: 600px;
+   height: 720px;
    background-image: url('/images/me.jpg');
    display: flex;
    position: relative;
@@ -93,6 +93,7 @@
    height: 40px;
    color: black;
    padding: 0 24px;
+   font-weight: 400;
    margin-top: 24px;
    border-radius: 4px;
    align-items: center;

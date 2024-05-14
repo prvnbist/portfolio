@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 
-import { IBM_Plex_Mono } from 'next/font/google'
+import { Bricolage_Grotesque, IBM_Plex_Mono } from 'next/font/google'
 
 import './globals.css'
 import { Navbar } from '@/sections'
@@ -14,7 +14,12 @@ export const metadata: Metadata = {
 const ibm_plex_mono = IBM_Plex_Mono({
    weight: '400',
    subsets: ['latin'],
-   variable: '--font-ibm-plex-mono',
+   variable: '--font-code',
+})
+
+const bricolage_grotesque = Bricolage_Grotesque({
+   subsets: ['latin'],
+   variable: '--font-heading',
 })
 
 export default function RootLayout({
@@ -23,7 +28,10 @@ export default function RootLayout({
    children: React.ReactNode
 }>) {
    return (
-      <html lang="en" className={`${ibm_plex_mono.variable}`}>
+      <html
+         lang="en"
+         className={`${ibm_plex_mono.variable} ${bricolage_grotesque.variable}`}
+      >
          <head>
             <script
                async

@@ -55,7 +55,7 @@ This method takes three arguments:
 The return value for this method is `undefined`.
 
 ```js
-fs.writeFileSync('./example.txt', 'exampel content')
+fs.writeFileSync('./example.txt', 'example content')
 ```
 
 By default the encoding for data of string type would be `utf8` and if different encoding is required, pass it using the third argument named `options`.
@@ -65,7 +65,7 @@ By default the encoding for data of string type would be `utf8` and if different
 This method takes all the arguments same as the synchronous method except it let's you pass a callback.
 
 ```js
-fs.writeFile('./example.txt', 'exampel content', error => {
+fs.writeFile('./example.txt', 'example content', error => {
    if (error) console.log(error)
    console.log('The file has been saved!')
 })
@@ -81,7 +81,7 @@ This method takes just one argument i.e path of the file where it's stored and r
 
 ```js
 const data = fs.readFileSync('./example.txt')
-// data - "exampel content"
+// data - "example content"
 ```
 
 **Asynchronous Method**
@@ -91,7 +91,7 @@ fs.readFile('./example.txt', (error, data) => {
    if (error) console.log(error)
    console.log(data)
 })
-// data - "exampel content"
+// data - "example content"
 ```
 
 ### Update File
