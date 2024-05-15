@@ -46,21 +46,34 @@ type Code = {
    description: string
 }
 
+const FEATURED_PROJECT = {
+   img_url: '/images/code/tracksubs_1.jpg',
+   title: 'TrackSubs',
+   description:
+      'Streamline your finances and stay on top of recurring expenses effortlessly.',
+   demo_url: 'https://www.tracksubs.co',
+   code_url: 'https://github.com/prvnbist/tracksubs',
+   tech_stack: [
+      'NextJs',
+      'MantineUI',
+      'KnexJs',
+      'Clerk(Authentication)',
+      'Xata(Postgres)',
+      'Trigger.dev(Email Scheduling)',
+      'Resend(Emails)',
+      'Vercel(Hosting)',
+      'Statsig(Feature Flags)',
+   ],
+}
+
 const PROJECTS = [
-   {
-      img_url: '/images/code/tracksubs_1.jpg',
-      title: 'TrackSubs',
-      description:
-         'Streamline your finances and stay on top of recurring expenses effortlessly.',
-      code_url: 'https://github.com/prvnbist/tracksubs',
-      demo_url: 'https://www.tracksubs.co',
-   },
    {
       img_url: '/images/code/jsonvi_1.png',
       title: 'JSONVi',
       description:
          'A straightforward JSON Viewer with handy features to assist you with your everyday JSON tasks effortlessly.',
       demo_url: 'https://json-viewer.prvnbist.com',
+      tech_stack: [],
    },
    {
       img_url: '/images/code/undata_1.png',
@@ -68,16 +81,19 @@ const PROJECTS = [
       description:
          'Simplified Database query execution and visualization, enabling easy understanding, transformation, and exportation of your data to suit your needs.',
       code_url: 'https://github.com/prvnbist/undata',
+      tech_stack: [],
    },
    {
       img_url: '/images/code/ledger_1.png',
       title: 'Ledger 🚧',
+      tech_stack: [],
       description:
          'Our app offers intuitive tools for mastering personal finance, providing comprehensive metrics to track and analyze your spending habits with ease. Take control ofyour finances and achieve your financial goals effortlessly.',
    },
    {
       img_url: '/images/code/transcode_1.png',
       title: 'Transcode',
+      tech_stack: [],
       description:
          'A collection of handy tools tailored to meet the everyday needs of developers, simplifying common tasks with ease.',
       demo_url: 'https://transcode.vercel.app/json?translator=yaml',
@@ -89,7 +105,8 @@ export default async function Code() {
    return (
       <section className="w-full px-4 lg:px-0 mx-auto lg:w-[980px]">
          <h1 className="text-3xl my-6">Code</h1>
-         <ul className="grid grid-cols-1 md:grid-cols-2 gap-8">
+         <Project project={FEATURED_PROJECT} is_featured />
+         <ul className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
             {PROJECTS.map(project => (
                <Project key={project.title} project={project} />
             ))}
@@ -99,25 +116,40 @@ export default async function Code() {
 }
 
 type ProjectProps = {
+   is_featured?: boolean
    project: {
       img_url: string
       title: string
       description: string
       demo_url?: string
       code_url?: string
+      tech_stack: Array<string>
    }
 }
 
-const Project = ({ project }: ProjectProps) => {
+const Project = ({ project, is_featured = false }: ProjectProps) => {
    return (
-      <li>
+      <li
+         className={`list-none ${is_featured ? 'md:grid md:grid-cols-2 md:gap-8' : ''}`}
+      >
          <header className="border border-dark-200 aspect-[4/3] rounded-md overflow-hidden">
             {/* eslint-disable-next-line */}
             <img alt={project.title} src={project.img_url} />
          </header>
          <main className="mt-3">
-            <h2 className="text-lg">{project.title}</h2>
+            <h2 className="text-xl">{project.title}</h2>
             <p className="mt-1 mb-3">{project.description}</p>
+            <ul className="flex gap-2 flex-wrap mb-3">
+               {project.tech_stack.map(tech => (
+                  <li
+                     key={tech}
+                     title={tech}
+                     className="bg-dark-200 border border-dark-100 rounded px-2 py-[0.5px] text-sm font-[200]"
+                  >
+                     {tech}
+                  </li>
+               ))}
+            </ul>
             {(project.demo_url || project.code_url) && (
                <div className="flex gap-3">
                   {project.demo_url && (
