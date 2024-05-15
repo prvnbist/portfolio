@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      clsx:
+        specifier: ^2.1.1
+        version: 2.1.1
       graphql:
         specifier: ^16.8.1
         version: 16.8.1
@@ -39,7 +42,7 @@ importers:
         specifier: ^2.0.0
         version: 2.0.0
       tailwind-merge:
-        specifier: ^2.2.1
+        specifier: ^2.3.0
         version: 2.3.0
     devDependencies:
       '@types/lodash.debounce':

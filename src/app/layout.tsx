@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { Bricolage_Grotesque, IBM_Plex_Mono } from 'next/font/google'
 
 import './globals.css'
+import { cn } from '@/utils'
 import { Navbar } from '@/sections'
 
 export const metadata: Metadata = {
@@ -30,7 +31,7 @@ export default function RootLayout({
    return (
       <html
          lang="en"
-         className={`${ibm_plex_mono.variable} ${bricolage_grotesque.variable}`}
+         className={cn(ibm_plex_mono.variable, bricolage_grotesque.variable)}
       >
          <head>
             <script

@@ -1,6 +1,7 @@
 import { ReactElement } from 'react'
-import { twJoin } from 'tailwind-merge'
 import { Highlight, themes } from 'prism-react-renderer'
+
+import { cn } from '@/utils'
 
 const calculateLinesToHighlight = (lineNumbers?: [number, number]) => {
    if (!lineNumbers) return () => false
@@ -33,7 +34,7 @@ const CodeBlock = ({ children, ...props }: CodeBlockProps) => {
          {({ className, style, tokens, getLineProps, getTokenProps }) => (
             <pre
                style={{ ...style }}
-               className={twJoin(
+               className={cn(
                   className,
                   'text-[14px] p-5 max-h-[400px] mb-4 rounded overflow-auto text-left'
                )}
@@ -58,14 +59,17 @@ const CodeBlock = ({ children, ...props }: CodeBlockProps) => {
                      line,
                   })
                   if (shouldHighlightLine(i)) {
-                     lineProps.className = `${lineProps.className} highlight__line`
+                     lineProps.className = cn(
+                        lineProps.className,
+                        'highlight__line'
+                     )
                   }
 
                   return (
                      <div
                         key={i}
                         {...lineProps}
-                        className={twJoin(lineProps.className, 'table-row')}
+                        className={cn(lineProps.className, 'table-row')}
                      >
                         {lineNumberElem}
                         <span className="table-cell">

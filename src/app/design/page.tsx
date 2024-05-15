@@ -80,9 +80,7 @@ export default async function Design() {
                         title={design.title}
                         rel="noopener noreferrer"
                      >
-                        <Button.Text variant="outline">
-                           View Project
-                        </Button.Text>
+                        <Button.Text>View Project</Button.Text>
                      </a>
                   </footer>
                </li>

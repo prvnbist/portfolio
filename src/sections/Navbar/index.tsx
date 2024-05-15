@@ -3,6 +3,8 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
+import { cn } from '@/utils'
+
 const LINKS = [
    { title: 'Code', url: '/code' },
    { title: 'Design', url: '/design' },
@@ -22,7 +24,10 @@ const Navbar = () => {
                   <Link
                      href={link.url}
                      key={link.url}
-                     className={`text-white font-regular tracking-wide ${pathname.includes(link.url) ? 'text-yellow-400' : ''}`}
+                     className={cn(
+                        'text-white font-regular tracking-wide',
+                        pathname.includes(link.url) && 'text-yellow-400'
+                     )}
                   >
                      {link.title}
                   </Link>

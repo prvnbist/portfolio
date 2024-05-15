@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { Metadata } from 'next'
 import { Fragment } from 'react'
 
+import { cn } from '@/utils'
 import client from '@/lib/graphql'
 import { SKILLS, TIMELINES } from '@/queries'
 
@@ -111,7 +112,7 @@ export default async function Home() {
       <>
          <header className={classes.header}>
             <div>
-               <h2 className={`${classes.name} text-yellow-300`}>
+               <h2 className={cn(classes.name, 'text-yellow-300')}>
                   Praveen Bisht
                </h2>
                <h1 className={classes.tagline}>
@@ -151,8 +152,8 @@ export default async function Home() {
                </ul>
                <Link
                   target="__blank"
-                  className={classes.cta}
                   href="https://www.tracksubs.co"
+                  className="text-gray-900 bg-gradient-to-r from-lime-500 via-lime-400 to-lime-200 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-800 shadow-lg shadow-lime-800/80 font-[400] rounded-lg px-4 text-sm inline-flex items-center h-10"
                >
                   Building tracksubs.co 🚧
                </Link>

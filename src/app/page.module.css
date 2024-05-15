@@ -68,8 +68,9 @@
    width: 100%;
    display: grid;
    grid-gap: 4px;
+   margin-bottom: 24px;
    grid-auto-rows: 32px;
-   margin-top: 23px;
+   margin-top: 24px;
    grid-template-columns: 1fr 1fr 1fr;
    @media (max-width: 567px) {
       grid-template-columns: 1fr 1fr;
@@ -87,16 +88,4 @@
 
 .social a {
    text-decoration: none;
-}
-
-.cta {
-   height: 40px;
-   color: black;
-   padding: 0 24px;
-   font-weight: 400;
-   margin-top: 24px;
-   border-radius: 4px;
-   align-items: center;
-   display: inline-flex;
-   background: #fcc156;
 }

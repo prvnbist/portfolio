@@ -1,21 +1,14 @@
 import { ReactNode } from 'react'
-import { twJoin } from 'tailwind-merge'
 
 type TextProps = {
    children: ReactNode
-   variant: 'outline'
+   variant?: 'outline'
 }
 
 const Button = {
    Text: (props: TextProps) => {
       return (
-         <button
-            className={twJoin(
-               'h-10 px-3 text-4 rounded-lg text-white',
-               props.variant === 'outline' &&
-                  'bg-transparent border border-blue-400 hover:bg-blue-400 hover:border-transparent focus:bg-blue-400 focus:border-transparent'
-            )}
-         >
+         <button className="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 shadow-lg shadow-lime-500/50 dark:shadow-lg dark:shadow-lime-800/80 font-[400] rounded-lg text-sm px-5 py-2.5">
             {props.children}
          </button>
       )

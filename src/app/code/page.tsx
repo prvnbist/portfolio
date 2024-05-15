@@ -1,6 +1,8 @@
-import { Metadata } from 'next'
-
+import type { Metadata } from 'next'
 import Link from 'next/link'
+
+import { cn } from '@/utils'
+import { Button } from '@/components'
 
 const seo = {
    thumb: '/images/thumbs/code.jpg',
@@ -101,6 +103,12 @@ const PROJECTS = [
    },
 ]
 
+const BUTTON_PRIMARY =
+   'text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-800 shadow-lg shadow-lime-800/80 font-[400] rounded-lg text-sm px-5 py-2.5'
+
+const BUTTON_SECONDARY =
+   'border focus:outline-none focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 bg-gray-800 text-white border-gray-600 hover:border-gray-600 focus:ring-gray-700 font-[400]'
+
 export default async function Code() {
    return (
       <section className="w-full px-4 lg:px-0 mx-auto lg:w-[980px]">
@@ -130,7 +138,10 @@ type ProjectProps = {
 const Project = ({ project, is_featured = false }: ProjectProps) => {
    return (
       <li
-         className={`list-none ${is_featured ? 'md:grid md:grid-cols-2 md:gap-8' : ''}`}
+         className={cn(
+            'list-none',
+            is_featured && 'md:grid md:grid-cols-2 md:gap-8'
+         )}
       >
          <header className="border border-dark-200 aspect-[4/3] rounded-md overflow-hidden">
             {/* eslint-disable-next-line */}
@@ -144,7 +155,7 @@ const Project = ({ project, is_featured = false }: ProjectProps) => {
                   <li
                      key={tech}
                      title={tech}
-                     className="bg-dark-200 border border-dark-100 rounded px-2 py-[0.5px] text-sm font-[200]"
+                     className="border border-dark-200 rounded px-2 py-[0.5px] text-[13px] font-[200]"
                   >
                      {tech}
                   </li>
@@ -156,7 +167,7 @@ const Project = ({ project, is_featured = false }: ProjectProps) => {
                      <Link
                         target="_blank"
                         href={project.demo_url}
-                        className="text-sm px-5 h-10 inline-flex items-center rounded-md border border-blue-400 text-white hover:bg-blue-400 transition-colors ease-in"
+                        className={BUTTON_PRIMARY}
                      >
                         Demo
                      </Link>
@@ -165,7 +176,9 @@ const Project = ({ project, is_featured = false }: ProjectProps) => {
                      <Link
                         target="_blank"
                         href={project.code_url}
-                        className={`text-sm px-5 h-10 inline-flex items-center rounded-md border hover:border-blue-400 text-white hover:bg-blue-400 transition-colors ease-in ${!project.demo_url ? 'border-blue-400' : 'border-transparent'}`}
+                        className={
+                           project.demo_url ? BUTTON_SECONDARY : BUTTON_PRIMARY
+                        }
                      >
                         Code
                      </Link>
