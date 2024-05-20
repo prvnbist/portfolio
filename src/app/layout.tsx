@@ -1,3 +1,4 @@
+import Script from 'next/script'
 import type { Metadata } from 'next'
 
 import { Bricolage_Grotesque, IBM_Plex_Mono } from 'next/font/google'
@@ -34,10 +35,14 @@ export default function RootLayout({
          className={cn(ibm_plex_mono.variable, bricolage_grotesque.variable)}
       >
          <head>
-            <script
-               async
+            <Script
+               src="/script"
+               data-host-url="https://analytics.prvnbist.com"
+               data-website-id="9ba1c9a6-566a-46bf-8843-1b178b2ba099"
+            />
+            <Script
                src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
-            ></script>
+            />
             <script
                dangerouslySetInnerHTML={{
                   __html: `
