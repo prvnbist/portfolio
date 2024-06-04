@@ -29,7 +29,7 @@ const Tags = ({ tags }: { tags: string[] }) => {
                   key={tag}
                   onClick={() => setTag(tag)}
                   className={cn(
-                     'text-sm cursor-pointer inline-flex bg-dark-200 rounded-full px-2 py-[2px] text-gray-400',
+                     'font-light text-sm cursor-pointer inline-flex bg-dark-200 rounded-full px-2 py-[2px] text-gray-400',
                      activeTag === tag && 'text-black bg-yellow-400'
                   )}
                >

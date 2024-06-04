@@ -12,10 +12,10 @@ const Articles = ({ articles }: { articles: Article[] }) => {
                      href={`/blog/${article.path}`}
                      className="cursor-pointer text-white text-lg font-medium hover:text-indigo-400"
                   >
-                     <h2>{article.title}</h2>
+                     <h2 className="font-[300]">{article.title}</h2>
                   </Link>
                   {article.date && (
-                     <span className="flex-shrink-0 text-gray-400 font-medium">
+                     <span className="flex-shrink-0 text-gray-400 font-[200]">
                         {new Intl.DateTimeFormat('en-US', {
                            year: 'numeric',
                            month: 'short',

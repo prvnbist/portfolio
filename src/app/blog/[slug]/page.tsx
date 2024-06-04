@@ -67,7 +67,7 @@ export default async function Article({ params }: ArticleProps) {
                   article.meta.tags.map((tag: string) => (
                      <li
                         key={tag}
-                        className="text-sm inline-flex bg-dark-200 rounded-full px-2 py-[2px] text-gray-400"
+                        className="font-light text-sm inline-flex bg-dark-200 rounded-full px-2 py-[2px] text-gray-400"
                      >
                         {tag}
                      </li>
