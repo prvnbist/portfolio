@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 
 import client from '@/lib/graphql'
 import { DESIGNS } from '@/queries'
-import { Button } from '@/components'
 
+import Project from './project'
 import classes from './design.module.css'
 
 const seo = {
@@ -61,27 +61,7 @@ export default async function Design() {
 			<h1 className="text-3xl my-6 px-2">Designs</h1>
 			<ul className={classes.projects}>
 				{designs.map(design => (
-					<li key={design.id} className={classes.project}>
-						<header>
-							<div>
-								<img src={design.thumbnail.url} alt={design.title} />
-							</div>
-							<h3>{design.title}</h3>
-						</header>
-						<main>
-							<p>{design.description}</p>
-						</main>
-						<footer>
-							<a
-								target="_blank"
-								href={design.url}
-								title={design.title}
-								rel="noopener noreferrer"
-							>
-								<Button.Text>View Project</Button.Text>
-							</a>
-						</footer>
-					</li>
+					<Project key={design.id} design={design} />
 				))}
 			</ul>
 		</section>
