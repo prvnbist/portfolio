@@ -1,5 +1,6 @@
 'use client'
 
+import { useMemo } from 'react'
 import { motion } from 'framer-motion'
 
 import type { Timeline } from '@/type'
@@ -12,6 +13,21 @@ const ANIMATE_PROPS = {
 }
 
 const TimelineItem = ({ timeline }: { timeline: Timeline }) => {
+	const description = useMemo(() => {
+		if (!timeline.description) return ''
+
+		return timeline.description
+			.split('-')
+			.filter(Boolean)
+			.map((text, index, list) => (
+				<li key={index}>
+					<p className="text-[18px] text-gray-400">
+						{list.length > 1 && '-'} {text}
+						<br />
+					</p>
+				</li>
+			))
+	}, [timeline.description])
 	return (
 		<motion.li {...ANIMATE_PROPS}>
 			{timeline.location && (
@@ -53,7 +69,7 @@ const TimelineItem = ({ timeline }: { timeline: Timeline }) => {
 					</section>
 				)}
 			</header>
-			<p className="mb-4 text-[18px] text-gray-400">{timeline.description}</p>
+			{timeline.description && <ul className="mb-4">{description}</ul>}
 		</motion.li>
 	)
 }
