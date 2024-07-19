@@ -32,12 +32,14 @@ export async function generateMetadata({ params }: ArticleProps): Promise<Metada
 			url: `/blog/${slug}`,
 			title: title,
 			description: meta.description,
+			...(meta.ogImage && { images: meta.ogImage }),
 		},
 		twitter: {
 			card: 'summary_large_image',
 			site: '@prvnbist',
 			title: title,
 			description: meta.description,
+			...(meta.ogImage && { images: meta.ogImage }),
 		},
 	}
 }
