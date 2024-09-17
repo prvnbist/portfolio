@@ -1,11 +1,10 @@
 import type { Metadata } from 'next'
 
 import client from '@/lib/graphql'
-import { SKILLS, TIMELINES } from '@/queries'
-import type { Skill, Timeline } from '@/type'
+import { TIMELINES } from '@/queries'
+import type { Timeline } from '@/type'
 
 import Header from './sections/header'
-import Skills from './sections/skills'
 import Timelines from './sections/timelines'
 
 const seo = {
@@ -46,40 +45,11 @@ const getTimelines = async (): Promise<Timeline[]> => {
 	return timelines
 }
 
-const getSkills = async (): Promise<Record<string, Record<string, Array<Skill>>>> => {
-	const { skills = [] } = await client.request<Promise<{ skills: Skill[] }>>(SKILLS)
-
-	const _skills = skills.reduce((acc: { [key in string]: any }, item) => {
-		const { category, sub_category } = item
-
-		if (!acc[category]) {
-			acc[category] = {}
-		}
-
-		if (sub_category && !acc[category][sub_category]) {
-			acc[category][sub_category] = []
-		}
-
-		if (sub_category) {
-			acc[category][sub_category].push(item)
-		} else {
-			acc[category].Other = acc[category].Other || []
-			acc[category].Other.push(item)
-		}
-
-		return acc
-	}, {})
-
-	return _skills
-}
-
 export default async function Home() {
-	const skills = await getSkills()
 	const timelines = await getTimelines()
 	return (
 		<>
 			<Header />
-			<Skills skills={skills} />
 			<Timelines timelines={timelines} />
 		</>
 	)
