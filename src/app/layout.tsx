@@ -43,6 +43,22 @@ export default function RootLayout({
 				)}
 			</head>
 			<body>
+				<svg
+					width="100%"
+					height="100%"
+					className="pointer-events-none fixed isolate z-50 opacity-70 mix-blend-soft-light"
+				>
+					<title>noise</title>
+					<filter id="noise">
+						<feTurbulence
+							type="fractalNoise"
+							baseFrequency="0.80"
+							numOctaves="4"
+							stitchTiles="stitch"
+						/>
+					</filter>
+					<rect width="100%" height="100%" filter="url(#noise)" />
+				</svg>
 				<Navbar />
 				{children}
 				<section className="px-4 lg:w-[980px] bg-[#202024] rounded-lg mx-4 lg:mx-auto py-16 text-center mt-8 mb-16">
