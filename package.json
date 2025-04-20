@@ -1,0 +1,36 @@
+{
+	"name": "portfolio",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev --turbopack",
+		"build": "next build",
+		"start": "next start",
+		"lint": "biome lint ./src",
+		"format": "biome format --write .",
+		"precommit": "pnpm lint && pnpm format",
+		"prepare": "husky"
+	},
+	"dependencies": {
+		"@tailwindcss/postcss": "^4.1.4",
+		"next": "15.3.1",
+		"postcss": "^8.5.3",
+		"react": "^19.0.0",
+		"react-dom": "^19.0.0",
+		"tailwindcss": "^4.1.4"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.9.4",
+		"@types/node": "^20",
+		"@types/react": "^19",
+		"@types/react-dom": "^19",
+		"clsx": "^2.1.1",
+		"husky": "^9.1.7",
+		"lint-staged": "^15.5.1",
+		"tailwind-merge": "^3.2.0",
+		"typescript": "^5"
+	},
+	"lint-staged": {
+		"*.{js,ts,cjs,mjs,tsx,json}": ["biome check --write --unsafe --no-errors-on-unmatched"]
+	}
+}
