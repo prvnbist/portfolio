@@ -45,7 +45,7 @@ export default function Home() {
 				Hi I'm Praveen Bisht — A frontend engineer based in Delhi, India building an AI call
 				answering agent —{' '}
 				<a
-					href="https://serviceagent.ai"
+					href="https://serviceagent.ai?ref=prvnbist"
 					rel="noopener noreferrer"
 					target="__blank"
 					title="ServiceAgent.ai"
@@ -54,7 +54,7 @@ export default function Home() {
 				</a>{' '}
 				at{' '}
 				<a
-					href="https://saaslabs.co"
+					href="https://saaslabs.co?ref=prvnbist"
 					rel="noopener noreferrer"
 					target="__blank"
 					title="SaaSLabs.co"
