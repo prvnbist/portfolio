@@ -51,15 +51,15 @@ export default function RootLayout({
 					className="fixed left-0 top-0 w-full h-2 bg-[repeating-linear-gradient(45deg,_#facc15_0_10px,_#000_10px_20px)]"
 					title="Work In Progress"
 				/>
-				<header className="h-16 flex items-center justify-center">
+				<nav className="h-16 flex items-center justify-center">
 					<Link href="/" className="font-semibold text-2xl">
 						<span className="size-16 grid place-content-center">
 							<Logo size={36} />
 						</span>
 					</Link>
-				</header>
+				</nav>
 				<div className="h-[calc(100dvh_-_88px)] overflow-auto bg-zinc-900 rounded-2xl">
-					<div className="px-4 h-full mx-auto w-full max-w-4xl">{children}</div>
+					<div className="px-4 h-full mx-auto w-full max-w-5xl">{children}</div>
 				</div>
 			</body>
 		</html>
