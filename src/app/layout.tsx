@@ -3,7 +3,7 @@ import Link from 'next/link'
 export { metadata } from '@/seo'
 import Logo from '@/assets/logos/Logo'
 import { cn } from '@/utils/cn'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Geist, Geist_Mono, Unbounded } from 'next/font/google'
 
 const geistSans = Geist({
 	variable: '--font-geist-sans',
@@ -12,6 +12,11 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
 	variable: '--font-geist-mono',
+	subsets: ['latin'],
+})
+
+const unbounded = Unbounded({
+	variable: '--font-serif',
 	subsets: ['latin'],
 })
 
@@ -26,7 +31,8 @@ export default function RootLayout({
 				className={cn(
 					'relative h-screen bg-zinc-800 px-4 pb-4 pt-2 font-sans antialiased',
 					geistSans.variable,
-					geistMono.variable
+					geistMono.variable,
+					unbounded.variable
 				)}
 			>
 				<div
