@@ -7,6 +7,10 @@ const nextConfig: NextConfig = {
 				source: '/(design|code|blog)',
 				destination: '/',
 			},
+			{
+				source: '/script',
+				destination: 'https://analytics.prvnbist.com/script.js',
+			},
 		]
 	},
 }

@@ -1,9 +1,11 @@
 import './globals.css'
-import Link from 'next/link'
 export { metadata } from '@/seo'
 import Logo from '@/assets/logos/Logo'
 import { cn } from '@/utils/cn'
+import { GoogleAnalytics } from '@next/third-parties/google'
 import { Geist, Geist_Mono, Unbounded } from 'next/font/google'
+import Link from 'next/link'
+import Script from 'next/script'
 
 const geistSans = Geist({
 	variable: '--font-geist-sans',
@@ -27,9 +29,19 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
+			<head>
+				<Script
+					src="/script"
+					data-host-url="https://analytics.prvnbist.com"
+					data-website-id="9ba1c9a6-566a-46bf-8843-1b178b2ba099"
+				/>
+				{process.env.NODE_ENV === 'production' && (
+					<GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS!} />
+				)}
+			</head>
 			<body
 				className={cn(
-					'relative h-screen bg-zinc-800 px-4 pb-4 pt-2 font-sans antialiased',
+					'relative h-dvh bg-zinc-800 px-4 pb-4 pt-2 font-sans antialiased',
 					geistSans.variable,
 					geistMono.variable,
 					unbounded.variable
@@ -46,7 +58,7 @@ export default function RootLayout({
 						</span>
 					</Link>
 				</header>
-				<div className="h-[calc(100vh_-_88px)] overflow-auto bg-zinc-900 rounded-2xl">
+				<div className="h-[calc(100dvh_-_88px)] overflow-auto bg-zinc-900 rounded-2xl">
 					<div className="px-4 h-full mx-auto w-full max-w-4xl">{children}</div>
 				</div>
 			</body>
