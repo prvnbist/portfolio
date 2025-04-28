@@ -111,6 +111,7 @@ export default function Home() {
 					title="ServiceAgent"
 					className=""
 					link="https://serviceagent.ai"
+					productHunt="https://www.producthunt.com/posts/serviceagent?ref=prvnbist.com"
 					period={{ start: '2024', end: 'Present' }}
 					image="/images/projects/service-agent.jpg"
 					description="An always-on Al Answering Agent will keep your business growing 24/7 by answering calls, booking appointments and converting leads into opportunities."

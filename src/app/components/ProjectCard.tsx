@@ -8,6 +8,7 @@ type ProjectCardProps = {
 	image: string
 	link: string
 	layout?: 'grid' | 'stacked'
+	productHunt?: string
 }
 
 const ProjectCard = ({
@@ -18,6 +19,7 @@ const ProjectCard = ({
 	image,
 	link,
 	layout = 'grid',
+	productHunt = '',
 }: ProjectCardProps) => {
 	const isGrid = layout === 'grid'
 
@@ -40,21 +42,40 @@ const ProjectCard = ({
 					{period.start} - {period.end}
 				</span>
 				<p className="z-10 mt-2 mb-5 text-lg text-zinc-400">{description}</p>
-				<a
-					className={cn(
-						'self-start px-3 h-10 rounded-md',
-						'inline-flex items-center',
-						'border border-yellow-300 !text-yellow-300',
-						'font-serif text-sm',
-						'hover:scale-105 transition-all duration-200 ease-[cubic-bezier(0.78,_0,_0.22,_1)]'
+				<div className="flex gap-4">
+					<a
+						className={cn(
+							'self-start px-3 h-10 rounded-md',
+							'inline-flex items-center',
+							'border border-yellow-300 !text-yellow-300',
+							'font-serif text-sm',
+							'hover:scale-105 transition-all duration-200 ease-[cubic-bezier(0.78,_0,_0.22,_1)]'
+						)}
+						href={link}
+						rel="noopener noreferrer"
+						target="__blank"
+						title="Visit"
+					>
+						Visit
+					</a>
+					{productHunt && (
+						<a
+							className={cn(
+								'self-start px-3 h-10 rounded-md',
+								'inline-flex items-center',
+								'bg-red-400 !text-white',
+								'font-serif text-sm',
+								'hover:scale-105 transition-all duration-200 ease-[cubic-bezier(0.78,_0,_0.22,_1)]'
+							)}
+							href={productHunt}
+							rel="noopener noreferrer"
+							target="__blank"
+							title="Product Hunt"
+						>
+							Product Hunt
+						</a>
 					)}
-					href={link}
-					rel="noopener noreferrer"
-					target="__blank"
-					title="Visit"
-				>
-					Visit
-				</a>
+				</div>
 			</div>
 		</div>
 	)
