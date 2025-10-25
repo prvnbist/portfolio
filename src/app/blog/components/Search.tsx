@@ -8,7 +8,7 @@ const Search = () => {
 	const params = useSearchParams()
 
 	const debouncedSearch = debounce((value: string) => {
-		const _params = new URLSearchParams(params)
+		const _params = new URLSearchParams([...params.entries()])
 		if (value) {
 			_params.set('s', value)
 		} else {

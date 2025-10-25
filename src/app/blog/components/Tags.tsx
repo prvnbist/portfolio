@@ -10,7 +10,7 @@ const Tags = ({ tags }: { tags: string[] }) => {
 	const activeTag = params.get('tag')
 
 	const setTag = (tag: string) => {
-		const _params = new URLSearchParams(params)
+		const _params = new URLSearchParams([...params.entries()])
 
 		if (tag === activeTag) {
 			_params.delete('tag')
