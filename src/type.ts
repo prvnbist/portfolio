@@ -1,10 +1,8 @@
 export type Timeline = {
-		id: string
-		url: string
-		title: string
-		from: string
-		to: string
-		location: string
-		is_current: boolean
-		description: string
-	}
+	id: string
+	url: string | null
+	institution: string
+	duration: Array<{ from: string; to: string | null; title: string }>
+	location: string
+	description: Array<string>
+}
