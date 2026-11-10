@@ -13,7 +13,7 @@ const Articles = ({ articles }: { articles: Article[] }) => {
 							<h2 className="font-[300]">{article.title}</h2>
 						</a>
 						{article.date && (
-							<span className="flex-shrink-0 text-gray-400 font-[200]">
+							<span className="shrink-0 text-gray-400 font-[200]">
 								{new Intl.DateTimeFormat('en-US', {
 									year: 'numeric',
 									month: 'short',

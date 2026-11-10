@@ -40,15 +40,14 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
+    "@tailwindcss/vite": "^4.3.5",
     "@types/lodash.debounce": "^4.0.9",
     "@types/node": "^20.19.23",
     "@types/react": "^18.3.26",
     "@types/react-dom": "^18.3.7",
     "@vitejs/plugin-react": "^6.3.0",
-    "autoprefixer": "^10.4.21",
     "nitro": "3.0.261103-rc",
-    "postcss": "^8.5.6",
-    "tailwindcss": "^3.4.18",
+    "tailwindcss": "^4.3.5",
     "typescript": "^5.9.3",
     "vite": "^8.3.7"
   }

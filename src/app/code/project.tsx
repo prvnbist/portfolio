@@ -3,10 +3,10 @@ import { motion } from 'framer-motion'
 import { cn } from '@/utils'
 
 const BUTTON_PRIMARY =
-	'text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-800 shadow-lg shadow-lime-800/80 font-[400] rounded-lg text-sm px-5 py-2.5'
+	'text-gray-900 bg-linear-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-linear-to-br focus:ring-4 focus:outline-hidden focus:ring-lime-800 shadow-lg shadow-lime-800/80 font-[400] rounded-lg text-sm px-5 py-2.5'
 
 const BUTTON_SECONDARY =
-	'border focus:outline-none focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 bg-gray-800 text-white border-gray-600 hover:border-gray-600 focus:ring-gray-700 font-[400]'
+	'border focus:outline-hidden focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 bg-gray-800 text-white border-gray-600 hover:border-gray-600 focus:ring-gray-700 font-[400]'
 
 const ANIMATE_PROPS = {
 	initial: { opacity: 0, y: 60 },
@@ -44,7 +44,7 @@ export default function Project({ project, is_featured = false }: ProjectProps) 
 						<li
 							key={tech}
 							title={tech}
-							className="border border-dark-200 rounded px-2 py-[0.5px] text-[13px] font-[200]"
+							className="border border-dark-200 rounded-sm px-2 py-[0.5px] text-[13px] font-[200]"
 						>
 							{tech}
 						</li>

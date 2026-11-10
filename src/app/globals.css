@@ -1,37 +1,47 @@
 @import "@fontsource-variable/bricolage-grotesque/wght.css";
 @import "@fontsource/ibm-plex-mono/400.css";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-html {
-	--font-heading: "Bricolage Grotesque Variable";
-	--font-code: "IBM Plex Mono";
+@theme {
+	--color-dark-400: #19191c;
+	--color-dark-300: #202024;
+	--color-dark-200: #303035;
+	--color-dark-100: #55555f;
+	--color-blue-400: #1659db;
+	--color-blue-100: #719df0;
 }
 
-* {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
-	font-family: var(--font-heading), sans-serif;
-}
+/* Unlayered element rules would beat Tailwind v4 utilities (which live in @layer utilities) */
+@layer base {
+	html {
+		--font-heading: "Bricolage Grotesque Variable";
+		--font-code: "IBM Plex Mono";
+	}
 
-body {
-	color: #fff;
-	overflow-x: hidden;
-	background: #19191c;
-	font-family: var(--font-heading), sans-serif;
-}
+	* {
+		box-sizing: border-box;
+		margin: 0;
+		padding: 0;
+		font-family: var(--font-heading), sans-serif;
+	}
 
-a,
-span,
-p {
-	font-weight: 200;
-}
+	body {
+		color: #fff;
+		overflow-x: hidden;
+		background: #19191c;
+		font-family: var(--font-heading), sans-serif;
+	}
 
-strong {
-	font-weight: 500;
+	a,
+	span,
+	p {
+		font-weight: 200;
+	}
+
+	strong {
+		font-weight: 500;
+	}
 }
 
 .highlight__line {
@@ -73,13 +83,14 @@ strong {
 	border-radius: 10px;
 	background-color: #303035;
 }
-a {
-	color: #719df0;
+@layer base {
+	a {
+		color: #719df0;
+	}
 }
 
 #article p {
-	--tw-text-opacity: 1;
-	color: rgba(156, 163, 175, var(--tw-text-opacity));
+	color: var(--color-gray-400);
 	margin-bottom: 0.75rem;
 	font-size: 1.125rem;
 	line-height: 1.75rem;
