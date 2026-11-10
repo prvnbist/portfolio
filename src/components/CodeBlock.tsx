@@ -34,7 +34,7 @@ const CodeBlock = ({ children, ...props }: CodeBlockProps) => {
 					style={{ ...style }}
 					className={cn(
 						className,
-						'text-[14px] p-5 max-h-[400px] mb-4 rounded overflow-auto text-left'
+						'text-[14px] p-5 max-h-[400px] mb-4 rounded-sm overflow-auto text-left'
 					)}
 				>
 					{tokens.map((line, i) => {

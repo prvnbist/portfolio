@@ -60,7 +60,7 @@ const TimelineItem = ({ timeline }: { timeline: Timeline }) => {
 							target="_blank"
 							rel="noreferrer"
 							title={`Link to ${timeline.institution}`}
-							className="ml-1 h-8 w-8 flex items-center justify-center rounded hover:bg-gray-800"
+							className="ml-1 h-8 w-8 flex items-center justify-center rounded-sm hover:bg-gray-800"
 						>
 							<LinkIcon size={16} className="stroke-current" />
 						</a>

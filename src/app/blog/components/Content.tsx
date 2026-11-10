@@ -27,7 +27,7 @@ const components: Record<string, ComponentType<any>> = {
 		<blockquote {...props} className="border-l-4 border-gray-700 pl-3" />
 	),
 	code: (props: any) => (
-		<code {...props} className="inline-block text-gray-400 text-sm bg-gray-800 px-2 rounded" />
+		<code {...props} className="inline-block text-gray-400 text-sm bg-gray-800 px-2 rounded-sm" />
 	),
 	a: (props: any) => <a {...props} className="text-blue-500 hover:text-blue-700" />,
 	table: (props: any) => <table {...props} className="table my-3 w-full border-collapse" />,
@@ -36,7 +36,7 @@ const components: Record<string, ComponentType<any>> = {
 	thead: (props: any) => <thead {...props} className="h-8 border-gray-700" />,
 	th: (props: any) => <th {...props} className="px-3 border-gray-700" />,
 	tr: (props: any) => <tr {...props} className="h-10 px-3 border-gray-700" />,
-	td: (props: any) => <td {...props} className="my-4 overflow-hidden rounded" />,
+	td: (props: any) => <td {...props} className="my-4 overflow-hidden rounded-sm" />,
 	img: (props: any) => (
 		<img {...props} alt={props.alt} className="rounded-md w-full object-cover" />
 	),

@@ -6,55 +6,27 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Package manager is pnpm.
 
-- `pnpm dev` — Vite dev server on http://localhost:3000
-- `pnpm build` — production build into `.output/` (Nitro `node-server`)
-- `pnpm start` — `node .output/server/index.mjs` (reads env from the process; it does not load `.env`)
+- `pnpm dev` / `pnpm build` / `pnpm start` — Vite + TanStack Start (`vite dev`, `vite build`, `node .output/server/index.mjs`)
 - `pnpm lint` — `biome lint ./src`
-- `pnpm format` — `biome format --write .`
+- `pnpm format` — `biome format --write .` (tabs, width 3, single quotes, no semicolons, line width 100)
 - `pnpm precommit` — format + lint
-- Type check: `npx tsc --noEmit`
 
 There is no test suite.
 
-## Environment
-
-- `GRAPH_CMS_URL` — server-only GraphQL endpoint, read in `src/lib/graphql.server.ts`. Needed by `/blog` and `/design`. Never prefix with `VITE_`.
-- `VITE_GOOGLE_ANALYTICS` — client-exposed GA measurement ID (was `NEXT_PUBLIC_GOOGLE_ANALYTICS`). GA is injected in `__root.tsx` only in production builds and only when set.
-
-See `.env.example`. Both must be set in the hosting provider's environment; `VITE_*` is inlined at build time.
-
 ## Architecture
 
-Personal portfolio on TanStack Start (Vite + Nitro), React 18, Tailwind 3, framer-motion. Path alias `@/*` → `src/*`. SSR on every request; no `'use client'` directives (everything is isomorphic).
+Personal portfolio/blog (prvnbist.com). TanStack Start (file routes in `src/routes/`, generated `src/routeTree.gen.ts`) on Vite + Nitro, React 18, Tailwind CSS v4, Biome; `@/*` maps to `src/*`. (Migrated from Next.js; see `MIGRATION.md` for history.)
 
-### Routing conventions
+**Two content sources:**
+- **GraphCMS (Hygraph) via GraphQL** — designs, timelines, code projects, and the blog article *index* (id, title, date, tags, path). Client in `src/lib/graphql.ts` reads `GRAPH_CMS_URL` from `.env`; all queries are string constants in `src/queries/index.ts`. Fetch server-side only (route loaders / server functions).
+- **Local MDX files** in `src/articles/*.mdx` — the article *body* and frontmatter (`title`, `date`, `tags`, `description`, `ogImage`). MDX is compiled at build time by `@mdx-js/rollup` (custom wrapper in `vite.config.ts` that skips `?raw`/query imports so frontmatter can be read from source with `gray-matter`); `src/routes/blog/$slug.tsx` renders it, with `CodeBlock` using prism-react-renderer.
 
-File-based routes in `src/routes/` (`src/routeTree.gen.ts` is generated — don't edit):
+So a new article needs both an `.mdx` file and a matching CMS entry whose `path` equals the filename slug (the listing links to `/blog/${article.path}`), or it won't appear in the blog listing or will 404.
 
-- `__root.tsx` — HTML shell, fonts (Fontsource, `--font-heading` / `--font-code`), global CSS, Navbar, footer, GA, self-hosted analytics script.
-- `index.tsx`, `code.tsx`, `design.tsx`, `blog/index.tsx`, `blog/$slug.tsx`.
-- Server routes: `sitemap[.]xml.ts`, `robots[.]txt.ts`, `script.ts` (proxies `/script` → `https://analytics.prvnbist.com/script.js`, replacing the old Next rewrite).
-- Each route defines its own SEO (title, description, OpenGraph, Twitter, canonical) in `head()`, built with helpers in `src/lib/seo.ts`.
-- `/blog` search state lives in the URL (`?s=`, `?tag=`) via `validateSearch` + `loaderDeps`.
+`.env` (with `GRAPH_CMS_URL`) is tracked in git; only `.env*.local` is ignored. Only `VITE_`-prefixed vars reach the browser (`VITE_GOOGLE_ANALYTICS`). Builds and dev need network access to the CMS.
 
-Page components still live under `src/app/` (`sections/`, `blog/components/`, `code/`, `design/`, `globals.css`) and are imported by routes; shared UI is in `src/components/`, navbar in `src/sections/Navbar/`.
+**Blog listing** (`src/routes/blog`): search (`?s=`) and tag filter (`?tag=`) are URL search params validated by the route, passed to `getArticles` in `utils.ts`, which forwards them as GraphQL variables (filtering happens in the CMS, not client-side).
 
-### Server-side data fetching
+**Styling (Tailwind v4):** CSS-first config — there is no `tailwind.config.ts` or PostCSS config. Tailwind loads via `@tailwindcss/vite` in `vite.config.ts`; the entry is `src/app/globals.css` (`@import "tailwindcss"` plus an `@theme` block for the custom `dark-*`/`blue-*` colors). Gotcha: v4 utilities live in `@layer utilities`, so any *unlayered* global rule (e.g. `* { margin: 0 }`, `a { color }`) overrides them (this broke `mx-auto`/padding centering). Put global element rules inside `@layer base`. Also note v4 renames: `rounded` → `rounded-sm`, `outline-none` → `outline-hidden`, `bg-gradient-to-*` → `bg-linear-to-*`, `flex-shrink` → `shrink`.
 
-Route `loader`s call `createServerFn` wrappers (`src/lib/cms.ts`, `src/lib/articles.ts`). The implementations are in `*.server.ts` files (`cms.server.ts`, `articles.server.ts`, `graphql.server.ts`) and must only be imported from server-fn handlers so they stay out of the client bundle. GraphQL queries are plain strings in `src/queries/index.ts` (only `ARTICLES`, `ARTICLE_TAGS`, `DESIGNS` are used; `TIMELINES`/`CODES` are unused). Hardcoded data: `src/data/projects.ts`, timelines in `src/routes/index.tsx`.
-
-### MDX content
-
-- Blog articles are local MDX in `src/articles/<slug>.mdx` with frontmatter (`title`, `date`, `tags`, optional `description`, `ogImage`).
-- `vite.config.ts` compiles `.mdx` imports at build time with `@mdx-js/rollup` (`remark-frontmatter`, `remark-mdx-code-meta`); `?raw` imports are left untouched.
-- `articles.server.ts` reads frontmatter from `import.meta.glob('../articles/*.mdx', { query: '?raw' })` with gray-matter (bundled — no runtime `fs`), and computes prev/next. Sitemap and slug validity use the same glob, so adding an `.mdx` file adds the route and sitemap entry. Unknown slugs 404.
-- Rendering: `src/app/blog/components/Content.tsx`, with `pre → CodeBlock` (`src/components/CodeBlock.tsx`, prism-react-renderer).
-- The blog list comes from Hygraph; each CMS article's `path` must match the MDX filename slug, so a new post needs both the CMS entry and the MDX file.
-
-## Deployment
-
-`nitro()` in `vite.config.ts` uses the default `node-server` preset: `pnpm build` then run `node .output/server/index.mjs` (honors `PORT`) with `GRAPH_CMS_URL` set in the process environment. Build with `VITE_GOOGLE_ANALYTICS` set. Hashed assets under `/assets` are served with `immutable` 1-year cache. To deploy on Vercel or elsewhere, set the matching Nitro preset (e.g. `NITRO_PRESET=vercel`) at build time.
-
-## Style
-
-Biome enforces formatting: tabs (width 3), single quotes, double JSX quotes, no semicolons, ES5 trailing commas, 100-column lines. `noExplicitAny` and `noNonNullAssertion` are off.
+**Other:** `src/routes/script.ts` proxies the self-hosted analytics script at `/script`; Google Analytics is injected in the root route `head()`. Home page sections live in `src/app/sections/`; shared UI in `src/components/`.

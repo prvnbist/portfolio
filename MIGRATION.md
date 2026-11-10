@@ -47,7 +47,7 @@ Per-page SEO that must be preserved: title, description, keywords, applicationNa
 | `framer-motion` | animation | Keep (v11 works with React 18/19) |
 | `react`/`react-dom` ^18 | | Keep, or bump to 19 (TanStack Start supports 18.3+/19) |
 | `clsx`, `tailwind-merge`, `lodash.debounce` | utils | Keep |
-| `tailwindcss` 3, `postcss`, `autoprefixer` | styling | Keep; Tailwind v3 works via PostCSS under Vite (v4 upgrade optional, out of scope) |
+| `tailwindcss` 4, `@tailwindcss/vite` | styling | Migrated to v4 (CSS-first config in `src/app/globals.css`, no `tailwind.config.ts`) |
 | `@biomejs/biome` | lint/format | Keep |
 | `typescript`, `@types/*` | | Keep; `@types/node` still needed. Update `tsconfig` (drop `next` plugin, `jsx: react-jsx`) |
 | `next-env.d.ts`, `next.config.mjs` | | Delete at cutover; replace with `vite.config.ts` |
