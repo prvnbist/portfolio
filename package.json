@@ -1,52 +1,55 @@
 {
-	"name": "portfolio",
-	"version": "0.1.0",
-	"private": true,
-	"type": "module",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/prvnbist/portfolio.git"
-	},
-	"scripts": {
-		"dev": "vite dev",
-		"build": "vite build",
-		"start": "node .output/server/index.mjs",
-		"lint": "biome lint ./src",
-		"format": "biome format --write .",
-		"precommit": "pnpm format && pnpm lint"
-	},
-	"dependencies": {
-		"@fontsource-variable/bricolage-grotesque": "^5.3.0",
-		"@fontsource/ibm-plex-mono": "^5.3.0",
-		"@mdx-js/react": "^3.1.1",
-		"@mdx-js/rollup": "^3.1.1",
-		"@tanstack/react-router": "^1.170.46",
-		"@tanstack/react-start": "^1.169.5",
-		"clsx": "^2.1.1",
-		"framer-motion": "^11.18.2",
-		"graphql": "^16.11.0",
-		"graphql-request": "^6.1.0",
-		"gray-matter": "^4.0.3",
-		"lodash.debounce": "^4.0.8",
-		"prism-react-renderer": "^2.4.1",
-		"react": "^18",
-		"react-dom": "^18",
-		"remark-frontmatter": "^5.0.0",
-		"remark-mdx-code-meta": "^2.0.0",
-		"tailwind-merge": "^2.6.0"
-	},
-	"devDependencies": {
-		"@biomejs/biome": "^1.9.4",
-		"@types/lodash.debounce": "^4.0.9",
-		"@types/node": "^20.19.23",
-		"@types/react": "^18.3.26",
-		"@types/react-dom": "^18.3.7",
-		"@vitejs/plugin-react": "^6.3.0",
-		"autoprefixer": "^10.4.21",
-		"nitro": "3.0.261103-rc",
-		"postcss": "^8.5.6",
-		"tailwindcss": "^3.4.18",
-		"typescript": "^5.9.3",
-		"vite": "^8.3.7"
-	}
+  "name": "portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "26.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/prvnbist/portfolio.git"
+  },
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build",
+    "start": "node .output/server/index.mjs",
+    "lint": "biome lint ./src",
+    "format": "biome format --write .",
+    "precommit": "pnpm format && pnpm lint"
+  },
+  "dependencies": {
+    "@fontsource-variable/bricolage-grotesque": "^5.3.0",
+    "@fontsource/ibm-plex-mono": "^5.3.0",
+    "@mdx-js/react": "^3.1.1",
+    "@mdx-js/rollup": "^3.1.1",
+    "@tanstack/react-router": "^1.170.46",
+    "@tanstack/react-start": "^1.169.5",
+    "clsx": "^2.1.1",
+    "framer-motion": "^11.18.2",
+    "graphql": "^16.11.0",
+    "graphql-request": "^6.1.0",
+    "gray-matter": "^4.0.3",
+    "lodash.debounce": "^4.0.8",
+    "prism-react-renderer": "^2.4.1",
+    "react": "^18",
+    "react-dom": "^18",
+    "remark-frontmatter": "^5.0.0",
+    "remark-mdx-code-meta": "^2.0.0",
+    "tailwind-merge": "^2.6.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@types/lodash.debounce": "^4.0.9",
+    "@types/node": "^20.19.23",
+    "@types/react": "^18.3.26",
+    "@types/react-dom": "^18.3.7",
+    "@vitejs/plugin-react": "^6.3.0",
+    "autoprefixer": "^10.4.21",
+    "nitro": "3.0.261103-rc",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.18",
+    "typescript": "^5.9.3",
+    "vite": "^8.3.7"
+  }
 }
