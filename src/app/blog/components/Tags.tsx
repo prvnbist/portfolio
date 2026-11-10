@@ -1,24 +1,11 @@
-'use client'
-
 import { cn } from '@/utils'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useNavigate } from '@tanstack/react-router'
 
-const Tags = ({ tags }: { tags: string[] }) => {
-	const router = useRouter()
-	const params = useSearchParams()
+const Tags = ({ tags, activeTag }: { tags: string[]; activeTag?: string }) => {
+	const navigate = useNavigate({ from: '/blog/' })
 
-	const activeTag = params.get('tag')
-
-	const setTag = (tag: string) => {
-		const _params = new URLSearchParams([...params.entries()])
-
-		if (tag === activeTag) {
-			_params.delete('tag')
-		} else {
-			_params.set('tag', tag)
-		}
-		router.push(`/blog?${_params.toString()}`)
-	}
+	const setTag = (tag: string) =>
+		navigate({ search: prev => ({ ...prev, tag: tag === activeTag ? undefined : tag }) })
 
 	return (
 		<section className="mt-4 mb-2 flex flex-col gap-3">

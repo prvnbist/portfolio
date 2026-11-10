@@ -1,56 +1,7 @@
-import type { Metadata } from 'next'
-
-import Project from './project'
-
-const seo = {
-	thumb: '/images/thumbs/code.jpg',
-	url: 'https://www.prvnbist.com/code',
-	title: 'Code | Praveen Bisht | Frontend Engineer',
-	description:
-		"Here's a list of all the projects I've built over the years with various technologies.",
-	keywords:
-		'front end, back end, design, html, pug, css, scss, javascript, nodejs, reactjs, graphql, expressjs, mongoose, mongodb, gatsby, figma, design, user interface, user experience',
-}
-
-export const metadata: Metadata = {
-	title: seo.title,
-	description: seo.description,
-	keywords: seo.keywords,
-	applicationName: seo.title,
-	metadataBase: new URL(seo.url),
-	openGraph: {
-		type: 'website',
-		url: seo.url,
-		title: seo.title,
-		description: seo.description,
-		images: seo.thumb,
-	},
-	twitter: {
-		card: 'summary_large_image',
-		site: '@prvnbist',
-		title: seo.title,
-		description: seo.description,
-		images: seo.thumb,
-	},
-}
-
-type Code = {
-	id: string
-	title: string
-	code_url: string
-	demo_url: string
-	thumbnail: {
-		id: string
-		url: string
-	}
-	description: string
-}
-
-const FEATURED_PROJECT = {
+export const FEATURED_PROJECT = {
 	img_url: '/images/code/tracksubs_1.jpg',
 	title: 'TrackSubs',
 	description: 'Streamline your finances and stay on top of recurring expenses effortlessly.',
-	demo_url: 'https://www.tracksubs.co',
 	code_url: 'https://github.com/prvnbist/tracksubs',
 	tech_stack: [
 		'NextJs',
@@ -65,7 +16,7 @@ const FEATURED_PROJECT = {
 	],
 }
 
-const PROJECTS = [
+export const PROJECTS = [
 	{
 		img_url: '/images/code/jsonvi_1.png',
 		title: 'JSONVi',
@@ -99,17 +50,3 @@ const PROJECTS = [
 		code_url: 'https://github.com/prvnbist/transcode',
 	},
 ]
-
-export default function Code() {
-	return (
-		<section className="w-full px-4 lg:px-0 mx-auto lg:w-[980px]">
-			<h1 className="text-3xl my-6">Code</h1>
-			<Project project={FEATURED_PROJECT} is_featured />
-			<ul className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
-				{PROJECTS.map(project => (
-					<Project key={project.title} project={project} />
-				))}
-			</ul>
-		</section>
-	)
-}

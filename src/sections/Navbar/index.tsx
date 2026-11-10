@@ -1,7 +1,4 @@
-'use client'
-
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { Link, useLocation } from '@tanstack/react-router'
 
 import { cn } from '@/utils'
 
@@ -12,17 +9,17 @@ const LINKS = [
 ]
 
 const Navbar = () => {
-	const pathname = usePathname()
+	const pathname = useLocation({ select: location => location.pathname })
 	return (
 		<nav className="sticky top-0 h-16 w-screen bg-dark-400 border-b border-dark-300 z-[1000]">
 			<div className="px-4 w-full lg:px-0 lg:w-[980px] h-16 flex mx-auto items-center justify-between">
-				<Link href="/" title="Home" aria-label="Home">
+				<Link to="/" title="Home" aria-label="Home">
 					<HomeIcon size={24} />
 				</Link>
 				<section className="flex gap-4">
 					{LINKS.map(link => (
 						<Link
-							href={link.url}
+							to={link.url}
 							key={link.url}
 							className={cn(
 								'text-white font-regular tracking-wide',
