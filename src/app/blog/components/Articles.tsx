@@ -1,6 +1,4 @@
-import Link from 'next/link'
-
-import type { Article } from '../types'
+import type { Article } from '@/lib/cms.types'
 
 const Articles = ({ articles }: { articles: Article[] }) => {
 	return Array.isArray(articles) && articles.length > 0 ? (
@@ -8,12 +6,12 @@ const Articles = ({ articles }: { articles: Article[] }) => {
 			{articles.map(article => (
 				<li key={article.id} className="h-auto p-4 list-none">
 					<header className="flex items-center justify-between">
-						<Link
+						<a
 							href={`/blog/${article.path}`}
 							className="cursor-pointer text-white text-lg font-medium hover:text-indigo-400"
 						>
 							<h2 className="font-[300]">{article.title}</h2>
-						</Link>
+						</a>
 						{article.date && (
 							<span className="flex-shrink-0 text-gray-400 font-[200]">
 								{new Intl.DateTimeFormat('en-US', {

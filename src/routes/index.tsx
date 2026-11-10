@@ -1,7 +1,8 @@
-import type { Metadata } from 'next'
+import { createFileRoute } from '@tanstack/react-router'
+import { canonical } from '@/lib/seo'
 
-import Header from './sections/header'
-import Timelines from './sections/timelines'
+import Header from '@/app/sections/header'
+import Timelines from '@/app/sections/timelines'
 
 const seo = {
 	url: 'https://www.prvnbist.com',
@@ -11,28 +12,6 @@ const seo = {
 		'Hey👋🏼, I’m a front end engineer with the background in full stack based in New Delhi, India who enjoys building products from idea to implementation.',
 	keywords:
 		'front end, back end, design, html, pug, css, scss, javascript, skilljs, reactjs, graphql, expressjs, mongoose, mongodb, gatsby, figma, design, user interface, user experience',
-}
-
-export const metadata: Metadata = {
-	title: seo.title,
-	description: seo.description,
-	keywords: seo.keywords,
-	applicationName: seo.title,
-	metadataBase: new URL(seo.url),
-	openGraph: {
-		type: 'website',
-		url: seo.url,
-		title: seo.title,
-		description: seo.description,
-		images: seo.thumb,
-	},
-	twitter: {
-		card: 'summary_large_image',
-		site: '@prvnbist',
-		title: seo.title,
-		description: seo.description,
-		images: seo.thumb,
-	},
 }
 
 const TIMELINES = [
@@ -138,7 +117,30 @@ const TIMELINES = [
 	},
 ]
 
-export default async function Home() {
+export const Route = createFileRoute('/')({
+	head: () => ({
+		links: canonical(''),
+		meta: [
+			{ title: seo.title },
+			{ name: 'description', content: seo.description },
+			{ name: 'keywords', content: seo.keywords },
+			{ name: 'application-name', content: seo.title },
+			{ property: 'og:type', content: 'website' },
+			{ property: 'og:url', content: seo.url },
+			{ property: 'og:title', content: seo.title },
+			{ property: 'og:description', content: seo.description },
+			{ property: 'og:image', content: `${seo.url}${seo.thumb}` },
+			{ name: 'twitter:card', content: 'summary_large_image' },
+			{ name: 'twitter:site', content: '@prvnbist' },
+			{ name: 'twitter:title', content: seo.title },
+			{ name: 'twitter:description', content: seo.description },
+			{ name: 'twitter:image', content: `${seo.url}${seo.thumb}` },
+		],
+	}),
+	component: Home,
+})
+
+function Home() {
 	return (
 		<>
 			<Header />

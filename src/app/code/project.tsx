@@ -1,6 +1,3 @@
-'use client'
-
-import Link from 'next/link'
 import { motion } from 'framer-motion'
 
 import { cn } from '@/utils'
@@ -56,18 +53,24 @@ export default function Project({ project, is_featured = false }: ProjectProps) 
 				{(project.demo_url || project.code_url) && (
 					<div className="flex gap-3">
 						{project.demo_url && (
-							<Link target="_blank" href={project.demo_url} className={BUTTON_PRIMARY}>
+							<a
+								target="_blank"
+								rel="noopener noreferrer"
+								href={project.demo_url}
+								className={BUTTON_PRIMARY}
+							>
 								Demo
-							</Link>
+							</a>
 						)}
 						{project.code_url && (
-							<Link
+							<a
 								target="_blank"
+								rel="noopener noreferrer"
 								href={project.code_url}
 								className={project.demo_url ? BUTTON_SECONDARY : BUTTON_PRIMARY}
 							>
 								Code
-							</Link>
+							</a>
 						)}
 					</div>
 				)}

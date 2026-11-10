@@ -1,25 +1,22 @@
-'use client'
-
+import { useNavigate } from '@tanstack/react-router'
 import debounce from 'lodash.debounce'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useMemo } from 'react'
 
-const Search = () => {
-	const router = useRouter()
-	const params = useSearchParams()
+const Search = ({ value = '' }: { value?: string }) => {
+	const navigate = useNavigate({ from: '/blog/' })
 
-	const debouncedSearch = debounce((value: string) => {
-		const _params = new URLSearchParams([...params.entries()])
-		if (value) {
-			_params.set('s', value)
-		} else {
-			_params.delete('s')
-		}
-		router.push(`/blog?${_params.toString()}`)
-	}, 400)
+	const debouncedSearch = useMemo(
+		() =>
+			debounce((s: string) => {
+				navigate({ search: prev => ({ ...prev, s: s || undefined }) })
+			}, 400),
+		[navigate]
+	)
 
 	return (
 		<input
 			type="text"
+			defaultValue={value}
 			placeholder="Search articles..."
 			onChange={e => debouncedSearch(e.target.value.trim())}
 			className="rounded-lg w-full px-3 py-2 bg-transparent border border-dark-200 focus:(outline-none border-yellow-400)"

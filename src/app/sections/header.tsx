@@ -1,6 +1,3 @@
-'use client'
-
-import Link from 'next/link'
 import { motion } from 'framer-motion'
 
 import { cn } from '@/utils'
@@ -64,15 +61,6 @@ export default function Header() {
 						</li>
 					))}
 				</motion.ul>
-				<motion.div {...ANIMATE_PROPS}>
-					<Link
-						target="__blank"
-						href="https://www.tracksubs.co"
-						className="text-gray-900 bg-gradient-to-r from-lime-500 via-lime-400 to-lime-200 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-800 shadow-lg shadow-lime-800/80 font-[400] rounded-lg px-4 text-sm inline-flex items-center h-10"
-					>
-						Building tracksubs.co 🚧
-					</Link>
-				</motion.div>
 			</div>
 		</header>
 	)
