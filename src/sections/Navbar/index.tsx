@@ -1,56 +1,40 @@
-import { Link, useLocation } from '@tanstack/react-router'
-
-import { cn } from '@/utils'
+import { Link } from '@tanstack/react-router'
 
 const LINKS = [
-	{ title: 'Code', url: '/code' },
-	{ title: 'Design', url: '/design' },
-	{ title: 'Blog', url: '/blog' },
+	{ title: 'code.', url: '/code' },
+	{ title: 'articles.', url: '/blog' },
 ]
 
+const linkClass = 'font-inter text-sm font-medium text-zinc-300 transition hover:text-white'
+
 const Navbar = () => {
-	const pathname = useLocation({ select: location => location.pathname })
 	return (
-		<nav className="sticky top-0 h-16 w-screen bg-dark-400 border-b border-dark-300 z-[1000]">
-			<div className="px-4 w-full lg:px-0 lg:w-[980px] h-16 flex mx-auto items-center justify-between">
-				<Link to="/" title="Home" aria-label="Home">
-					<HomeIcon size={24} />
-				</Link>
-				<section className="flex gap-4">
-					{LINKS.map(link => (
-						<Link
-							to={link.url}
-							key={link.url}
-							className={cn(
-								'text-white font-regular tracking-wide',
-								pathname.includes(link.url) && 'text-yellow-400'
-							)}
-						>
+		<nav className="sticky top-0 z-1000 w-full border-b border-line bg-zinc-950">
+			<div className="mx-auto h-15 flex gap-20 items-center justify-center px-4 lg:w-230 lg:border-x lg:border-line lg:px-0">
+				<div className="flex gap-8 lg:gap-24 lg:pl-30">
+					{LINKS.slice(0, 1).map(link => (
+						<Link key={link.url} to={link.url} className={linkClass}>
 							{link.title}
 						</Link>
 					))}
-				</section>
+				</div>
+				<Link
+					to="/"
+					title="Home"
+					className="font-stack text-2xl font-semibold text-white no-underline"
+				>
+					Praveen Bisht
+				</Link>
+				<div className="flex justify-end gap-8 lg:gap-24 lg:pr-30">
+					{LINKS.slice(1).map(link => (
+						<Link key={link.url} to={link.url} className={linkClass}>
+							{link.title}
+						</Link>
+					))}
+				</div>
 			</div>
 		</nav>
 	)
 }
 
 export default Navbar
-
-const HomeIcon = ({ size = 16, color = '#fff' }) => (
-	<svg
-		xmlns="http://www.w3.org/2000/svg"
-		width={size}
-		height={size}
-		viewBox="0 0 24 24"
-		fill="none"
-		stroke={color}
-		strokeWidth="1.5"
-		strokeLinecap="round"
-		strokeLinejoin="round"
-	>
-		<title>Home</title>
-		<path d="M20 9v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9" />
-		<path d="M9 22V12h6v10M2 10.6L12 2l10 8.6" />
-	</svg>
-)

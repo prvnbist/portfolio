@@ -39,10 +39,10 @@ export const Route = createFileRoute('/code')({
 
 function Code() {
 	return (
-		<section className="w-full px-4 lg:px-0 mx-auto lg:w-[980px]">
+		<section className="w-full px-4 mx-auto lg:w-[920px] lg:px-8">
 			<h1 className="text-3xl my-6">Code</h1>
 			<Project project={FEATURED_PROJECT} is_featured />
-			<ul className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+			<ul className="pb-40 grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
 				{PROJECTS.map(project => (
 					<Project key={project.title} project={project} />
 				))}

@@ -45,7 +45,7 @@ function Blog() {
 	const { data, error } = Route.useLoaderData()
 	const { s, tag } = Route.useSearch()
 	return (
-		<div className="px-4 mt-8 md:px-0 mx-auto max-w-[980px] w-full">
+		<div className="px-4 mt-8 lg:px-8 mx-auto max-w-230 w-full pb-40">
 			<Search value={s} />
 			{error ? (
 				<h4 className="mt-4 text-xl text-center text-gray-400">

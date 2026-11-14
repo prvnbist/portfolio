@@ -2,7 +2,7 @@ import type { Article } from '@/lib/cms.types'
 
 const Articles = ({ articles }: { articles: Article[] }) => {
 	return Array.isArray(articles) && articles.length > 0 ? (
-		<ul className="rounded-lg mt-4 border border-dark-200 divide-y divide-dark-200">
+		<ul className="rounded-lg mt-4 border border-line divide-y divide-line">
 			{articles.map(article => (
 				<li key={article.id} className="h-auto p-4 list-none">
 					<header className="flex items-center justify-between">

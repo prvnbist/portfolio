@@ -42,7 +42,7 @@ export const Route = createFileRoute('/blog/$slug')({
 		}
 	},
 	notFoundComponent: () => (
-		<div className="p-4 mx-auto max-w-[980px] w-full mt-6 text-center">
+		<div className="p-4 mx-auto max-w-230 w-full mt-6 text-center">
 			<h1 className="text-3xl mb-2">Article not found</h1>
 			<Link to="/blog" className="text-blue-500 hover:text-blue-700">
 				Back to blog
@@ -53,15 +53,15 @@ export const Route = createFileRoute('/blog/$slug')({
 })
 
 const navClass =
-	'cursor-pointer flex items-center justify-between flex-1 border border-solid border-gray-700 p-4 rounded-lg hover:bg-[#202024]'
+	'cursor-pointer flex items-center justify-between flex-1 border border-solid border-line p-4 rounded-lg hover:bg-[#202024]'
 
 function Article() {
 	const { meta, previous, next } = Route.useLoaderData()
 	const Component = getArticleComponent(meta.slug)
 	return (
-		<div className="p-4 md:px-0 md:py-4 m-auto" style={{ maxWidth: '980px', width: '100%' }}>
+		<div className="p-4 lg:px-8 lg:py-4 m-auto w-full max-w-230">
 			<main className="mt-6" id="article">
-				<header className="mb-4 p-8 bg-dark-300 rounded-lg">
+				<header className="mb-4 rounded-lg border border-line bg-dark-400 p-8">
 					<h1 className="text-3xl md:text-4xl mb-2">{meta.title}</h1>
 					{meta.date && (
 						<span className="text-lg text-gray-400">
@@ -77,7 +77,7 @@ function Article() {
 						{meta.tags.map(tag => (
 							<li
 								key={tag}
-								className="font-light text-sm inline-flex bg-dark-200 rounded-full px-2 py-[2px] text-gray-400"
+								className="inline-flex rounded-full border border-line bg-zinc-950 px-3 py-0.5 text-sm font-light text-zinc-400"
 							>
 								{tag}
 							</li>

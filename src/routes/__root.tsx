@@ -56,23 +56,7 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
 			<head>
 				<HeadContent />
 			</head>
-			<body>
-				<svg
-					width="100%"
-					height="100%"
-					className="pointer-events-none fixed isolate z-50 opacity-70 mix-blend-soft-light"
-				>
-					<title>noise</title>
-					<filter id="noise">
-						<feTurbulence
-							type="fractalNoise"
-							baseFrequency="0.80"
-							numOctaves="4"
-							stitchTiles="stitch"
-						/>
-					</filter>
-					<rect width="100%" height="100%" filter="url(#noise)" />
-				</svg>
+			<body className="relative min-h-screen bg-zinc-950 lg:before:pointer-events-none lg:before:absolute lg:before:inset-y-0 lg:before:left-1/2 lg:before:w-[920px] lg:before:-translate-x-1/2 lg:before:border-x lg:before:border-line lg:before:content-['']">
 				{children}
 				<Scripts />
 			</body>
@@ -83,22 +67,7 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
 function Footer() {
 	return (
 		<>
-			<section className="px-4 lg:w-[980px] bg-[#202024] rounded-lg mx-4 lg:mx-auto py-16 text-center mt-8 mb-16">
-				<h2 className="text-3xl mb-4">Get in touch</h2>
-				<p className="text-xl font-thin mx-auto md:w-7/12">
-					Have a project for me, or just want to say Hi🙋🏽‍♂️? Feel free to email me at{' '}
-					<a
-						target="_blank"
-						rel="noopener noreferrer"
-						href="mailto:prvnbist@gmail.com"
-						className="text-yellow-300 underline"
-					>
-						prvnbist@gmail.com
-					</a>
-					.
-				</p>
-			</section>
-			<footer className="border-t border-gray-800 py-5">
+			<footer className="border-t border-line py-5">
 				<p className="text-center">
 					©{new Date().getFullYear()} Made with 💖 using 👩🏽‍💻TanStack Start, 💾Github &
 					🌍Vercel.

@@ -1,20 +1,6 @@
 import { motion } from 'framer-motion'
 
-import { cn } from '@/utils'
-
-import classes from './header.module.css'
-
-const SOCIALS = [
-	{ title: '👨‍💻 Github', url: 'https://www.github.com/prvnbist' },
-	{ title: '🤝🏼 LinkedIn', url: 'https://www.linkedin.com/in/prvnbist' },
-	{ title: '👨‍💻 Codepen', url: 'https://www.codepen.io/prvnbist' },
-	{
-		title: '🖼️ Instagram',
-		url: 'https://www.instagram.com/prvnbist',
-	},
-	{ title: '🐤 Twitter', url: 'https://www.twitter.com/prvnbist' },
-	{ title: '🎨 Dribbble', url: 'https://www.dribbble.com/prvnbist' },
-]
+import { Button, LinkPreview } from '@/components'
 
 const ANIMATE_PROPS = {
 	initial: { opacity: 0, y: 20 },
@@ -25,42 +11,38 @@ const ANIMATE_PROPS = {
 
 export default function Header() {
 	return (
-		<header className={classes.header}>
-			<div>
-				<motion.h2 {...ANIMATE_PROPS} className={cn(classes.name, 'text-yellow-300')}>
-					Praveen Bisht
-				</motion.h2>
-				<motion.h1 {...ANIMATE_PROPS} className={classes.tagline}>
-					I design{' '}
-					<span role="img" aria-label="paint board">
-						🎨
-					</span>{' '}
-					& code{' '}
-					<span role="img" aria-label="computer">
-						👨‍💻
-					</span>
-				</motion.h1>
-				<motion.p {...ANIMATE_PROPS} className={classes.about}>
-					Hello! 👋 I&apos;m a <span className="text-yellow-300">frontend engineer</span>, who
-					specializes in bringing ideas to life with{' '}
-					<span className="text-yellow-300">pixel perfect precision.</span> My background in
-					design allows me to seamlessly bridge the gap between design and development team.
+		<header>
+			<div className="mx-auto flex w-full flex-col items-center px-4 pt-52 pb-48 text-center lg:w-230">
+				<motion.p
+					{...ANIMATE_PROPS}
+					className="font-inter text-xs font-semibold uppercase text-[#373745]"
+				>
+					Noida, India
 				</motion.p>
-				<motion.ul {...ANIMATE_PROPS} className={classes.socials}>
-					{SOCIALS.map(social => (
-						<li key={social.url} className={classes.social}>
-							<a
-								href={social.url}
-								target="_blank"
-								rel="noopener noreferrer"
-								title={social.title}
-								className="text-indigo-400"
-							>
-								{social.title}
-							</a>
-						</li>
-					))}
-				</motion.ul>
+				<motion.span
+					{...ANIMATE_PROPS}
+					aria-hidden="true"
+					className="my-3 block w-5 h-px bg-zinc-900"
+				/>
+				<motion.h1
+					{...ANIMATE_PROPS}
+					className="max-w-184 font-stack text-[32px] leading-normal font-medium text-white"
+				>
+					Hey👋🏽, I am an AI Engineer specializing in front-end building all things{' '}
+					<LinkPreview
+						href="https://justcall.io/product/send-and-receive-sms/"
+						image="/images/justcall-sms-og.webp"
+					>
+						SMS💬
+					</LinkPreview>{' '}
+					at{' '}
+					<LinkPreview href="https://justcall.io" image="/images/justcall-og.png">
+						JustCall
+					</LinkPreview>
+				</motion.h1>
+				<motion.div {...ANIMATE_PROPS} className="mt-11">
+					<Button.Cta href="mailto:prvnbist@gmail.com">Get in touch</Button.Cta>
+				</motion.div>
 			</div>
 		</header>
 	)

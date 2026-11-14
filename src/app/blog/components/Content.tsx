@@ -27,7 +27,7 @@ const components: Record<string, ComponentType<any>> = {
 		<blockquote {...props} className="border-l-4 border-gray-700 pl-3" />
 	),
 	code: (props: any) => (
-		<code {...props} className="inline-block text-gray-400 text-sm bg-gray-800 px-2 rounded-sm" />
+		<code {...props} className="inline-block border border-line bg-dark-400 px-2 text-sm text-zinc-300 rounded-sm" />
 	),
 	a: (props: any) => <a {...props} className="text-blue-500 hover:text-blue-700" />,
 	table: (props: any) => <table {...props} className="table my-3 w-full border-collapse" />,

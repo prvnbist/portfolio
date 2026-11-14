@@ -16,8 +16,9 @@ const Tags = ({ tags, activeTag }: { tags: string[]; activeTag?: string }) => {
 						key={tag}
 						onClick={() => setTag(tag)}
 						className={cn(
-							'font-light text-sm cursor-pointer inline-flex bg-dark-200 rounded-full px-2 py-[2px] text-gray-400',
-							activeTag === tag && 'text-black bg-yellow-400'
+							'inline-flex cursor-pointer rounded-full border border-line bg-dark-400 px-3 py-0.5 text-sm font-light text-zinc-400 transition-colors hover:text-white',
+							activeTag === tag &&
+								'border-transparent bg-linear-to-r from-[#f6d365] to-[#fda085] font-normal text-zinc-950 hover:text-zinc-950'
 						)}
 					>
 						{tag}
