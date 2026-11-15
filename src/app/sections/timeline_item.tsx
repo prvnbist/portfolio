@@ -1,127 +1,98 @@
-import { useMemo } from 'react'
-import { motion } from 'framer-motion'
-
+import { CardGlow, Icon, Pill, Reveal } from '@/components/ui'
+import { accentAt } from '@/lib/accents'
+import { formatDate } from '@/lib/format'
 import type { Timeline } from '@/type'
 
-const ANIMATE_PROPS = {
-	initial: { opacity: 0, y: 20 },
-	whileInView: { opacity: 1, y: 0 },
-	transition: { duration: 0.5 },
-	viewport: { once: true },
-}
+const formatMonth = (date: string) => formatDate(date, { year: 'numeric', month: 'short' })
 
-function formatDuration(from: string, to: string) {
-	const start = new Date(from)
-	const end = new Date(to)
+const TimelineItem = ({ timeline, index = 0 }: { timeline: Timeline; index?: number }) => {
+	const accent = accentAt(index)
+	// roles are listed newest first, so reverse for a "career path" reading order
+	const roles = [...timeline.duration].reverse()
+	const isOngoing = roles.some(role => !role.to)
+	const start = roles.reduce((min, role) => (role.from < min ? role.from : min), roles[0].from)
 
-	let years = end.getFullYear() - start.getFullYear()
-	let months = end.getMonth() - start.getMonth()
-
-	if (months < 0) {
-		years--
-		months += 12
-	}
-
-	if (years === 0 && months === 0) {
-		months = 1
-	}
-
-	if (years === 0) {
-		return `${months} mo${months > 1 ? 's' : ''}`
-	}
-
-	return `${years} yr${years > 1 ? 's' : ''}${months > 0 ? ` ${months} mo${months > 1 ? 's' : ''}` : ''}`
-}
-
-const TimelineItem = ({ timeline }: { timeline: Timeline }) => {
-	const description = useMemo(() => {
-		if (!timeline.description) return ''
-
-		return timeline.description.map((text, index, list) => (
-			<li key={index}>
-				<p className="text-[18px] text-gray-400">
-					{list.length > 1 && '-'} {text}
-					<br />
-				</p>
-			</li>
-		))
-	}, [timeline.description])
 	return (
-		<motion.li {...ANIMATE_PROPS}>
-			{timeline.location && (
-				<span className="text-gray-400 font-medium text-sm uppercase">{timeline.location}</span>
-			)}
-			<header className="mb-2">
-				<h2 className="text-2xl flex mb-1">
-					{timeline.institution}{' '}
-					{timeline.url && (
-						<a
-							href={timeline.url}
-							target="_blank"
-							rel="noreferrer"
-							title={`Link to ${timeline.institution}`}
-							className="ml-1 h-8 w-8 flex items-center justify-center rounded-sm hover:bg-gray-800"
-						>
-							<LinkIcon size={16} className="stroke-current" />
-						</a>
-					)}
-				</h2>
-				<ul className="w-full">
-					{timeline.duration.map(duration => (
-						<li key={duration.from} className="md:flex md:items-center md:justify-between">
-							<h3 className="text-md flex">{duration.title}</h3>
-							{duration.from && (
-								<section className="mt-1 md:mt-0 text-yellow-400">
-									<span>
-										{new Intl.DateTimeFormat('en-US', {
-											year: 'numeric',
-											month: 'short',
-										}).format(new Date(duration.from))}
-									</span>
-									{duration.to && ' - '}
-									{duration.to && (
-										<span>
-											{new Intl.DateTimeFormat('en-US', {
-												year: 'numeric',
-												month: 'short',
-											}).format(new Date(duration.to))}
-										</span>
-									)}
-									{!duration.to && <span> - Present</span>}
-									<span className="mx-2 text-xl">•</span>
-									<span>
-										{formatDuration(
-											duration.from,
-											duration.to ? duration.to : new Date().toISOString()
-										)}
-									</span>
-								</section>
+		<Reveal
+			as="li"
+			className="group/card relative overflow-hidden border-b border-line px-4 py-8 lg:px-8"
+		>
+			<CardGlow index={index} mode="rest" className="h-56 w-56" />
+			<span
+				aria-hidden="true"
+				className="pointer-events-none absolute -bottom-6 right-4 font-stack text-[120px] leading-none font-bold text-transparent select-none [-webkit-text-stroke:1px_rgba(255,255,255,0.08)]"
+			>
+				{formatDate(start, { year: 'numeric' })}
+			</span>
+
+			<div className="relative flex flex-wrap items-center gap-2">
+				{isOngoing && (
+					<Pill variant="success">
+						<span className="relative flex h-1.5 w-1.5">
+							<span className="absolute inline-flex h-full w-full motion-safe:animate-ping rounded-full bg-emerald-400 opacity-75" />
+							<span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
+						</span>
+						Now
+					</Pill>
+				)}
+				{timeline.location && <Pill>📍 {timeline.location}</Pill>}
+			</div>
+
+			<h2 className="relative mt-4 flex items-center text-3xl font-medium">
+				{timeline.institution}
+				{timeline.url && (
+					<a
+						href={timeline.url}
+						target="_blank"
+						rel="noreferrer"
+						title={`Link to ${timeline.institution}`}
+						className={`ml-2 flex h-9 w-9 items-center justify-center rounded-full bg-white/5 text-gray-400 transition-all hover:rotate-12 hover:scale-110 hover:bg-white/10 ${accent.hover}`}
+					>
+						<Icon name="link" className="size-4" />
+					</a>
+				)}
+			</h2>
+
+			<ol className="relative mt-6 flex flex-wrap gap-y-5">
+				{roles.map((role, i) => {
+					const current = !role.to
+					const last = i === roles.length - 1
+					return (
+						<li key={role.from} className="relative min-w-40 pr-6">
+							{!last && (
+								<span
+									aria-hidden="true"
+									className="absolute top-[5px] left-5 right-1 h-px bg-linear-to-r from-white/25 to-white/10"
+								/>
 							)}
+							{roles.length > 1 && (
+								<span className="relative mb-3 flex h-2.5 w-2.5">
+									{current && (
+										<span
+											className={`absolute inline-flex h-full w-full motion-safe:animate-ping rounded-full opacity-60 ${accent.dot}`}
+										/>
+									)}
+									<span
+										className={`relative h-2.5 w-2.5 rounded-full ${
+											current ? accent.dot : 'border border-gray-500 bg-bg'
+										}`}
+									/>
+								</span>
+							)}
+							<p
+								className={`text-base font-medium ${current ? 'text-white' : 'text-gray-400'}`}
+							>
+								{role.title}
+							</p>
+							<p className="mt-0.5 text-xs text-gray-400">
+								{formatMonth(role.from)} – {role.to ? formatMonth(role.to) : 'Present'}
+							</p>
 						</li>
-					))}
-				</ul>
-			</header>
-			{timeline.description && <ul className="mb-4">{description}</ul>}
-		</motion.li>
+					)
+				})}
+			</ol>
+		</Reveal>
 	)
 }
 
 export default TimelineItem
-
-const LinkIcon = ({ size = 18, ...props }) => (
-	<svg
-		xmlns="http://www.w3.org/2000/svg"
-		width={size}
-		height={size}
-		viewBox="0 0 24 24"
-		fill="none"
-		strokeWidth="2"
-		strokeLinecap="round"
-		strokeLinejoin="round"
-		{...props}
-	>
-		<title>Link Icon</title>
-		<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
-		<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
-	</svg>
-)

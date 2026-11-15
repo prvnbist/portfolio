@@ -1,18 +1,9 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { canonical } from '@/lib/seo'
+import { BIO, pageTitle } from '@/config/site'
+import { jsonLd, personSchema, seo, websiteSchema } from '@/lib/seo'
 
 import Header from '@/app/sections/header'
 import Timelines from '@/app/sections/timelines'
-
-const seo = {
-	url: 'https://www.prvnbist.com',
-	thumb: '/images/thumbs/home.jpg',
-	title: 'Praveen Bisht | Frontend Engineer',
-	description:
-		'Hey👋🏼, I’m a front end engineer with the background in full stack based in New Delhi, India who enjoys building products from idea to implementation.',
-	keywords:
-		'front end, back end, design, html, pug, css, scss, javascript, skilljs, reactjs, graphql, expressjs, mongoose, mongodb, gatsby, figma, design, user interface, user experience',
-}
 
 const TIMELINES = [
 	{
@@ -36,6 +27,14 @@ const TIMELINES = [
 			'JustCall: Connect with prospects and customers across voice, SMS, email, and WhatsApp. Automate workflows with 100+ integrations and AI magic, and watch your business grow on autopilot.',
 			'ServiceAgent: Call Answering AI Agent for service businesses built during 48hr hackathon using React, NodeJs, Auth0, Retell, and Twillio.',
 		],
+	},
+	{
+		id: 'freelance-2024',
+		url: null,
+		institution: 'Freelance',
+		duration: [{ from: '2024-04-01', to: '2024-10-31', title: 'Client Projects' }],
+		location: 'Remote',
+		description: [],
 	},
 	{
 		id: 'clfcofkadc6tp0butthr9fxqw',
@@ -62,7 +61,7 @@ const TIMELINES = [
 	},
 	{
 		id: 'cksyy1jcwel1c0e08wu7b29g8',
-		url: null,
+		url: 'https://github.com/dailykit',
 		institution: 'Dailykit',
 		duration: [{ from: '2019-08-01', to: '2021-07-31', title: 'SDE 1' }],
 		location: 'Bengaluru, India',
@@ -119,23 +118,13 @@ const TIMELINES = [
 
 export const Route = createFileRoute('/')({
 	head: () => ({
-		links: canonical(''),
-		meta: [
-			{ title: seo.title },
-			{ name: 'description', content: seo.description },
-			{ name: 'keywords', content: seo.keywords },
-			{ name: 'application-name', content: seo.title },
-			{ property: 'og:type', content: 'website' },
-			{ property: 'og:url', content: seo.url },
-			{ property: 'og:title', content: seo.title },
-			{ property: 'og:description', content: seo.description },
-			{ property: 'og:image', content: `${seo.url}${seo.thumb}` },
-			{ name: 'twitter:card', content: 'summary_large_image' },
-			{ name: 'twitter:site', content: '@prvnbist' },
-			{ name: 'twitter:title', content: seo.title },
-			{ name: 'twitter:description', content: seo.description },
-			{ name: 'twitter:image', content: `${seo.url}${seo.thumb}` },
-		],
+		...seo({
+			path: '/',
+			title: pageTitle(),
+			description: BIO,
+			image: '/images/thumbs/home.jpg',
+		}),
+		scripts: [jsonLd(personSchema()), jsonLd(websiteSchema())],
 	}),
 	component: Home,
 })

@@ -1,7 +1,15 @@
 {
-	"$schema": "https://biomejs.dev/schemas/1.7.3/schema.json",
+	"$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
 	"files": {
-		"ignore": [".next", ".output", "dist", "src/routeTree.gen.ts"]
+		"ignore": [
+			".next",
+			".output",
+			"dist",
+			"src/routeTree.gen.ts",
+			"package.json",
+			"test-results",
+			"playwright-report"
+		]
 	},
 	"formatter": {
 		"enabled": true,
@@ -25,8 +33,7 @@
 				"noNonNullAssertion": "off"
 			},
 			"a11y": {
-				"useMediaCaption": "off",
-				"useKeyWithClickEvents": "off"
+				"useMediaCaption": "off"
 			}
 		},
 		"ignore": [".next", ".output", "dist", "src/routeTree.gen.ts"]
@@ -35,7 +42,7 @@
 		"formatter": {
 			"jsxQuoteStyle": "double",
 			"quoteProperties": "asNeeded",
-			"trailingComma": "es5",
+			"trailingCommas": "es5",
 			"semicolons": "asNeeded",
 			"arrowParentheses": "asNeeded",
 			"bracketSpacing": true,

@@ -1,4 +1,6 @@
 import { createRouter } from '@tanstack/react-router'
+
+import { ErrorPage, NotFound } from './components'
 import { routeTree } from './routeTree.gen'
 
 export function getRouter() {
@@ -6,6 +8,9 @@ export function getRouter() {
 		routeTree,
 		scrollRestoration: true,
 		defaultPreload: 'intent',
+		// Page-level errors and 404s render inside the root layout (navbar + <main>).
+		defaultErrorComponent: ErrorPage,
+		defaultNotFoundComponent: () => <NotFound />,
 	})
 }
 

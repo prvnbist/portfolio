@@ -1,5 +1,7 @@
-@import "@fontsource-variable/bricolage-grotesque/wght.css";
 @import "@fontsource/ibm-plex-mono/400.css";
+/* Variable fonts: one file per subset covers every weight in use (Inter 300-600, Stack 300-700). */
+@import "@fontsource-variable/inter/wght.css";
+@import "@fontsource-variable/stack-sans-notch/wght.css";
 
 @import "tailwindcss";
 
@@ -10,33 +12,57 @@
 	--color-dark-100: #55555f;
 	--color-blue-400: #1659db;
 	--color-blue-100: #719df0;
+	--color-zinc-950: #09090b;
+	--color-line: #111115;
+	/* Page background and the warm accent gradient used for CTAs, active states and headings. */
+	--color-bg: #09090b;
+	--color-accent-from: #f6d365;
+	--color-accent-to: #fda085;
+	--color-accent-glow: #fab976;
+	--font-code: "IBM Plex Mono", monospace;
+	--font-stack: "Stack Sans Notch Variable", sans-serif;
+	--font-inter: "Inter Variable", sans-serif;
 }
 
 /* Unlayered element rules would beat Tailwind v4 utilities (which live in @layer utilities) */
 @layer base {
 	html {
-		--font-heading: "Bricolage Grotesque Variable";
-		--font-code: "IBM Plex Mono";
+		--font-heading: "Stack Sans Notch Variable";
+		--font-body: "Inter Variable";
 	}
 
 	* {
 		box-sizing: border-box;
 		margin: 0;
 		padding: 0;
-		font-family: var(--font-heading), sans-serif;
 	}
 
 	body {
 		color: #fff;
-		overflow-x: hidden;
-		background: #19191c;
+		background: var(--color-bg);
+		font-family: var(--font-body), sans-serif;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
 		font-family: var(--font-heading), sans-serif;
+	}
+
+	button,
+	input,
+	textarea,
+	select {
+		font-family: inherit;
 	}
 
 	a,
 	span,
 	p {
-		font-weight: 200;
+		font-weight: 300;
 	}
 
 	strong {
@@ -62,16 +88,16 @@
 }
 
 .prism-code * {
-	font-family: var(--font-code), monospace;
+	font-family: var(--font-code);
 }
 
 ::-moz-selection {
-	color: #19191c;
+	color: var(--color-bg);
 	background: #fff;
 }
 
 ::selection {
-	color: #19191c;
+	color: var(--color-bg);
 	background: #fff;
 }
 
@@ -87,11 +113,4 @@
 	a {
 		color: #719df0;
 	}
-}
-
-#article p {
-	color: var(--color-gray-400);
-	margin-bottom: 0.75rem;
-	font-size: 1.125rem;
-	line-height: 1.75rem;
 }

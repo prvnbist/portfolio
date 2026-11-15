@@ -1,52 +1,79 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { canonical } from '@/lib/seo'
+import { pageTitle } from '@/config/site'
+import { seo } from '@/lib/seo'
 
-import Project from '@/app/code/project'
+import ProjectCard, { type ProjectAction } from '@/components/ProjectCard'
+import { PageContainer, PageHero } from '@/components/layout'
+import { Hash, pillClass } from '@/components/ui'
 import { FEATURED_PROJECT, PROJECTS } from '@/data/projects'
 
-const seo = {
-	thumb: '/images/thumbs/code.jpg',
-	url: 'https://www.prvnbist.com/code',
-	title: 'Code | Praveen Bisht | Frontend Engineer',
-	description:
-		"Here's a list of all the projects I've built over the years with various technologies.",
-	keywords:
-		'front end, back end, design, html, pug, css, scss, javascript, nodejs, reactjs, graphql, expressjs, mongoose, mongodb, gatsby, figma, design, user interface, user experience',
-}
-
 export const Route = createFileRoute('/code')({
-	head: () => ({
-		links: canonical('/code'),
-		meta: [
-			{ title: seo.title },
-			{ name: 'description', content: seo.description },
-			{ name: 'keywords', content: seo.keywords },
-			{ name: 'application-name', content: seo.title },
-			{ property: 'og:type', content: 'website' },
-			{ property: 'og:url', content: seo.url },
-			{ property: 'og:title', content: seo.title },
-			{ property: 'og:description', content: seo.description },
-			{ property: 'og:image', content: `${seo.url.replace('/code', '')}${seo.thumb}` },
-			{ name: 'twitter:card', content: 'summary_large_image' },
-			{ name: 'twitter:site', content: '@prvnbist' },
-			{ name: 'twitter:title', content: seo.title },
-			{ name: 'twitter:description', content: seo.description },
-			{ name: 'twitter:image', content: `${seo.url.replace('/code', '')}${seo.thumb}` },
-		],
-	}),
+	head: () =>
+		seo({
+			path: '/code',
+			title: pageTitle('Code'),
+			description:
+				"Here's a list of all the projects I've built over the years with various technologies.",
+			image: '/images/thumbs/code.jpg',
+		}),
 	component: Code,
 })
 
+type Links = { demo_url?: string; code_url?: string }
+
+const actions = ({ demo_url, code_url }: Links): ProjectAction[] => [
+	...(demo_url ? [{ label: 'Demo', href: demo_url }] : []),
+	...(code_url ? [{ label: 'Code', href: code_url }] : []),
+]
+
+const TECH = ['TypeScript', 'React', 'Next.js', 'Node.js', 'GraphQL', 'Postgres', 'Tailwind']
+
 function Code() {
 	return (
-		<section className="w-full px-4 lg:px-0 mx-auto lg:w-[980px]">
-			<h1 className="text-3xl my-6">Code</h1>
-			<Project project={FEATURED_PROJECT} is_featured />
-			<ul className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
-				{PROJECTS.map(project => (
-					<Project key={project.title} project={project} />
-				))}
-			</ul>
-		</section>
+		<>
+			<PageHero
+				command="ls code/ | wc -l"
+				title="Code"
+				srSuffix=": projects I've built over the years"
+				glows={['bg-yellow-400/20', 'bg-pink-400/20']}
+				className="pb-24"
+			>
+				<ul className="mt-8 flex max-w-150 flex-wrap justify-center gap-2">
+					{TECH.map(tech => (
+						<li key={tech} className={pillClass({ mono: true })}>
+							<Hash />
+							{tech}
+						</li>
+					))}
+				</ul>
+			</PageHero>
+			<PageContainer as="section">
+				<ul className="-mx-4 grid grid-cols-1 border-t border-line md:grid-cols-2 lg:-mx-8">
+					<ProjectCard
+						featured
+						title={FEATURED_PROJECT.title}
+						description={FEATURED_PROJECT.description}
+						image={FEATURED_PROJECT.img_url}
+						imageWidth={FEATURED_PROJECT.img_width}
+						imageHeight={FEATURED_PROJECT.img_height}
+						tags={FEATURED_PROJECT.tech_stack}
+						actions={actions(FEATURED_PROJECT)}
+					/>
+					{PROJECTS.map((project, index) => (
+						<ProjectCard
+							key={project.title}
+							index={index + 1}
+							title={project.title}
+							description={project.description}
+							image={project.img_url}
+							imageWidth={project.img_width}
+							imageHeight={project.img_height}
+							tags={project.tech_stack}
+							actions={actions(project)}
+						/>
+					))}
+				</ul>
+			</PageContainer>
+		</>
 	)
 }

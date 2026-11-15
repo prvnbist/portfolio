@@ -14,6 +14,16 @@ const calculateLinesToHighlight = (lineNumbers?: [number, number]) => {
 	}
 }
 
+// Night Owl's comment colour (#637777) is 3.95:1 on the code background; lift it to about 6.5:1.
+const theme = {
+	...themes.nightOwl,
+	styles: themes.nightOwl.styles.map(style =>
+		style.types.includes('comment')
+			? { ...style, style: { ...style.style, color: '#8b9b9b' } }
+			: style
+	),
+}
+
 type CodeBlockProps = {
 	children: ReactElement
 	highlight?: [number, number]
@@ -28,9 +38,11 @@ const CodeBlock = ({ children, ...props }: CodeBlockProps) => {
 	const shouldHighlightLine = calculateLinesToHighlight(props.highlight)
 
 	return (
-		<Highlight theme={themes.nightOwl} code={code.trim()} language={language}>
+		<Highlight theme={theme} code={code.trim()} language={language}>
 			{({ className, style, tokens, getLineProps, getTokenProps }) => (
 				<pre
+					// biome-ignore lint/a11y/noNoninteractiveTabindex: scrollable code must be reachable by keyboard
+					tabIndex={0}
 					style={{ ...style }}
 					className={cn(
 						className,
@@ -43,7 +55,7 @@ const CodeBlock = ({ children, ...props }: CodeBlockProps) => {
 							lineNumberElem = null
 						} else {
 							lineNumberElem = (
-								<span className="opacity-[0.3] table-cell pr-4 text-right select-none">
+								<span className="opacity-60 table-cell pr-4 text-right select-none">
 									{i + 1}
 								</span>
 							)

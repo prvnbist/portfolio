@@ -1,31 +1,43 @@
-import { cn } from '@/utils'
-import { useNavigate } from '@tanstack/react-router'
+import { Link } from '@tanstack/react-router'
 
-const Tags = ({ tags, activeTag }: { tags: string[]; activeTag?: string }) => {
-	const navigate = useNavigate({ from: '/blog/' })
+import { Hash, pillClass } from '@/components/ui'
+import type { BlogSearch } from '@/lib/articles.types'
 
-	const setTag = (tag: string) =>
-		navigate({ search: prev => ({ ...prev, tag: tag === activeTag ? undefined : tag }) })
+/** Next search params when a tag is chosen: select it, or clear it if it's already active. */
+export const toggleTag = (prev: BlogSearch, tag: string): BlogSearch => ({
+	...prev,
+	tag: prev.tag === tag ? undefined : tag,
+})
 
-	return (
-		<section className="mt-4 mb-2 flex flex-col gap-3">
-			<h3>Tags</h3>
-			<ul className="flex flex-wrap gap-2">
-				{tags.map(tag => (
-					<li
-						key={tag}
-						onClick={() => setTag(tag)}
-						className={cn(
-							'font-light text-sm cursor-pointer inline-flex bg-dark-200 rounded-full px-2 py-[2px] text-gray-400',
-							activeTag === tag && 'text-black bg-yellow-400'
-						)}
-					>
-						{tag}
+const Tags = ({ tags, activeTag }: { tags: string[]; activeTag?: string }) => (
+	<nav aria-label="Filter posts by tag" className="mt-5">
+		<ul className="flex flex-wrap gap-2">
+			{tags.map(tag => {
+				const active = activeTag === tag
+				return (
+					<li key={tag} className="inline-flex">
+						<Link
+							from="/blog/"
+							to="/blog"
+							search={prev => toggleTag(prev, tag)}
+							// Without `exact`, the router treats the active tag's "clear" link as a
+							// partial search match and overrides this with aria-current="page".
+							activeOptions={{ exact: true }}
+							aria-current={active ? 'true' : undefined}
+							className={pillClass({
+								variant: active ? 'accent' : 'default',
+								interactive: true,
+								mono: true,
+							})}
+						>
+							<Hash />
+							{tag}
+						</Link>
 					</li>
-				))}
-			</ul>
-		</section>
-	)
-}
+				)
+			})}
+		</ul>
+	</nav>
+)
 
 export default Tags

@@ -1,22 +1,38 @@
 import { createRootRoute, HeadContent, Outlet, Scripts } from '@tanstack/react-router'
+import { LazyMotion, MotionConfig } from 'framer-motion'
 import type { ReactNode } from 'react'
 
+import headingFont from '@fontsource-variable/stack-sans-notch/files/stack-sans-notch-latin-wght-normal.woff2?url'
+
 import appCss from '@/app/globals.css?url'
+import { ErrorPage, NotFound } from '@/components'
+import { BIO, pageTitle } from '@/config/site'
+import { initReducedMotion } from '@/lib/motion'
 import { Navbar } from '@/sections'
+
+initReducedMotion()
+
+const loadMotionFeatures = () => import('@/lib/motion-features').then(mod => mod.default)
 
 export const Route = createRootRoute({
 	head: () => ({
 		meta: [
 			{ charSet: 'utf-8' },
 			{ name: 'viewport', content: 'width=device-width, initial-scale=1' },
-			{ title: 'Praveen Bisht' },
-			{
-				name: 'description',
-				content:
-					'Hey👋🏼, I’m a front end engineer with the background in full stack based in New Delhi, India who enjoys building products from idea to implementation.',
-			},
+			{ title: pageTitle() },
+			{ name: 'description', content: BIO },
 		],
-		links: [{ rel: 'stylesheet', href: appCss }],
+		links: [
+			// The heading font is needed for the first paint of every page; fetch it with the CSS.
+			{
+				rel: 'preload',
+				href: headingFont,
+				as: 'font',
+				type: 'font/woff2',
+				crossOrigin: 'anonymous',
+			},
+			{ rel: 'stylesheet', href: appCss },
+		],
 		scripts: [
 			...(import.meta.env.PROD && import.meta.env.VITE_GOOGLE_ANALYTICS
 				? [
@@ -37,16 +53,32 @@ export const Route = createRootRoute({
 			},
 		],
 	}),
+	// The document lives in the shell so a root-level error still gets <head> and styles.
+	shellComponent: RootDocument,
 	component: RootComponent,
+	notFoundComponent: () => <NotFound />,
+	errorComponent: ErrorPage,
 })
 
 function RootComponent() {
 	return (
-		<RootDocument>
-			<Navbar />
-			<Outlet />
-			<Footer />
-		</RootDocument>
+		// domAnimation (animate, variants, whileInView, gestures) is all the site uses, loaded in its
+		// own chunk after hydration; strict makes a
+		// stray full `motion.*` component throw instead of silently pulling the whole bundle back in.
+		<LazyMotion features={loadMotionFeatures} strict>
+			<MotionConfig reducedMotion="user">
+				<a
+					href="#content"
+					className="sr-only rounded-full bg-bg px-4 py-2 text-sm text-white focus:not-sr-only focus:fixed focus:px-4 focus:py-2 focus:top-3 focus:left-3 focus:z-1001 focus:outline-2 focus:outline-accent-to"
+				>
+					Skip to content
+				</a>
+				<Navbar />
+				<main id="content" tabIndex={-1} className="outline-hidden">
+					<Outlet />
+				</main>
+			</MotionConfig>
+		</LazyMotion>
 	)
 }
 
@@ -56,54 +88,10 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
 			<head>
 				<HeadContent />
 			</head>
-			<body>
-				<svg
-					width="100%"
-					height="100%"
-					className="pointer-events-none fixed isolate z-50 opacity-70 mix-blend-soft-light"
-				>
-					<title>noise</title>
-					<filter id="noise">
-						<feTurbulence
-							type="fractalNoise"
-							baseFrequency="0.80"
-							numOctaves="4"
-							stitchTiles="stitch"
-						/>
-					</filter>
-					<rect width="100%" height="100%" filter="url(#noise)" />
-				</svg>
+			<body className="relative min-h-screen lg:before:pointer-events-none lg:before:absolute lg:before:inset-y-0 lg:before:left-1/2 lg:before:w-[920px] lg:before:-translate-x-1/2 lg:before:border-x lg:before:border-line lg:before:content-['']">
 				{children}
 				<Scripts />
 			</body>
 		</html>
-	)
-}
-
-function Footer() {
-	return (
-		<>
-			<section className="px-4 lg:w-[980px] bg-[#202024] rounded-lg mx-4 lg:mx-auto py-16 text-center mt-8 mb-16">
-				<h2 className="text-3xl mb-4">Get in touch</h2>
-				<p className="text-xl font-thin mx-auto md:w-7/12">
-					Have a project for me, or just want to say Hi🙋🏽‍♂️? Feel free to email me at{' '}
-					<a
-						target="_blank"
-						rel="noopener noreferrer"
-						href="mailto:prvnbist@gmail.com"
-						className="text-yellow-300 underline"
-					>
-						prvnbist@gmail.com
-					</a>
-					.
-				</p>
-			</section>
-			<footer className="border-t border-gray-800 py-5">
-				<p className="text-center">
-					©{new Date().getFullYear()} Made with 💖 using 👩🏽‍💻TanStack Start, 💾Github &
-					🌍Vercel.
-				</p>
-			</footer>
-		</>
 	)
 }

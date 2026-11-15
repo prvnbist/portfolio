@@ -1,12 +1,13 @@
 ---
 title: 'CSS Grid - Cards Layout & Aspect Ratio'
+description: "Build a responsive card layout with CSS Grid and keep every card's media at a fixed aspect ratio, with a live CodePen demo."
 date: 2019-12-30
-tags: ['css', 'grid', 'cards', 'layout']
+tags: ['css', 'frontend']
 ---
 
 Card-based layouts have been around in web design for longer than you may think and grown in popularity over the years. A lot of platforms have been using card based layouts for years now. _Cue meme_
 
-![Alt Text](https://media.graphcms.com/iSj98u0TIwfxrkadunGg)
+![Alt Text](/images/articles/css-grid-cards-layout-and-aspect-ratio/iSj98u0TIwfxrkadunGg.jpg)
 
 There are many ways to implement card based layouts using flexbox, css grid or good ol' float☠. But we'll be using CSS Grid to make your life easy as a front-end developer.
 
@@ -81,7 +82,7 @@ Let's welcome `auto-fill` and `auto-fit` to the game.
 
 ### What's `auto-fill`?
 
-![Alt Text](https://media.graphcms.com/ne3lz2SITdGaBCXKrRoN)
+![Alt Text](/images/articles/css-grid-cards-layout-and-aspect-ratio/ne3lz2SITdGaBCXKrRoN.webp)
 
 `auto-fill` will simply fill the row with as many cards it can and will create empty columns if the number of cards are less than the number of columns.
 
@@ -99,7 +100,7 @@ ul {
 
 ### What's `auto-fit`
 
-![Alt Text](https://media.graphcms.com/2WXm0PBOTbu6ROEikuNW)
+![Alt Text](/images/articles/css-grid-cards-layout-and-aspect-ratio/2WXm0PBOTbu6ROEikuNW.webp)
 `auto-fit` will fill the row with as many cards as it can fit with maximum width. If a row has space to fill 10 cards of maximum width of 100px, it will fit all of them and the cards will wrap to new row if the row doesn't have space to fit a card with it's minimum width.
 
 > For more detailed difference between `auto-fill` and `auto-fit` refer to this [article](https://css-tricks.com/auto-sizing-columns-css-grid-auto-fill-vs-auto-fit/) by [@SaraSoueidan](https://twitter.com/SaraSoueidan)
@@ -133,7 +134,7 @@ li {
 ```
 
 Our layout so far look's like this.
-![Alt Text](https://media.graphcms.com/vrQ5lf98TSKuzQVTp80b)
+![Alt Text](/images/articles/css-grid-cards-layout-and-aspect-ratio/vrQ5lf98TSKuzQVTp80b.png)
 
 ### Aspect Ratio
 
@@ -215,12 +216,6 @@ CSS Grid pretty much handles the responsive part for us which I see as absolute 
    allowtransparency="true"
    title="CSS Grid - Cards &amp; Aspect Ratio"
    src="https://codepen.io/prvnbist/embed/povrxBa?height=265&theme-id=dark&default-tab=css,result"
->
-   See the Pen{' '}
-   <a href="https://codepen.io/prvnbist/pen/povrxBa">
-      CSS Grid - Cards &amp; Aspect Ratio
-   </a>
-   by Praveen Bisht (<a href="https://codepen.io/prvnbist">@prvnbist</a>) on <a href="https://codepen.io">
-      CodePen
-   </a>.
-</iframe>
+/>
+
+See the Pen [CSS Grid - Cards & Aspect Ratio](https://codepen.io/prvnbist/pen/povrxBa) by Praveen Bisht ([@prvnbist](https://codepen.io/prvnbist)) on [CodePen](https://codepen.io).
