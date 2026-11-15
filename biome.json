@@ -25,8 +25,7 @@
 				"noNonNullAssertion": "off"
 			},
 			"a11y": {
-				"useMediaCaption": "off",
-				"useKeyWithClickEvents": "off"
+				"useMediaCaption": "off"
 			}
 		},
 		"ignore": [".next", ".output", "dist", "src/routeTree.gen.ts"]
