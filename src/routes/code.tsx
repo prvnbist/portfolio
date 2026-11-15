@@ -1,42 +1,21 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { pageTitle } from '@/config/site'
-import { canonical } from '@/lib/seo'
+import { seo } from '@/lib/seo'
 
 import { motion } from 'framer-motion'
 
 import Project from '@/app/code/project'
 import { FEATURED_PROJECT, PROJECTS } from '@/data/projects'
 
-const seo = {
-	thumb: '/images/thumbs/code.jpg',
-	url: 'https://www.prvnbist.com/code',
-	title: pageTitle('Code'),
-	description:
-		"Here's a list of all the projects I've built over the years with various technologies.",
-	keywords:
-		'front end, back end, design, html, pug, css, scss, javascript, nodejs, reactjs, graphql, expressjs, mongoose, mongodb, gatsby, figma, design, user interface, user experience',
-}
-
 export const Route = createFileRoute('/code')({
-	head: () => ({
-		links: canonical('/code'),
-		meta: [
-			{ title: seo.title },
-			{ name: 'description', content: seo.description },
-			{ name: 'keywords', content: seo.keywords },
-			{ name: 'application-name', content: seo.title },
-			{ property: 'og:type', content: 'website' },
-			{ property: 'og:url', content: seo.url },
-			{ property: 'og:title', content: seo.title },
-			{ property: 'og:description', content: seo.description },
-			{ property: 'og:image', content: `${seo.url.replace('/code', '')}${seo.thumb}` },
-			{ name: 'twitter:card', content: 'summary_large_image' },
-			{ name: 'twitter:site', content: '@prvnbist' },
-			{ name: 'twitter:title', content: seo.title },
-			{ name: 'twitter:description', content: seo.description },
-			{ name: 'twitter:image', content: `${seo.url.replace('/code', '')}${seo.thumb}` },
-		],
-	}),
+	head: () =>
+		seo({
+			path: '/code',
+			title: pageTitle('Code'),
+			description:
+				"Here's a list of all the projects I've built over the years with various technologies.",
+			image: '/images/thumbs/code.jpg',
+		}),
 	component: Code,
 })
 

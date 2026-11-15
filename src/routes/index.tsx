@@ -1,18 +1,9 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { BIO, pageTitle } from '@/config/site'
-import { canonical } from '@/lib/seo'
+import { seo } from '@/lib/seo'
 
 import Header from '@/app/sections/header'
 import Timelines from '@/app/sections/timelines'
-
-const seo = {
-	url: 'https://www.prvnbist.com',
-	thumb: '/images/thumbs/home.jpg',
-	title: pageTitle(),
-	description: BIO,
-	keywords:
-		'front end, back end, design, html, pug, css, scss, javascript, skilljs, reactjs, graphql, expressjs, mongoose, mongodb, gatsby, figma, design, user interface, user experience',
-}
 
 const TIMELINES = [
 	{
@@ -126,25 +117,13 @@ const TIMELINES = [
 ]
 
 export const Route = createFileRoute('/')({
-	head: () => ({
-		links: canonical(''),
-		meta: [
-			{ title: seo.title },
-			{ name: 'description', content: seo.description },
-			{ name: 'keywords', content: seo.keywords },
-			{ name: 'application-name', content: seo.title },
-			{ property: 'og:type', content: 'website' },
-			{ property: 'og:url', content: seo.url },
-			{ property: 'og:title', content: seo.title },
-			{ property: 'og:description', content: seo.description },
-			{ property: 'og:image', content: `${seo.url}${seo.thumb}` },
-			{ name: 'twitter:card', content: 'summary_large_image' },
-			{ name: 'twitter:site', content: '@prvnbist' },
-			{ name: 'twitter:title', content: seo.title },
-			{ name: 'twitter:description', content: seo.description },
-			{ name: 'twitter:image', content: `${seo.url}${seo.thumb}` },
-		],
-	}),
+	head: () =>
+		seo({
+			path: '/',
+			title: pageTitle(),
+			description: BIO,
+			image: '/images/thumbs/home.jpg',
+		}),
 	component: Home,
 })
 
