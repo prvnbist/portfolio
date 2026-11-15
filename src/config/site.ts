@@ -15,6 +15,7 @@ export const DEFAULT_OG = '/images/thumbs/home.jpg'
 
 export const NAV = [
 	{ title: 'code.', url: '/code' },
+	{ title: 'design.', url: '/design' },
 	{ title: 'articles.', url: '/blog' },
 ] as const
 

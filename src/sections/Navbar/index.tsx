@@ -16,12 +16,15 @@ const NavLink = ({ title, url }: (typeof NAV)[number]) => (
 	</Link>
 )
 
+// Links sit either side of the name: the first half on the left, the rest on the right.
+const SPLIT = Math.ceil(NAV.length / 2)
+
 const Navbar = () => {
 	return (
 		<nav aria-label="Main" className="sticky top-0 z-1000 w-full border-b border-line bg-bg">
 			<div className="mx-auto h-15 flex gap-20 items-center justify-center px-4 lg:w-230 lg:border-x lg:border-line lg:px-0">
 				<div className="flex gap-8 lg:gap-24 lg:pl-30">
-					{NAV.slice(0, 1).map(link => (
+					{NAV.slice(0, SPLIT).map(link => (
 						<NavLink key={link.url} {...link} />
 					))}
 				</div>
@@ -34,7 +37,7 @@ const Navbar = () => {
 					{NAME}
 				</Link>
 				<div className="flex justify-end gap-8 lg:gap-24 lg:pr-30">
-					{NAV.slice(1).map(link => (
+					{NAV.slice(SPLIT).map(link => (
 						<NavLink key={link.url} {...link} />
 					))}
 				</div>
