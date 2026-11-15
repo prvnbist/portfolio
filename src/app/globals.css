@@ -124,10 +124,3 @@
 		color: #719df0;
 	}
 }
-
-#article p {
-	color: var(--color-gray-400);
-	margin-bottom: 0.75rem;
-	font-size: 1rem;
-	line-height: 1.625rem;
-}
