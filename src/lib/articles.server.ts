@@ -1,5 +1,6 @@
 import matter from 'gray-matter'
 
+import { checkFrontmatter } from './frontmatter'
 import type { ArticleMeta, ArticlePage, BlogIndex, BlogSearch } from './articles.types'
 
 // Raw MDX sources, read at build time. Only used on the server for frontmatter.
@@ -21,7 +22,12 @@ export const toMeta = (slug: string, data: Record<string, any>): ArticleMeta => 
 })
 
 const all = Object.entries(sources)
-	.map(([file, raw]) => toMeta(slugOf(file), matter(raw).data))
+	.map(([file, raw]) => {
+		const slug = slugOf(file)
+		const { data } = matter(raw)
+		checkFrontmatter(slug, data)
+		return toMeta(slug, data)
+	})
 	.sort((a, b) => new Date(b.date ?? 0).getTime() - new Date(a.date ?? 0).getTime())
 
 export const listSlugs = () => all.map(a => a.slug)

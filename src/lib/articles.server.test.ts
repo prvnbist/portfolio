@@ -8,6 +8,7 @@ import {
 	toMeta,
 } from './articles.server'
 import type { ArticleMeta } from './articles.types'
+import { checkFrontmatter } from './frontmatter'
 
 const article = (slug: string, title: string, tags: string[]): ArticleMeta => ({
 	slug,
@@ -107,5 +108,28 @@ describe('content from src/articles (via import.meta.glob)', () => {
 
 	it('returns null for an unknown slug', () => {
 		expect(fetchArticlePage('does-not-exist')).toBeNull()
+	})
+})
+
+describe('checkFrontmatter', () => {
+	const valid = { title: 'T', date: new Date('2024-01-01'), description: 'D' }
+
+	it('accepts complete frontmatter', () => {
+		expect(() => checkFrontmatter('ok', valid)).not.toThrow()
+	})
+
+	it.each(['title', 'date', 'description'])('names the slug and field when %s is missing', key => {
+		const data: Record<string, unknown> = { ...valid, [key]: undefined }
+		expect(() => checkFrontmatter('my-post', data)).toThrow(/my-post.*\b/)
+		expect(() => checkFrontmatter('my-post', data)).toThrow(new RegExp(key))
+	})
+
+	it('rejects blank values and descriptions over 160 characters', () => {
+		expect(() => checkFrontmatter('p', { ...valid, title: '  ' })).toThrow(/title/)
+		expect(() => checkFrontmatter('p', { ...valid, description: 'x'.repeat(161) })).toThrow(/160/)
+	})
+
+	it('passes for every article in src/articles', () => {
+		expect(fetchBlogIndex({}).articles.every(a => a.description)).toBe(true)
 	})
 })
