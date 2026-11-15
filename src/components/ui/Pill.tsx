@@ -6,6 +6,8 @@ type PillOptions = {
 	variant?: 'default' | 'accent' | 'success' | 'subtle'
 	/** Adds hover and keyboard-focus styles, for pills rendered as links or buttons. */
 	interactive?: boolean
+	/** Monospace and unshouted, for `#tag` labels; add a decorative `#` with <Hash />. */
+	mono?: boolean
 	className?: string
 }
 
@@ -20,6 +22,7 @@ const VARIANTS = {
 export const pillClass = ({
 	variant = 'default',
 	interactive = false,
+	mono = false,
 	className,
 }: PillOptions = {}) =>
 	cn(
@@ -28,9 +31,13 @@ export const pillClass = ({
 		interactive &&
 			'transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-to',
 		interactive && variant === 'default' && 'hover:border-accent-to/60 hover:text-white',
+		mono && 'gap-0 font-code tracking-normal normal-case',
 		className
 	)
 
 export const Pill = ({ children, ...options }: PillOptions & { children: ReactNode }) => (
 	<span className={pillClass(options)}>{children}</span>
 )
+
+/** The decorative `#` before a mono tag; hidden from screen readers. */
+export const Hash = () => <span aria-hidden="true">#</span>

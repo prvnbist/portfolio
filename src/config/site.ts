@@ -14,9 +14,9 @@ export const TWITTER = '@prvnbist'
 export const DEFAULT_OG = '/images/thumbs/home.jpg'
 
 export const NAV = [
-	{ title: 'code.', url: '/code' },
-	{ title: 'design.', url: '/design' },
-	{ title: 'articles.', url: '/blog' },
+	{ title: 'code', url: '/code' },
+	{ title: 'design', url: '/design' },
+	{ title: 'blog', url: '/blog' },
 ] as const
 
 /** Document title: "Code | Praveen Bisht | AI Engineer", or "Praveen Bisht | AI Engineer". */

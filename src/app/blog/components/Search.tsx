@@ -56,20 +56,29 @@ const Search = ({ value = '' }: { value?: string }) => {
 				}}
 			>
 				<label htmlFor={id} className="sr-only">
-					Search articles
+					Search the blog
 				</label>
-				<input
-					id={id}
-					type="search"
-					value={text}
-					placeholder="Search articles..."
-					onChange={e => {
-						pending.current = true
-						setText(e.target.value)
-						debouncedSearch(e.target.value)
-					}}
-					className="w-full rounded-full border border-white/10 bg-transparent px-5 py-2.5 text-sm placeholder:text-gray-400 transition-colors focus:border-accent-to focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-to"
-				/>
+				{/* A shell prompt, like the heroes: the prefix is decorative, the input is the command's argument. */}
+				<div className="flex items-center gap-3 border border-white/10 bg-dark-400/60 px-4 py-2.5 font-code text-sm transition-colors focus-within:border-accent-to focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-accent-to">
+					<span aria-hidden="true" className="shrink-0 select-none">
+						<span className="text-emerald-400">$</span>{' '}
+						<span className="text-gray-300">grep -i</span>
+					</span>
+					<input
+						id={id}
+						type="search"
+						value={text}
+						placeholder="title"
+						autoComplete="off"
+						spellCheck={false}
+						onChange={e => {
+							pending.current = true
+							setText(e.target.value)
+							debouncedSearch(e.target.value)
+						}}
+						className="min-w-0 flex-1 bg-transparent text-white outline-hidden placeholder:text-gray-400"
+					/>
+				</div>
 			</form>
 		</search>
 	)

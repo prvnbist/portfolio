@@ -4,7 +4,7 @@ import { seo } from '@/lib/seo'
 
 import ProjectCard, { type ProjectAction } from '@/components/ProjectCard'
 import { PageContainer, PageHero } from '@/components/layout'
-import { pillClass } from '@/components/ui'
+import { Hash, pillClass } from '@/components/ui'
 import { FEATURED_PROJECT, PROJECTS } from '@/data/projects'
 
 export const Route = createFileRoute('/code')({
@@ -40,7 +40,8 @@ function Code() {
 			>
 				<ul className="mt-8 flex max-w-150 flex-wrap justify-center gap-2">
 					{TECH.map(tech => (
-						<li key={tech} className={pillClass()}>
+						<li key={tech} className={pillClass({ mono: true })}>
+							<Hash />
 							{tech}
 						</li>
 					))}

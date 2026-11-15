@@ -15,7 +15,7 @@ const StatusPage = ({
 }) => (
 	<section className="relative mx-auto flex w-full flex-col items-center overflow-hidden px-4 pt-28 pb-24 text-center lg:w-230">
 		<p className="font-code text-sm text-gray-400">
-			<span className="text-emerald-400">~/prvnbist</span> $ echo $?{' '}
+			<span className="text-emerald-400">~/praveen-bisht</span> $ echo $?{' '}
 			<span className="text-white">{code}</span>
 		</p>
 		<h1 className="mt-4 bg-linear-to-b from-accent-from to-accent-to bg-clip-text pb-2 font-stack text-5xl font-bold tracking-tight text-transparent md:text-7xl">

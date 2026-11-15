@@ -27,8 +27,8 @@ function Blog() {
 	return (
 		<>
 			<PageHero
-				command="ls articles/ | wc -l"
-				title="Articles"
+				command="ls blog/ | wc -l"
+				title="Blog"
 				srSuffix=": things I've learned and written about"
 			/>
 			<PageContainer>

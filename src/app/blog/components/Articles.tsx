@@ -40,7 +40,7 @@ const Articles = ({ articles }: { articles: ArticleMeta[] }) => {
 		</ul>
 	) : (
 		<div className="mt-12 flex flex-col items-center gap-4 text-center">
-			<h2 className="font-stack text-3xl">No articles match</h2>
+			<h2 className="font-stack text-3xl">No posts match</h2>
 			<p className="text-gray-400">Try a different search or tag.</p>
 			<Link
 				to="/blog"

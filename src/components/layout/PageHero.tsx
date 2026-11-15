@@ -60,7 +60,7 @@ export const PageHero = ({
 				truncateCommand && 'max-w-full truncate'
 			)}
 		>
-			<span className="text-emerald-400">~/prvnbist</span> $ {command}
+			<span className="text-emerald-400">~/praveen-bisht</span> $ {command}
 		</Reveal>
 		<Reveal
 			as="h1"

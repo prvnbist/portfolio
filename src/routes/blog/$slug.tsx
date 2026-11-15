@@ -4,7 +4,7 @@ import { createFileRoute, Link, notFound } from '@tanstack/react-router'
 import Content from '@/app/blog/components/Content'
 import { NotFound } from '@/components'
 import { PageContainer, PageHero } from '@/components/layout'
-import { Pill } from '@/components/ui'
+import { Hash, Pill } from '@/components/ui'
 import { NAME } from '@/config/site'
 import { blogPostingSchema, jsonLd, seo } from '@/lib/seo'
 import { getArticleComponent, getArticlePage, preloadArticle } from '@/lib/articles'
@@ -42,7 +42,7 @@ export const Route = createFileRoute('/blog/$slug')({
 		}
 	},
 	notFoundComponent: () => (
-		<NotFound title="Article not found" back={{ to: '/blog', label: 'Back to articles' }} />
+		<NotFound title="Article not found" back={{ to: '/blog', label: 'Back to blog' }} />
 	),
 	component: Article,
 })
@@ -57,14 +57,17 @@ function Article() {
 		<>
 			<PageHero
 				size="title"
-				command={`cat articles/${meta.slug}.mdx`}
+				command={`cat blog/${meta.slug}.mdx`}
 				title={meta.title}
 				truncateCommand
 			>
 				<div className="mt-6 flex flex-wrap items-center justify-center gap-2">
 					{meta.date && <Pill variant="success">{formatDate(meta.date)}</Pill>}
 					{meta.tags.map(tag => (
-						<Pill key={tag}>{tag}</Pill>
+						<Pill key={tag} mono>
+							<Hash />
+							{tag}
+						</Pill>
 					))}
 				</div>
 			</PageHero>
@@ -75,7 +78,7 @@ function Article() {
 					</Suspense>
 				)}
 				<nav
-					aria-label="More articles"
+					aria-label="More posts"
 					className="-mx-4 mt-12 flex flex-col border-t border-line md:flex-row lg:-mx-8"
 				>
 					{previous ? (

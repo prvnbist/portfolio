@@ -1,4 +1,4 @@
-import { CardGlow, Pill, pillClass, Reveal } from '@/components/ui'
+import { CardGlow, Hash, Pill, pillClass, Reveal } from '@/components/ui'
 import { cn } from '@/utils'
 
 import Button from './Button'
@@ -70,7 +70,12 @@ export default function ProjectCard({
 				{tags.length > 0 && (
 					<ul className="mb-5 flex flex-wrap gap-2">
 						{tags.map(tag => (
-							<li key={tag} title={tag} className={pillClass({ variant: 'subtle' })}>
+							<li
+								key={tag}
+								title={tag}
+								className={pillClass({ variant: 'subtle', mono: true })}
+							>
+								<Hash />
 								{tag}
 							</li>
 						))}
