@@ -11,7 +11,7 @@ const sources = import.meta.glob('../articles/*.mdx', {
 
 const slugOf = (file: string) => file.replace(/^.*\//, '').replace(/\.mdx$/, '')
 
-const toMeta = (slug: string, data: Record<string, any>): ArticleMeta => ({
+export const toMeta = (slug: string, data: Record<string, any>): ArticleMeta => ({
 	slug,
 	title: String(data.title ?? slug),
 	date: data.date ? new Date(data.date).toISOString() : null,

@@ -16,6 +16,8 @@
     "build": "vite build",
     "start": "node .output/server/index.mjs",
     "lint": "biome lint ./src",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "format": "biome format --write .",
     "precommit": "pnpm format && pnpm lint"
   },
@@ -50,6 +52,7 @@
     "nitro": "3.0.261103-rc",
     "tailwindcss": "^4.3.5",
     "typescript": "^5.9.3",
-    "vite": "^8.3.7"
+    "vite": "^8.3.7",
+    "vitest": "^5.1.0"
   }
 }

@@ -1,3 +1,4 @@
+/// <reference types="vitest/config" />
 import mdx from '@mdx-js/rollup'
 import tailwindcss from '@tailwindcss/vite'
 import { tanstackStart } from '@tanstack/react-start/plugin/vite'
@@ -24,6 +25,9 @@ const mdxPlugin = (): Plugin => {
 	}
 }
 
+// Under Vitest, skip the Start/Nitro app plugins; the MDX and glob handling is all tests need.
+const isTest = !!process.env.VITEST
+
 export default defineConfig({
 	server: { port: 3000 },
 	resolve: { tsconfigPaths: true },
@@ -31,8 +35,12 @@ export default defineConfig({
 		tailwindcss(),
 		mdxPlugin(),
 		// tanstackStart must come before the React plugin
-		tanstackStart(),
-		nitro(),
+		!isTest && tanstackStart(),
+		!isTest && nitro(),
 		viteReact(),
 	],
+	test: {
+		include: ['src/**/*.test.{ts,tsx}'],
+		environment: 'node',
+	},
 })
