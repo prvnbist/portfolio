@@ -10,7 +10,7 @@ type PillOptions = {
 }
 
 const VARIANTS = {
-	default: 'border border-white/10 text-gray-400',
+	default: 'border border-white/10 text-gray-300',
 	accent: 'border border-transparent bg-linear-to-r from-accent-from to-accent-to text-zinc-950',
 	success: 'border border-transparent bg-emerald-400/10 font-semibold text-emerald-400',
 	subtle: 'bg-white/5 text-gray-400',
@@ -23,7 +23,7 @@ export const pillClass = ({
 	className,
 }: PillOptions = {}) =>
 	cn(
-		'inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-medium tracking-wider uppercase',
+		'inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium tracking-wider uppercase',
 		VARIANTS[variant],
 		interactive &&
 			'transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-to',

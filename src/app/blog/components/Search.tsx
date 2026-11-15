@@ -68,7 +68,7 @@ const Search = ({ value = '' }: { value?: string }) => {
 						setText(e.target.value)
 						debouncedSearch(e.target.value)
 					}}
-					className="w-full rounded-full border border-white/10 bg-transparent px-5 py-2.5 text-sm placeholder:text-gray-500 transition-colors focus:border-accent-to focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-to"
+					className="w-full rounded-full border border-white/10 bg-transparent px-5 py-2.5 text-sm placeholder:text-gray-400 transition-colors focus:border-accent-to focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-to"
 				/>
 			</form>
 		</search>

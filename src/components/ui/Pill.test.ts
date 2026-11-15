@@ -18,4 +18,9 @@ describe('pillClass', () => {
 		expect(pillClass()).not.toContain('focus-visible:')
 		expect(pillClass({ interactive: true })).toContain('focus-visible:outline-accent-to')
 	})
+
+	it('uses text of at least 12px', () => {
+		expect(pillClass()).toContain('text-xs')
+		expect(pillClass()).not.toMatch(/text-\[(?:[0-9]|1[01])px\]/)
+	})
 })

@@ -5,7 +5,7 @@ import { cn } from '@/utils'
 
 const TITLE = {
 	display:
-		'mt-4 bg-linear-to-b from-accent-from via-accent-to to-transparent pb-2 text-[clamp(56px,15vw,150px)] leading-[0.9] select-none',
+		'mt-4 bg-linear-to-b from-accent-from via-accent-to to-accent-to/75 pb-2 text-[clamp(56px,15vw,150px)] leading-[0.9] select-none',
 	title: 'mt-5 max-w-184 bg-linear-to-b from-white via-white to-accent-to pb-1 text-4xl leading-tight md:text-6xl',
 }
 
@@ -56,7 +56,7 @@ export const PageHero = ({
 			as="p"
 			when="mount"
 			className={cn(
-				'relative font-code text-sm text-gray-500',
+				'relative font-code text-sm text-gray-300',
 				truncateCommand && 'max-w-full truncate'
 			)}
 		>

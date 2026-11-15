@@ -84,7 +84,7 @@ const TimelineItem = ({ timeline, index = 0 }: { timeline: Timeline; index?: num
 							>
 								{role.title}
 							</p>
-							<p className="mt-0.5 text-xs text-gray-500">
+							<p className="mt-0.5 text-xs text-gray-400">
 								{formatMonth(role.from)} – {role.to ? formatMonth(role.to) : 'Present'}
 							</p>
 						</li>

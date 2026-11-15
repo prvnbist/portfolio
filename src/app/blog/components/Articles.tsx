@@ -22,7 +22,7 @@ const Articles = ({ articles }: { articles: ArticleMeta[] }) => {
 					>
 						<div className="min-w-0">
 							{article.date && (
-								<span className="text-[11px] font-medium tracking-wider text-gray-500 uppercase">
+								<span className="text-xs font-medium tracking-wider text-gray-400 uppercase">
 									{formatDate(article.date)}
 								</span>
 							)}
