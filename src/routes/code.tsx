@@ -53,11 +53,11 @@ function Code() {
 			<header className="relative mx-auto flex w-full flex-col items-center overflow-hidden px-4 pt-28 pb-24 text-center lg:w-230">
 				<span
 					aria-hidden="true"
-					className="pointer-events-none absolute top-10 left-1/4 h-64 w-64 animate-pulse rounded-full bg-yellow-400/20 blur-3xl"
+					className="pointer-events-none absolute top-10 left-1/4 h-64 w-64 motion-safe:animate-pulse rounded-full bg-yellow-400/20 blur-3xl"
 				/>
 				<span
 					aria-hidden="true"
-					className="pointer-events-none absolute top-24 right-1/4 h-64 w-64 animate-pulse rounded-full bg-pink-400/20 blur-3xl [animation-delay:1s]"
+					className="pointer-events-none absolute top-24 right-1/4 h-64 w-64 motion-safe:animate-pulse rounded-full bg-pink-400/20 blur-3xl [animation-delay:1s]"
 				/>
 				<motion.p
 					{...ANIMATE_PROPS}

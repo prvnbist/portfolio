@@ -66,7 +66,7 @@ const TimelineItem = ({ timeline, index = 0 }: { timeline: Timeline; index?: num
 				{isOngoing && (
 					<span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-400/10 px-2.5 py-1 text-[11px] font-semibold tracking-wider text-emerald-400 uppercase">
 						<span className="relative flex h-1.5 w-1.5">
-							<span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+							<span className="absolute inline-flex h-full w-full motion-safe:animate-ping rounded-full bg-emerald-400 opacity-75" />
 							<span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
 						</span>
 						Now
@@ -110,7 +110,7 @@ const TimelineItem = ({ timeline, index = 0 }: { timeline: Timeline; index?: num
 								<span className="relative mb-3 flex h-2.5 w-2.5">
 									{current && (
 										<span
-											className={`absolute inline-flex h-full w-full animate-ping rounded-full opacity-60 ${accent.dot}`}
+											className={`absolute inline-flex h-full w-full motion-safe:animate-ping rounded-full opacity-60 ${accent.dot}`}
 										/>
 									)}
 									<span

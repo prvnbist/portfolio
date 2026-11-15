@@ -1,8 +1,12 @@
 import { createRootRoute, HeadContent, Outlet, Scripts } from '@tanstack/react-router'
+import { MotionConfig } from 'framer-motion'
 import type { ReactNode } from 'react'
 
 import appCss from '@/app/globals.css?url'
+import { initReducedMotion } from '@/lib/motion'
 import { Navbar } from '@/sections'
+
+initReducedMotion()
 
 export const Route = createRootRoute({
 	head: () => ({
@@ -43,8 +47,10 @@ export const Route = createRootRoute({
 function RootComponent() {
 	return (
 		<RootDocument>
-			<Navbar />
-			<Outlet />
+			<MotionConfig reducedMotion="user">
+				<Navbar />
+				<Outlet />
+			</MotionConfig>
 		</RootDocument>
 	)
 }
