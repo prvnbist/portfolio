@@ -38,6 +38,14 @@ const TIMELINES = [
 		],
 	},
 	{
+		id: 'freelance-2024',
+		url: null,
+		institution: 'Freelance',
+		duration: [{ from: '2024-04-01', to: '2024-10-31', title: 'Client Projects' }],
+		location: 'Remote',
+		description: [],
+	},
+	{
 		id: 'clfcofkadc6tp0butthr9fxqw',
 		url: 'https://qatalog.com/',
 		institution: 'Qatalog',
@@ -62,7 +70,7 @@ const TIMELINES = [
 	},
 	{
 		id: 'cksyy1jcwel1c0e08wu7b29g8',
-		url: null,
+		url: 'https://github.com/dailykit',
 		institution: 'Dailykit',
 		duration: [{ from: '2019-08-01', to: '2021-07-31', title: 'SDE 1' }],
 		location: 'Bengaluru, India',
