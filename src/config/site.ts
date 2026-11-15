@@ -14,7 +14,7 @@ export const TWITTER_URL = `https://x.com/${TWITTER.slice(1)}`
 
 export const GITHUB_URL = 'https://github.com/prvnbist'
 
-export const EMAIL = 'prvnbist@gmail.com'
+export const EMAIL = 'connect@prvnbist.com'
 
 /** Fallback share image, relative to the site root. */
 export const DEFAULT_OG = '/images/thumbs/home.jpg'

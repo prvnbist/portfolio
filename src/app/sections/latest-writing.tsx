@@ -29,7 +29,7 @@ export default function LatestWriting({ articles }: { articles: ArticleMeta[] })
 						as="li"
 						key={article.slug}
 						delay={index * 0.08}
-						className="group/card relative list-none overflow-hidden border-b border-line md:border-r md:last:border-r-0"
+						className="group/card relative list-none overflow-hidden border-b border-line last:border-b-0 md:border-r md:border-b-0 md:last:border-r-0"
 					>
 						<CardGlow index={index} />
 						<Link

@@ -11,8 +11,8 @@ const SOCIALS: { name: IconName; label: string; href: string }[] = [
 
 export default function Footer() {
 	return (
-		<footer aria-labelledby="contact" className="w-full border-t border-line">
-			<div className="mx-auto w-full px-4 py-16 lg:w-230 lg:px-8">
+		<footer aria-labelledby="contact" className="w-full">
+			<div className="mx-auto w-full border-t border-line px-4 py-16 lg:w-230 lg:px-8">
 				<Reveal className="flex flex-col items-center gap-5 text-center">
 					<h2
 						id="contact"
