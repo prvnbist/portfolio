@@ -3,6 +3,7 @@ import { MotionConfig } from 'framer-motion'
 import type { ReactNode } from 'react'
 
 import appCss from '@/app/globals.css?url'
+import { BIO, pageTitle } from '@/config/site'
 import { initReducedMotion } from '@/lib/motion'
 import { Navbar } from '@/sections'
 
@@ -13,12 +14,8 @@ export const Route = createRootRoute({
 		meta: [
 			{ charSet: 'utf-8' },
 			{ name: 'viewport', content: 'width=device-width, initial-scale=1' },
-			{ title: 'Praveen Bisht' },
-			{
-				name: 'description',
-				content:
-					'Hey👋🏼, I’m a front end engineer with the background in full stack based in New Delhi, India who enjoys building products from idea to implementation.',
-			},
+			{ title: pageTitle() },
+			{ name: 'description', content: BIO },
 		],
 		links: [{ rel: 'stylesheet', href: appCss }],
 		scripts: [

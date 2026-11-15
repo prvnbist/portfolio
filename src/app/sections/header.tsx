@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 
 import { Button, LinkPreview } from '@/components'
+import { ROLE } from '@/config/site'
 
 const EASE = [0.22, 1, 0.36, 1] as const
 
@@ -96,7 +97,7 @@ export default function Header() {
 					</motion.span>
 					<Words>I am an</Words>
 					<Words className="bg-linear-to-r from-[#f6d365] to-[#fda085] bg-clip-text text-transparent">
-						AI Engineer
+						{ROLE}
 					</Words>
 					<Words>specializing in front-end building all things</Words>
 					<motion.span variants={word} className="inline-block font-[inherit]">

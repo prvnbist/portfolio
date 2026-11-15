@@ -1,4 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
+import { pageTitle } from '@/config/site'
 import { motion } from 'framer-motion'
 import { canonical } from '@/lib/seo'
 
@@ -8,7 +9,7 @@ import { parseBlogSearch } from '@/lib/blog-search'
 
 const seo = {
 	url: 'https://www.prvnbist.com/blog',
-	title: 'Blog | Praveen Bisht | Frontend Engineer',
+	title: pageTitle('Blog'),
 	description: "Sometimes I like to write about what I've learned and you can find them here.",
 	keywords:
 		'front end, back end, design, html, pug, css, scss, javascript, nodejs, reactjs, graphql, expressjs, mongoose, mongodb, gatsby, figma, design, user interface, user experience',

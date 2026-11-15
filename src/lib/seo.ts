@@ -1,3 +1,5 @@
-export const SITE = 'https://www.prvnbist.com'
+import { SITE_URL } from '@/config/site'
 
-export const canonical = (path: string) => [{ rel: 'canonical', href: `${SITE}${path}` }]
+export { SITE_URL as SITE }
+
+export const canonical = (path: string) => [{ rel: 'canonical', href: `${SITE_URL}${path}` }]

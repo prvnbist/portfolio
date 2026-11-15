@@ -1,4 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
+import { pageTitle } from '@/config/site'
 import { canonical } from '@/lib/seo'
 
 import { motion } from 'framer-motion'
@@ -9,7 +10,7 @@ import { FEATURED_PROJECT, PROJECTS } from '@/data/projects'
 const seo = {
 	thumb: '/images/thumbs/code.jpg',
 	url: 'https://www.prvnbist.com/code',
-	title: 'Code | Praveen Bisht | Frontend Engineer',
+	title: pageTitle('Code'),
 	description:
 		"Here's a list of all the projects I've built over the years with various technologies.",
 	keywords:

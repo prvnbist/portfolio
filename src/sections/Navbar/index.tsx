@@ -1,35 +1,44 @@
 import { Link } from '@tanstack/react-router'
 
-const LINKS = [
-	{ title: 'code.', url: '/code' },
-	{ title: 'articles.', url: '/blog' },
-]
+import { NAME, NAV } from '@/config/site'
 
-const linkClass = 'font-inter text-sm font-medium text-zinc-300 transition hover:text-white'
+const linkClass =
+	'font-inter text-sm font-medium text-zinc-300 transition hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#fda085]'
+
+// The router sets aria-current="page" on the active link; this adds the visual cue.
+const activeProps = {
+	className: 'text-white underline decoration-[#fda085] decoration-2 underline-offset-8',
+}
+
+const NavLink = ({ title, url }: (typeof NAV)[number]) => (
+	<Link to={url} className={linkClass} activeProps={activeProps}>
+		{title}
+	</Link>
+)
 
 const Navbar = () => {
 	return (
-		<nav className="sticky top-0 z-1000 w-full border-b border-line bg-zinc-950">
+		<nav
+			aria-label="Main"
+			className="sticky top-0 z-1000 w-full border-b border-line bg-zinc-950"
+		>
 			<div className="mx-auto h-15 flex gap-20 items-center justify-center px-4 lg:w-230 lg:border-x lg:border-line lg:px-0">
 				<div className="flex gap-8 lg:gap-24 lg:pl-30">
-					{LINKS.slice(0, 1).map(link => (
-						<Link key={link.url} to={link.url} className={linkClass}>
-							{link.title}
-						</Link>
+					{NAV.slice(0, 1).map(link => (
+						<NavLink key={link.url} {...link} />
 					))}
 				</div>
 				<Link
 					to="/"
 					title="Home"
+					activeOptions={{ exact: true }}
 					className="font-stack text-2xl font-semibold text-white no-underline"
 				>
-					Praveen Bisht
+					{NAME}
 				</Link>
 				<div className="flex justify-end gap-8 lg:gap-24 lg:pr-30">
-					{LINKS.slice(1).map(link => (
-						<Link key={link.url} to={link.url} className={linkClass}>
-							{link.title}
-						</Link>
+					{NAV.slice(1).map(link => (
+						<NavLink key={link.url} {...link} />
 					))}
 				</div>
 			</div>

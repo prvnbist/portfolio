@@ -1,4 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
+import { pageTitle } from '@/config/site'
 import { canonical } from '@/lib/seo'
 
 import { DESIGNS } from '@/data/designs'
@@ -8,7 +9,7 @@ import classes from '@/app/design/design.module.css'
 const seo = {
 	url: 'https://www.prvnbist.com/design',
 	thumb: '/images/thumbs/home.jpg',
-	title: 'Design | Praveen Bisht | Frontend Engineer',
+	title: pageTitle('Design'),
 	description:
 		"Here's a list of all the projects I've designed over the years ranging from huge platforms to various tools.",
 	keywords:

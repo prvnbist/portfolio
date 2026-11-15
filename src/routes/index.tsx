@@ -1,4 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
+import { BIO, pageTitle } from '@/config/site'
 import { canonical } from '@/lib/seo'
 
 import Header from '@/app/sections/header'
@@ -7,9 +8,8 @@ import Timelines from '@/app/sections/timelines'
 const seo = {
 	url: 'https://www.prvnbist.com',
 	thumb: '/images/thumbs/home.jpg',
-	title: 'Praveen Bisht | Frontend Engineer',
-	description:
-		'Hey👋🏼, I’m a front end engineer with the background in full stack based in New Delhi, India who enjoys building products from idea to implementation.',
+	title: pageTitle(),
+	description: BIO,
 	keywords:
 		'front end, back end, design, html, pug, css, scss, javascript, skilljs, reactjs, graphql, expressjs, mongoose, mongodb, gatsby, figma, design, user interface, user experience',
 }
