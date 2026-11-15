@@ -1,13 +1,9 @@
 import { motion } from 'framer-motion'
 
 import type { ArticleMeta } from '@/lib/articles.types'
+import { formatDate } from '@/lib/format'
 
 const GLOWS = ['bg-yellow-400/20', 'bg-pink-400/20', 'bg-sky-400/20', 'bg-emerald-400/20']
-
-const formatDate = (date: string) =>
-	new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: 'numeric' }).format(
-		new Date(date)
-	)
 
 const Articles = ({ articles }: { articles: ArticleMeta[] }) => {
 	return Array.isArray(articles) && articles.length > 0 ? (

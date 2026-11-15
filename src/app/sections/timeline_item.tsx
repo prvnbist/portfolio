@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 
+import { formatDate } from '@/lib/format'
 import type { Timeline } from '@/type'
 
 const ANIMATE_PROPS = {
@@ -36,8 +37,7 @@ const ACCENTS = [
 	},
 ]
 
-const formatMonth = (date: string) =>
-	new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short' }).format(new Date(date))
+const formatMonth = (date: string) => formatDate(date, { year: 'numeric', month: 'short' })
 
 const TimelineItem = ({ timeline, index = 0 }: { timeline: Timeline; index?: number }) => {
 	const accent = ACCENTS[index % ACCENTS.length]
@@ -59,7 +59,7 @@ const TimelineItem = ({ timeline, index = 0 }: { timeline: Timeline; index?: num
 				aria-hidden="true"
 				className="pointer-events-none absolute -bottom-6 right-4 font-stack text-[120px] leading-none font-bold text-transparent select-none [-webkit-text-stroke:1px_rgba(255,255,255,0.08)]"
 			>
-				{new Date(start).getFullYear()}
+				{formatDate(start, { year: 'numeric' })}
 			</span>
 
 			<div className="relative flex flex-wrap items-center gap-2">

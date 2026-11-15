@@ -27,7 +27,10 @@ Failing audits:
   - `color-contrast`: code-block line numbers are 2.28:1.
   - `link-in-text-block`.
   - `meta-description`: missing (F-19).
-  - `errors-in-console`: React **#418 hydration mismatch** ×3 and **#422**, in IST. The probable cause is F-01, date formatting without UTC; T3 should make these go away.
+  - `errors-in-console`: React **#418 hydration mismatch** ×3 and **#422**, in IST.
+    - **Correction after T3:** the same errors occur in UTC, and they persist once dates format in UTC, so they're **not** F-01.
+    - They happen on the two articles that put fallback `<a>` links **inside** a CodePen `<iframe>`: this one and `create-a-tags-input-component-in-react`. The browser parses iframe content as text, so it doesn't match React's server-rendered elements.
+    - This is a new finding, not yet in the audit.
   - `third-party-cookies` and `inspector-issues`, both from the CodePen embed.
   - The LCP element is an article `<img>`, and the page loads two 2.9 MB GIFs (F-25).
 - `/design`: `heading-order`.
@@ -110,4 +113,4 @@ The full path is `/private/tmp/claude-501/-Users-prvnbist--claude-spares-spare-N
 
 ### Other [R] findings seen along the way
 - **F-41 (touch targets):** pills are about 22 px tall. Not measured precisely; that's left to T29.
-- **F-01 (dates):** the hydration errors in IST above are strong evidence for this finding.
+- **F-01 (dates):** the hydration errors above turned out to be from the iframe embeds, not dates (see the correction).

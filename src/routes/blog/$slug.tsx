@@ -5,6 +5,7 @@ import { createFileRoute, Link, notFound } from '@tanstack/react-router'
 import Content from '@/app/blog/components/Content'
 import { canonical, SITE } from '@/lib/seo'
 import { getArticleComponent, getArticlePage, preloadArticle } from '@/lib/articles'
+import { formatDate } from '@/lib/format'
 
 export const Route = createFileRoute('/blog/$slug')({
 	loader: async ({ params: { slug } }) => {
@@ -94,12 +95,7 @@ function Article() {
 				>
 					{meta.date && (
 						<span className="rounded-full bg-emerald-400/10 px-2.5 py-1 text-[11px] font-semibold tracking-wider text-emerald-400 uppercase">
-							{new Intl.DateTimeFormat('en-US', {
-								year: 'numeric',
-								month: 'short',
-								day: 'numeric',
-								timeZone: 'UTC',
-							}).format(new Date(meta.date))}
+							{formatDate(meta.date)}
 						</span>
 					)}
 					{meta.tags.map(tag => (
