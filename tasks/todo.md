@@ -15,7 +15,7 @@
   - Acceptance: `/design` renders same count, order, text as snapshot with local thumbnails; no `getDesigns`; error branch removed.
   - Verify: `pnpm lint`; visual check of `/design`; Network tab shows no external image requests.
   - Depends on: T1. Files: `src/data/designs.ts`, `src/lib/design.types.ts` (or reuse type), `src/routes/design.tsx`, `src/app/design/project.tsx` if needed.
-- [ ] **T4: Move MDX images to `public/`** (M)
+- [x] **T4: Move MDX images to `public/`** (M)
   - Acceptance: all 14 `media.graphcms.com` refs in 7 articles rewritten to `/images/articles/<slug>/...`; files downloaded unmodified; old-id -> new-path map recorded.
   - Verify: `grep -r "graphcms" src/articles` empty; open each of the 7 articles, all images load.
   - Depends on: none. Files: 7 `src/articles/*.mdx`, `public/images/articles/**` (split into two commits if >5 files).
