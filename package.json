@@ -29,8 +29,6 @@
     "@tanstack/react-start": "^1.169.5",
     "clsx": "^2.1.1",
     "framer-motion": "^11.18.2",
-    "graphql": "^16.11.0",
-    "graphql-request": "^6.1.0",
     "gray-matter": "^4.0.3",
     "lodash.debounce": "^4.0.8",
     "prism-react-renderer": "^2.4.1",

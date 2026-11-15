@@ -25,7 +25,7 @@
 - [ ] Parity report from T1/T2 reviewed by human before deletion
 
 ## Phase 3: Removal
-- [ ] **T5: Delete Hygraph client and config** (S)
+- [x] **T5: Delete Hygraph client and config** (S)
   - Acceptance: removed `src/lib/cms*.ts`, `graphql.server.ts`, `src/queries/`, unused `src/type.ts` types, `graphql` + `graphql-request` deps, `GRAPH_CMS_URL` from `.env`, `.env.example`, `vite-env.d.ts`.
   - Verify: leftover grep from SPEC empty; `.env` moved aside and `pnpm build` succeeds offline; `pnpm precommit` clean.
   - Depends on: T2, T3, T4. Files: ~8 deletions, `package.json`, `pnpm-lock.yaml`, env files.

@@ -9,13 +9,6 @@ interface ImportMeta {
 	readonly env: ImportMetaEnv
 }
 
-declare namespace NodeJS {
-	interface ProcessEnv {
-		/** Server-only. Never prefix with VITE_. */
-		GRAPH_CMS_URL?: string
-	}
-}
-
 declare module '*.mdx' {
 	import type { ComponentType } from 'react'
 	const Component: ComponentType<{ components?: Record<string, any> }>
