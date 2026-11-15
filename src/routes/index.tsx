@@ -1,8 +1,10 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { BIO, pageTitle } from '@/config/site'
+import { getBlogIndex } from '@/lib/articles'
 import { jsonLd, personSchema, seo, websiteSchema } from '@/lib/seo'
 
 import Header from '@/app/sections/header'
+import LatestWriting from '@/app/sections/latest-writing'
 import Timelines from '@/app/sections/timelines'
 
 const TIMELINES = [
@@ -117,6 +119,7 @@ const TIMELINES = [
 ]
 
 export const Route = createFileRoute('/')({
+	loader: () => getBlogIndex({ data: {} }),
 	head: () => ({
 		...seo({
 			path: '/',
@@ -130,10 +133,12 @@ export const Route = createFileRoute('/')({
 })
 
 function Home() {
+	const { articles } = Route.useLoaderData()
 	return (
 		<>
 			<Header />
 			<Timelines timelines={TIMELINES} />
+			<LatestWriting articles={articles} />
 		</>
 	)
 }

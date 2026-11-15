@@ -10,7 +10,7 @@ import appCss from '@/app/globals.css?url'
 import { ErrorPage, NotFound } from '@/components'
 import { BIO, pageTitle } from '@/config/site'
 import { initReducedMotion } from '@/lib/motion'
-import { Navbar } from '@/sections'
+import { Footer, Navbar } from '@/sections'
 
 initReducedMotion()
 
@@ -79,6 +79,7 @@ function RootComponent() {
 				<main id="content" tabIndex={-1} className="outline-hidden">
 					<Outlet />
 				</main>
+				<Footer />
 			</MotionConfig>
 		</LazyMotion>
 	)

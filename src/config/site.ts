@@ -10,6 +10,12 @@ export const BIO = `Hey👋🏽, I’m an ${ROLE} specializing in front-end, bui
 
 export const TWITTER = '@prvnbist'
 
+export const TWITTER_URL = `https://x.com/${TWITTER.slice(1)}`
+
+export const GITHUB_URL = 'https://github.com/prvnbist'
+
+export const EMAIL = 'prvnbist@gmail.com'
+
 /** Fallback share image, relative to the site root. */
 export const DEFAULT_OG = '/images/thumbs/home.jpg'
 

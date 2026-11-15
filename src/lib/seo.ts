@@ -1,4 +1,4 @@
-import { DEFAULT_OG, NAME, ROLE, SITE_URL, TWITTER } from '@/config/site'
+import { DEFAULT_OG, GITHUB_URL, NAME, ROLE, SITE_URL, TWITTER, TWITTER_URL } from '@/config/site'
 
 import type { ArticleMeta } from './articles.types'
 
@@ -67,7 +67,7 @@ const person = () => ({ '@type': 'Person', name: NAME, url: SITE_URL })
 export const personSchema = () => ({
 	...person(),
 	jobTitle: ROLE,
-	sameAs: [`https://twitter.com/${TWITTER.slice(1)}`, 'https://github.com/prvnbist'],
+	sameAs: [TWITTER_URL, GITHUB_URL],
 })
 
 export const websiteSchema = () => ({ '@type': 'WebSite', name: NAME, url: SITE_URL })

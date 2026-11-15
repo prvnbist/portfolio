@@ -2,7 +2,7 @@ import { m, useInView } from 'framer-motion'
 import { useRef } from 'react'
 
 import { Button, LinkPreview } from '@/components'
-import { ROLE } from '@/config/site'
+import { EMAIL, ROLE } from '@/config/site'
 
 const EASE = [0.22, 1, 0.36, 1] as const
 
@@ -142,7 +142,7 @@ export default function Header() {
 				</m.h1>
 
 				<m.div {...fadeUp(1.1)} className="mt-12">
-					<Button href="mailto:prvnbist@gmail.com">Get in touch</Button>
+					<Button href={`mailto:${EMAIL}`}>Get in touch</Button>
 				</m.div>
 			</div>
 		</header>
