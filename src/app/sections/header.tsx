@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
+import { useRef } from 'react'
 
 import { Button, LinkPreview } from '@/components'
 import { ROLE } from '@/config/site'
@@ -51,9 +52,28 @@ const Words = ({ children, className }: { children: string; className?: string }
 	</>
 )
 
+/**
+ * The blobs drift in an endless loop only while the hero is visible. Off screen they ease back to
+ * rest and stop, so nothing keeps running on the main thread. (Under reduced motion,
+ * syncReducedMotion skips animations entirely.)
+ */
+export const blobMotion = (blob: { x: number[]; y: number[] }, inView: boolean) =>
+	inView
+		? {
+				animate: { x: blob.x, y: blob.y },
+				transition: {
+					duration: 18,
+					repeat: Number.POSITIVE_INFINITY,
+					ease: 'easeInOut' as const,
+				},
+			}
+		: { animate: { x: 0, y: 0 }, transition: { duration: 0.6, repeat: 0 } }
+
 export default function Header() {
+	const ref = useRef<HTMLElement>(null)
+	const inView = useInView(ref)
 	return (
-		<header className="relative">
+		<header ref={ref} className="relative">
 			<div
 				aria-hidden="true"
 				className="pointer-events-none absolute inset-0 overflow-hidden mask-[linear-gradient(to_bottom,black_55%,transparent)]"
@@ -62,8 +82,7 @@ export default function Header() {
 				{BLOBS.map(blob => (
 					<motion.span
 						key={blob.pos}
-						animate={{ x: blob.x, y: blob.y }}
-						transition={{ duration: 18, repeat: Number.POSITIVE_INFINITY, ease: 'easeInOut' }}
+						{...blobMotion(blob, inView)}
 						className={`absolute h-80 w-80 rounded-full blur-3xl ${blob.color} ${blob.pos}`}
 					/>
 				))}
