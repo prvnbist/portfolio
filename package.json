@@ -18,6 +18,7 @@
     "lint": "biome lint ./src",
     "test": "vitest run",
     "test:watch": "vitest",
+    "test:e2e": "playwright test",
     "format": "biome format --write .",
     "precommit": "pnpm format && pnpm lint"
   },
@@ -41,7 +42,9 @@
     "tailwind-merge": "^3.7.0"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.14.0",
     "@biomejs/biome": "^1.9.4",
+    "@playwright/test": "^1.65.1",
     "@tailwindcss/vite": "^4.3.5",
     "@types/lodash.debounce": "^4.0.9",
     "@types/mdx": "^2.0.13",

@@ -36,3 +36,8 @@ yarn-error.log*
 /dist/
 .nitro/
 .tanstack/
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
