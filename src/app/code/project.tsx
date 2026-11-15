@@ -43,14 +43,14 @@ export default function Project({ project, index = 0, is_featured = false }: Pro
 					GLOWS[index % GLOWS.length]
 				)}
 			/>
-			<header className="relative aspect-[4/3] overflow-hidden rounded-md border border-white/10">
+			<div className="relative aspect-[4/3] overflow-hidden rounded-md border border-white/10">
 				<img
 					alt={project.title}
 					src={project.img_url}
 					className="h-full w-full object-cover transition-transform duration-500 group-hover/card:scale-[1.03]"
 				/>
-			</header>
-			<main className={cn('relative mt-5', is_featured && 'md:mt-0 md:self-center')}>
+			</div>
+			<div className={cn('relative mt-5', is_featured && 'md:mt-0 md:self-center')}>
 				{is_featured && (
 					<span className="mb-3 inline-block rounded-full border border-white/10 px-2.5 py-1 text-[11px] font-medium tracking-wider text-gray-400 uppercase">
 						Featured
@@ -90,7 +90,7 @@ export default function Project({ project, index = 0, is_featured = false }: Pro
 						)}
 					</div>
 				)}
-			</main>
+			</div>
 		</motion.li>
 	)
 }

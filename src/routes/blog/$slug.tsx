@@ -3,6 +3,7 @@ import { Suspense } from 'react'
 import { createFileRoute, Link, notFound } from '@tanstack/react-router'
 
 import Content from '@/app/blog/components/Content'
+import { NotFound } from '@/components'
 import { canonical, SITE } from '@/lib/seo'
 import { getArticleComponent, getArticlePage, preloadArticle } from '@/lib/articles'
 import { formatDate } from '@/lib/format'
@@ -44,12 +45,7 @@ export const Route = createFileRoute('/blog/$slug')({
 		}
 	},
 	notFoundComponent: () => (
-		<div className="p-4 mx-auto max-w-230 w-full mt-6 text-center">
-			<h1 className="text-3xl mb-2">Article not found</h1>
-			<Link to="/blog" className="text-blue-500 hover:text-blue-700">
-				Back to blog
-			</Link>
-		</div>
+		<NotFound title="Article not found" back={{ to: '/blog', label: 'Back to articles' }} />
 	),
 	component: Article,
 })
@@ -108,13 +104,16 @@ function Article() {
 					))}
 				</motion.div>
 			</header>
-			<main className="mx-auto w-full px-4 lg:w-230 lg:px-8" id="article">
+			<article className="mx-auto w-full px-4 lg:w-230 lg:px-8" id="article">
 				{Component && (
 					<Suspense fallback={null}>
 						<Content Component={Component} />
 					</Suspense>
 				)}
-				<footer className="-mx-4 mt-12 flex flex-col border-t border-line md:flex-row lg:-mx-8">
+				<nav
+					aria-label="More articles"
+					className="-mx-4 mt-12 flex flex-col border-t border-line md:flex-row lg:-mx-8"
+				>
 					{previous ? (
 						<Link
 							to="/blog/$slug"
@@ -145,8 +144,8 @@ function Article() {
 					) : (
 						<span className="flex-1 border-b border-line" />
 					)}
-				</footer>
-			</main>
+				</nav>
+			</article>
 		</>
 	)
 }

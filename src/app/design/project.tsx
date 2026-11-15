@@ -15,20 +15,20 @@ const ANIMATE_PROPS = {
 export default function Project({ design }: { design: Design }) {
 	return (
 		<motion.li {...ANIMATE_PROPS} className={classes.project}>
-			<header>
+			<div className={classes.head}>
 				<div>
 					<img src={design.thumbnail} alt={design.title} />
 				</div>
 				<h3>{design.title}</h3>
-			</header>
-			<main>
+			</div>
+			<div className={classes.body}>
 				<p>{design.description}</p>
-			</main>
-			<footer>
+			</div>
+			<div className={classes.foot}>
 				<a target="_blank" href={design.url} title={design.title} rel="noopener noreferrer">
 					<Button.Text>View Project</Button.Text>
 				</a>
-			</footer>
+			</div>
 		</motion.li>
 	)
 }

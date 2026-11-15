@@ -3,6 +3,7 @@ import { MotionConfig } from 'framer-motion'
 import type { ReactNode } from 'react'
 
 import appCss from '@/app/globals.css?url'
+import { ErrorPage, NotFound } from '@/components'
 import { BIO, pageTitle } from '@/config/site'
 import { initReducedMotion } from '@/lib/motion'
 import { Navbar } from '@/sections'
@@ -38,17 +39,27 @@ export const Route = createRootRoute({
 			},
 		],
 	}),
+	// The document lives in the shell so a root-level error still gets <head> and styles.
+	shellComponent: RootDocument,
 	component: RootComponent,
+	notFoundComponent: () => <NotFound />,
+	errorComponent: ErrorPage,
 })
 
 function RootComponent() {
 	return (
-		<RootDocument>
-			<MotionConfig reducedMotion="user">
-				<Navbar />
+		<MotionConfig reducedMotion="user">
+			<a
+				href="#content"
+				className="sr-only rounded-full bg-zinc-950 px-4 py-2 text-sm text-white focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-1001 focus:outline-2 focus:outline-[#fda085]"
+			>
+				Skip to content
+			</a>
+			<Navbar />
+			<main id="content" tabIndex={-1} className="outline-hidden">
 				<Outlet />
-			</MotionConfig>
-		</RootDocument>
+			</main>
+		</MotionConfig>
 	)
 }
 
