@@ -1,11 +1,11 @@
-import { type HTMLMotionProps, motion } from 'framer-motion'
+import { type HTMLMotionProps, m } from 'framer-motion'
 
 const TAGS = {
-	div: motion.div,
-	li: motion.li,
-	p: motion.p,
-	h1: motion.h1,
-	section: motion.section,
+	div: m.div,
+	li: m.li,
+	p: m.p,
+	h1: m.h1,
+	section: m.section,
 } as const
 
 type Tag = keyof typeof TAGS
@@ -33,7 +33,7 @@ export const Reveal = ({
 	transition,
 	...props
 }: RevealProps) => {
-	const Component = TAGS[as] as typeof motion.div
+	const Component = TAGS[as] as typeof m.div
 	const visible = { opacity: 1, y: 0 }
 	return (
 		<Component

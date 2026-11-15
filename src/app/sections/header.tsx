@@ -1,4 +1,4 @@
-import { motion, useInView } from 'framer-motion'
+import { m, useInView } from 'framer-motion'
 import { useRef } from 'react'
 
 import { Button, LinkPreview } from '@/components'
@@ -41,13 +41,13 @@ const BLOBS = [
 const Words = ({ children, className }: { children: string; className?: string }) => (
 	<>
 		{children.split(' ').map((w, i) => (
-			<motion.span
+			<m.span
 				key={`${w}-${i}`}
 				variants={word}
 				className={`inline-block font-[inherit] ${className ?? ''}`}
 			>
 				{w}&nbsp;
-			</motion.span>
+			</m.span>
 		))}
 	</>
 )
@@ -80,7 +80,7 @@ export default function Header() {
 			>
 				<div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-size-[56px_56px] mask-[radial-gradient(ellipse_at_center,black_20%,transparent_70%)]" />
 				{BLOBS.map(blob => (
-					<motion.span
+					<m.span
 						key={blob.pos}
 						{...blobMotion(blob, inView)}
 						className={`absolute h-80 w-80 rounded-full blur-3xl ${blob.color} ${blob.pos}`}
@@ -90,7 +90,7 @@ export default function Header() {
 			</div>
 
 			<div className="relative mx-auto flex w-full flex-col items-center px-4 pt-48 pb-28 text-center lg:w-230">
-				<motion.h1
+				<m.h1
 					initial="hidden"
 					animate="show"
 					transition={{ staggerChildren: 0.06, delayChildren: 0.2 }}
@@ -101,25 +101,22 @@ export default function Header() {
 					className="max-w-184 font-stack text-4xl leading-[1.35] font-medium text-white md:text-[44px]"
 				>
 					<Words>Hey</Words>
-					<motion.span
-						variants={word}
-						className="ml-[-0.3em] mr-1 inline-block origin-[70%_70%]"
-					>
-						<motion.span
+					<m.span variants={word} className="ml-[-0.3em] mr-1 inline-block origin-[70%_70%]">
+						<m.span
 							animate={{ rotate: [0, 18, -8, 14, 0] }}
 							transition={{ duration: 1.6, delay: 1.2, ease: 'easeInOut' }}
 							className="inline-block text-4xl"
 						>
 							👋🏽
-						</motion.span>
+						</m.span>
 						,&nbsp;
-					</motion.span>
+					</m.span>
 					<Words>I am an</Words>
 					<Words className="bg-linear-to-r from-accent-from to-accent-to bg-clip-text text-transparent">
 						{ROLE}
 					</Words>
 					<Words>specializing in front-end building all things</Words>
-					<motion.span variants={word} className="inline-block font-[inherit]">
+					<m.span variants={word} className="inline-block font-[inherit]">
 						<LinkPreview
 							href="https://justcall.io/product/send-and-receive-sms/"
 							image="/images/justcall-sms-og.webp"
@@ -127,9 +124,9 @@ export default function Header() {
 							SMS<span className="text-4xl">💬</span>
 						</LinkPreview>
 						&nbsp;
-					</motion.span>
+					</m.span>
 					<Words>at</Words>
-					<motion.span variants={word} className="inline-block font-[inherit]">
+					<m.span variants={word} className="inline-block font-[inherit]">
 						<LinkPreview href="https://justcall.io" image="/images/justcall-og.png">
 							JustCall
 							<img
@@ -141,12 +138,12 @@ export default function Header() {
 								className="ml-1 inline-block h-[0.8em] w-auto align-baseline"
 							/>
 						</LinkPreview>
-					</motion.span>
-				</motion.h1>
+					</m.span>
+				</m.h1>
 
-				<motion.div {...fadeUp(1.1)} className="mt-12">
+				<m.div {...fadeUp(1.1)} className="mt-12">
 					<Button href="mailto:prvnbist@gmail.com">Get in touch</Button>
-				</motion.div>
+				</m.div>
 			</div>
 		</header>
 	)

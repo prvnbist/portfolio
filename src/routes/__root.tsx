@@ -1,5 +1,5 @@
 import { createRootRoute, HeadContent, Outlet, Scripts } from '@tanstack/react-router'
-import { MotionConfig } from 'framer-motion'
+import { LazyMotion, MotionConfig } from 'framer-motion'
 import type { ReactNode } from 'react'
 
 import headingFont from '@fontsource-variable/stack-sans-notch/files/stack-sans-notch-latin-wght-normal.woff2?url'
@@ -11,6 +11,8 @@ import { initReducedMotion } from '@/lib/motion'
 import { Navbar } from '@/sections'
 
 initReducedMotion()
+
+const loadMotionFeatures = () => import('@/lib/motion-features').then(mod => mod.default)
 
 export const Route = createRootRoute({
 	head: () => ({
@@ -60,18 +62,23 @@ export const Route = createRootRoute({
 
 function RootComponent() {
 	return (
-		<MotionConfig reducedMotion="user">
-			<a
-				href="#content"
-				className="sr-only rounded-full bg-bg px-4 py-2 text-sm text-white focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-1001 focus:outline-2 focus:outline-accent-to"
-			>
-				Skip to content
-			</a>
-			<Navbar />
-			<main id="content" tabIndex={-1} className="outline-hidden">
-				<Outlet />
-			</main>
-		</MotionConfig>
+		// domAnimation (animate, variants, whileInView, gestures) is all the site uses, loaded in its
+		// own chunk after hydration; strict makes a
+		// stray full `motion.*` component throw instead of silently pulling the whole bundle back in.
+		<LazyMotion features={loadMotionFeatures} strict>
+			<MotionConfig reducedMotion="user">
+				<a
+					href="#content"
+					className="sr-only rounded-full bg-bg px-4 py-2 text-sm text-white focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-1001 focus:outline-2 focus:outline-accent-to"
+				>
+					Skip to content
+				</a>
+				<Navbar />
+				<main id="content" tabIndex={-1} className="outline-hidden">
+					<Outlet />
+				</main>
+			</MotionConfig>
+		</LazyMotion>
 	)
 }
 
