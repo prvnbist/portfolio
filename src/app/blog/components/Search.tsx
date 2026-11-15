@@ -19,7 +19,7 @@ const Search = ({ value = '' }: { value?: string }) => {
 			defaultValue={value}
 			placeholder="Search articles..."
 			onChange={e => debouncedSearch(e.target.value.trim())}
-			className="rounded-lg w-full px-3 py-2 bg-transparent border border-line focus:outline-hidden focus:border-yellow-400"
+			className="w-full rounded-full border border-white/10 bg-transparent px-5 py-2.5 text-sm placeholder:text-gray-500 transition-colors focus:border-[#fda085] focus:outline-hidden"
 		/>
 	)
 }

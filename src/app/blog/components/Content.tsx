@@ -27,11 +27,14 @@ const components: Record<string, ComponentType<any>> = {
 		<blockquote {...props} className="border-l-4 border-gray-700 pl-3" />
 	),
 	code: (props: any) => (
-		<code {...props} className="inline-block border border-line bg-dark-400 px-2 text-sm text-zinc-300 rounded-sm" />
+		<code
+			{...props}
+			className="inline-block border border-line bg-dark-400 px-2 text-sm text-zinc-300 rounded-sm"
+		/>
 	),
 	a: (props: any) => <a {...props} className="text-blue-500 hover:text-blue-700" />,
 	table: (props: any) => <table {...props} className="table my-3 w-full border-collapse" />,
-	p: (props: any) => <p {...props} className="text-gray-400 mb-3 text-lg" />,
+	p: (props: any) => <p {...props} className="text-gray-400 mb-3 text-base" />,
 	tbody: (props: any) => <tbody {...props} className="border-t border-gray-700" />,
 	thead: (props: any) => <thead {...props} className="h-8 border-gray-700" />,
 	th: (props: any) => <th {...props} className="px-3 border-gray-700" />,
@@ -41,7 +44,7 @@ const components: Record<string, ComponentType<any>> = {
 		<img {...props} alt={props.alt} className="rounded-md w-full object-cover" />
 	),
 	ul: (props: any) => <ul {...props} className="list-disc pl-6" />,
-	li: (props: any) => <li {...props} className="text-gray-400 my-1 text-lg" />,
+	li: (props: any) => <li {...props} className="text-gray-400 my-1 text-base" />,
 	ol: (props: any) => <ol {...props} className="list-decimal pl-4" />,
 	Video: (props: any) => (
 		<video width="100%" controls className="my-4 rounded-md overflow-hidden">

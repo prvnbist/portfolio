@@ -13,7 +13,7 @@ const LinkPreview = ({ href, image, children }: LinkPreviewProps) => {
 				href={href}
 				target="_blank"
 				rel="noopener noreferrer"
-				className="font-[inherit] text-inherit underline decoration-white/30 decoration-dashed underline-offset-4 hover:decoration-white focus-visible:decoration-white"
+				className="font-[inherit] inline-block border-b border-white/30 text-white"
 			>
 				{children}
 			</a>

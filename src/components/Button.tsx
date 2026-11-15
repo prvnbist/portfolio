@@ -1,15 +1,30 @@
 import type { ReactNode } from 'react'
 
+import { cn } from '@/utils'
+
 type TextProps = {
 	children: ReactNode
 	variant?: 'outline'
 }
 
 const Button = {
-	Cta: (props: { children: ReactNode; href: string }) => (
+	Cta: (props: {
+		children: ReactNode
+		href: string
+		external?: boolean
+		variant?: 'primary' | 'secondary'
+		size?: 'md' | 'sm'
+	}) => (
 		<a
 			href={props.href}
-			className="group inline-flex h-12 w-37 items-center justify-center rounded-full bg-linear-to-r from-[#f6d365] from-[3.5%] to-[#fda085] to-[96%] font-stack text-lg font-normal text-zinc-950 no-underline shadow-[0_0_21px_-6px_#fab976] transition-all duration-300 hover:w-[11.1rem] hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#fda085]"
+			{...(props.external && { target: '_blank', rel: 'noopener noreferrer' })}
+			className={cn(
+				'group inline-flex items-center justify-center rounded-full font-stack font-normal no-underline transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#fda085]',
+				props.size === 'sm' ? 'h-9 px-5 text-sm' : 'h-12 min-w-37 px-8 text-lg',
+				props.variant === 'secondary'
+					? 'border border-[#fda085]/40 bg-zinc-950 text-white hover:border-[#fda085]'
+					: 'bg-linear-to-r from-[#f6d365] from-[3.5%] to-[#fda085] to-96% text-zinc-950 shadow-[0_0_21px_-6px_#fab976] hover:brightness-110'
+			)}
 		>
 			{props.children}
 			<svg
@@ -20,7 +35,12 @@ const Button = {
 				strokeWidth="2"
 				strokeLinecap="round"
 				strokeLinejoin="round"
-				className="ml-0 size-5 max-w-0 shrink-0 -translate-x-1 opacity-0 transition-all duration-300 group-hover:ml-2 group-hover:max-w-5 group-hover:translate-x-0 group-hover:opacity-100"
+				className={cn(
+					'ml-0 max-w-0 shrink-0 -translate-x-1 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100',
+					props.size === 'sm'
+						? 'size-3.5 group-hover:ml-1.5 group-hover:max-w-3.5'
+						: 'size-5 group-hover:ml-2 group-hover:max-w-5'
+				)}
 			>
 				<path d="M7 17 17 7M8 7h9v9" />
 			</svg>

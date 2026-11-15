@@ -45,7 +45,6 @@ function RootComponent() {
 		<RootDocument>
 			<Navbar />
 			<Outlet />
-			<Footer />
 		</RootDocument>
 	)
 }
@@ -61,18 +60,5 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
 				<Scripts />
 			</body>
 		</html>
-	)
-}
-
-function Footer() {
-	return (
-		<>
-			<footer className="border-t border-line py-5">
-				<p className="text-center">
-					©{new Date().getFullYear()} Made with 💖 using 👩🏽‍💻TanStack Start, 💾Github &
-					🌍Vercel.
-				</p>
-			</footer>
-		</>
 	)
 }

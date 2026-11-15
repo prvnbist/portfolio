@@ -1,11 +1,16 @@
-@import "@fontsource-variable/bricolage-grotesque/wght.css";
 @import "@fontsource/ibm-plex-mono/400.css";
 
+@import "@fontsource/inter/200.css";
+@import "@fontsource/inter/300.css";
+@import "@fontsource/inter/400.css";
 @import "@fontsource/inter/500.css";
 @import "@fontsource/inter/600.css";
+@import "@fontsource/inter/700.css";
+@import "@fontsource/stack-sans-notch/300.css";
 @import "@fontsource/stack-sans-notch/400.css";
 @import "@fontsource/stack-sans-notch/500.css";
 @import "@fontsource/stack-sans-notch/600.css";
+@import "@fontsource/stack-sans-notch/700.css";
 
 @import "tailwindcss";
 
@@ -25,7 +30,8 @@
 /* Unlayered element rules would beat Tailwind v4 utilities (which live in @layer utilities) */
 @layer base {
 	html {
-		--font-heading: "Bricolage Grotesque Variable";
+		--font-heading: "Stack Sans Notch";
+		--font-body: "Inter";
 		--font-code: "IBM Plex Mono";
 	}
 
@@ -33,14 +39,29 @@
 		box-sizing: border-box;
 		margin: 0;
 		padding: 0;
-		font-family: var(--font-heading), sans-serif;
 	}
 
 	body {
 		color: #fff;
 		overflow-x: hidden;
 		background: #19191c;
+		font-family: var(--font-body), sans-serif;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
 		font-family: var(--font-heading), sans-serif;
+	}
+
+	button,
+	input,
+	textarea,
+	select {
+		font-family: inherit;
 	}
 
 	a,
@@ -102,6 +123,6 @@
 #article p {
 	color: var(--color-gray-400);
 	margin-bottom: 0.75rem;
-	font-size: 1.125rem;
-	line-height: 1.75rem;
+	font-size: 1rem;
+	line-height: 1.625rem;
 }

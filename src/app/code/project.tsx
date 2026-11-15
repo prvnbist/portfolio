@@ -1,22 +1,20 @@
 import { motion } from 'framer-motion'
 
+import { Button } from '@/components'
 import { cn } from '@/utils'
 
-const BUTTON_PRIMARY =
-	'text-gray-900 bg-linear-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-linear-to-br focus:ring-4 focus:outline-hidden focus:ring-lime-800 shadow-lg shadow-lime-800/80 font-[400] rounded-lg text-sm px-5 py-2.5'
-
-const BUTTON_SECONDARY =
-	'border focus:outline-hidden focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 bg-gray-800 text-white border-gray-600 hover:border-gray-600 focus:ring-gray-700 font-[400]'
-
 const ANIMATE_PROPS = {
-	initial: { opacity: 0, y: 60 },
+	initial: { opacity: 0, y: 20 },
 	whileInView: { opacity: 1, y: 0 },
 	transition: { duration: 0.5 },
 	viewport: { once: true },
 }
 
+const GLOWS = ['bg-yellow-400/20', 'bg-pink-400/20', 'bg-sky-400/20', 'bg-emerald-400/20']
+
 type ProjectProps = {
 	is_featured?: boolean
+	index?: number
 	project: {
 		img_url: string
 		title: string
@@ -27,50 +25,68 @@ type ProjectProps = {
 	}
 }
 
-export default function Project({ project, is_featured = false }: ProjectProps) {
+export default function Project({ project, index = 0, is_featured = false }: ProjectProps) {
 	return (
 		<motion.li
 			{...ANIMATE_PROPS}
-			className={cn('list-none', is_featured && 'md:grid md:grid-cols-2 md:gap-8')}
+			className={cn(
+				'group/card relative list-none overflow-hidden border-b border-line px-4 py-8 lg:px-8',
+				is_featured
+					? 'md:col-span-2 md:grid md:grid-cols-2 md:gap-8'
+					: 'md:odd:border-r md:odd:border-line'
+			)}
 		>
-			<header className="border border-dark-200 aspect-[4/3] rounded-md overflow-hidden">
-				<img alt={project.title} src={project.img_url} />
+			<span
+				aria-hidden="true"
+				className={cn(
+					'pointer-events-none absolute -top-20 -right-20 h-56 w-56 rounded-full blur-3xl opacity-40 transition-opacity duration-500 group-hover/card:opacity-100',
+					GLOWS[index % GLOWS.length]
+				)}
+			/>
+			<header className="relative aspect-[4/3] overflow-hidden rounded-md border border-white/10">
+				<img
+					alt={project.title}
+					src={project.img_url}
+					className="h-full w-full object-cover transition-transform duration-500 group-hover/card:scale-[1.03]"
+				/>
 			</header>
-			<main className="mt-3">
-				<h2 className="text-xl">{project.title}</h2>
-				<p className="mt-1 mb-3">{project.description}</p>
-				<ul className="flex gap-2 flex-wrap mb-3">
-					{project.tech_stack.map(tech => (
-						<li
-							key={tech}
-							title={tech}
-							className="border border-dark-200 rounded-sm px-2 py-[0.5px] text-[13px] font-[200]"
-						>
-							{tech}
-						</li>
-					))}
-				</ul>
+			<main className={cn('relative mt-5', is_featured && 'md:mt-0 md:self-center')}>
+				{is_featured && (
+					<span className="mb-3 inline-block rounded-full border border-white/10 px-2.5 py-1 text-[11px] font-medium tracking-wider text-gray-400 uppercase">
+						Featured
+					</span>
+				)}
+				<h2 className="font-stack text-3xl font-medium">{project.title}</h2>
+				<p className="mt-2 mb-4 text-gray-400">{project.description}</p>
+				{project.tech_stack.length > 0 && (
+					<ul className="mb-5 flex flex-wrap gap-2">
+						{project.tech_stack.map(tech => (
+							<li
+								key={tech}
+								title={tech}
+								className="rounded-full bg-white/5 px-2.5 py-1 text-[11px] font-medium tracking-wider text-gray-400 uppercase"
+							>
+								{tech}
+							</li>
+						))}
+					</ul>
+				)}
 				{(project.demo_url || project.code_url) && (
 					<div className="flex gap-3">
 						{project.demo_url && (
-							<a
-								target="_blank"
-								rel="noopener noreferrer"
-								href={project.demo_url}
-								className={BUTTON_PRIMARY}
-							>
+							<Button.Cta size="sm" external href={project.demo_url}>
 								Demo
-							</a>
+							</Button.Cta>
 						)}
 						{project.code_url && (
-							<a
-								target="_blank"
-								rel="noopener noreferrer"
+							<Button.Cta
+								size="sm"
+								external
 								href={project.code_url}
-								className={project.demo_url ? BUTTON_SECONDARY : BUTTON_PRIMARY}
+								variant={project.demo_url ? 'secondary' : 'primary'}
 							>
 								Code
-							</a>
+							</Button.Cta>
 						)}
 					</div>
 				)}

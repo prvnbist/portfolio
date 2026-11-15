@@ -8,17 +8,16 @@ const Tags = ({ tags, activeTag }: { tags: string[]; activeTag?: string }) => {
 		navigate({ search: prev => ({ ...prev, tag: tag === activeTag ? undefined : tag }) })
 
 	return (
-		<section className="mt-4 mb-2 flex flex-col gap-3">
-			<h3>Tags</h3>
+		<section className="mt-5 flex flex-col gap-3">
 			<ul className="flex flex-wrap gap-2">
 				{tags.map(tag => (
 					<li
 						key={tag}
 						onClick={() => setTag(tag)}
 						className={cn(
-							'inline-flex cursor-pointer rounded-full border border-line bg-dark-400 px-3 py-0.5 text-sm font-light text-zinc-400 transition-colors hover:text-white',
+							'inline-flex cursor-pointer rounded-full border border-white/10 px-2.5 py-1 text-[11px] font-medium tracking-wider text-gray-400 uppercase transition-colors hover:border-[#fda085]/60 hover:text-white',
 							activeTag === tag &&
-								'border-transparent bg-linear-to-r from-[#f6d365] to-[#fda085] font-normal text-zinc-950 hover:text-zinc-950'
+								'border-transparent bg-linear-to-r from-[#f6d365] to-[#fda085] text-zinc-950 hover:text-zinc-950'
 						)}
 					>
 						{tag}
