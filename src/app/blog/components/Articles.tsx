@@ -1,3 +1,4 @@
+import { Link } from '@tanstack/react-router'
 import { motion } from 'framer-motion'
 
 import type { ArticleMeta } from '@/lib/articles.types'
@@ -21,8 +22,9 @@ const Articles = ({ articles }: { articles: ArticleMeta[] }) => {
 						aria-hidden="true"
 						className={`pointer-events-none absolute -top-20 -right-20 h-48 w-48 rounded-full blur-3xl opacity-0 transition-opacity duration-500 group-hover/card:opacity-100 ${GLOWS[index % GLOWS.length]}`}
 					/>
-					<a
-						href={`/blog/${article.slug}`}
+					<Link
+						to="/blog/$slug"
+						params={{ slug: article.slug }}
 						className="relative flex items-center justify-between gap-6 px-4 py-6 no-underline lg:px-8"
 					>
 						<div className="min-w-0">
@@ -47,12 +49,21 @@ const Articles = ({ articles }: { articles: ArticleMeta[] }) => {
 						>
 							<path d="M7 17 17 7M8 7h9v9" />
 						</svg>
-					</a>
+					</Link>
 				</motion.li>
 			))}
 		</ul>
 	) : (
-		<h4 className="mt-8 text-center font-stack text-3xl">No articles</h4>
+		<div className="mt-12 flex flex-col items-center gap-4 text-center">
+			<h2 className="font-stack text-3xl">No articles match</h2>
+			<p className="text-gray-400">Try a different search or tag.</p>
+			<Link
+				to="/blog"
+				className="rounded-full border border-white/10 px-4 py-2 text-sm text-white transition-colors hover:border-[#fda085]/60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#fda085]"
+			>
+				Clear filters
+			</Link>
+		</div>
 	)
 }
 
