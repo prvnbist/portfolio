@@ -3,7 +3,7 @@ import type { ReactNode } from 'react'
 import { cn } from '@/utils'
 
 type PillOptions = {
-	variant?: 'default' | 'accent' | 'success'
+	variant?: 'default' | 'accent' | 'success' | 'subtle'
 	/** Adds hover and keyboard-focus styles, for pills rendered as links or buttons. */
 	interactive?: boolean
 	className?: string
@@ -13,6 +13,7 @@ const VARIANTS = {
 	default: 'border border-white/10 text-gray-400',
 	accent: 'border border-transparent bg-linear-to-r from-accent-from to-accent-to text-zinc-950',
 	success: 'border border-transparent bg-emerald-400/10 font-semibold text-emerald-400',
+	subtle: 'bg-white/5 text-gray-400',
 }
 
 /** Classes for a small uppercase pill; use directly on a Link, or via <Pill>. */

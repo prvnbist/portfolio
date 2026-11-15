@@ -124,7 +124,7 @@ export default function Header() {
 				</motion.h1>
 
 				<motion.div {...fadeUp(1.1)} className="mt-12">
-					<Button.Cta href="mailto:prvnbist@gmail.com">Get in touch</Button.Cta>
+					<Button href="mailto:prvnbist@gmail.com">Get in touch</Button>
 				</motion.div>
 			</div>
 		</header>
