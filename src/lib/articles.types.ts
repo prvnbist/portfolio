@@ -12,3 +12,13 @@ export type ArticlePage = {
 	previous: ArticleMeta | null
 	next: ArticleMeta | null
 }
+
+export type BlogSearch = {
+	s?: string
+	tag?: string
+}
+
+export type BlogIndex = {
+	articles: ArticleMeta[]
+	tags: string[]
+}

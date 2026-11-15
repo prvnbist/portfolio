@@ -1,13 +1,13 @@
-import type { Article } from '@/lib/cms.types'
+import type { ArticleMeta } from '@/lib/articles.types'
 
-const Articles = ({ articles }: { articles: Article[] }) => {
+const Articles = ({ articles }: { articles: ArticleMeta[] }) => {
 	return Array.isArray(articles) && articles.length > 0 ? (
 		<ul className="rounded-lg mt-4 border border-line divide-y divide-line">
 			{articles.map(article => (
-				<li key={article.id} className="h-auto p-4 list-none">
+				<li key={article.slug} className="h-auto p-4 list-none">
 					<header className="flex items-center justify-between">
 						<a
-							href={`/blog/${article.path}`}
+							href={`/blog/${article.slug}`}
 							className="cursor-pointer text-white text-lg font-medium hover:text-indigo-400"
 						>
 							<h2 className="font-[300]">{article.title}</h2>

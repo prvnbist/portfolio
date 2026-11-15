@@ -2,7 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { canonical } from '@/lib/seo'
 
 import { Articles, Search, Tags } from '@/app/blog/components'
-import { getBlogIndex } from '@/lib/cms'
+import { getBlogIndex } from '@/lib/articles'
 
 const seo = {
 	url: 'https://www.prvnbist.com/blog',
@@ -42,21 +42,13 @@ export const Route = createFileRoute('/blog/')({
 })
 
 function Blog() {
-	const { data, error } = Route.useLoaderData()
+	const data = Route.useLoaderData()
 	const { s, tag } = Route.useSearch()
 	return (
 		<div className="px-4 mt-8 lg:px-8 mx-auto max-w-230 w-full pb-40">
 			<Search value={s} />
-			{error ? (
-				<h4 className="mt-4 text-xl text-center text-gray-400">
-					Articles are unavailable right now. Please try again later.
-				</h4>
-			) : (
-				<>
-					<Tags tags={data.tags} activeTag={tag} />
-					<Articles articles={data.articles} />
-				</>
-			)}
+			<Tags tags={data.tags} activeTag={tag} />
+			<Articles articles={data.articles} />
 		</div>
 	)
 }

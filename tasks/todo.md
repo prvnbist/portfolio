@@ -7,7 +7,7 @@
   - Depends on: Open Q1. Files: `public/images/design/*`.
 
 ## Phase 2: Vertical slices
-- [ ] **T2: Blog index from MDX frontmatter** (M)
+- [x] **T2: Blog index from MDX frontmatter** (M)
   - Acceptance: `/blog` lists all `.mdx` articles by date desc; tags = sorted unique frontmatter tags; `?s=` and `?tag=` work and combine; `getBlogIndex` no longer imports `cms.server`; no error branch in `blog/index.tsx`.
   - Verify: `pnpm lint`; `pnpm dev` smoke `/blog`, `/blog?s=react`, `/blog?tag=hasura`, combined; diff titles/dates/tags/order against T1 snapshot.
   - Depends on: T1. Files: `src/lib/articles.server.ts`, `articles.ts`, `articles.types.ts`, `src/routes/blog/index.tsx`, `src/app/blog/components` (types only).
