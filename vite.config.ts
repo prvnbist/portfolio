@@ -12,6 +12,7 @@ import remarkMdxCodeMeta from 'remark-mdx-code-meta'
 import matter from 'gray-matter'
 import { defineConfig, type Plugin } from 'vite'
 
+import { SECURITY_HEADERS } from './src/config/security-headers'
 import { checkFrontmatter } from './src/lib/frontmatter'
 import { rehypeImageSize } from './src/lib/rehype-image-size'
 
@@ -59,7 +60,7 @@ export default defineConfig({
 		mdxPlugin(),
 		// tanstackStart must come before the React plugin
 		!isTest && tanstackStart(),
-		!isTest && nitro(),
+		!isTest && nitro({ routeRules: { '/**': { headers: SECURITY_HEADERS } } }),
 		viteReact(),
 	],
 	test: {
