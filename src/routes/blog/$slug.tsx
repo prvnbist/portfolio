@@ -71,13 +71,13 @@ function Article() {
 				/>
 				<motion.p
 					{...ANIMATE_PROPS}
-					className="relative max-w-full truncate font-[family-name:var(--font-code)] text-sm text-gray-500"
+					className="relative max-w-full truncate font-code text-sm text-gray-500"
 				>
 					<span className="text-emerald-400">~/prvnbist</span> $ cat articles/{meta.slug}.mdx
 				</motion.p>
 				<motion.h1
 					{...ANIMATE_PROPS}
-					className="relative mt-5 max-w-184 bg-linear-to-b from-white via-white to-[#fda085] bg-clip-text pb-1 font-stack text-4xl leading-tight font-bold tracking-tight text-transparent md:text-6xl"
+					className="relative mt-5 max-w-184 bg-linear-to-b from-white via-white to-accent-to bg-clip-text pb-1 font-stack text-4xl leading-tight font-bold tracking-tight text-transparent md:text-6xl"
 				>
 					{meta.title}
 				</motion.h1>
@@ -156,17 +156,18 @@ const NavGlow = () => (
 const ArrowRight = () => (
 	<span className="relative">
 		<svg
+			aria-hidden="true"
 			xmlns="http://www.w3.org/2000/svg"
 			width="18"
 			height="18"
 			viewBox="0 0 24 24"
 			fill="none"
-			stroke="#fda085"
+			stroke="currentColor"
+			className="text-accent-to"
 			strokeWidth="2"
 			strokeLinecap="round"
 			strokeLinejoin="round"
 		>
-			<title>Arrow Right</title>
 			<path d="M5 12h13M12 5l7 7-7 7" />
 		</svg>
 	</span>
@@ -175,17 +176,18 @@ const ArrowRight = () => (
 const ArrowLeft = () => (
 	<span className="relative">
 		<svg
+			aria-hidden="true"
 			xmlns="http://www.w3.org/2000/svg"
 			width="18"
 			height="18"
 			viewBox="0 0 24 24"
 			fill="none"
-			stroke="#fda085"
+			stroke="currentColor"
+			className="text-accent-to"
 			strokeWidth="2"
 			strokeLinecap="round"
 			strokeLinejoin="round"
 		>
-			<title>Arrow Left</title>
 			<path d="M19 12H6M12 5l-7 7 7 7" />
 		</svg>
 	</span>

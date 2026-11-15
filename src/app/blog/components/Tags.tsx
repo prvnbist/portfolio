@@ -25,9 +25,9 @@ const Tags = ({ tags, activeTag }: { tags: string[]; activeTag?: string }) => (
 							activeOptions={{ exact: true }}
 							aria-current={active ? 'true' : undefined}
 							className={cn(
-								'inline-flex rounded-full border border-white/10 px-2.5 py-1 text-[11px] font-medium tracking-wider text-gray-400 uppercase transition-colors hover:border-[#fda085]/60 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#fda085]',
+								'inline-flex rounded-full border border-white/10 px-2.5 py-1 text-[11px] font-medium tracking-wider text-gray-400 uppercase transition-colors hover:border-accent-to/60 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-to',
 								active &&
-									'border-transparent bg-linear-to-r from-[#f6d365] to-[#fda085] text-zinc-950 hover:text-zinc-950'
+									'border-transparent bg-linear-to-r from-accent-from to-accent-to text-zinc-950 hover:text-zinc-950'
 							)}
 						>
 							{tag}

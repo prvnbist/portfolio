@@ -51,7 +51,7 @@ function RootComponent() {
 		<MotionConfig reducedMotion="user">
 			<a
 				href="#content"
-				className="sr-only rounded-full bg-zinc-950 px-4 py-2 text-sm text-white focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-1001 focus:outline-2 focus:outline-[#fda085]"
+				className="sr-only rounded-full bg-bg px-4 py-2 text-sm text-white focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-1001 focus:outline-2 focus:outline-accent-to"
 			>
 				Skip to content
 			</a>
@@ -69,7 +69,7 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
 			<head>
 				<HeadContent />
 			</head>
-			<body className="relative min-h-screen bg-zinc-950 lg:before:pointer-events-none lg:before:absolute lg:before:inset-y-0 lg:before:left-1/2 lg:before:w-[920px] lg:before:-translate-x-1/2 lg:before:border-x lg:before:border-line lg:before:content-['']">
+			<body className="relative min-h-screen lg:before:pointer-events-none lg:before:absolute lg:before:inset-y-0 lg:before:left-1/2 lg:before:w-[920px] lg:before:-translate-x-1/2 lg:before:border-x lg:before:border-line lg:before:content-['']">
 				{children}
 				<Scripts />
 			</body>

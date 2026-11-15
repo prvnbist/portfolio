@@ -45,7 +45,7 @@ const Articles = ({ articles }: { articles: ArticleMeta[] }) => {
 							strokeWidth="2"
 							strokeLinecap="round"
 							strokeLinejoin="round"
-							className="size-6 shrink-0 -translate-x-2 text-[#fda085] opacity-0 transition-all duration-300 group-hover/card:translate-x-0 group-hover/card:opacity-100"
+							className="size-6 shrink-0 -translate-x-2 text-accent-to opacity-0 transition-all duration-300 group-hover/card:translate-x-0 group-hover/card:opacity-100"
 						>
 							<path d="M7 17 17 7M8 7h9v9" />
 						</svg>
@@ -59,7 +59,7 @@ const Articles = ({ articles }: { articles: ArticleMeta[] }) => {
 			<p className="text-gray-400">Try a different search or tag.</p>
 			<Link
 				to="/blog"
-				className="rounded-full border border-white/10 px-4 py-2 text-sm text-white transition-colors hover:border-[#fda085]/60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#fda085]"
+				className="rounded-full border border-white/10 px-4 py-2 text-sm text-white transition-colors hover:border-accent-to/60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-to"
 			>
 				Clear filters
 			</Link>

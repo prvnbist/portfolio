@@ -67,7 +67,7 @@ export default function Header() {
 						className={`absolute h-80 w-80 rounded-full blur-3xl ${blob.color} ${blob.pos}`}
 					/>
 				))}
-				<div className="absolute inset-x-0 bottom-0 h-40 bg-linear-to-b from-transparent to-dark-400" />
+				<div className="absolute inset-x-0 bottom-0 h-40 bg-linear-to-b from-transparent to-bg" />
 			</div>
 
 			<div className="relative mx-auto flex w-full flex-col items-center px-4 pt-48 pb-28 text-center lg:w-230">
@@ -96,7 +96,7 @@ export default function Header() {
 						,&nbsp;
 					</motion.span>
 					<Words>I am an</Words>
-					<Words className="bg-linear-to-r from-[#f6d365] to-[#fda085] bg-clip-text text-transparent">
+					<Words className="bg-linear-to-r from-accent-from to-accent-to bg-clip-text text-transparent">
 						{ROLE}
 					</Words>
 					<Words>specializing in front-end building all things</Words>

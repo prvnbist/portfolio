@@ -23,6 +23,12 @@
 	--color-blue-100: #719df0;
 	--color-zinc-950: #09090b;
 	--color-line: #111115;
+	/* Page background and the warm accent gradient used for CTAs, active states and headings. */
+	--color-bg: #09090b;
+	--color-accent-from: #f6d365;
+	--color-accent-to: #fda085;
+	--color-accent-glow: #fab976;
+	--font-code: "IBM Plex Mono", monospace;
 	--font-stack: "Stack Sans Notch", sans-serif;
 	--font-inter: "Inter", sans-serif;
 }
@@ -32,7 +38,6 @@
 	html {
 		--font-heading: "Stack Sans Notch";
 		--font-body: "Inter";
-		--font-code: "IBM Plex Mono";
 	}
 
 	* {
@@ -44,7 +49,7 @@
 	body {
 		color: #fff;
 		overflow-x: hidden;
-		background: #19191c;
+		background: var(--color-bg);
 		font-family: var(--font-body), sans-serif;
 	}
 
@@ -93,16 +98,16 @@
 }
 
 .prism-code * {
-	font-family: var(--font-code), monospace;
+	font-family: var(--font-code);
 }
 
 ::-moz-selection {
-	color: #19191c;
+	color: var(--color-bg);
 	background: #fff;
 }
 
 ::selection {
-	color: #19191c;
+	color: var(--color-bg);
 	background: #fff;
 }
 

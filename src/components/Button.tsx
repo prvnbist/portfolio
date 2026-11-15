@@ -19,11 +19,11 @@ const Button = {
 			href={props.href}
 			{...(props.external && { target: '_blank', rel: 'noopener noreferrer' })}
 			className={cn(
-				'group inline-flex items-center justify-center rounded-full font-stack font-normal no-underline transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#fda085]',
+				'group inline-flex items-center justify-center rounded-full font-stack font-normal no-underline transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-to',
 				props.size === 'sm' ? 'h-9 px-5 text-sm' : 'h-12 min-w-37 px-8 text-lg',
 				props.variant === 'secondary'
-					? 'border border-[#fda085]/40 bg-zinc-950 text-white hover:border-[#fda085]'
-					: 'bg-linear-to-r from-[#f6d365] from-[3.5%] to-[#fda085] to-96% text-zinc-950 shadow-[0_0_21px_-6px_#fab976] hover:brightness-110'
+					? 'border border-accent-to/40 bg-bg text-white hover:border-accent-to'
+					: 'bg-linear-to-r from-accent-from from-[3.5%] to-accent-to to-96% text-zinc-950 shadow-[0_0_21px_-6px_var(--color-accent-glow)] hover:brightness-110'
 			)}
 		>
 			{props.children}

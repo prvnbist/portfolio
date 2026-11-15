@@ -41,15 +41,12 @@ function Blog() {
 					aria-hidden="true"
 					className="pointer-events-none absolute top-24 right-1/4 h-64 w-64 motion-safe:animate-pulse rounded-full bg-pink-400/20 blur-3xl [animation-delay:1s]"
 				/>
-				<motion.p
-					{...ANIMATE_PROPS}
-					className="relative font-(family-name:--font-code) text-sm text-gray-500"
-				>
+				<motion.p {...ANIMATE_PROPS} className="relative font-code text-sm text-gray-500">
 					<span className="text-emerald-400">~/prvnbist</span> $ ls articles/ | wc -l
 				</motion.p>
 				<motion.h1
 					{...ANIMATE_PROPS}
-					className="relative mt-4 bg-linear-to-b from-[#f6d365] via-[#fda085] to-transparent bg-clip-text pb-2 font-stack text-[clamp(56px,15vw,150px)] leading-[0.9] font-bold tracking-tight text-transparent select-none"
+					className="relative mt-4 bg-linear-to-b from-accent-from via-accent-to to-transparent bg-clip-text pb-2 font-stack text-[clamp(56px,15vw,150px)] leading-[0.9] font-bold tracking-tight text-transparent select-none"
 				>
 					Articles
 					<span className="sr-only">: things I've learned and written about</span>

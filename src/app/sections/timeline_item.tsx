@@ -115,7 +115,7 @@ const TimelineItem = ({ timeline, index = 0 }: { timeline: Timeline; index?: num
 									)}
 									<span
 										className={`relative h-2.5 w-2.5 rounded-full ${
-											current ? accent.dot : 'border border-gray-500 bg-zinc-950'
+											current ? accent.dot : 'border border-gray-500 bg-bg'
 										}`}
 									/>
 								</span>
