@@ -1,10 +1,10 @@
 # Portfolio
 
-Personal portfolio built with TanStack Start (Vite + Nitro), React 18, Tailwind 3.
+Personal portfolio built with TanStack Start (Vite + Nitro), React 18, Tailwind 4.
 
 ```bash
 pnpm install
-cp .env.example .env   # set GRAPH_CMS_URL
+cp .env.example .env   # optional: VITE_GOOGLE_ANALYTICS
 pnpm dev               # http://localhost:3000
 pnpm build && pnpm start
 ```

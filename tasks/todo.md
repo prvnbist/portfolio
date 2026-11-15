@@ -31,7 +31,7 @@
   - Depends on: T2, T3, T4. Files: ~8 deletions, `package.json`, `pnpm-lock.yaml`, env files.
 
 ## Phase 4: Docs
-- [ ] **T6: Update CLAUDE.md and README.md** (XS)
+- [x] **T6: Update CLAUDE.md and README.md** (XS)
   - Acceptance: CLAUDE.md describes a single content source (MDX frontmatter + local data), correct file paths, no `GRAPH_CMS_URL`; README fixes "Tailwind 3" and the env step.
   - Verify: re-read both; commands still accurate.
   - Depends on: T5. Files: `CLAUDE.md`, `README.md`.
