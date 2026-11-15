@@ -1,9 +1,9 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { pageTitle } from '@/config/site'
-import { motion } from 'framer-motion'
 import { seo } from '@/lib/seo'
 
 import { Articles, Search, Tags } from '@/app/blog/components'
+import { PageContainer, PageHero } from '@/components/layout'
 import { getBlogIndex } from '@/lib/articles'
 import { parseBlogSearch } from '@/lib/blog-search'
 
@@ -21,42 +21,21 @@ export const Route = createFileRoute('/blog/')({
 	component: Blog,
 })
 
-const ANIMATE_PROPS = {
-	initial: { opacity: 0, y: 20 },
-	animate: { opacity: 1, y: 0 },
-	transition: { duration: 0.5 },
-}
-
 function Blog() {
 	const data = Route.useLoaderData()
 	const { s, tag } = Route.useSearch()
 	return (
 		<>
-			<header className="relative mx-auto flex w-full flex-col items-center overflow-hidden px-4 pt-28 pb-16 text-center lg:w-230">
-				<span
-					aria-hidden="true"
-					className="pointer-events-none absolute top-10 left-1/4 h-64 w-64 motion-safe:animate-pulse rounded-full bg-sky-400/20 blur-3xl"
-				/>
-				<span
-					aria-hidden="true"
-					className="pointer-events-none absolute top-24 right-1/4 h-64 w-64 motion-safe:animate-pulse rounded-full bg-pink-400/20 blur-3xl [animation-delay:1s]"
-				/>
-				<motion.p {...ANIMATE_PROPS} className="relative font-code text-sm text-gray-500">
-					<span className="text-emerald-400">~/prvnbist</span> $ ls articles/ | wc -l
-				</motion.p>
-				<motion.h1
-					{...ANIMATE_PROPS}
-					className="relative mt-4 bg-linear-to-b from-accent-from via-accent-to to-transparent bg-clip-text pb-2 font-stack text-[clamp(56px,15vw,150px)] leading-[0.9] font-bold tracking-tight text-transparent select-none"
-				>
-					Articles
-					<span className="sr-only">: things I've learned and written about</span>
-				</motion.h1>
-			</header>
-			<div className="mx-auto w-full px-4 lg:w-230 lg:px-8">
+			<PageHero
+				command="ls articles/ | wc -l"
+				title="Articles"
+				srSuffix=": things I've learned and written about"
+			/>
+			<PageContainer>
 				<Search value={s} />
 				<Tags tags={data.tags} activeTag={tag} />
 				<Articles articles={data.articles} />
-			</div>
+			</PageContainer>
 		</>
 	)
 }

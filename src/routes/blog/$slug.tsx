@@ -1,9 +1,10 @@
-import { motion } from 'framer-motion'
 import { Suspense } from 'react'
 import { createFileRoute, Link, notFound } from '@tanstack/react-router'
 
 import Content from '@/app/blog/components/Content'
 import { NotFound } from '@/components'
+import { PageContainer, PageHero } from '@/components/layout'
+import { Pill } from '@/components/ui'
 import { NAME } from '@/config/site'
 import { blogPostingSchema, jsonLd, seo } from '@/lib/seo'
 import { getArticleComponent, getArticlePage, preloadArticle } from '@/lib/articles'
@@ -46,12 +47,6 @@ export const Route = createFileRoute('/blog/$slug')({
 	component: Article,
 })
 
-const ANIMATE_PROPS = {
-	initial: { opacity: 0, y: 20 },
-	animate: { opacity: 1, y: 0 },
-	transition: { duration: 0.5 },
-}
-
 const navClass =
 	'group/card relative flex flex-1 items-center justify-between gap-4 overflow-hidden px-4 py-6 no-underline lg:px-8'
 
@@ -60,47 +55,20 @@ function Article() {
 	const Component = getArticleComponent(meta.slug)
 	return (
 		<>
-			<header className="relative mx-auto flex w-full flex-col items-center overflow-hidden px-4 pt-28 pb-16 text-center lg:w-230">
-				<span
-					aria-hidden="true"
-					className="pointer-events-none absolute top-10 left-1/4 h-64 w-64 motion-safe:animate-pulse rounded-full bg-sky-400/20 blur-3xl"
-				/>
-				<span
-					aria-hidden="true"
-					className="pointer-events-none absolute top-24 right-1/4 h-64 w-64 motion-safe:animate-pulse rounded-full bg-pink-400/20 blur-3xl [animation-delay:1s]"
-				/>
-				<motion.p
-					{...ANIMATE_PROPS}
-					className="relative max-w-full truncate font-code text-sm text-gray-500"
-				>
-					<span className="text-emerald-400">~/prvnbist</span> $ cat articles/{meta.slug}.mdx
-				</motion.p>
-				<motion.h1
-					{...ANIMATE_PROPS}
-					className="relative mt-5 max-w-184 bg-linear-to-b from-white via-white to-accent-to bg-clip-text pb-1 font-stack text-4xl leading-tight font-bold tracking-tight text-transparent md:text-6xl"
-				>
-					{meta.title}
-				</motion.h1>
-				<motion.div
-					{...ANIMATE_PROPS}
-					className="relative mt-6 flex flex-wrap items-center justify-center gap-2"
-				>
-					{meta.date && (
-						<span className="rounded-full bg-emerald-400/10 px-2.5 py-1 text-[11px] font-semibold tracking-wider text-emerald-400 uppercase">
-							{formatDate(meta.date)}
-						</span>
-					)}
+			<PageHero
+				size="title"
+				command={`cat articles/${meta.slug}.mdx`}
+				title={meta.title}
+				truncateCommand
+			>
+				<div className="mt-6 flex flex-wrap items-center justify-center gap-2">
+					{meta.date && <Pill variant="success">{formatDate(meta.date)}</Pill>}
 					{meta.tags.map(tag => (
-						<span
-							key={tag}
-							className="rounded-full border border-white/10 px-2.5 py-1 text-[11px] font-medium tracking-wider text-gray-400 uppercase"
-						>
-							{tag}
-						</span>
+						<Pill key={tag}>{tag}</Pill>
 					))}
-				</motion.div>
-			</header>
-			<article className="mx-auto w-full px-4 lg:w-230 lg:px-8" id="article">
+				</div>
+			</PageHero>
+			<PageContainer as="article" id="article">
 				{Component && (
 					<Suspense fallback={null}>
 						<Content Component={Component} />
@@ -141,7 +109,7 @@ function Article() {
 						<span className="flex-1 border-b border-line" />
 					)}
 				</nav>
-			</article>
+			</PageContainer>
 		</>
 	)
 }
