@@ -7,7 +7,7 @@ type ContentProps = {
 	Component: ComponentType<{ components?: MDXComponents }>
 }
 
-/** Fenced code: `highlight={[start, end]}` arrives as a prop via remark-mdx-code-meta. */
+/** Fenced code: `highlight={[start, end]}` arrives as a prop via rehype-mdx-code-props. */
 const Pre = ({
 	children,
 	highlight,

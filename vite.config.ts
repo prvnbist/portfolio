@@ -7,8 +7,8 @@ import tailwindcss from '@tailwindcss/vite'
 import { tanstackStart } from '@tanstack/react-start/plugin/vite'
 import viteReact from '@vitejs/plugin-react'
 import { nitro } from 'nitro/vite'
+import rehypeMdxCodeProps from 'rehype-mdx-code-props'
 import remarkFrontmatter from 'remark-frontmatter'
-import remarkMdxCodeMeta from 'remark-mdx-code-meta'
 import matter from 'gray-matter'
 import { defineConfig, type Plugin } from 'vite'
 
@@ -20,8 +20,10 @@ import { rehypeImageSize } from './src/lib/rehype-image-size'
 // so frontmatter can be read from the source text.
 const mdxPlugin = (): Plugin => {
 	const plugin = mdx({
-		remarkPlugins: [remarkFrontmatter, remarkMdxCodeMeta] as any,
+		remarkPlugins: [remarkFrontmatter],
 		rehypePlugins: [
+			// Code fence meta (```js highlight={[3]}) becomes props on <pre>, read by CodeBlock.
+			rehypeMdxCodeProps,
 			[rehypeImageSize, { publicDir: fileURLToPath(new URL('./public', import.meta.url)) }],
 		] as any,
 	}) as Plugin & { transform: (this: any, code: string, id: string) => any }
