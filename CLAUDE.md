@@ -21,7 +21,7 @@ Personal portfolio/blog (prvnbist.com). TanStack Start (file routes in `src/rout
 - **Articles:** `src/articles/*.mdx` hold body and frontmatter (`title`, `date`, `tags`, `description`, `ogImage`). MDX is compiled at build time by `@mdx-js/rollup` (custom wrapper in `vite.config.ts` that skips `?raw`/query imports so frontmatter can be read from source with `gray-matter`). `src/lib/articles.server.ts` derives the blog index, tag list and prev/next links from frontmatter; `src/routes/blog/$slug.tsx` renders the article, with `CodeBlock` using prism-react-renderer. Adding an article is just adding an `.mdx` file; the filename is the URL slug (`/blog/<slug>`). Article images live in `public/images/articles/<slug>/`.
 - **Designs and projects:** typed static data in `src/data/designs.ts` and `src/data/projects.ts` (thumbnails under `public/images/`); home-page timelines are constants in `src/routes/index.tsx`.
 
-Only `VITE_`-prefixed env vars reach the browser (`VITE_GOOGLE_ANALYTICS`). `.env` is tracked in git; only `.env*.local` is ignored. No network access is needed to build or run.
+Only `VITE_`-prefixed env vars reach the browser (`VITE_GOOGLE_ANALYTICS`). `.env` and `.env*.local` are git-ignored. No network access is needed to build or run.
 
 **Blog listing** (`src/routes/blog`): search (`?s=`, case-insensitive title substring) and tag filter (`?tag=`) are URL search params validated by the route and passed to the `getBlogIndex` server function in `src/lib/articles.ts`, which filters the frontmatter-derived list on the server via `filterArticles`.
 
