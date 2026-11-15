@@ -4,6 +4,7 @@ import { canonical } from '@/lib/seo'
 
 import { Articles, Search, Tags } from '@/app/blog/components'
 import { getBlogIndex } from '@/lib/articles'
+import { parseBlogSearch } from '@/lib/blog-search'
 
 const seo = {
 	url: 'https://www.prvnbist.com/blog',
@@ -13,13 +14,8 @@ const seo = {
 		'front end, back end, design, html, pug, css, scss, javascript, nodejs, reactjs, graphql, expressjs, mongoose, mongodb, gatsby, figma, design, user interface, user experience',
 }
 
-const str = (v: unknown) => (typeof v === 'string' && v.trim() ? v : undefined)
-
 export const Route = createFileRoute('/blog/')({
-	validateSearch: (search: Record<string, unknown>): { s?: string; tag?: string } => ({
-		s: str(search.s),
-		tag: str(search.tag),
-	}),
+	validateSearch: parseBlogSearch,
 	loaderDeps: ({ search: { s, tag } }) => ({ s, tag }),
 	loader: ({ deps }) => getBlogIndex({ data: deps }),
 	head: () => ({

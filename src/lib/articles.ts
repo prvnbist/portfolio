@@ -1,17 +1,18 @@
 import { createServerFn } from '@tanstack/react-start'
 import { type ComponentType, type LazyExoticComponent, lazy } from 'react'
 
-import type { ArticlePage, BlogIndex, BlogSearch } from './articles.types'
+import type { ArticlePage, BlogIndex } from './articles.types'
+import { parseBlogSearch, parseSlug } from './blog-search'
 
 export const getArticlePage = createServerFn({ method: 'GET' })
-	.validator((slug: string) => slug)
+	.validator(parseSlug)
 	.handler(async (ctx): Promise<ArticlePage | null> => {
 		const { fetchArticlePage } = await import('./articles.server')
 		return fetchArticlePage(ctx.data)
 	})
 
 export const getBlogIndex = createServerFn({ method: 'GET' })
-	.validator((search: BlogSearch) => search)
+	.validator(parseBlogSearch)
 	.handler(async (ctx): Promise<BlogIndex> => {
 		const { fetchBlogIndex } = await import('./articles.server')
 		return fetchBlogIndex(ctx.data)
