@@ -54,7 +54,13 @@ export const components: MDXComponents = {
 			className="inline-block rounded-sm border border-line bg-dark-400 px-2 text-sm text-zinc-300"
 		/>
 	),
-	a: props => <a {...props} className="text-blue-500 hover:text-blue-700" />,
+	// Underlined so links in running text don't rely on colour alone (WCAG 1.4.1).
+	a: props => (
+		<a
+			{...props}
+			className="text-blue-500 underline decoration-blue-500/40 underline-offset-2 hover:text-blue-700 hover:decoration-current"
+		/>
+	),
 	table: TableScroll,
 	p: props => <p {...props} className="mb-3 text-base leading-[1.625rem] text-gray-400" />,
 	tbody: props => <tbody {...props} className="border-t border-gray-700" />,

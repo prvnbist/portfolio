@@ -41,6 +41,8 @@ const CodeBlock = ({ children, ...props }: CodeBlockProps) => {
 		<Highlight theme={theme} code={code.trim()} language={language}>
 			{({ className, style, tokens, getLineProps, getTokenProps }) => (
 				<pre
+					// biome-ignore lint/a11y/noNoninteractiveTabindex: scrollable code must be reachable by keyboard
+					tabIndex={0}
 					style={{ ...style }}
 					className={cn(
 						className,
