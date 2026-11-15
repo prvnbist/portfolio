@@ -1,4 +1,6 @@
 import { createRootRoute, HeadContent, Outlet, Scripts } from '@tanstack/react-router'
+import { Analytics } from '@vercel/analytics/react'
+import { SpeedInsights } from '@vercel/speed-insights/react'
 import { LazyMotion, MotionConfig } from 'framer-motion'
 import type { ReactNode } from 'react'
 
@@ -90,6 +92,8 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
 			</head>
 			<body className="relative min-h-screen lg:before:pointer-events-none lg:before:absolute lg:before:inset-y-0 lg:before:left-1/2 lg:before:w-[920px] lg:before:-translate-x-1/2 lg:before:border-x lg:before:border-line lg:before:content-['']">
 				{children}
+				<Analytics />
+				<SpeedInsights />
 				<Scripts />
 			</body>
 		</html>
