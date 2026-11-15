@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { absoluteUrl, seo } from './seo'
+import { absoluteUrl, blogPostingSchema, jsonLd, personSchema, seo, websiteSchema } from './seo'
 
 type Meta = Record<string, string>
 const find = (meta: Meta[], key: string) =>
@@ -55,5 +55,50 @@ describe('seo', () => {
 	it('drops keywords and application-name', () => {
 		expect(find(head.meta, 'keywords')).toBeUndefined()
 		expect(find(head.meta, 'application-name')).toBeUndefined()
+	})
+})
+
+describe('JSON-LD', () => {
+	it('serialises into an ld+json script and escapes "<"', () => {
+		const script = jsonLd({ '@type': 'Thing', name: '</script><b>' })
+		expect(script.type).toBe('application/ld+json')
+		expect(script.children).not.toContain('<')
+		expect(JSON.parse(script.children)).toEqual({
+			'@context': 'https://schema.org',
+			'@type': 'Thing',
+			name: '</script><b>',
+		})
+	})
+
+	it('describes the person and the website', () => {
+		expect(personSchema()).toMatchObject({
+			'@type': 'Person',
+			name: 'Praveen Bisht',
+			jobTitle: 'AI Engineer',
+			url: 'https://www.prvnbist.com',
+		})
+		expect(websiteSchema()).toMatchObject({ '@type': 'WebSite', url: 'https://www.prvnbist.com' })
+	})
+
+	it('describes an article as a BlogPosting', () => {
+		const post = blogPostingSchema({
+			slug: 'uses',
+			title: 'Things I use',
+			date: '2020-01-12T00:00:00.000Z',
+			description: 'My setup.',
+			tags: ['tech', 'setup'],
+			ogImage: null,
+		})
+		expect(post).toMatchObject({
+			'@type': 'BlogPosting',
+			headline: 'Things I use',
+			description: 'My setup.',
+			datePublished: '2020-01-12T00:00:00.000Z',
+			url: 'https://www.prvnbist.com/blog/uses',
+			mainEntityOfPage: 'https://www.prvnbist.com/blog/uses',
+			image: 'https://www.prvnbist.com/images/thumbs/home.jpg',
+			keywords: 'tech, setup',
+			author: { '@type': 'Person', name: 'Praveen Bisht' },
+		})
 	})
 })

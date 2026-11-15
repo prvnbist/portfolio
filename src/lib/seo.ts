@@ -1,4 +1,6 @@
-import { DEFAULT_OG, SITE_URL, TWITTER } from '@/config/site'
+import { DEFAULT_OG, NAME, ROLE, SITE_URL, TWITTER } from '@/config/site'
+
+import type { ArticleMeta } from './articles.types'
 
 export { SITE_URL as SITE }
 
@@ -52,4 +54,35 @@ export const seo = ({
 		...extra,
 	]
 	return { meta, links: canonical(path) }
+}
+
+/** A JSON-LD <script> for route head(). "<" is escaped so content can't close the tag. */
+export const jsonLd = (data: Record<string, unknown>) => ({
+	type: 'application/ld+json',
+	children: JSON.stringify({ '@context': 'https://schema.org', ...data }).replace(/</g, '\\u003c'),
+})
+
+const person = () => ({ '@type': 'Person', name: NAME, url: SITE_URL })
+
+export const personSchema = () => ({
+	...person(),
+	jobTitle: ROLE,
+	sameAs: [`https://twitter.com/${TWITTER.slice(1)}`, 'https://github.com/prvnbist'],
+})
+
+export const websiteSchema = () => ({ '@type': 'WebSite', name: NAME, url: SITE_URL })
+
+export const blogPostingSchema = (meta: ArticleMeta) => {
+	const url = absoluteUrl(`/blog/${meta.slug}`)
+	return {
+		'@type': 'BlogPosting',
+		headline: meta.title,
+		description: meta.description,
+		datePublished: meta.date,
+		url,
+		mainEntityOfPage: url,
+		image: absoluteUrl(meta.ogImage || DEFAULT_OG),
+		keywords: meta.tags.join(', '),
+		author: person(),
+	}
 }

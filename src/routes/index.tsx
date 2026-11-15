@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { BIO, pageTitle } from '@/config/site'
-import { seo } from '@/lib/seo'
+import { jsonLd, personSchema, seo, websiteSchema } from '@/lib/seo'
 
 import Header from '@/app/sections/header'
 import Timelines from '@/app/sections/timelines'
@@ -117,13 +117,15 @@ const TIMELINES = [
 ]
 
 export const Route = createFileRoute('/')({
-	head: () =>
-		seo({
+	head: () => ({
+		...seo({
 			path: '/',
 			title: pageTitle(),
 			description: BIO,
 			image: '/images/thumbs/home.jpg',
 		}),
+		scripts: [jsonLd(personSchema()), jsonLd(websiteSchema())],
+	}),
 	component: Home,
 })
 

@@ -1,41 +1,23 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { pageTitle } from '@/config/site'
 import { motion } from 'framer-motion'
-import { canonical } from '@/lib/seo'
+import { seo } from '@/lib/seo'
 
 import { Articles, Search, Tags } from '@/app/blog/components'
 import { getBlogIndex } from '@/lib/articles'
 import { parseBlogSearch } from '@/lib/blog-search'
 
-const seo = {
-	url: 'https://www.prvnbist.com/blog',
-	title: pageTitle('Blog'),
-	description: "Sometimes I like to write about what I've learned and you can find them here.",
-	keywords:
-		'front end, back end, design, html, pug, css, scss, javascript, nodejs, reactjs, graphql, expressjs, mongoose, mongodb, gatsby, figma, design, user interface, user experience',
-}
-
 export const Route = createFileRoute('/blog/')({
 	validateSearch: parseBlogSearch,
 	loaderDeps: ({ search: { s, tag } }) => ({ s, tag }),
 	loader: ({ deps }) => getBlogIndex({ data: deps }),
-	head: () => ({
-		links: canonical('/blog'),
-		meta: [
-			{ title: seo.title },
-			{ name: 'description', content: seo.description },
-			{ name: 'keywords', content: seo.keywords },
-			{ name: 'application-name', content: seo.title },
-			{ property: 'og:type', content: 'website' },
-			{ property: 'og:url', content: seo.url },
-			{ property: 'og:title', content: seo.title },
-			{ property: 'og:description', content: seo.description },
-			{ name: 'twitter:card', content: 'summary_large_image' },
-			{ name: 'twitter:site', content: '@prvnbist' },
-			{ name: 'twitter:title', content: seo.title },
-			{ name: 'twitter:description', content: seo.description },
-		],
-	}),
+	head: () =>
+		seo({
+			path: '/blog',
+			title: pageTitle('Blog'),
+			description:
+				"Sometimes I like to write about what I've learned and you can find them here.",
+		}),
 	component: Blog,
 })
 

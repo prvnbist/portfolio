@@ -4,7 +4,8 @@ import { createFileRoute, Link, notFound } from '@tanstack/react-router'
 
 import Content from '@/app/blog/components/Content'
 import { NotFound } from '@/components'
-import { canonical, SITE } from '@/lib/seo'
+import { NAME } from '@/config/site'
+import { blogPostingSchema, jsonLd, seo } from '@/lib/seo'
 import { getArticleComponent, getArticlePage, preloadArticle } from '@/lib/articles'
 import { formatDate } from '@/lib/format'
 
@@ -20,28 +21,23 @@ export const Route = createFileRoute('/blog/$slug')({
 	head: ({ loaderData }) => {
 		if (!loaderData) return {}
 		const { meta } = loaderData
-		const title = `${meta.title} | Praveen Bisht`
-		const url = `${SITE}/blog/${meta.slug}`
-		const image = meta.ogImage ? [{ property: 'og:image', content: meta.ogImage }] : []
-		const twImage = meta.ogImage ? [{ name: 'twitter:image', content: meta.ogImage }] : []
-		const description = meta.description ?? ''
 		return {
-			links: canonical(`/blog/${meta.slug}`),
-			meta: [
-				{ title },
-				{ name: 'description', content: description },
-				{ name: 'keywords', content: meta.tags.join(', ') },
-				{ property: 'og:type', content: 'website' },
-				{ property: 'og:url', content: url },
-				{ property: 'og:title', content: title },
-				{ property: 'og:description', content: description },
-				...image,
-				{ name: 'twitter:card', content: 'summary_large_image' },
-				{ name: 'twitter:site', content: '@prvnbist' },
-				{ name: 'twitter:title', content: title },
-				{ name: 'twitter:description', content: description },
-				...twImage,
-			],
+			...seo({
+				path: `/blog/${meta.slug}`,
+				title: `${meta.title} | ${NAME}`,
+				description: meta.description ?? '',
+				image: meta.ogImage,
+				type: 'article',
+				extra: [
+					...(meta.date ? [{ property: 'article:published_time', content: meta.date }] : []),
+					// The router keeps one meta per property, so repeated article:tag tags would be
+					// dropped; the tags are also in the BlogPosting JSON-LD as keywords.
+					...(meta.tags.length
+						? [{ property: 'article:tag', content: meta.tags.join(', ') }]
+						: []),
+				],
+			}),
+			scripts: [jsonLd(blogPostingSchema(meta))],
 		}
 	},
 	notFoundComponent: () => (
