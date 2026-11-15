@@ -8,16 +8,13 @@ importers:
 
   .:
     dependencies:
-      '@fontsource-variable/bricolage-grotesque':
+      '@fontsource-variable/inter':
+        specifier: ^5.3.0
+        version: 5.3.0
+      '@fontsource-variable/stack-sans-notch':
         specifier: ^5.3.0
         version: 5.3.0
       '@fontsource/ibm-plex-mono':
-        specifier: ^5.3.0
-        version: 5.3.0
-      '@fontsource/inter':
-        specifier: ^5.3.0
-        version: 5.3.0
-      '@fontsource/stack-sans-notch':
         specifier: ^5.3.0
         version: 5.3.0
       '@mdx-js/react':
@@ -232,17 +229,14 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@fontsource-variable/bricolage-grotesque@5.3.0':
-    resolution: {integrity: sha512-TLi9Q4hJjS2UvoTMRSS2nHu6c4R56lAw60NR9QYtVRCHn0XtsFpiEhNffZ8Glsoxu6wEEwLKBP8lb94J52PNBA==}
+  '@fontsource-variable/inter@5.3.0':
+    resolution: {integrity: sha512-OupL48va4JNofb97w6NYeF9S7W/kHNKM0Er8Dem5nqi4jeOLrVJDoE8tZEpnMJmtkvNbB1EIPPwHcdkF6b1oUA==}
+
+  '@fontsource-variable/stack-sans-notch@5.3.0':
+    resolution: {integrity: sha512-RDnrc2zMy8WEWgTp9werbgQPbQg86PIdcW6iOV3xV+C9sItFr4oJ2Ta2ir1dpSBXOxjzEFrxRPRm8EncInrVsQ==}
 
   '@fontsource/ibm-plex-mono@5.3.0':
     resolution: {integrity: sha512-eTgnZjZEGk1QtD3ZstF+Vclo2HLAni8YMy34/DxllwZvyz1lR/1RF/xTiAquOBO7MvqBx8D2Ig2WCPMVfdZu7Q==}
-
-  '@fontsource/inter@5.3.0':
-    resolution: {integrity: sha512-RofMylZmjlJEfELXeNHFWBRcSs75rGU/6bV2S2jfnvv/3rPXPGe0LgUJTklcHZ9lM4OZmAVFhcJPnACfb91A3g==}
-
-  '@fontsource/stack-sans-notch@5.3.0':
-    resolution: {integrity: sha512-uoJrPJs7phGu5WZlzAmsoUtoxiUASzNJAGLWTGssOx7tpFlqtNuqxSRrRWKcTpwHuEXO0Ztoil8MMv6hO42vMA==}
 
   '@jridgewell/gen-mapping@0.3.13':
     resolution: {integrity: sha512-2kkt/7niJ6MgEPxF0bYdQ6etZaA+fQvDcLKckhy1yIQOzaoKjBBjSj63/aLVjYE3qhRt5dvM+uUyfCg6UKCBbA==}
@@ -2009,13 +2003,11 @@ snapshots:
   '@biomejs/cli-win32-x64@1.9.4':
     optional: true
 
-  '@fontsource-variable/bricolage-grotesque@5.3.0': {}
+  '@fontsource-variable/inter@5.3.0': {}
+
+  '@fontsource-variable/stack-sans-notch@5.3.0': {}
 
   '@fontsource/ibm-plex-mono@5.3.0': {}
-
-  '@fontsource/inter@5.3.0': {}
-
-  '@fontsource/stack-sans-notch@5.3.0': {}
 
   '@jridgewell/gen-mapping@0.3.13':
     dependencies:

@@ -2,6 +2,8 @@ import { createRootRoute, HeadContent, Outlet, Scripts } from '@tanstack/react-r
 import { MotionConfig } from 'framer-motion'
 import type { ReactNode } from 'react'
 
+import headingFont from '@fontsource-variable/stack-sans-notch/files/stack-sans-notch-latin-wght-normal.woff2?url'
+
 import appCss from '@/app/globals.css?url'
 import { ErrorPage, NotFound } from '@/components'
 import { BIO, pageTitle } from '@/config/site'
@@ -18,7 +20,17 @@ export const Route = createRootRoute({
 			{ title: pageTitle() },
 			{ name: 'description', content: BIO },
 		],
-		links: [{ rel: 'stylesheet', href: appCss }],
+		links: [
+			// The heading font is needed for the first paint of every page; fetch it with the CSS.
+			{
+				rel: 'preload',
+				href: headingFont,
+				as: 'font',
+				type: 'font/woff2',
+				crossOrigin: 'anonymous',
+			},
+			{ rel: 'stylesheet', href: appCss },
+		],
 		scripts: [
 			...(import.meta.env.PROD && import.meta.env.VITE_GOOGLE_ANALYTICS
 				? [
