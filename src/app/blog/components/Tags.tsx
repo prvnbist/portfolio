@@ -1,7 +1,7 @@
 import { Link } from '@tanstack/react-router'
 
+import { pillClass } from '@/components/ui'
 import type { BlogSearch } from '@/lib/articles.types'
-import { cn } from '@/utils'
 
 /** Next search params when a tag is chosen: select it, or clear it if it's already active. */
 export const toggleTag = (prev: BlogSearch, tag: string): BlogSearch => ({
@@ -24,11 +24,10 @@ const Tags = ({ tags, activeTag }: { tags: string[]; activeTag?: string }) => (
 							// partial search match and overrides this with aria-current="page".
 							activeOptions={{ exact: true }}
 							aria-current={active ? 'true' : undefined}
-							className={cn(
-								'inline-flex rounded-full border border-white/10 px-2.5 py-1 text-[11px] font-medium tracking-wider text-gray-400 uppercase transition-colors hover:border-accent-to/60 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-to',
-								active &&
-									'border-transparent bg-linear-to-r from-accent-from to-accent-to text-zinc-950 hover:text-zinc-950'
-							)}
+							className={pillClass({
+								variant: active ? 'accent' : 'default',
+								interactive: true,
+							})}
 						>
 							{tag}
 						</Link>

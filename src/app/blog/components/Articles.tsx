@@ -1,27 +1,20 @@
 import { Link } from '@tanstack/react-router'
-import { motion } from 'framer-motion'
 
+import { CardGlow, Icon, Reveal } from '@/components/ui'
 import type { ArticleMeta } from '@/lib/articles.types'
 import { formatDate } from '@/lib/format'
-
-const GLOWS = ['bg-yellow-400/20', 'bg-pink-400/20', 'bg-sky-400/20', 'bg-emerald-400/20']
 
 const Articles = ({ articles }: { articles: ArticleMeta[] }) => {
 	return Array.isArray(articles) && articles.length > 0 ? (
 		<ul className="-mx-4 mt-6 border-t border-line lg:-mx-8">
 			{articles.map((article, index) => (
-				<motion.li
+				<Reveal
+					as="li"
 					key={article.slug}
-					initial={{ opacity: 0, y: 20 }}
-					whileInView={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.4 }}
-					viewport={{ once: true }}
+					duration={0.4}
 					className="group/card relative list-none overflow-hidden border-b border-line"
 				>
-					<span
-						aria-hidden="true"
-						className={`pointer-events-none absolute -top-20 -right-20 h-48 w-48 rounded-full blur-3xl opacity-0 transition-opacity duration-500 group-hover/card:opacity-100 ${GLOWS[index % GLOWS.length]}`}
-					/>
+					<CardGlow index={index} />
 					<Link
 						to="/blog/$slug"
 						params={{ slug: article.slug }}
@@ -37,20 +30,12 @@ const Articles = ({ articles }: { articles: ArticleMeta[] }) => {
 								{article.title}
 							</h2>
 						</div>
-						<svg
-							aria-hidden="true"
-							viewBox="0 0 24 24"
-							fill="none"
-							stroke="currentColor"
-							strokeWidth="2"
-							strokeLinecap="round"
-							strokeLinejoin="round"
-							className="size-6 shrink-0 -translate-x-2 text-accent-to opacity-0 transition-all duration-300 group-hover/card:translate-x-0 group-hover/card:opacity-100"
-						>
-							<path d="M7 17 17 7M8 7h9v9" />
-						</svg>
+						<Icon
+							name="arrow-up-right"
+							className="size-6 -translate-x-2 text-accent-to opacity-0 transition-all duration-300 group-hover/card:translate-x-0 group-hover/card:opacity-100"
+						/>
 					</Link>
-				</motion.li>
+				</Reveal>
 			))}
 		</ul>
 	) : (
