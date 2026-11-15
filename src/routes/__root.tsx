@@ -69,7 +69,7 @@ function RootComponent() {
 			<MotionConfig reducedMotion="user">
 				<a
 					href="#content"
-					className="sr-only rounded-full bg-bg px-4 py-2 text-sm text-white focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-1001 focus:outline-2 focus:outline-accent-to"
+					className="sr-only rounded-full bg-bg px-4 py-2 text-sm text-white focus:not-sr-only focus:fixed focus:px-4 focus:py-2 focus:top-3 focus:left-3 focus:z-1001 focus:outline-2 focus:outline-accent-to"
 				>
 					Skip to content
 				</a>
