@@ -1,7 +1,15 @@
 {
 	"$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
 	"files": {
-		"ignore": [".next", ".output", "dist", "src/routeTree.gen.ts"]
+		"ignore": [
+			".next",
+			".output",
+			"dist",
+			"src/routeTree.gen.ts",
+			"package.json",
+			"test-results",
+			"playwright-report"
+		]
 	},
 	"formatter": {
 		"enabled": true,
