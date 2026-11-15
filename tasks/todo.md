@@ -11,7 +11,7 @@
   - Acceptance: `/blog` lists all `.mdx` articles by date desc; tags = sorted unique frontmatter tags; `?s=` and `?tag=` work and combine; `getBlogIndex` no longer imports `cms.server`; no error branch in `blog/index.tsx`.
   - Verify: `pnpm lint`; `pnpm dev` smoke `/blog`, `/blog?s=react`, `/blog?tag=hasura`, combined; diff titles/dates/tags/order against T1 snapshot.
   - Depends on: T1. Files: `src/lib/articles.server.ts`, `articles.ts`, `articles.types.ts`, `src/routes/blog/index.tsx`, `src/app/blog/components` (types only).
-- [ ] **T3: Designs from `src/data/designs.ts`** (S)
+- [x] **T3: Designs from `src/data/designs.ts`** (S)
   - Acceptance: `/design` renders same count, order, text as snapshot with local thumbnails; no `getDesigns`; error branch removed.
   - Verify: `pnpm lint`; visual check of `/design`; Network tab shows no external image requests.
   - Depends on: T1. Files: `src/data/designs.ts`, `src/lib/design.types.ts` (or reuse type), `src/routes/design.tsx`, `src/app/design/project.tsx` if needed.

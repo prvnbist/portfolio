@@ -1,7 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { canonical } from '@/lib/seo'
 
-import { getDesigns } from '@/lib/cms'
+import { DESIGNS } from '@/data/designs'
 import Project from '@/app/design/project'
 import classes from '@/app/design/design.module.css'
 
@@ -16,7 +16,6 @@ const seo = {
 }
 
 export const Route = createFileRoute('/design')({
-	loader: () => getDesigns(),
 	head: () => ({
 		links: canonical('/design'),
 		meta: [
@@ -40,22 +39,11 @@ export const Route = createFileRoute('/design')({
 })
 
 function DesignPage() {
-	const { data: designs, error } = Route.useLoaderData()
-	if (error) {
-		return (
-			<section className="w-full px-4 mx-auto lg:w-[920px] lg:px-8">
-				<h1 className="text-3xl my-6 px-2">Designs</h1>
-				<p className="px-2 text-gray-400">
-					Designs are unavailable right now. Please try again later.
-				</p>
-			</section>
-		)
-	}
 	return (
 		<section className="w-full px-4 mx-auto lg:w-[920px] lg:px-8">
 			<h1 className="text-3xl my-6 px-2">Designs</h1>
 			<ul className={classes.projects}>
-				{designs.map(design => (
+				{DESIGNS.map(design => (
 					<Project key={design.id} design={design} />
 				))}
 			</ul>

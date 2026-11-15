@@ -1,19 +1,9 @@
 import { motion } from 'framer-motion'
 
 import { Button } from '@/components'
+import type { Design } from '@/data/designs'
 
 import classes from './design.module.css'
-
-type Design = {
-	id: string
-	url: string
-	title: string
-	thumbnail: {
-		id: string
-		url: string
-	}
-	description: string
-}
 
 const ANIMATE_PROPS = {
 	initial: { opacity: 0, y: 60 },
@@ -27,7 +17,7 @@ export default function Project({ design }: { design: Design }) {
 		<motion.li {...ANIMATE_PROPS} className={classes.project}>
 			<header>
 				<div>
-					<img src={design.thumbnail.url} alt={design.title} />
+					<img src={design.thumbnail} alt={design.title} />
 				</div>
 				<h3>{design.title}</h3>
 			</header>
