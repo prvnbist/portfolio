@@ -7,6 +7,8 @@ const base = {
 	title: 'JSONVi',
 	description: 'A JSON viewer.',
 	image: '/images/code/jsonvi_1.png',
+	imageWidth: 1222,
+	imageHeight: 941,
 }
 
 describe('ProjectCard', () => {
@@ -17,6 +19,8 @@ describe('ProjectCard', () => {
 		expect(html).toContain('JSONVi')
 		expect(html).toContain('A JSON viewer.')
 		expect(html).toContain('src="/images/code/jsonvi_1.png"')
+		expect(html).toContain('width="1222"')
+		expect(html).toContain('height="941"')
 	})
 
 	it('renders actions as external links, never a button inside a link', () => {

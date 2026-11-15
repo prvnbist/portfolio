@@ -115,6 +115,8 @@ export default function Header() {
 							JustCall
 							<img
 								src="/images/jc-logo.svg"
+								width={303}
+								height={293}
 								alt=""
 								aria-hidden="true"
 								className="ml-1 inline-block h-[0.8em] w-auto align-baseline"

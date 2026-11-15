@@ -1,5 +1,7 @@
 export const FEATURED_PROJECT = {
-	img_url: '/images/code/tracksubs_1.jpg',
+	img_url: '/images/code/tracksubs_1.webp',
+	img_width: 2028,
+	img_height: 1572,
 	title: 'TrackSubs',
 	description: 'Streamline your finances and stay on top of recurring expenses effortlessly.',
 	code_url: 'https://github.com/prvnbist/tracksubs',
@@ -19,6 +21,8 @@ export const FEATURED_PROJECT = {
 export const PROJECTS = [
 	{
 		img_url: '/images/code/jsonvi_1.png',
+		img_width: 1222,
+		img_height: 941,
 		title: 'JSONVi',
 		description:
 			'A straightforward JSON Viewer with handy features to assist you with your everyday JSON tasks effortlessly.',
@@ -26,7 +30,9 @@ export const PROJECTS = [
 		tech_stack: [],
 	},
 	{
-		img_url: '/images/code/undata_1.png',
+		img_url: '/images/code/undata_1.webp',
+		img_width: 1213,
+		img_height: 931,
 		title: 'Undata',
 		description:
 			'Simplified Database query execution and visualization, enabling easy understanding, transformation, and exportation of your data to suit your needs.',
@@ -34,14 +40,18 @@ export const PROJECTS = [
 		tech_stack: [],
 	},
 	{
-		img_url: '/images/code/ledger_1.png',
+		img_url: '/images/code/ledger_1.webp',
+		img_width: 1222,
+		img_height: 941,
 		title: 'Ledger 🚧',
 		tech_stack: [],
 		description:
 			'Our app offers intuitive tools for mastering personal finance, providing comprehensive metrics to track and analyze your spending habits with ease. Take control ofyour finances and achieve your financial goals effortlessly.',
 	},
 	{
-		img_url: '/images/code/transcode_1.png',
+		img_url: '/images/code/transcode_1.webp',
+		img_width: 1222,
+		img_height: 940,
 		title: 'Transcode',
 		tech_stack: [],
 		description:

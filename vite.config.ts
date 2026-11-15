@@ -1,5 +1,6 @@
 /// <reference types="vitest/config" />
 import { readdirSync, readFileSync } from 'node:fs'
+import { fileURLToPath } from 'node:url'
 
 import mdx from '@mdx-js/rollup'
 import tailwindcss from '@tailwindcss/vite'
@@ -12,12 +13,16 @@ import matter from 'gray-matter'
 import { defineConfig, type Plugin } from 'vite'
 
 import { checkFrontmatter } from './src/lib/frontmatter'
+import { rehypeImageSize } from './src/lib/rehype-image-size'
 
 // Compile .mdx imports at build time, but leave `?raw` (and other query) imports untouched
 // so frontmatter can be read from the source text.
 const mdxPlugin = (): Plugin => {
 	const plugin = mdx({
 		remarkPlugins: [remarkFrontmatter, remarkMdxCodeMeta] as any,
+		rehypePlugins: [
+			[rehypeImageSize, { publicDir: fileURLToPath(new URL('./public', import.meta.url)) }],
+		] as any,
 	}) as Plugin & { transform: (this: any, code: string, id: string) => any }
 	const transform = plugin.transform
 	return {

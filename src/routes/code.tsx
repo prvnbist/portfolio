@@ -53,6 +53,8 @@ function Code() {
 						title={FEATURED_PROJECT.title}
 						description={FEATURED_PROJECT.description}
 						image={FEATURED_PROJECT.img_url}
+						imageWidth={FEATURED_PROJECT.img_width}
+						imageHeight={FEATURED_PROJECT.img_height}
 						tags={FEATURED_PROJECT.tech_stack}
 						actions={actions(FEATURED_PROJECT)}
 					/>
@@ -63,6 +65,8 @@ function Code() {
 							title={project.title}
 							description={project.description}
 							image={project.img_url}
+							imageWidth={project.img_width}
+							imageHeight={project.img_height}
 							tags={project.tech_stack}
 							actions={actions(project)}
 						/>

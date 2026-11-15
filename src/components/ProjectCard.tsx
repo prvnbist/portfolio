@@ -9,6 +9,9 @@ type ProjectCardProps = {
 	title: string
 	description: string
 	image: string
+	/** Intrinsic size, so the browser can reserve space before the image loads. */
+	imageWidth: number
+	imageHeight: number
 	/** Thumbnail shape: code screenshots are 4:3, design shots 16:9. */
 	aspect?: '4/3' | 'video'
 	tags?: readonly string[]
@@ -25,6 +28,8 @@ export default function ProjectCard({
 	title,
 	description,
 	image,
+	imageWidth,
+	imageHeight,
 	aspect = '4/3',
 	tags = [],
 	actions = [],
@@ -51,6 +56,8 @@ export default function ProjectCard({
 				<img
 					alt={title}
 					src={image}
+					width={imageWidth}
+					height={imageHeight}
 					loading="lazy"
 					decoding="async"
 					className="h-full w-full object-cover transition-transform duration-500 group-hover/card:scale-[1.03]"

@@ -38,6 +38,8 @@ function DesignPage() {
 							title={design.title}
 							description={design.description}
 							image={design.thumbnail}
+							imageWidth={design.width}
+							imageHeight={design.height}
 							actions={[{ label: 'View in Figma', href: design.url }]}
 						/>
 					))}

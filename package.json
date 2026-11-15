@@ -50,6 +50,7 @@
     "@types/react": "^18.3.26",
     "@types/react-dom": "^18.3.7",
     "@vitejs/plugin-react": "^6.3.0",
+    "image-size": "^2.1.0",
     "nitro": "3.0.261103-rc",
     "tailwindcss": "^4.3.5",
     "typescript": "^5.9.3",
