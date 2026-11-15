@@ -30,7 +30,7 @@ Failing audits:
   - `errors-in-console`: React **#418 hydration mismatch** ×3 and **#422**, in IST.
     - **Correction after T3:** the same errors occur in UTC, and they persist once dates format in UTC, so they're **not** F-01.
     - They happen on the two articles that put fallback `<a>` links **inside** a CodePen `<iframe>`: this one and `create-a-tags-input-component-in-react`. The browser parses iframe content as text, so it doesn't match React's server-rendered elements.
-    - This is a new finding, not yet in the audit.
+    - This was a new finding, not in the audit. It was fixed right after T3 by making both iframes self-closing and moving the attribution links into a paragraph below each one. After the fix, all 14 pages show no hydration errors in Los Angeles, IST or UTC.
   - `third-party-cookies` and `inspector-issues`, both from the CodePen embed.
   - The LCP element is an article `<img>`, and the page loads two 2.9 MB GIFs (F-25).
 - `/design`: `heading-order`.
